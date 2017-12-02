@@ -7,20 +7,22 @@ import { routing } from './app.routing';
 //Loopback
 import { SDKBrowserModule } from './shared/sdk/index';
 
-
 //Componentes Propios
 import { AppComponent } from './app.component';
 import { ProductsComponent } from './products/products.component';
 import { ActiveDonationsComponent } from './active-donations/active-donations.component';
 import { TestComponent } from './test/test.component';
+import { DonnersComponent } from './donners/donners.component';
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
     ProductsComponent,
-    ActiveDonationsComponent
+    ActiveDonationsComponent,
     TestComponent,
+    DonnersComponent
   ],
   imports: [
     BrowserModule,
