@@ -8,9 +8,11 @@ import { routing } from './app.routing';
 import { SDKBrowserModule } from './shared/sdk/index';
 
 
+//Componentes Propios
 import { AppComponent } from './app.component';
 import { ProductsComponent } from './products/products.component';
 import { ActiveDonationsComponent } from './active-donations/active-donations.component';
+import { TestComponent } from './test/test.component';
 
 
 @NgModule({
@@ -18,6 +20,7 @@ import { ActiveDonationsComponent } from './active-donations/active-donations.co
     AppComponent,
     ProductsComponent,
     ActiveDonationsComponent
+    TestComponent,
   ],
   imports: [
     BrowserModule,
