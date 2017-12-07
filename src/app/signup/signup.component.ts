@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LoopBackConfig }        from '../shared/sdk';
-import { Organization, User, AccessToken }  from '../shared/sdk/models';
+import { Organization, Donner, AccessToken }  from '../shared/sdk/models';
 //import { OrganizationApi, UserApi }            from '../shared/sdk/services';
 import { AccountService } from '../account-service/account.service';
 @Component({
@@ -9,7 +9,7 @@ import { AccountService } from '../account-service/account.service';
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit {
-  private accountUser: User = new User();
+  private accountDonner: Donner = new Donner();
   private accountOrganization: Organization = new Organization();
 
   constructor(
@@ -22,10 +22,10 @@ export class SignupComponent implements OnInit {
   }
 
   private signupUser(): void{
-    this.accountService.signupUser(this.accountUser);
+    this.accountService.signupUser(this.accountDonner);
   }
   private signupOrganization(): void{
-    this.accountService.signupUser(this.accountUser);
+    this.accountService.signupOrganization(this.accountOrganization);
   }
 
 
