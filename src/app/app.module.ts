@@ -13,6 +13,11 @@ import { ProductsComponent } from './products/products.component';
 import { ActiveDonationsComponent } from './active-donations/active-donations.component';
 import { TestComponent } from './test/test.component';
 import { DonnersComponent } from './donners/donners.component';
+import { SignupComponent } from './signup/signup.component';
+import { LoginComponent } from './login/login.component';
+
+//Services Propios
+import { AccountService } from './account-service/account.service'
 
 
 
@@ -22,7 +27,9 @@ import { DonnersComponent } from './donners/donners.component';
     ProductsComponent,
     ActiveDonationsComponent,
     TestComponent,
-    DonnersComponent
+    DonnersComponent,
+    SignupComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +38,9 @@ import { DonnersComponent } from './donners/donners.component';
     SDKBrowserModule.forRoot(),
     routing
   ],
-  providers: [],
+  providers: [
+    AccountService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
