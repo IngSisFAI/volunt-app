@@ -10,6 +10,7 @@ import { ActiveDonationsComponent } from './active-donations/active-donations.co
 import { TestComponent } from './test/test.component';
 import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
+import { DonnerComponent } from './donner/donner.component';
 
 const appRoutes: Routes =  [
 {
@@ -21,6 +22,7 @@ const appRoutes: Routes =  [
 	{ path: 'products', component: ProductsComponent },
 	{ path: 'activeDonations', component: ActiveDonationsComponent },
 	{ path: 'donners', component: DonnersComponent },
+	{ path: 'donner/:id', component: DonnerComponent },
 ];
 
 

@@ -1,0 +1,14 @@
+<div class="" *ngIf='donner'>
+  <div >
+    <h3 >Donner {{donner.username}} </h3>
+    <label >{{donner.name}} {{donner.lastName}}</label> <br>
+    <label >{{donner.phoneNumber}}</label> <br>
+    <label >{{donner.dni}}</label> <br>
+    <label ></label> <br>
+  </div>
+  <!-- <button type="button" name="button" (click)='getHistory(donner)'>Historial</button> -->
+  <donner-history
+    [donner]="donner"
+  >
+  </donner-history>
+</div>

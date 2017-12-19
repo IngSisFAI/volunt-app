@@ -1,0 +1,6 @@
+<div class="" *ngIf="donner">
+  <h2>Historial de Donaciones</h2>
+  <ul *ngFor='let donation of donner.donationResponses'>
+    <li>{{donation.creationDate}} {{donation.amount}}: {{donation.alreadyDelivered}}</li>
+  </ul>
+</div>

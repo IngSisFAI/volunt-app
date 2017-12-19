@@ -15,9 +15,11 @@ import { TestComponent } from './test/test.component';
 import { DonnersComponent } from './donners/donners.component';
 import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
+import { DonnerComponent } from './donner/donner.component'
+import { DonnerHistory } from './donner/donner-history/donner-history.component'
 
 //Services Propios
-import { AccountService } from './account-service/account.service'
+import { AccountService } from './account-service/account.service';
 
 
 
@@ -29,7 +31,9 @@ import { AccountService } from './account-service/account.service'
     TestComponent,
     DonnersComponent,
     SignupComponent,
-    LoginComponent
+    LoginComponent,
+    DonnerComponent,
+    DonnerHistory
   ],
   imports: [
     BrowserModule,
