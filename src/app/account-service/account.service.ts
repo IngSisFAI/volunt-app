@@ -24,6 +24,7 @@ export class AccountService {
   // Built-in LoopBack Authentication and Typings like Account and TokenInterface
   public signinUser(user: Donner): void {
   console.log('asd');
+  console.log(user);
     this.donnerApi.login(user).subscribe((token: AccessToken) => alert('Fake Redirect'));
   }
   public signinOrganization(organization: Organization): void {

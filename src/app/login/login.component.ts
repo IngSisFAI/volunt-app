@@ -20,10 +20,13 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    console.log(this.accountDonner);
+    //this.accountDonner.username = '';
   }
 
   private loginUser(): void{
     console.log('loginUser');
+    console.log(this.accountDonner);
     this.accountService.signinUser(this.accountDonner);
   }
   private loginOrganization(): void{
