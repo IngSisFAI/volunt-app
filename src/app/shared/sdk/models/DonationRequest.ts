@@ -1,44 +1,50 @@
 /* tslint:disable */
 
 declare var Object: any;
-export interface OneTimeRequestInterface {
-  "ammount": number;
-  "expirationDate": Date;
-  "covered": number;
-  "promised": number;
+export interface DonationRequestInterface {
   "creationDate": Date;
+  "amount"?: number;
+  "expirationDate": Date;
+  "isPermanent": boolean;
+  "covered"?: number;
+  "promised"?: number;
+  "status"?: boolean;
   "id"?: any;
+  "organizationId"?: any;
   "productId"?: any;
   product?: any;
 }
 
-export class OneTimeRequest implements OneTimeRequestInterface {
-  "ammount": number;
+export class DonationRequest implements DonationRequestInterface {
+  "creationDate": Date;
+  "amount": number;
   "expirationDate": Date;
+  "isPermanent": boolean;
   "covered": number;
   "promised": number;
-  "creationDate": Date;
+  "status": boolean;
   "id": any;
+  "organizationId": any;
   "productId": any;
   product: any;
-  constructor(data?: OneTimeRequestInterface) {
+  constructor(data?: DonationRequestInterface) {
     Object.assign(this, data);
   }
   /**
    * The name of the model represented by this $resource,
-   * i.e. `OneTimeRequest`.
+   * i.e. `DonationRequest`.
    */
   public static getModelName() {
-    return "OneTimeRequest";
+    return "DonationRequest";
   }
   /**
   * @method factory
   * @author Jonathan Casarrubias
   * @license MIT
-  * This method creates an instance of OneTimeRequest for dynamic purposes.
+  * This method creates an instance of DonationRequest for dynamic purposes.
   **/
-  public static factory(data: OneTimeRequestInterface): OneTimeRequest{
-    return new OneTimeRequest(data);
+  public static factory(data: DonationRequestInterface): DonationRequest{
+    return new DonationRequest(data);
   }
   /**
   * @method getModelDefinition
@@ -49,18 +55,26 @@ export class OneTimeRequest implements OneTimeRequestInterface {
   **/
   public static getModelDefinition() {
     return {
-      name: 'OneTimeRequest',
-      plural: 'OneTimeRequests',
-      path: 'OneTimeRequests',
+      name: 'DonationRequest',
+      plural: 'DonationRequests',
+      path: 'DonationRequests',
       idName: 'id',
       properties: {
-        "ammount": {
-          name: 'ammount',
+        "creationDate": {
+          name: 'creationDate',
+          type: 'Date'
+        },
+        "amount": {
+          name: 'amount',
           type: 'number'
         },
         "expirationDate": {
           name: 'expirationDate',
           type: 'Date'
+        },
+        "isPermanent": {
+          name: 'isPermanent',
+          type: 'boolean'
         },
         "covered": {
           name: 'covered',
@@ -72,12 +86,16 @@ export class OneTimeRequest implements OneTimeRequestInterface {
           type: 'number',
           default: 0
         },
-        "creationDate": {
-          name: 'creationDate',
-          type: 'Date'
+        "status": {
+          name: 'status',
+          type: 'boolean'
         },
         "id": {
           name: 'id',
+          type: 'any'
+        },
+        "organizationId": {
+          name: 'organizationId',
           type: 'any'
         },
         "productId": {

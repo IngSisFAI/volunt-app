@@ -10,15 +10,15 @@ import { JSONSearchParams } from '../core/search.params';
 import { ErrorHandler } from '../core/error.service';
 import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Rx';
-import { OneTimeRequest } from '../../models/OneTimeRequest';
+import { Email } from '../../models/Email';
 import { SocketConnection } from '../../sockets/socket.connections';
 
 
 /**
- * Api services for the `OneTimeRequest` model.
+ * Api services for the `Email` model.
  */
 @Injectable()
-export class OneTimeRequestApi extends BaseLoopBackApi {
+export class EmailApi extends BaseLoopBackApi {
 
   constructor(
     @Inject(Http) protected http: Http,
@@ -33,9 +33,9 @@ export class OneTimeRequestApi extends BaseLoopBackApi {
 
   /**
    * The name of the model represented by this $resource,
-   * i.e. `OneTimeRequest`.
+   * i.e. `Email`.
    */
   public getModelName() {
-    return "OneTimeRequest";
+    return "Email";
   }
 }

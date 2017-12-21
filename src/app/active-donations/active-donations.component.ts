@@ -1,12 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 
 // Interfaces
-import { PermanentRequestInterface} from '../shared/sdk/models/PermanentRequest';
-import { OneTimeRequestInterface} from '../shared/sdk/models/OneTimeRequest';
+import { DonationRequestInterface } from '../shared/sdk/models/DonationRequest';
+// import { PermanentRequestInterface} from '../shared/sdk/models/PermanentRequest';
+// import { OneTimeRequestInterface} from '../shared/sdk/models/OneTimeRequest';
 
 // Services
-import { PermanentRequestApi } from '../shared/sdk/services/custom/PermanentRequest';
-import { OneTimeRequestApi } from '../shared/sdk/services/custom/OneTimeRequest';
+import { DonationRequestApi } from '../shared/sdk/services/custom/DonationRequest';
+// import { PermanentRequestApi } from '../shared/sdk/services/custom/PermanentRequest';
+// import { OneTimeRequestApi } from '../shared/sdk/services/custom/OneTimeRequest';
 
 @Component({
   selector: 'app-active-donations',
@@ -15,12 +17,11 @@ import { OneTimeRequestApi } from '../shared/sdk/services/custom/OneTimeRequest'
 })
 export class ActiveDonationsComponent implements OnInit {
 
-  public permanentRequests: PermanentRequestInterface[] = [];
-  public oneTimeRequests: OneTimeRequestInterface[] = [];
+  public permanentRequests: DonationRequestInterface[] = [];
+  public oneTimeRequests: DonationRequestInterface[] = [];
 
   constructor(
-    private permanentRequestApi: PermanentRequestApi,
-    private oneTimeRequestApi: OneTimeRequestApi,
+    private donationRequestApi: DonationRequestApi
   ) {
 
 
@@ -28,11 +29,11 @@ export class ActiveDonationsComponent implements OnInit {
 
   ngOnInit() {
     this.findPermanentRequests();
-    this.findOneTimeRequests();
+    // this.findOneTimeRequests();
   }
 
   private findPermanentRequests(){
-    this.permanentRequestApi.find({include:'product', where: { status : true}}).subscribe((permanentRequests: PermanentRequestInterface[])=>{
+    this.donationRequestApi.find({include:'product', where: { status : true, isPermanent : true }}).subscribe((permanentRequests: DonationRequestInterface[])=>{
       console.log(permanentRequests);
       this.permanentRequests = permanentRequests;
     },
@@ -46,13 +47,13 @@ export class ActiveDonationsComponent implements OnInit {
 
     let now = new Date();
     console.log(now);
-    this.oneTimeRequestApi.find({include:'product',
+    this.donationRequestApi.find({include:'product',
     where:
     {
       // creationDate: {lte: now },
       expirationDate: {gte: now }
     }})
-    .subscribe((oneTimeRequests: OneTimeRequestInterface[])=>{
+    .subscribe((oneTimeRequests: DonationRequestInterface[])=>{
       console.log(oneTimeRequests);
       this.oneTimeRequests = oneTimeRequests;
     },
