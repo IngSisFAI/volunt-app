@@ -20,6 +20,7 @@ import { DonnerHistory } from './donner/donner-history/donner-history.component'
 
 //Services Propios
 import { AccountService } from './account-service/account.service';
+import { DonateComponent } from './donate/donate.component';
 
 
 
@@ -33,7 +34,8 @@ import { AccountService } from './account-service/account.service';
     SignupComponent,
     LoginComponent,
     DonnerComponent,
-    DonnerHistory
+    DonnerHistory,
+    DonateComponent
   ],
   imports: [
     BrowserModule,

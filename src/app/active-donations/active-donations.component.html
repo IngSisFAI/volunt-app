@@ -1,9 +1,9 @@
-<p>
-  active-donations works!
-</p>
+<h2>
+  Active Donations
+</h2>
 <ul>
-  <li *ngFor='let permanentRequest of permanentRequests'>
-    {{permanentRequests}}
+  <li *ngFor='let permanentRequest of permanentRequests' (click)='onPermanentRequest(permanentRequest)'>
+    {{ permanentRequest.product.Name }}: {{permanentRequest.covered}} de {{permanentRequest.amount}}
   </li>
 </ul>
 <ul>
@@ -11,3 +11,8 @@
     {{oneTimeRequest}}
   </li>
 </ul>
+
+<app-donate *ngIf='requestSelected'
+  [request]='requestSelected'
+>
+</app-donate>
