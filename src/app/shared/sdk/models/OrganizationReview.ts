@@ -2,19 +2,23 @@
 
 declare var Object: any;
 export interface OrganizationReviewInterface {
-  "calification": number;
-  "text"?: string;
+  "liked"?: boolean;
+  "description"?: string;
   "id"?: any;
   "donnerId"?: any;
+  "createdAt": Date;
+  "updatedAt": Date;
   "reviewedRequestId"?: any;
   reviewedRequest?: any;
 }
 
 export class OrganizationReview implements OrganizationReviewInterface {
-  "calification": number;
-  "text": string;
+  "liked": boolean;
+  "description": string;
   "id": any;
   "donnerId": any;
+  "createdAt": Date;
+  "updatedAt": Date;
   "reviewedRequestId": any;
   reviewedRequest: any;
   constructor(data?: OrganizationReviewInterface) {
@@ -50,12 +54,12 @@ export class OrganizationReview implements OrganizationReviewInterface {
       path: 'OrganizationReviews',
       idName: 'id',
       properties: {
-        "calification": {
-          name: 'calification',
-          type: 'number'
+        "liked": {
+          name: 'liked',
+          type: 'boolean'
         },
-        "text": {
-          name: 'text',
+        "description": {
+          name: 'description',
           type: 'string'
         },
         "id": {
@@ -65,6 +69,14 @@ export class OrganizationReview implements OrganizationReviewInterface {
         "donnerId": {
           name: 'donnerId',
           type: 'any'
+        },
+        "createdAt": {
+          name: 'createdAt',
+          type: 'Date'
+        },
+        "updatedAt": {
+          name: 'updatedAt',
+          type: 'Date'
         },
         "reviewedRequestId": {
           name: 'reviewedRequestId',

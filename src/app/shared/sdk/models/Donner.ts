@@ -6,6 +6,7 @@ export interface DonnerInterface {
   "lastName": string;
   "phoneNumber": string;
   "dni": string;
+  "reputation": any;
   "realm"?: string;
   "username"?: string;
   "email": string;
@@ -22,6 +23,7 @@ export class Donner implements DonnerInterface {
   "lastName": string;
   "phoneNumber": string;
   "dni": string;
+  "reputation": any;
   "realm": string;
   "username": string;
   "email": string;
@@ -79,6 +81,10 @@ export class Donner implements DonnerInterface {
         "dni": {
           name: 'dni',
           type: 'string'
+        },
+        "reputation": {
+          name: 'reputation',
+          type: 'any'
         },
         "realm": {
           name: 'realm',

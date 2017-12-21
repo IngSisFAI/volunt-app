@@ -1,23 +1,26 @@
 /* tslint:disable */
-import {
-  DonationResponse
-} from '../index';
 
 declare var Object: any;
 export interface DonnerReviewInterface {
-  "calification"?: string;
+  "liked"?: boolean;
+  "description"?: string;
   "id"?: any;
   "organizationId"?: any;
+  "createdAt": Date;
+  "updatedAt": Date;
   "reviewedResponseId"?: any;
-  reviewedResponse?: DonationResponse;
+  reviewedResponse?: any;
 }
 
 export class DonnerReview implements DonnerReviewInterface {
-  "calification": string;
+  "liked": boolean;
+  "description": string;
   "id": any;
   "organizationId": any;
+  "createdAt": Date;
+  "updatedAt": Date;
   "reviewedResponseId": any;
-  reviewedResponse: DonationResponse;
+  reviewedResponse: any;
   constructor(data?: DonnerReviewInterface) {
     Object.assign(this, data);
   }
@@ -51,8 +54,12 @@ export class DonnerReview implements DonnerReviewInterface {
       path: 'DonnerReviews',
       idName: 'id',
       properties: {
-        "calification": {
-          name: 'calification',
+        "liked": {
+          name: 'liked',
+          type: 'boolean'
+        },
+        "description": {
+          name: 'description',
           type: 'string'
         },
         "id": {
@@ -63,6 +70,14 @@ export class DonnerReview implements DonnerReviewInterface {
           name: 'organizationId',
           type: 'any'
         },
+        "createdAt": {
+          name: 'createdAt',
+          type: 'Date'
+        },
+        "updatedAt": {
+          name: 'updatedAt',
+          type: 'Date'
+        },
         "reviewedResponseId": {
           name: 'reviewedResponseId',
           type: 'any'
@@ -71,8 +86,8 @@ export class DonnerReview implements DonnerReviewInterface {
       relations: {
         reviewedResponse: {
           name: 'reviewedResponse',
-          type: 'DonationResponse',
-          model: 'DonationResponse',
+          type: 'any',
+          model: '',
           relationType: 'belongsTo',
                   keyFrom: 'reviewedResponseId',
           keyTo: 'id'
