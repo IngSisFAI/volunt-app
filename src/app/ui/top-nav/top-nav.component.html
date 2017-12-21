@@ -1,0 +1,27 @@
+<nav class="nav">
+  <div class="nav-left">
+    <a class="nav-item logo" routerLink="/">
+      Donar
+    </a>
+  </div>
+
+  <!-- This "nav-toggle" hamburger menu is only visible on mobile -->
+  <!-- You need JavaScript to toggle the "is-active" class on "nav-menu" -->
+  <span class="nav-toggle" (click)="toggleCollapse()" [ngClass]="{'is-active': show}">
+    <span></span>
+    <span></span>
+    <span></span>
+  </span>
+
+  <!-- This "nav-menu" is hidden on mobile -->
+  <!-- Add the modifier "is-active" to display it on mobile -->
+  <div class="nav-right nav-menu" [ngClass]="{'is-active': show}">
+      <a class="nav-item" [routerLink]="['/products']">Productos</a>
+      <a class="nav-item" [routerLink]="['/donners']">Donadores</a>
+      <a class="nav-item" [routerLink]="['/activeDonations']">ActiveDonations</a>
+      <a class="nav-item" [routerLink]="['/']">Raiz</a>
+      <a class="nav-item" [routerLink]="['/signup']">Signup</a>
+      <a class="nav-item" [routerLink]="['/login']">Login</a>
+
+  </div>
+</nav>

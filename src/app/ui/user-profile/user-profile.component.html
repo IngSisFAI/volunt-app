@@ -1,0 +1,12 @@
+<div class="box" >
+  <div *ngIf="user != null; then logueado else nologueado">
+  </div>
+  <button class="button" (click)="logout()">Logout</button>
+</div>
+<ng-template #logueado>
+  <h3>Hola, {{ user.name }}</h3>
+  <p class="text-truncate">ID: {{ user.id }}</p>
+</ng-template>
+<ng-template #nologueado>
+  <h3>Hola Anonimo</h3>
+</ng-template>

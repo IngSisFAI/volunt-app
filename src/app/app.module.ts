@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { routing } from './app.routing';
+//import { routing } from './app.routing';
 
 //Loopback
 import { SDKBrowserModule } from './shared/sdk/index';
@@ -20,6 +20,9 @@ import { DonnerHistory } from './donner/donner-history/donner-history.component'
 
 //Services Propios
 import { AccountService } from './account-service/account.service';
+
+import { UiModule } from './ui/shared/ui.module';
+import { AppRoutringModule } from './app-routring.module';
 
 
 
@@ -40,7 +43,9 @@ import { AccountService } from './account-service/account.service';
     FormsModule,
     HttpModule,
     SDKBrowserModule.forRoot(),
-    routing
+    AppRoutringModule,
+    UiModule,
+    AppRoutringModule
   ],
   providers: [
     AccountService

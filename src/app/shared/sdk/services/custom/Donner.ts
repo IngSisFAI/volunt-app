@@ -129,7 +129,7 @@ export class DonnerApi extends BaseLoopBackApi {
    *
    * @param {any} id Donner id
    *
-   * @param {object} filter 
+   * @param {object} filter
    *
    * @returns {object[]} An empty reference that will be
    *   populated with the actual data once the response is returned
@@ -224,7 +224,7 @@ export class DonnerApi extends BaseLoopBackApi {
    *
    * Data properties:
    *
-   *  - `count` – `{number}` - 
+   *  - `count` – `{number}` -
    */
   public countAccessTokens(id: any, where: any = {}, customHeaders?: Function): Observable<any> {
     let _method: string = "GET";
@@ -274,7 +274,7 @@ export class DonnerApi extends BaseLoopBackApi {
    *
    * @param {object} where filter.where object
    *
-   * @param {object} options 
+   * @param {object} options
    *
    * @returns {object} An empty reference that will be
    *   populated with the actual data once the response is returned
@@ -347,9 +347,9 @@ export class DonnerApi extends BaseLoopBackApi {
    *
    * El cuerpo de respuesta contiene propiedades de la AccessToken creada durante el inicio de la sesión.
    * Dependiendo del valor del parámetro `include`, el cuerpo puede contener propiedades adicionales:
-   * 
+   *
    *   - `user` - `U+007BUserU+007D` - Datos del usuario conectado actualmente. (`include=user`)
-   * 
+   *
    *
    */
   public login(credentials: any, include: any = 'user', rememberMe: boolean = true, customHeaders?: Function): Observable<any> {
@@ -372,7 +372,7 @@ export class DonnerApi extends BaseLoopBackApi {
         }
       );
       return result;
-      
+
   }
 
   /**
@@ -396,7 +396,7 @@ export class DonnerApi extends BaseLoopBackApi {
     let _postBody: any = {};
     let _urlParams: any = {};
        _urlParams.access_token = this.auth.getAccessTokenId();
-    this.auth.clear(); 
+    this.auth.clear();
     let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
     return result;
   }
@@ -432,11 +432,11 @@ export class DonnerApi extends BaseLoopBackApi {
   /**
    * Confirm a user registration with identity verification token.
    *
-   * @param {string} uid 
+   * @param {string} uid
    *
-   * @param {string} token 
+   * @param {string} token
    *
-   * @param {string} redirect 
+   * @param {string} redirect
    *
    * @returns {object} An empty reference that will be
    *   populated with the actual data once the response is returned
@@ -489,9 +489,9 @@ export class DonnerApi extends BaseLoopBackApi {
    *
    * @param {object} data Request data.
    *
-   *  - `oldPassword` – `{string}` - 
+   *  - `oldPassword` – `{string}` -
    *
-   *  - `newPassword` – `{string}` - 
+   *  - `newPassword` – `{string}` -
    *
    * @returns {object} An empty reference that will be
    *   populated with the actual data once the response is returned
@@ -520,7 +520,7 @@ export class DonnerApi extends BaseLoopBackApi {
    *
    * @param {object} data Request data.
    *
-   *  - `newPassword` – `{string}` - 
+   *  - `newPassword` – `{string}` -
    *
    * @returns {object} An empty reference that will be
    *   populated with the actual data once the response is returned
@@ -558,7 +558,7 @@ export class DonnerApi extends BaseLoopBackApi {
    *
    * Data properties:
    *
-   *  - `emailExists` – `{boolean}` - 
+   *  - `emailExists` – `{boolean}` -
    */
   public emailExists(email: any, customHeaders?: Function): Observable<any> {
     let _method: string = "POST";

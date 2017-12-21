@@ -37,6 +37,11 @@ export class AccountService {
       console.log(localStorage);
     });
   }
+  public logoutUser(): void {
+    this.donnerApi.logout().subscribe(() => {
+      //this.auth.clear();
+    });
+  }
   public signinOrganization(organization: Organization): void {
     this.organizationApi.login(organization).subscribe((token: SDKToken) => alert('Fake Redirect'));
   }

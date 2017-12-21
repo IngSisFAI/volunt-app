@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import {ModuleWithProviders} from '@angular/core';
+import { CommonModule } from '@angular/common';
 import {Routes, RouterModule} from '@angular/router';
 
 import { AuthGuard } from './account-service/auth.guard';
@@ -15,10 +15,7 @@ import { LoginComponent } from './login/login.component';
 import { DonnerComponent } from './donner/donner.component';
 
 const routes: Routes =  [
-{
-	path:'',
-	component: TestComponent
-},
+	{ path:'',component: TestComponent},
 	{ path: 'signup', component: SignupComponent },
 	{ path: 'login', component: LoginComponent },
 	{ path: 'products', component: ProductsComponent,  canActivate: [AuthGuard] },
@@ -32,4 +29,4 @@ const routes: Routes =  [
   exports: [RouterModule],
   providers: [AuthGuard],
 })
-export class AppRoutingModule { }
+export class AppRoutringModule { }
