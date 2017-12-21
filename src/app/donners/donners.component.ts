@@ -3,6 +3,7 @@ import { Router, NavigationStart, NavigationEnd, NavigationError, NavigationCanc
 
 import { DonnerApi } from '../shared/sdk/services/custom/Donner';
 import { DonnerInterface } from '../shared/sdk/models/Donner';
+import { LoopBackAuth } from '../shared/sdk/services';
 
 @Component({
   selector: 'app-donners',
@@ -15,7 +16,8 @@ export class DonnersComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private donnerApi: DonnerApi) {
+    private donnerApi: DonnerApi,
+  private auth: LoopBackAuth) {
 
     this.donnerApi.find().subscribe((donners: DonnerInterface[])=>{
 
@@ -30,6 +32,8 @@ export class DonnersComponent implements OnInit {
    }
 
   ngOnInit() {
+    console.log(this.auth.getCurrentUserData());
+    console.log(this.auth.getCurrentUserId());
   }
 
   onClickDonner(donner){
