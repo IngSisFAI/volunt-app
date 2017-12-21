@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Router} from '@angular/router';
 
 // Services
 import { LoopBackAuth } from '../shared/sdk/services';
@@ -20,7 +21,7 @@ export class DonateComponent implements OnInit {
   @Input() request: DonationRequestInterface;
   public donation: DonationResponseInterface;
 
-  constructor(private auth: LoopBackAuth, private donationResponseApi: DonationResponseApi) { }
+  constructor(private router: Router, private auth: LoopBackAuth, private donationResponseApi: DonationResponseApi) { }
 
   ngOnInit() {
     this.donation = new DonationResponse();
@@ -47,6 +48,7 @@ export class DonateComponent implements OnInit {
     }
     else{
       // Here, we have to ask to log in
+      this.router.navigate([`/login`])
     }
   }
 
