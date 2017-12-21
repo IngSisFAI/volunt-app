@@ -12,6 +12,7 @@ export interface DonationRequestInterface {
   "id"?: any;
   "organizationId"?: any;
   "productId"?: any;
+  organization?: any;
   product?: any;
 }
 
@@ -26,6 +27,7 @@ export class DonationRequest implements DonationRequestInterface {
   "id": any;
   "organizationId": any;
   "productId": any;
+  organization: any;
   product: any;
   constructor(data?: DonationRequestInterface) {
     Object.assign(this, data);
@@ -104,6 +106,14 @@ export class DonationRequest implements DonationRequestInterface {
         },
       },
       relations: {
+        organization: {
+          name: 'organization',
+          type: 'any',
+          model: '',
+          relationType: 'belongsTo',
+                  keyFrom: 'organizationId',
+          keyTo: 'id'
+        },
         product: {
           name: 'product',
           type: 'any',
