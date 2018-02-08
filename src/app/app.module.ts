@@ -20,10 +20,10 @@ import { DonnerHistory } from './donner/donner-history/donner-history.component'
 
 //Services Propios
 import { AccountService } from './account-service/account.service';
-import { DonateComponent } from './donate/donate.component';
 
 import { UiModule } from './ui/shared/ui.module';
 import { AppRoutringModule } from './app-routring.module';
+import { DonateModule } from './donate/donate.module';
 
 
 
@@ -37,8 +37,7 @@ import { AppRoutringModule } from './app-routring.module';
     SignupComponent,
     LoginComponent,
     DonnerComponent,
-    DonnerHistory,
-    DonateComponent
+    DonnerHistory
   ],
   imports: [
     BrowserModule,
@@ -47,7 +46,8 @@ import { AppRoutringModule } from './app-routring.module';
     SDKBrowserModule.forRoot(),
     AppRoutringModule,
     UiModule,
-    AppRoutringModule
+    AppRoutringModule,
+    DonateModule
   ],
   providers: [
     AccountService
