@@ -9,7 +9,7 @@ import { SDKBrowserModule } from './shared/sdk/index';
 
 //Componentes Propios
 import { AppComponent } from './app.component';
-import { ProductsComponent } from './products/products.component';
+
 import { ActiveDonationsComponent } from './active-donations/active-donations.component';
 import { TestComponent } from './test/test.component';
 import { DonnersComponent } from './donners/donners.component';
@@ -25,12 +25,14 @@ import { DonateComponent } from './donate/donate.component';
 import { UiModule } from './ui/shared/ui.module';
 import { AppRoutringModule } from './app-routring.module';
 
+import { ProductsModule } from './products/products.module';
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    ProductsComponent,
+
     ActiveDonationsComponent,
     TestComponent,
     DonnersComponent,
@@ -47,7 +49,8 @@ import { AppRoutringModule } from './app-routring.module';
     SDKBrowserModule.forRoot(),
     AppRoutringModule,
     UiModule,
-    AppRoutringModule
+    AppRoutringModule,
+    ProductsModule
   ],
   providers: [
     AccountService

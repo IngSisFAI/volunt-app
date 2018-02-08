@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductApi } from '../shared/sdk/services/custom/Product';
-import { ProductInterface } from '../shared/sdk/models/Product';
+import { ProductApi } from '../../shared/sdk/services/custom/Product';
+import { ProductInterface } from '../../shared/sdk/models/Product';
 
 @Component({
-  selector: 'app-products',
-  templateUrl: './products.component.html',
-  styleUrls: ['./products.component.css']
+  selector: 'app-products-main',
+  templateUrl: './products-main.component.html',
+  styleUrls: ['./products-main.component.css']
 })
-export class ProductsComponent implements OnInit {
+export class ProductsMainComponent implements OnInit {
 
   public products = [];
 
@@ -26,6 +26,5 @@ export class ProductsComponent implements OnInit {
 
   ngOnInit() {
   }
-
 
 }

@@ -6,7 +6,7 @@ import { AuthGuard } from './account-service/auth.guard';
 
 //Componentes Propios
 import { AppComponent } from './app.component';
-import { ProductsComponent } from './products/products.component';
+import { ProductsMainComponent } from './products/products-main/products-main.component';
 import { DonnersComponent } from './donners/donners.component';
 import { ActiveDonationsComponent } from './active-donations/active-donations.component';
 import { TestComponent } from './test/test.component';
@@ -21,7 +21,7 @@ const routes: Routes =  [
 },
 	{ path: 'signup', component: SignupComponent },
 	{ path: 'login', component: LoginComponent },
-	{ path: 'products', component: ProductsComponent,  canActivate: [AuthGuard] },
+	{ path: 'products', component: ProductsMainComponent,  canActivate: [AuthGuard] },
 	{ path: 'activeDonations', component: ActiveDonationsComponent,  canActivate: [AuthGuard] },
 	{ path: 'donners', component: DonnersComponent,  canActivate: [AuthGuard] },
 	{ path: 'donner/:id', component: DonnerComponent,  canActivate: [AuthGuard] },
