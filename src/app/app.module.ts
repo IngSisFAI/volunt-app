@@ -22,9 +22,9 @@ import { DonnerHistory } from './donner/donner-history/donner-history.component'
 import { AccountService } from './account-service/account.service';
 
 import { UiModule } from './ui/shared/ui.module';
-import { AppRoutringModule } from './app-routring.module';
+import { AppRoutingModule } from './app-routing';
 import { DonateModule } from './donate/donate.module';
-
+import { ActiveDonationsModule } from './active-donations/active-donations.module';
 
 
 @NgModule({
@@ -47,7 +47,8 @@ import { DonateModule } from './donate/donate.module';
     AppRoutringModule,
     UiModule,
     AppRoutringModule,
-    DonateModule
+    DonateModule,
+    ActiveDonationsModule
   ],
   providers: [
     AccountService
