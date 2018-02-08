@@ -2,22 +2,22 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Router} from '@angular/router';
 
 // Services
-import { LoopBackAuth } from '../shared/sdk/services';
-import { DonationResponseApi } from '../shared/sdk/services/custom/DonationResponse';
+import { LoopBackAuth } from '../../shared/sdk/services';
+import { DonationResponseApi } from '../../shared/sdk/services/custom/DonationResponse';
 
 // Interfaces
-import { DonationRequestInterface } from '../shared/sdk/models/DonationRequest';
-import { DonationResponseInterface } from '../shared/sdk/models/DonationResponse';
+import { DonationRequestInterface } from '../../shared/sdk/models/DonationRequest';
+import { DonationResponseInterface } from '../../shared/sdk/models/DonationResponse';
 
 // Classes
-import { DonationResponse } from '../shared/sdk/models/DonationResponse';
+import { DonationResponse } from '../../shared/sdk/models/DonationResponse';
 
 @Component({
-  selector: 'app-donate',
-  templateUrl: './donate.component.html',
-  styleUrls: ['./donate.component.css']
+  selector: 'app-donate-main',
+  templateUrl: './donate-main.component.html',
+  styleUrls: ['./donate-main.component.css']
 })
-export class DonateComponent implements OnInit {
+export class DonateMainComponent implements OnInit {
   @Input() request: DonationRequestInterface;
   public donation: DonationResponseInterface;
 

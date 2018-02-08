@@ -20,13 +20,13 @@ import { DonnerHistory } from './donner/donner-history/donner-history.component'
 
 //Services Propios
 import { AccountService } from './account-service/account.service';
-import { DonateComponent } from './donate/donate.component';
 
 import { UiModule } from './ui/shared/ui.module';
-import { AppRoutringModule } from './app-routring.module';
+import { AppRoutingModule } from './app-routing';
+import { DonateModule } from './donate/donate.module';
+import { ActiveDonationsModule } from './active-donations/active-donations.module';
 
 import { ProductsModule } from './products/products.module';
-
 
 
 @NgModule({
@@ -39,17 +39,17 @@ import { ProductsModule } from './products/products.module';
     SignupComponent,
     LoginComponent,
     DonnerComponent,
-    DonnerHistory,
-    DonateComponent
+    DonnerHistory
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     SDKBrowserModule.forRoot(),
-    AppRoutringModule,
+    AppRoutingModule,
     UiModule,
-    AppRoutringModule,
+    DonateModule,
+    ActiveDonationsModule,
     ProductsModule
   ],
   providers: [
