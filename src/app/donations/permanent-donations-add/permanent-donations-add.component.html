@@ -1,13 +1,17 @@
 <div class="col-md-6 col-md-offset-3">
     <h2>Nueva Donacion Recurrente</h2>
-    <form name="form" (ngSubmit)="f.form.valid && signupUser()" #f="ngForm" novalidate>
-        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
+    <form name="form" (ngSubmit)="f.form.valid && create()" #f="ngForm" novalidate>
+        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !amount.valid }">
             <label for="name">Cantidad</label>
-            <input type="text" class="form-control" name="name" [(ngModel)]="permanentDonation.amount" #name="ngModel" required />
-            <div *ngIf="f.submitted && !name.valid" class="help-block">La cantidad es obligatoria</div>
+            <input type="text" class="form-control" name="name" [(ngModel)]="permanentDonation.amount" #amount="ngModel" required />
+            <div *ngIf="f.submitted && !amount.valid" class="help-block">La cantidad es obligatoria</div>
         </div>
         <div class="form-group">
-            <button [disabled]="loading" class="btn btn-primary">Guardar</button>
+            <label for="name">Fecha de expiracion</label>
+            <input type="text" class="form-control" name="name" [(ngModel)]="permanentDonation.expirationDate" #expirationDate="ngModel" required />
+        </div>
+        <div class="form-group">
+            <button class="btn btn-primary">Guardar</button>
         </div>
     </form>
 </div>
