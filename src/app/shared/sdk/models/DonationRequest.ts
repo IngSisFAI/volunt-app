@@ -4,7 +4,7 @@ declare var Object: any;
 export interface DonationRequestInterface {
   "creationDate": Date;
   "amount"?: number;
-  "expirationDate": Date;
+  "expirationDate"?: Date;
   "isPermanent": boolean;
   "covered"?: number;
   "promised"?: number;

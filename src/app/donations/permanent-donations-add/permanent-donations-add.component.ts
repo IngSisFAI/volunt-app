@@ -19,9 +19,17 @@ export class PermanentDonationsAddComponent implements OnInit {
     private donationRequestApi: DonationRequestApi
   ) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.permanentDonation.status = true;
+    this.permanentDonation.isPermanent = true;
+    this.permanentDonation.covered = 0;
+    this.permanentDonation.promised = 0;
+   }
 
   create() {
+    if (!this.permanentDonation.expirationDate) {
+      this.permanentDonation.expirationDate = new Date();
+    }
     this.donationRequestApi.create(this.permanentDonation).subscribe(
       (permanentDonationRequest) => {
         console.log(permanentDonationRequest);
@@ -31,4 +39,5 @@ export class PermanentDonationsAddComponent implements OnInit {
       }
     );
   }
+
 }

@@ -22,9 +22,9 @@ import { AccountService } from './account-service/account.service';
 
 import { UiModule } from './ui/shared/ui.module';
 import { AppRoutingModule } from './app-routing';
-import { DonateModule } from './donate/donate.module';
 import { DonationsModule } from './donations/donations.module';
 
+// import { ProductsModule } from './products/products.module';
 
 // Con la convencion
 import { ContactModule } from './contact/contact.module';
