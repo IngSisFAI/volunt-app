@@ -10,7 +10,6 @@ import { SDKBrowserModule } from './shared/sdk/index';
 //Componentes Propios
 import { AppComponent } from './app.component';
 
-import { ActiveDonationsComponent } from './active-donations/active-donations.component';
 import { TestComponent } from './test/test.component';
 import { DonnersComponent } from './donners/donners.component';
 import { SignupComponent } from './signup/signup.component';
@@ -32,8 +31,6 @@ import { ProductsModule } from './products/products.module';
 @NgModule({
   declarations: [
     AppComponent,
-
-    ActiveDonationsComponent,
     TestComponent,
     DonnersComponent,
     SignupComponent,
