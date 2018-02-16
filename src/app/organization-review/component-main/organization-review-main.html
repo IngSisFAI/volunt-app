@@ -1,0 +1,23 @@
+<div>
+    <h1> Organization-review Main </h1>
+  
+    <!-- Add component -->
+    <app-organization-review-add (onCreated)='onCreated($event)'></app-organization-review-add>
+  
+    <!-- List -->
+    <h2>Organization-reviews</h2>
+    <div *ngFor="let organization-review of organization-reviews" (click)='select(organization-review)'>
+    </div>
+  
+    <br/>
+  
+    <!-- Edit component -->
+    <div>
+      <app-organization-review-edit
+      *ngIf = "organization-reviewSelected"
+      [organization-reviewOriginal] = "organization-reviewSelected"
+      (organization-reviewUpdated) = "OnEdit($event)"
+      ></app-organization-review-edit>
+    </div>
+  
+  </div>

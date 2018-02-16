@@ -1,0 +1,23 @@
+<div>
+    <h1> Product Main </h1>
+  
+    <!-- Add component -->
+    <app-product-add (onCreated)='onCreated($event)'></app-product-add>
+  
+    <!-- List -->
+    <h2>Products</h2>
+    <div *ngFor="let product of products" (click)='select(product)'>
+    </div>
+  
+    <br/>
+  
+    <!-- Edit component -->
+    <div>
+      <app-product-edit
+      *ngIf = "productSelected"
+      [productOriginal] = "productSelected"
+      (productUpdated) = "OnEdit($event)"
+      ></app-product-edit>
+    </div>
+  
+  </div>

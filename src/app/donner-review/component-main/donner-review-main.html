@@ -1,0 +1,23 @@
+<div>
+    <h1> Donner-review Main </h1>
+  
+    <!-- Add component -->
+    <app-donner-review-add (onCreated)='onCreated($event)'></app-donner-review-add>
+  
+    <!-- List -->
+    <h2>Donner-reviews</h2>
+    <div *ngFor="let donner-review of donner-reviews" (click)='select(donner-review)'>
+    </div>
+  
+    <br/>
+  
+    <!-- Edit component -->
+    <div>
+      <app-donner-review-edit
+      *ngIf = "donner-reviewSelected"
+      [donner-reviewOriginal] = "donner-reviewSelected"
+      (donner-reviewUpdated) = "OnEdit($event)"
+      ></app-donner-review-edit>
+    </div>
+  
+  </div>
