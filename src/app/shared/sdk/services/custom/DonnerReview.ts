@@ -32,6 +32,31 @@ export class DonnerReviewApi extends BaseLoopBackApi {
   }
 
   /**
+   * Delete all matching records.
+   *
+   * @param {object} where filter.where object
+   *
+   * @param {object} options 
+   *
+   * @returns {object} An empty reference that will be
+   *   populated with the actual data once the response is returned
+   *   from the server.
+   *
+   * The number of instances deleted
+   */
+  public destroyAll(where: any = {}, customHeaders?: Function): Observable<any> {
+    let _method: string = "DELETE";
+    let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
+    "/DonnerReviews";
+    let _routeParams: any = {};
+    let _postBody: any = {};
+    let _urlParams: any = {};
+    if (typeof where !== 'undefined' && where !== null) _urlParams.where = where;
+    let result = this.request(_method, _url, _routeParams, _urlParams, _postBody, null, customHeaders);
+    return result;
+  }
+
+  /**
    * Patch attributes for a model instance and persist it into the data source.
    *
    * @param {any} id DonnerReview id

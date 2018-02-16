@@ -1,5 +1,6 @@
 /* tslint:disable */
 import {
+  DonationRequest,
   Unit
 } from '../index';
 
@@ -11,6 +12,7 @@ export interface ProductInterface {
   "parentProductId"?: any;
   "unitId"?: any;
   parentProduct?: Product;
+  donationRequests?: DonationRequest[];
   unit?: Unit;
 }
 
@@ -21,6 +23,7 @@ export class Product implements ProductInterface {
   "parentProductId": any;
   "unitId": any;
   parentProduct: Product;
+  donationRequests: DonationRequest[];
   unit: Unit;
   constructor(data?: ProductInterface) {
     Object.assign(this, data);
@@ -84,6 +87,14 @@ export class Product implements ProductInterface {
           relationType: 'belongsTo',
                   keyFrom: 'parentProductId',
           keyTo: 'id'
+        },
+        donationRequests: {
+          name: 'donationRequests',
+          type: 'DonationRequest[]',
+          model: 'DonationRequest',
+          relationType: 'hasMany',
+                  keyFrom: 'id',
+          keyTo: 'productId'
         },
         unit: {
           name: 'unit',

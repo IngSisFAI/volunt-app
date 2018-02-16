@@ -11,8 +11,12 @@ export interface DonationRequestInterface {
   "status"?: boolean;
   "id"?: any;
   "organizationId"?: any;
+  "organizationReviewId"?: any;
+  "donationResponseId"?: any;
   "productId"?: any;
   organization?: any;
+  organizationReview?: any;
+  donationResponse?: any;
   product?: any;
 }
 
@@ -26,8 +30,12 @@ export class DonationRequest implements DonationRequestInterface {
   "status": boolean;
   "id": any;
   "organizationId": any;
+  "organizationReviewId": any;
+  "donationResponseId": any;
   "productId": any;
   organization: any;
+  organizationReview: any;
+  donationResponse: any;
   product: any;
   constructor(data?: DonationRequestInterface) {
     Object.assign(this, data);
@@ -100,6 +108,14 @@ export class DonationRequest implements DonationRequestInterface {
           name: 'organizationId',
           type: 'any'
         },
+        "organizationReviewId": {
+          name: 'organizationReviewId',
+          type: 'any'
+        },
+        "donationResponseId": {
+          name: 'donationResponseId',
+          type: 'any'
+        },
         "productId": {
           name: 'productId',
           type: 'any'
@@ -112,6 +128,22 @@ export class DonationRequest implements DonationRequestInterface {
           model: '',
           relationType: 'belongsTo',
                   keyFrom: 'organizationId',
+          keyTo: 'id'
+        },
+        organizationReview: {
+          name: 'organizationReview',
+          type: 'any',
+          model: '',
+          relationType: 'belongsTo',
+                  keyFrom: 'organizationReviewId',
+          keyTo: 'id'
+        },
+        donationResponse: {
+          name: 'donationResponse',
+          type: 'any',
+          model: '',
+          relationType: 'belongsTo',
+                  keyFrom: 'donationResponseId',
           keyTo: 'id'
         },
         product: {

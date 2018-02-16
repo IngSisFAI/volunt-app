@@ -1,4 +1,7 @@
 /* tslint:disable */
+import {
+  Organization
+} from '../index';
 
 declare var Object: any;
 export interface ContactInterface {
@@ -10,6 +13,7 @@ export interface ContactInterface {
   "organizationId"?: any;
   "password"?: string;
   accessTokens?: any[];
+  organization?: Organization;
 }
 
 export class Contact implements ContactInterface {
@@ -21,6 +25,7 @@ export class Contact implements ContactInterface {
   "organizationId": any;
   "password": string;
   accessTokens: any[];
+  organization: Organization;
   constructor(data?: ContactInterface) {
     Object.assign(this, data);
   }
@@ -91,6 +96,14 @@ export class Contact implements ContactInterface {
           relationType: 'hasMany',
                   keyFrom: 'id',
           keyTo: 'userId'
+        },
+        organization: {
+          name: 'organization',
+          type: 'Organization',
+          model: 'Organization',
+          relationType: 'belongsTo',
+                  keyFrom: 'organizationId',
+          keyTo: 'id'
         },
       }
     }
