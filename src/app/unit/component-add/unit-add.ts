@@ -1,6 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { UnitService } from '../../_shared/services/unit.service';
-import { Unit, UnitInterface } from '../../_shared/models/unit';
+import { UnitApi } from '../../shared/sdk/services/custom/Unit';
+import { Unit, UnitInterface } from '../../shared/sdk/models/Unit';
 
 @Component({
   selector: 'app-unit-add',
@@ -14,14 +14,14 @@ export class UnitAddComponent implements OnInit {
   public unit: UnitInterface = new Unit();
 
   constructor(
-    private unitService: UnitService
+    private UnitApi: UnitApi
   ) { }
 
   ngOnInit() {}
 
   create() {
 
-    this.unitService
+    this.UnitApi
       .create(this.unit).subscribe(
       (unit: Unit) => {
         this.onCreated.emit(unit);

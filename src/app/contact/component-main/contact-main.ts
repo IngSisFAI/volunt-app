@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ContactInterface } from '../../_shared/models/contact';
-import { ContactService } from '../../_shared/services/contact.service';
+import { ContactApi } from '../../shared/sdk/Services/custom/Contact';
+import { Contact, ContactInterface } from '../../shared/sdk/models/Contact';
 
 @Component({
   selector: 'app-contact-main',
@@ -13,18 +13,18 @@ export class ContactMainComponent implements OnInit {
   public contactSelected: ContactInterface = null;
 
   constructor(
-    private contactService: ContactService
+    private contactApi: ContactApi
   ) { }
 
   ngOnInit() {
     this.find();
   }
-  
+
 
   find() {
-    this.contactService.find()
+    this.contactApi.find()
       .subscribe(contacts => {
-        this.contacts = contacts.slice();
+        this.contacts = <any>contacts.slice();
       },
       (error) => {
         console.log('An error occured at Contact-main component');

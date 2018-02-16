@@ -1,6 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { OrganizationService } from '../../_shared/services/organization.service';
-import { Organization, OrganizationInterface } from '../../_shared/models/organization';
+import { OrganizationApi } from '../../shared/sdk/Services/custom/Organization';
+import { Organization, OrganizationInterface } from '../../shared/sdk/models/Organization';
 
 @Component({
   selector: 'app-organization-add',
@@ -14,14 +14,14 @@ export class OrganizationAddComponent implements OnInit {
   public organization: OrganizationInterface = new Organization();
 
   constructor(
-    private organizationService: OrganizationService
+    private organizationApi: OrganizationApi
   ) { }
 
   ngOnInit() {}
 
   create() {
 
-    this.organizationService
+    this.organizationApi
       .create(this.organization).subscribe(
       (organization: Organization) => {
         this.onCreated.emit(organization);

@@ -1,51 +1,51 @@
 import { Component, OnInit } from '@angular/core';
-import { Organization-reviewInterface } from '../../_shared/models/organization-review';
-import { Organization-reviewService } from '../../_shared/services/organization-review.service';
+import { OrganizationReviewApi } from '../../shared/sdk/services/custom/OrganizationReview';
+import { OrganizationReview, OrganizationReviewInterface } from '../../shared/sdk/models/OrganizationReview';
 
 @Component({
   selector: 'app-organization-review-main',
   templateUrl: './organization-review-main.component.html',
   styleUrls: ['./organization-review-main.component.css']
 })
-export class Organization-reviewMainComponent implements OnInit {
+export class OrganizationReviewMainComponent implements OnInit {
 
-  public organization-reviews: Organization-reviewInterface[] = [];
-  public organization-reviewSelected: Organization-reviewInterface = null;
+  public organizationReviews: OrganizationReviewInterface[] = [];
+  public organizationReviewSelected: OrganizationReviewInterface = null;
 
   constructor(
-    private organization-reviewService: Organization-reviewService
+    private organizationReviewApi: OrganizationReviewApi
   ) { }
 
   ngOnInit() {
     this.find();
   }
-  
+
 
   find() {
-    this.organization-reviewService.find()
-      .subscribe(organization-reviews => {
-        this.organization-reviews = organization-reviews.slice();
+    this.organizationReviewApi.find()
+      .subscribe(organizationReviews => {
+        this.organizationReviews = <any>organizationReviews.slice();
       },
       (error) => {
-        console.log('An error occured at Organization-review-main component');
+        console.log('An error occured at OrganizationReview-main component');
         console.log(error);
       }
     );
   }
 
-  select(organization-review) {
-    this.organization-reviewSelected = Object.assign({}, organization-review);
+  select(organizationReview) {
+    this.organizationReviewSelected = Object.assign({}, organizationReview);
   }
 
-  onCreated(organization-review: Organization-reviewInterface) {
-    this.organization-reviews.push(organization-review);
+  onCreated(organizationReview: OrganizationReviewInterface) {
+    this.organizationReviews.push(organizationReview);
   }
 
-  OnEdit(organization-reviewUpdated: Organization-reviewInterface) {
-    const indice = this.organization-reviews.findIndex((tipo) => tipo.id === organization-reviewUpdated.id);
+  OnEdit(organizationReviewUpdated: OrganizationReviewInterface) {
+    const indice = this.organizationReviews.findIndex((tipo) => tipo.id === organizationReviewUpdated.id);
 
     if (indice !== -1) {
-      this.organization-reviews[indice] = organization-reviewUpdated;
+      this.organizationReviews[indice] = organizationReviewUpdated;
     } else { }
   }
 

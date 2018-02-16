@@ -1,6 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { ProductService } from '../../_shared/services/product.service';
-import { Product, ProductInterface } from '../../_shared/models/product';
+import { ProductApi } from '../../shared/sdk/services/custom/Product';
+import { Product, ProductInterface } from '../../shared/sdk/models/Product';
 
 @Component({
   selector: 'app-product-add',
@@ -14,14 +14,14 @@ export class ProductAddComponent implements OnInit {
   public product: ProductInterface = new Product();
 
   constructor(
-    private productService: ProductService
+    private ProductApi: ProductApi
   ) { }
 
   ngOnInit() {}
 
   create() {
 
-    this.productService
+    this.ProductApi
       .create(this.product).subscribe(
       (product: Product) => {
         this.onCreated.emit(product);

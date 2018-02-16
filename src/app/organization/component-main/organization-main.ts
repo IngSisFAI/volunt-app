@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { OrganizationInterface } from '../../_shared/models/organization';
-import { OrganizationService } from '../../_shared/services/organization.service';
+import { OrganizationApi } from '../../shared/sdk/Services/custom/Organization';
+import { Organization, OrganizationInterface } from '../../shared/sdk/models/Organization';
 
 @Component({
   selector: 'app-organization-main',
@@ -13,18 +13,18 @@ export class OrganizationMainComponent implements OnInit {
   public organizationSelected: OrganizationInterface = null;
 
   constructor(
-    private organizationService: OrganizationService
+    private organizationApi: OrganizationApi
   ) { }
 
   ngOnInit() {
     this.find();
   }
-  
+
 
   find() {
-    this.organizationService.find()
+    this.organizationApi.find()
       .subscribe(organizations => {
-        this.organizations = organizations.slice();
+        this.organizations = <any>organizations.slice();
       },
       (error) => {
         console.log('An error occured at Organization-main component');

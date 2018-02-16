@@ -1,6 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { ContactService } from '../../_shared/services/contact.service';
-import { Contact, ContactInterface } from '../../_shared/models/contact';
+import { ContactApi } from '../../shared/sdk/Services/custom/Contact';
+import { Contact, ContactInterface } from '../../shared/sdk/models/Contact';
 
 @Component({
   selector: 'app-contact-add',
@@ -14,14 +14,14 @@ export class ContactAddComponent implements OnInit {
   public contact: ContactInterface = new Contact();
 
   constructor(
-    private contactService: ContactService
+    private contactApi: ContactApi
   ) { }
 
   ngOnInit() {}
 
   create() {
 
-    this.contactService
+    this.contactApi
       .create(this.contact).subscribe(
       (contact: Contact) => {
         this.onCreated.emit(contact);

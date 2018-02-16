@@ -1,33 +1,33 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { Organization-reviewService } from '../../_shared/services/organization-review.service';
-import { Organization-review, Organization-reviewInterface } from '../../_shared/models/organization-review';
+import { OrganizationReviewApi } from '../../shared/sdk/services/custom/OrganizationReview';
+import { OrganizationReview, OrganizationReviewInterface } from '../../shared/sdk/models/OrganizationReview';
 
 @Component({
   selector: 'app-organization-review-add',
   templateUrl: './organization-review-add.component.html',
   styleUrls: ['./organization-review-add.component.css']
 })
-export class Organization-reviewAddComponent implements OnInit {
+export class OrganizationReviewAddComponent implements OnInit {
 
   @Output() onCreated = new EventEmitter();
 
-  public organization-review: Organization-reviewInterface = new Organization-review();
+  public organizationReview: OrganizationReviewInterface = new OrganizationReview();
 
   constructor(
-    private organization-reviewService: Organization-reviewService
+    private organizationReviewService: OrganizationReviewApi
   ) { }
 
   ngOnInit() {}
 
   create() {
 
-    this.organization-reviewService
-      .create(this.organization-review).subscribe(
-      (organization-review: Organization-review) => {
-        this.onCreated.emit(organization-review);
+    this.organizationReviewService
+      .create(this.organizationReview).subscribe(
+      (organizationReview: OrganizationReview) => {
+        this.onCreated.emit(organizationReview);
       },
       (error) => {
-        console.log('An error occured at Organization-review-add component');
+        console.log('An error occured at OrganizationReview-add component');
         console.log(error);
       }
       );
