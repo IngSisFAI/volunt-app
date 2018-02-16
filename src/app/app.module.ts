@@ -24,7 +24,7 @@ import { AccountService } from './account-service/account.service';
 import { UiModule } from './ui/shared/ui.module';
 import { AppRoutingModule } from './app-routing';
 import { DonateModule } from './donate/donate.module';
-import { ActiveDonationsModule } from './active-donations/active-donations.module';
+import { DonationsModule } from './donations/donations.module';
 
 import { ProductsModule } from './products/products.module';
 
@@ -49,7 +49,7 @@ import { ProductsModule } from './products/products.module';
     AppRoutingModule,
     UiModule,
     DonateModule,
-    ActiveDonationsModule,
+    DonationsModule,
     ProductsModule
   ],
   providers: [

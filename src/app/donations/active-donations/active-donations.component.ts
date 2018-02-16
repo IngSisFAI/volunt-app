@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 
 // Interfaces
-import { DonationRequestInterface } from '../shared/sdk/models/DonationRequest';
+import { DonationRequestInterface } from '../../shared/sdk/models/DonationRequest';
 // import { PermanentRequestInterface} from '../shared/sdk/models/PermanentRequest';
 // import { OneTimeRequestInterface} from '../shared/sdk/models/OneTimeRequest';
 
 // Services
-import { DonationRequestApi } from '../shared/sdk/services/custom/DonationRequest';
+import { DonationRequestApi } from '../../shared/sdk/services/custom/DonationRequest';
 // import { PermanentRequestApi } from '../shared/sdk/services/custom/PermanentRequest';
 // import { OneTimeRequestApi } from '../shared/sdk/services/custom/OneTimeRequest';
 
