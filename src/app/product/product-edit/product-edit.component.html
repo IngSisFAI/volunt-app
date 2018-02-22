@@ -1,0 +1,11 @@
+<div>
+  <h2>Editar Product</h2>
+
+  <div>
+    <label>Nombre: </label>
+    <input type="text" [(ngModel)]='product.nombre' placeholder="product">
+  </div>
+
+  <button (click)='update()'>Guardar</button>
+  <button (click)='cancelar()'>Cancelar</button>
+</div>
