@@ -17,6 +17,7 @@ export class ProductMainComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    console.log('NgOnInit');
     this.find();
   }
 
@@ -24,6 +25,8 @@ export class ProductMainComponent implements OnInit {
   find() {
     this.ProductApi.find()
       .subscribe(products => {
+        console.log('Productos: ', products);
+
         this.products = <any>products.slice();
       },
       (error) => {
@@ -33,7 +36,7 @@ export class ProductMainComponent implements OnInit {
     );
   }
 
-  select(product) {
+  select(product: ProductInterface) {
     this.productSelected = Object.assign({}, product);
   }
 
