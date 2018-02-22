@@ -1,17 +1,17 @@
 <div>
     <h1> Organization Main </h1>
-  
+
     <!-- Add component -->
     <app-organization-add (onCreated)='onCreated($event)'></app-organization-add>
-  
+
     <!-- List -->
     <h2>Organizations</h2>
     <div *ngFor="let organization of organizations" (click)='select(organization)'>
     </div>
-  
+
     <br/>
-  
-    <!-- Edit component -->
+
+    <!-- Edit component
     <div>
       <app-organization-edit
       *ngIf = "organizationSelected"
@@ -19,5 +19,5 @@
       (organizationUpdated) = "OnEdit($event)"
       ></app-organization-edit>
     </div>
-  
+     -->
   </div>

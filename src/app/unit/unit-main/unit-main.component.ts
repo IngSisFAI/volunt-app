@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { UnitInterface } from '../../_shared/models/unit';
-import { UnitService } from '../../_shared/services/unit.service';
+import { UnitApi } from '../../shared/sdk/services/custom/Unit';
+import { Unit, UnitInterface } from '../../shared/sdk/models/Unit';
 
 @Component({
   selector: 'app-unit-main',
@@ -13,18 +13,18 @@ export class UnitMainComponent implements OnInit {
   public unitSelected: UnitInterface = null;
 
   constructor(
-    private unitService: UnitService
+    private unitService: UnitApi
   ) { }
 
   ngOnInit() {
     this.find();
   }
-  
+
 
   find() {
     this.unitService.find()
       .subscribe(units => {
-        this.units = units.slice();
+        this.units = <any>units.slice();
       },
       (error) => {
         console.log('An error occured at Unit-main component');

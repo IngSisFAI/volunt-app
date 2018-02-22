@@ -1,17 +1,17 @@
 <div>
     <h1> Unit Main </h1>
-  
+
     <!-- Add component -->
     <app-unit-add (onCreated)='onCreated($event)'></app-unit-add>
-  
+
     <!-- List -->
     <h2>Units</h2>
     <div *ngFor="let unit of units" (click)='select(unit)'>
     </div>
-  
+
     <br/>
-  
-    <!-- Edit component -->
+
+    <!-- Edit component
     <div>
       <app-unit-edit
       *ngIf = "unitSelected"
@@ -19,5 +19,6 @@
       (unitUpdated) = "OnEdit($event)"
       ></app-unit-edit>
     </div>
-  
+    -->
+
   </div>

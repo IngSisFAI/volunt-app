@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { OrganizationApi } from '../../shared/sdk/Services/custom/Organization';
+import { OrganizationApi } from '../../shared/sdk/services/custom/Organization';
 import { Organization, OrganizationInterface } from '../../shared/sdk/models/Organization';
 
 @Component({

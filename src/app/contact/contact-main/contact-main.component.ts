@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ContactApi } from '../../shared/sdk/Services/custom/Contact';
+import { ContactApi } from '../../shared/sdk/services/custom/Contact';
 import { Contact, ContactInterface } from '../../shared/sdk/models/Contact';
 
 @Component({

@@ -1,17 +1,17 @@
 <div>
     <h1> Contact Main </h1>
-  
+
     <!-- Add component -->
     <app-contact-add (onCreated)='onCreated($event)'></app-contact-add>
-  
+
     <!-- List -->
     <h2>Contacts</h2>
     <div *ngFor="let contact of contacts" (click)='select(contact)'>
     </div>
-  
+
     <br/>
-  
-    <!-- Edit component -->
+
+    <!-- Edit component
     <div>
       <app-contact-edit
       *ngIf = "contactSelected"
@@ -19,5 +19,6 @@
       (contactUpdated) = "OnEdit($event)"
       ></app-contact-edit>
     </div>
-  
+    -->
+
   </div>

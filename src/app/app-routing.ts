@@ -15,13 +15,13 @@ import { LoginComponent } from './login/login.component';
 import { DonnerComponent } from './donner/donner.component';
 import { DonationsMainComponent } from './donations/donations-main/donations-main.component';
 
-// import { ProductsMainComponent } from './products/products-main/products-main.component';
+import { ProductMainComponent } from './product/product-main/product-main.component';
 
 const routes: Routes =  [
 	{ path: '', component: TestComponent},
 	{ path: 'signup', component: SignupComponent },
 	{ path: 'login', component: LoginComponent },
-	// { path: 'products', component: ProductsMainComponent,  canActivate: [AuthGuard] },
+  { path: 'products', component: ProductMainComponent,  canActivate: [AuthGuard] },
 	{ path: 'activeDonations', component: ActiveDonationsComponent,  canActivate: [AuthGuard] },
 	{ path: 'donners', component: DonnersComponent,  canActivate: [AuthGuard] },
 	{ path: 'donner/:id', component: DonnerComponent,  canActivate: [AuthGuard] },
