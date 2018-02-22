@@ -1,51 +1,51 @@
 import { Component, OnInit } from '@angular/core';
-import { Donner-reviewInterface } from '../../_shared/models/donner-review';
-import { Donner-reviewService } from '../../_shared/services/donner-review.service';
+import { DonnerReviewApi } from  '../../shared/sdk/services/custom/DonnerReview';
+import { DonnerReview, DonnerReviewInterface } from  '../../shared/sdk/models/DonnerReview';
 
 @Component({
-  selector: 'app-donner-review-main',
-  templateUrl: './donner-review-main.component.html',
-  styleUrls: ['./donner-review-main.component.css']
+  selector: 'app-donnerReview-main',
+  templateUrl: './donnerReview-main.component.html',
+  styleUrls: ['./donnerReview-main.component.css']
 })
-export class Donner-reviewMainComponent implements OnInit {
+export class DonnerReviewMainComponent implements OnInit {
 
-  public donner-reviews: Donner-reviewInterface[] = [];
-  public donner-reviewSelected: Donner-reviewInterface = null;
+  public donnerReviews: DonnerReviewInterface[] = [];
+  public donnerReviewSelected: DonnerReviewInterface = null;
 
   constructor(
-    private donner-reviewService: Donner-reviewService
+    private donnerReviewApi: DonnerReviewApi
   ) { }
 
   ngOnInit() {
     this.find();
   }
-  
+
 
   find() {
-    this.donner-reviewService.find()
-      .subscribe(donner-reviews => {
-        this.donner-reviews = donner-reviews.slice();
+    this.donnerReviewApi.find()
+      .subscribe(donnerReviews => {
+        this.donnerReviews = <any>donnerReviews.slice();
       },
       (error) => {
-        console.log('An error occured at Donner-review-main component');
+        console.log('An error occured at DonnerReview-main component');
         console.log(error);
       }
     );
   }
 
-  select(donner-review) {
-    this.donner-reviewSelected = Object.assign({}, donner-review);
+  select(donnerReview) {
+    this.donnerReviewSelected = Object.assign({}, donnerReview);
   }
 
-  onCreated(donner-review: Donner-reviewInterface) {
-    this.donner-reviews.push(donner-review);
+  onCreated(donnerReview: DonnerReviewInterface) {
+    this.donnerReviews.push(donnerReview);
   }
 
-  OnEdit(donner-reviewUpdated: Donner-reviewInterface) {
-    const indice = this.donner-reviews.findIndex((tipo) => tipo.id === donner-reviewUpdated.id);
+  OnEdit(donnerReviewUpdated: DonnerReviewInterface) {
+    const indice = this.donnerReviews.findIndex((tipo) => tipo.id === donnerReviewUpdated.id);
 
     if (indice !== -1) {
-      this.donner-reviews[indice] = donner-reviewUpdated;
+      this.donnerReviews[indice] = donnerReviewUpdated;
     } else { }
   }
 

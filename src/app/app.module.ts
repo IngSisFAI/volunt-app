@@ -52,7 +52,7 @@ import { UnitModule } from './unit/unit.module';
     SDKBrowserModule.forRoot(),
     AppRoutingModule,
     UiModule,
-    DonateModule,
+  //  DonateModule,
     DonationsModule,
     ContactModule,
     OrganizationModule,
