@@ -4,6 +4,7 @@ import { ActiveDonationsComponent } from './active-donations/active-donations.co
 import { PermanentDonationsAddComponent } from './permanent-donations-add/permanent-donations-add.component';
 import { DonationsMainComponent } from './donations-main/donations-main.component';
 import { DonateMainComponent } from '../donate/donate-main/donate-main.component';
+import { DonateAddComponent } from './donate-add/donate-add.component';
 import { FormsModule } from '@angular/forms';
 
 @NgModule({
@@ -15,7 +16,8 @@ import { FormsModule } from '@angular/forms';
     ActiveDonationsComponent,
     PermanentDonationsAddComponent,
     DonationsMainComponent,
-    DonateMainComponent
+    DonateMainComponent,
+    DonateAddComponent
   ],
   exports: [ActiveDonationsComponent, DonationsMainComponent]
 })
