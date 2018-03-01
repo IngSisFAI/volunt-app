@@ -1,0 +1,11 @@
+<div>
+  <h2>Editar Contact</h2>
+
+  <div>
+    <label>Nombre: </label>
+    <input type="text" [(ngModel)]='contact.nombre' placeholder="contact">
+  </div>
+
+  <button (click)='update()'>Guardar</button>
+  <button (click)='cancelar()'>Cancelar</button>
+</div>
