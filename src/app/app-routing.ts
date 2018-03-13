@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {Routes, RouterModule} from '@angular/router';
+import { Routes, RouterModule } from '@angular/router';
 
 import { AuthGuard } from './account-service/auth.guard';
 
@@ -14,18 +14,43 @@ import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
 import { DonnerComponent } from './donner/donner.component';
 import { DonationsMainComponent } from './donations/donations-main/donations-main.component';
-
 import { ProductMainComponent } from './product/product-main/product-main.component';
+import { WantToDonateComponent } from './ui/want-to-donate/want-to-donate.component';
+import { PageNotFoundComponent } from './ui/page-not-found/not-found.component';
 
-const routes: Routes =  [
-	{ path: '', component: TestComponent},
-	{ path: 'signup', component: SignupComponent },
-	{ path: 'login', component: LoginComponent },
-  { path: 'products', component: ProductMainComponent,  canActivate: [AuthGuard] },
-	{ path: 'activeDonations', component: ActiveDonationsComponent,  canActivate: [AuthGuard] },
-	{ path: 'donners', component: DonnersComponent,  canActivate: [AuthGuard] },
-	{ path: 'donner/:id', component: DonnerComponent,  canActivate: [AuthGuard] },
-	{ path: 'donations', component: DonationsMainComponent},
+
+const routes: Routes = [
+  { path: '', component: TestComponent },
+  { path: 'test', component: TestComponent },
+  { path: 'signup', component: SignupComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'donations', component: DonationsMainComponent },
+  {
+    path: '', canActivate: [
+      AuthGuard
+    ], children: [
+      {
+        path: 'products', component: ProductMainComponent
+      },
+      {
+        path: 'activeDonations', component: ActiveDonationsComponent
+      },
+      {
+        path: 'donners', component: DonnersComponent
+      },
+      {
+        path: 'donner/:id', component: DonnerComponent
+      },
+      {
+        path: 'wantToDonate', component: WantToDonateComponent
+      },
+      {
+        path: '', redirectTo: '/test', pathMatch: 'full'
+      }
+    ]
+  },
+  //wildcard
+  { path: '**', component: PageNotFoundComponent }
 ];
 
 @NgModule({
