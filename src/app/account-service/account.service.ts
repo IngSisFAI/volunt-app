@@ -3,6 +3,7 @@ import { LoopBackConfig }        from '../shared/sdk';
 import { Organization, Donner, SDKToken }  from '../shared/sdk/models';
 import { OrganizationApi, DonnerApi }            from '../shared/sdk/services';
 import { LoopBackAuth } from '../shared/sdk/services';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class AccountService {
@@ -10,7 +11,8 @@ export class AccountService {
   constructor(
       private organizationApi: OrganizationApi,
       private donnerApi: DonnerApi,
-      private auth: LoopBackAuth
+      private auth: LoopBackAuth,
+      private router: Router,
   ) { }
 
 
@@ -40,6 +42,7 @@ export class AccountService {
   public logoutUser(): void {
     this.donnerApi.logout().subscribe(() => {
       //this.auth.clear();
+      this.router.navigate(['/']);
     });
   }
   public signinOrganization(organization: Organization): void {

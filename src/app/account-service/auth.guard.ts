@@ -14,11 +14,9 @@ export class AuthGuard implements CanActivate {
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | boolean {
-      console.log('ssss');
     if(this.auth.getCurrentUserId() != null){
       return true;
     }else{
-      alert('NO');
       this.router.navigate(['/login']);
     }
   }
