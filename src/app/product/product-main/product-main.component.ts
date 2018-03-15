@@ -23,11 +23,12 @@ export class ProductMainComponent implements OnInit {
 
 
   find() {
-    this.ProductApi.find()
+    this.ProductApi.find({include:['unit']})
       .subscribe(products => {
         console.log('Productos: ', products);
 
         this.products = <any>products.slice();
+        console.log(this.products);
       },
       (error) => {
         console.log('An error occured at Product-main component');

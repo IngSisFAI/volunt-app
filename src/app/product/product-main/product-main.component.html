@@ -9,7 +9,7 @@
   <div *ngFor="let product of products" (click)='select(product)'>
 
     <p (click)='select(product)'>
-      {{product.Name}}
+      {{product.Name}} - {{product.unit.Name}}
     </p>
 
   </div>
