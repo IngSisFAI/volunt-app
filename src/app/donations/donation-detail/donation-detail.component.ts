@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { DonationRequest, DonationRequestApi, DonationResponseApi } from '../../shared/sdk';
 
 @Component({
     selector: 'app-donation-detail',
@@ -6,7 +7,33 @@ import { Component, OnInit } from '@angular/core';
     styleUrls: ['./donation-detail.component.css']
 })
 export class DonationDetailComponent implements OnInit {
-    constructor() { }
+    @Input() selectedDonationRequest: DonationRequest;
+    @Output() donationOk = new EventEmitter();
+    public remainingProducts = 0;
+    constructor(
+        private donationRequestApi: DonationRequestApi,
+        private donationResponseApi: DonationResponseApi
+    ) { }
 
-    ngOnInit() { }
+    ngOnInit() {
+        const remaining = this.selectedDonationRequest.amount - this.selectedDonationRequest.covered;
+        if (remaining < 0){
+            this.remainingProducts  = 0;
+        } else {
+            this.remainingProducts = remaining;
+        }
+    }
+
+    public isPermanent() {
+        return this.selectedDonationRequest.isPermanent;
+    }
+
+    public donate() {
+        this.donationOk.next(true);
+    }
+
+    public cancel() {
+        this.donationOk.next(false);
+    }
+
 }

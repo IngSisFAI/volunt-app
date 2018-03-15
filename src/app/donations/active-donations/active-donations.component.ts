@@ -7,6 +7,7 @@ import { DonationRequestInterface } from '../../shared/sdk/models/DonationReques
 
 // Services
 import { DonationRequestApi } from '../../shared/sdk/services/custom/DonationRequest';
+import { Router } from '@angular/router';
 // import { PermanentRequestApi } from '../shared/sdk/services/custom/PermanentRequest';
 // import { OneTimeRequestApi } from '../shared/sdk/services/custom/OneTimeRequest';
 
@@ -25,7 +26,8 @@ export class ActiveDonationsComponent implements OnInit {
   };
 
   constructor(
-    private donationRequestApi: DonationRequestApi
+    private donationRequestApi: DonationRequestApi,
+    private router: Router
   ) {
 
 
@@ -33,19 +35,29 @@ export class ActiveDonationsComponent implements OnInit {
 
   ngOnInit() {
     this.findPermanentRequests();
-    // this.findOneTimeRequests();
+    this.findOneTimeRequests();
   }
 
-  public onPermanentRequest(permanentRequest){
+  public onPermanentRequest(permanentRequest) {
     this.requestSelected = permanentRequest;
     console.log('PermanentRequest selected:', this.requestSelected);
+    this.router.navigate(['/wantToDonate/' + this.requestSelected.id]);
+
   }
 
-  private findPermanentRequests(){
+  public onOneTimeRequest(request) {
+    this.requestSelected = request;
+    console.log('One Time request selected:', this.requestSelected);
+    this.router.navigate(['/wantToDonate/' + this.requestSelected.id]);
+
+  }
+
+  private findPermanentRequests() {
 
     // TODO: include 'organization' too
 
-    this.donationRequestApi.find({ include: ['product'], where: { status : true, isPermanent : true }}).subscribe((permanentRequests: DonationRequestInterface[])=>{
+    this.donationRequestApi.find(
+      { include: ['product'], where: { status : true, isPermanent : true }}).subscribe((permanentRequests: DonationRequestInterface[])=>{
       console.log(permanentRequests);
       this.notUse(permanentRequests); // NOT USE this method!
       this.permanentRequests = permanentRequests;
@@ -59,7 +71,7 @@ export class ActiveDonationsComponent implements OnInit {
   /*
     Este metodo esta para parsear los datos para las pruebas. En un futuro, limpiar la BD
   */
-  private notUse(requests){
+  private notUse(requests) {
     requests.forEach(r => {
       if(!r.amount){ r.amount = 0};
       if(!r.covered){ r.covered = 0};
@@ -67,7 +79,7 @@ export class ActiveDonationsComponent implements OnInit {
     });
   }
 
-  private findOneTimeRequests(){
+  private findOneTimeRequests() {
 
     let now = new Date();
     console.log(now);
@@ -75,9 +87,11 @@ export class ActiveDonationsComponent implements OnInit {
     where:
     {
       // creationDate: {lte: now },
+      status : true,
+      isPermanent : false,
       expirationDate: {gte: now }
     }})
-    .subscribe((oneTimeRequests: DonationRequestInterface[])=>{
+    .subscribe((oneTimeRequests: DonationRequestInterface[]) => {
       console.log(oneTimeRequests);
       this.oneTimeRequests = oneTimeRequests;
     },

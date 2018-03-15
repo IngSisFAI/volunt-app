@@ -1,0 +1,39 @@
+<div>
+    <h2>{{selectedDonationRequest.product.Name}}</h2>
+    <br/>
+    <img src="{{selectedDonationRequest.product.Icon}}"/>
+    <br/>
+
+    <!-- Indicador de cantidades -->
+    <div *ngIf="!isPermanent()">
+        <p>
+            No es permanente
+        </p>
+        <label>Creado el: </label>
+        <label>{{selectedDonationRequest.creationDate | date:'dd/MM'}}</label>
+        <br/>
+        <label>Finaliza el: </label>
+        <label>{{selectedDonationRequest.expirationDate | date:'dd/MM'}}</label>
+        <br/>
+
+        {{selectedDonationRequest.covered}} de {{selectedDonationRequest.amount}} {{selectedDonationRequest.product.unit.Name}}/s
+        <progress value="{{selectedDonationRequest.covered}}" max="{{selectedDonationRequest.amount}}"></progress>
+        Faltan: {{remainingProducts}} {{selectedDonationRequest.product.unit.Name}}/s
+        <br/>
+    </div>
+
+
+    <div *ngIf="isPermanent()">
+        <p>
+            Lo necesitamos todos los meses!
+        </p>
+        <label>Creado el: </label>
+        <label>{{selectedDonationRequest.creationDate | date:'dd/MM'}}</label>
+        <br/>
+
+    </div>
+
+<button *ngIf='!isPermanent() && remainingProducts > 0 || isPermanent()' (click)="donate()">Donar a esta ONG!</button>
+
+
+</div>

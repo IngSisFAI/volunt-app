@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output} from '@angular/core';
 import { Router} from '@angular/router';
 
 // Services
@@ -19,6 +19,8 @@ import { DonationResponse } from '../../shared/sdk/models/DonationResponse';
 })
 export class DonateAddComponent implements OnInit {
   @Input() request: DonationRequestInterface;
+  @Output() donated = new EventEmitter();
+
   public donation: DonationResponseInterface;
 
   constructor(private router: Router, private auth: LoopBackAuth, private donationResponseApi: DonationResponseApi) { }
@@ -29,12 +31,12 @@ export class DonateAddComponent implements OnInit {
     this.donation.donationRequestId = this.request.id;
   }
 
-  public donate(){
+  public donate() {
 
-    let userId = this.auth.getCurrentUserId();
-    console.log(userId)
+    const userId = this.auth.getCurrentUserId();
+    console.log(userId);
 
-    if(userId){
+    if (userId) {
       this.donation.donnerId = userId;
       console.log('Are you sure??');
       console.log(this.donation);
@@ -42,13 +44,13 @@ export class DonateAddComponent implements OnInit {
       this.donationResponseApi.create(this.donation).subscribe(
         response => {
           console.log('Response ', response);
+          this.donated.next(response);
           alert('La donacion se ha generado con exito!!')
         }
-      )
-    }
-    else{
+      );
+    } else {
       // Here, we have to ask to log in
-      this.router.navigate([`/login`])
+      this.router.navigate([`/login`]);
     }
   }
 

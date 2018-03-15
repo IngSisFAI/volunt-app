@@ -1,7 +1,16 @@
 <div>
-
-<app-donation-detail>
-    
+<h1>Want to donate</h1>
+<app-donation-detail *ngIf="request && !wantToDonate"
+[selectedDonationRequest]= "request"
+(donationOk)= "donationClicked($event)"
+>    
 </app-donation-detail>
+
+<app-donate-add *ngIf="wantToDonate"
+[request]= "request"
+(donated)="donated($event)"
+>
+
+</app-donate-add>
 
 </div>

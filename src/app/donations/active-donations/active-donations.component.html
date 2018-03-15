@@ -9,7 +9,7 @@
 </ul>
 <ul>
   <h3>No Permanentes</h3>
-  <li *ngFor='let oneTimeRequest of oneTimeRequests'>
+  <li *ngFor='let oneTimeRequest of oneTimeRequests' (click)='onOneTimeRequest(oneTimeRequest)'>
     {{ oneTimeRequest.product.Name }}: {{oneTimeRequest.covered}} de {{oneTimeRequest.amount}}
   </li>
 </ul>

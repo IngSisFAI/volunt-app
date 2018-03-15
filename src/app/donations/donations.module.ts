@@ -19,6 +19,6 @@ import { DonationDetailComponent } from './donation-detail/donation-detail.compo
     DonateAddComponent,
     DonationDetailComponent
   ],
-  exports: [ActiveDonationsComponent, DonationsMainComponent, DonationDetailComponent]
+  exports: [ActiveDonationsComponent, DonationsMainComponent, DonationDetailComponent, DonateAddComponent]
 })
 export class DonationsModule { }

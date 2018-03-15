@@ -16,6 +16,7 @@ import { DonnerComponent } from './donner/donner.component';
 import { DonationsMainComponent } from './donations/donations-main/donations-main.component';
 
 import { ProductMainComponent } from './product/product-main/product-main.component';
+import { WantToDonateComponent } from './ui/want-to-donate/want-to-donate.component';
 
 const routes: Routes =  [
 	{ path: '', component: TestComponent},
@@ -26,6 +27,7 @@ const routes: Routes =  [
 	{ path: 'donners', component: DonnersComponent,  canActivate: [AuthGuard] },
 	{ path: 'donner/:id', component: DonnerComponent,  canActivate: [AuthGuard] },
 	{ path: 'donations', component: DonationsMainComponent},
+	{ path: 'wantToDonate/:idRequest', component: WantToDonateComponent},
 ];
 
 @NgModule({
