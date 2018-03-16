@@ -32,7 +32,7 @@ import { OrganizationModule } from './organization/organization.module';
 import { OrganizationReviewModule } from './organization-review/organization-review.module';
 import { ProductModule } from './product/product.module';
 import { UnitModule } from './unit/unit.module';
-import { WantToDonateComponent } from './ui/want-to-donate/want-to-donate.component';
+//import { WantToDonateComponent } from './ui/want-to-donate/want-to-donate.component';
 
 
 
@@ -44,8 +44,8 @@ import { WantToDonateComponent } from './ui/want-to-donate/want-to-donate.compon
     SignupComponent,
     LoginComponent,
     DonnerComponent,
-    DonnerHistory,
-    WantToDonateComponent
+    DonnerHistory
+    //WantToDonateComponent
   ],
   imports: [
     BrowserModule,
@@ -54,7 +54,7 @@ import { WantToDonateComponent } from './ui/want-to-donate/want-to-donate.compon
     SDKBrowserModule.forRoot(),
     AppRoutingModule,
     UiModule,
-  //  DonateModule,
+    //  DonateModule,
     DonationsModule,
     ContactModule,
     OrganizationModule,

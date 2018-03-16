@@ -42,7 +42,7 @@ const routes: Routes = [
         path: 'donner/:id', component: DonnerComponent
       },
       {
-        path: 'wantToDonate', component: WantToDonateComponent
+        path: 'wantToDonate/:idRequest', component: WantToDonateComponent
       },
       {
         path: '', redirectTo: '/test', pathMatch: 'full'
@@ -51,7 +51,7 @@ const routes: Routes = [
   },
   //wildcard
   { path: '**', component: PageNotFoundComponent }
-        
+
 ];
 
 @NgModule({

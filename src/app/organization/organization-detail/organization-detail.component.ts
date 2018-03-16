@@ -9,28 +9,28 @@ import { OrganizationApi } from '../../shared/sdk/services/custom/Organization';
 })
 export class OrganizationDetailComponent implements OnInit {
 
-  @Input() organizationId: String;
-  organization: Object;
+  @Input() organization: Organization;
+  //organization: Object;
 
   constructor(
-    private organizationService: OrganizationApi
+    //private organizationService: OrganizationApi
   ) { }
 
   ngOnInit() {
-    this.getOrganization();
+    //  this.getOrganization();
 
   }
-
-  getOrganization() {
-    this.organizationService.findById(this.organizationId)
-      .subscribe(
-        org => {
-          console.log('organization: ', org);
-          this.organization = org;
-          //organization.emit(organization);
-        }
-      )
-  }
-
+  /*
+    getOrganization() {
+      this.organizationService.findById(this.organizationId)
+        .subscribe(
+          org => {
+            console.log('organization: ', org);
+            this.organization = org;
+            //organization.emit(organization);
+          }
+        )
+    }
+  */
 
 }

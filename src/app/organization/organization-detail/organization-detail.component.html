@@ -1,10 +1,12 @@
-<div class="" *ngIf='organization'>
+<div class="org" *ngIf='organization'>
   <div>
+    <!-- FALTA ATRIBUTO PARA LOGO DE ORG -->
     <h3>Organización {{organization.username}}</h3>
+    <label>{{organization.reputation}}</label> <br>
     <label>{{organization.email}}</label> <br>
-    <!--  <label>{{organization.phoneNumber}}</label> <br>
-    <label>{{organization.dni}}</label> <br>
-    <label></label> <br>
-  -->
+    <label>{{organization.phoneNumber}}</label> <br>
+    <label>{{organization.address}}</label> <br>
+    <label>{{organization.webPage}}</label> <br>
   </div>
+  <button> Ver otras necesidades de esta ONG </button>
 </div>
