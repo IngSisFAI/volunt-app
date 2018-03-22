@@ -17,7 +17,7 @@ export class DonationDetailComponent implements OnInit {
 
     ngOnInit() {
         const remaining = this.selectedDonationRequest.amount - this.selectedDonationRequest.covered;
-        if (remaining < 0){
+        if (remaining < 0) {
             this.remainingProducts  = 0;
         } else {
             this.remainingProducts = remaining;

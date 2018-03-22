@@ -1,0 +1,18 @@
+<h2>Catalogo</h2>
+<div class="row">
+    <div id="filters" class="column">
+       Los filtros.
+       Aca vamos a seleccionar el filtro y pasarselo como parametro
+       a app-active-donations
+    </div>
+
+    <div id="requests" class="column">
+
+        <app-active-donations
+        [oneTimeRequests]="oneTimeRequests"
+        [permanentRequests]="permanentRequests"
+        >
+
+        </app-active-donations>
+    </div>
+</div>

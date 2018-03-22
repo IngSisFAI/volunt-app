@@ -11,6 +11,7 @@ import { PageNotFoundComponent } from '../page-not-found/not-found.component';
 
 import { OrganizationModule } from '../../organization/organization.module';
 import { DonationsModule } from '../../donations/donations.module';
+import { MainCatalogComponent } from '../main-catalog/main-catalog.component';
 
 @NgModule({
   imports: [
@@ -25,7 +26,8 @@ import { DonationsModule } from '../../donations/donations.module';
     UserProfileComponent,
     TopNavComponent,
     WantToDonateComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    MainCatalogComponent
   ],
   exports: [
     TopNavComponent,

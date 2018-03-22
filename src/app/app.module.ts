@@ -45,7 +45,6 @@ import { UnitModule } from './unit/unit.module';
     LoginComponent,
     DonnerComponent,
     DonnerHistory
-    //WantToDonateComponent
   ],
   imports: [
     BrowserModule,

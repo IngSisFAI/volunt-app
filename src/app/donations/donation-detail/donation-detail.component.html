@@ -1,7 +1,7 @@
 <div>
   <h2>{{selectedDonationRequest.product.Name}}</h2>
   <br/>
-  <img src="{{selectedDonationRequest.product.Icon}}" />
+  <img src="{{selectedDonationRequest.product.Icon}}" height="42" width="42" />
   <br/>
 
   <!-- Indicador de cantidades -->
@@ -15,6 +15,7 @@
     <label>Finaliza el: </label>
     <label>{{selectedDonationRequest.expirationDate | date:'dd/MM'}}</label>
     <br/> {{selectedDonationRequest.covered}} de {{selectedDonationRequest.amount}} {{selectedDonationRequest.product.unit.Name}}/s
+    <br/>
     <progress value="{{selectedDonationRequest.covered}}" max="{{selectedDonationRequest.amount}}"></progress> Faltan: {{remainingProducts}} {{selectedDonationRequest.product.unit.Name}}/s
     <br/>
   </div>
@@ -30,7 +31,7 @@
 
   </div>
   <br>
-  <button *ngIf='!isPermanent() && remainingProducts > 0 || isPermanent()' (click)="donate()">Donar a esta ONG!</button>
+  <button *ngIf='!isPermanent() && remainingProducts > 0 || isPermanent()' (click)="donate()">Donar!</button>
 
 
 </div>
