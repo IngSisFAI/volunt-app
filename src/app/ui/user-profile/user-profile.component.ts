@@ -1,4 +1,4 @@
-import { Component,OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 //import { AuthService } from '../../core/auth.service';
 import { LoopBackAuth } from '../../shared/sdk/services';
@@ -12,9 +12,9 @@ import { AccountService } from '../../account-service/account.service';
 export class UserProfileComponent implements OnInit {
   public user;
   constructor(
-  //  public auth: AuthService
-  private auth: LoopBackAuth,
-  private accService: AccountService
+    //  public auth: AuthService
+    private auth: LoopBackAuth,
+    private accService: AccountService
   ) { }
 
   ngOnInit() {
@@ -25,5 +25,17 @@ export class UserProfileComponent implements OnInit {
 
   logout() {
     this.accService.logoutUser();
+  }
+
+  loggedIn() {
+    let loggedIn: boolean = this.accService.loggedIn();
+    if (loggedIn) {
+      if (!this.user) {
+        this.user = this.auth.getCurrentUserData();
+      }
+    } else {
+      this.user = null;
+    }
+    return loggedIn;
   }
 }

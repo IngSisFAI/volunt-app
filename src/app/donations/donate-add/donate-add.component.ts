@@ -1,9 +1,10 @@
-import { Component, OnInit, Input, EventEmitter, Output} from '@angular/core';
-import { Router} from '@angular/router';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import { Router } from '@angular/router';
 
 // Services
 import { LoopBackAuth } from '../../shared/sdk/services';
 import { DonationResponseApi } from '../../shared/sdk/services/custom/DonationResponse';
+import { AccountService } from '../../account-service/account.service';
 
 // Interfaces
 import { DonationRequestInterface } from '../../shared/sdk/models/DonationRequest';
@@ -23,7 +24,7 @@ export class DonateAddComponent implements OnInit {
 
   public donation: DonationResponseInterface;
 
-  constructor(private router: Router, private auth: LoopBackAuth, private donationResponseApi: DonationResponseApi) { }
+  constructor(private router: Router, private auth: LoopBackAuth, private donationResponseApi: DonationResponseApi, private accService: AccountService) { }
 
   ngOnInit() {
     this.donation = new DonationResponse();
@@ -52,6 +53,10 @@ export class DonateAddComponent implements OnInit {
       // Here, we have to ask to log in
       this.router.navigate([`/login`]);
     }
+  }
+
+  loggedIn() {
+    return this.accService.loggedIn();
   }
 
 }

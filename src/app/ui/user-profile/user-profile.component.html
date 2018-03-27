@@ -1,7 +1,7 @@
-<div class="box" >
-  <div *ngIf="user != null; then logueado else nologueado">
+<div class="box">
+  <div *ngIf="loggedIn(); then logueado else nologueado">
   </div>
-  
+
 </div>
 <ng-template #logueado>
   <h3>Hola, {{ user.name }}</h3>
