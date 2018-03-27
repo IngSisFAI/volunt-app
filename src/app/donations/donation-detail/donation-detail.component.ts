@@ -1,6 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { DonationRequest, DonationRequestApi, DonationResponseApi } from '../../shared/sdk';
 
+import { Router } from '@angular/router';
+
 @Component({
     selector: 'app-donation-detail',
     templateUrl: './donation-detail.component.html',
@@ -12,7 +14,8 @@ export class DonationDetailComponent implements OnInit {
     public remainingProducts = 0;
     constructor(
         private donationRequestApi: DonationRequestApi,
-        private donationResponseApi: DonationResponseApi
+        private donationResponseApi: DonationResponseApi,
+            private router: Router
     ) { }
 
     ngOnInit() {
@@ -30,6 +33,8 @@ export class DonationDetailComponent implements OnInit {
 
     public donate() {
         this.donationOk.next(true);
+        //console.log('PermanentRequest selected:', this.selectedDonationRequest);
+        this.router.navigate(['/wantToDonate/' + this.selectedDonationRequest.id]);
     }
 
     public cancel() {

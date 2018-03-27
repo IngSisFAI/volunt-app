@@ -3,6 +3,11 @@
   <div *ngIf="request" class="row">
 
     <div class="column">
+
+      <app-donate-add [request]="request" (donated)="donated($event)">
+
+      </app-donate-add>
+      <!--
       <app-donation-detail *ngIf="!wantToDonate" [selectedDonationRequest]="request" (donationOk)="donationClicked($event)">
 
       </app-donation-detail>
@@ -10,6 +15,7 @@
       <app-donate-add *ngIf="wantToDonate" [request]="request" (donated)="donated($event)">
 
       </app-donate-add>
+    -->
     </div>
 
     <div class="column">

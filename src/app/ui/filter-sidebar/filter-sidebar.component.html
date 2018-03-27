@@ -1,0 +1,51 @@
+<div class="container">
+  <div style="text-align:center;">
+    <div>
+      <br>
+      <img src="" class="img-fluid mx-auto d-block" alt="logo no encontrado" [routerLink]="['/test']" routerLinkActive="active">
+    </div>
+    <br>
+    <br>
+    <hr>
+    <hr>
+    <br>
+
+    <div id="search-component">
+      <h3>En qué localidad quieres donar?</h3>
+      <br>
+      <input #searchBox id="search-box" placeholder="Tu Ubicación" />
+      <!--
+      <div>
+        <div *ngFor="let city of cities | async" (click)="cityChanged(city)" class="search-result">
+          {{city}}
+        </div>
+        <div *ngIf="errorMessage">
+          <h2>
+                 {{errorMessage}}
+               </h2>
+        </div>
+      </div>
+    -->
+
+    </div>
+    <br>
+    <br>
+    <hr>
+    <hr>
+    <br>
+
+    <div>
+      <ul style="list-style-type:circle">
+        <li *ngFor=" let oneTimeRequest of oneTimeRequests " (click)="donationTypeChanged(oneTimeRequest.product.Name)" [class.active]="oneTimeRequest.product.Name==donationTypeAux">
+          <a> {{oneTimeRequest.product.Name}} </a>
+        </li>
+      </ul>
+    </div>
+    <br>
+    <br>
+    <hr>
+    <hr>
+    <br>
+
+  </div>
+</div>

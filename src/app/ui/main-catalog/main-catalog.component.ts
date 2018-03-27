@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { DonationRequestInterface, DonationRequestApi } from '../../shared/sdk';
 import { Router } from '@angular/router';
 
@@ -11,6 +11,7 @@ export class MainCatalogComponent implements OnInit {
   public permanentRequests: DonationRequestInterface[] = [];
   public oneTimeRequests: DonationRequestInterface[] = [];
   public requestSelected: DonationRequestInterface = null;
+  donationType: String = null;
 
   constructor(
     private donationRequestApi: DonationRequestApi,
@@ -76,4 +77,11 @@ export class MainCatalogComponent implements OnInit {
           console.log(err);
         });
   }
+
+  public donationTypeChange(response) {
+    console.log('** Response');
+    console.log(response);
+    this.donationType = response;
+  }
+
 }
