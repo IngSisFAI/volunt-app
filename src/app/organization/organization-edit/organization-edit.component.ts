@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
+import { Component, OnInit, EventEmitter, Input, Output, OnChanges } from '@angular/core';
 import { OrganizationApi } from '../../shared/sdk/services/custom/Organization';
 import { Organization, OrganizationInterface } from '../../shared/sdk/models/Organization';
 
@@ -7,7 +7,7 @@ import { Organization, OrganizationInterface } from '../../shared/sdk/models/Org
   templateUrl: './organization-edit.component.html',
   styleUrls: ['./organization-edit.component.css']
 })
-export class OrganizationEditComponent implements OnInit {
+export class OrganizationEditComponent implements OnInit, OnChanges {
 
   @Input() organizationOriginal: Organization;
   @Output() organizationEdited = new EventEmitter();
@@ -22,7 +22,6 @@ export class OrganizationEditComponent implements OnInit {
   }
 
   ngOnChanges(changes): void {
-    console.log(this.organizationOriginal)
     this.organization = Object.assign({}, this.organizationOriginal);
   }
 
@@ -33,7 +32,7 @@ export class OrganizationEditComponent implements OnInit {
         console.log('organization edited: ', organizationEdited);
         this.organizationEdited.emit(organizationEdited);
       }
-    )
+    );
   }
 
   public cancelar() {

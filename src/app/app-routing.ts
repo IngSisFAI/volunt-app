@@ -18,6 +18,7 @@ import { ProductMainComponent } from './product/product-main/product-main.compon
 import { WantToDonateComponent } from './ui/want-to-donate/want-to-donate.component';
 import { PageNotFoundComponent } from './ui/page-not-found/not-found.component';
 import { MainCatalogComponent } from './ui/main-catalog/main-catalog.component';
+import { ONGProfileComponent } from './ui/ong-profile/ong-profile.component';
 
 
 const routes: Routes = [
@@ -31,6 +32,9 @@ const routes: Routes = [
   },
   {
     path: 'catalog', component: MainCatalogComponent
+  },
+  {
+    path: 'ong/:idOrg', component: ONGProfileComponent
   },
   {
     path: '', canActivate: [

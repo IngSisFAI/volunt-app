@@ -12,8 +12,8 @@ import { OrganizationDetailComponent } from './organization-detail/organization-
     CommonModule,
     FormsModule
   ],
-  declarations: [OrganizationMainComponent, OrganizationAddComponent, OrganizationAddComponent, OrganizationDetailComponent],
-  exports: [OrganizationMainComponent, OrganizationDetailComponent],
+  declarations: [OrganizationMainComponent, OrganizationAddComponent, OrganizationEditComponent, OrganizationDetailComponent],
+  exports: [OrganizationMainComponent, OrganizationDetailComponent, OrganizationEditComponent],
   providers: [OrganizationApi]
 })
 export class OrganizationModule { }

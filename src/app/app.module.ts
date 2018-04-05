@@ -31,6 +31,7 @@ import { OrganizationModule } from './organization/organization.module';
 import { OrganizationReviewModule } from './organization-review/organization-review.module';
 import { ProductModule } from './product/product.module';
 import { UnitModule } from './unit/unit.module';
+import { ONGProfileComponent } from './ui/ong-profile/ong-profile.component';
 //import { WantToDonateComponent } from './ui/want-to-donate/want-to-donate.component';
 
 
@@ -42,7 +43,8 @@ import { UnitModule } from './unit/unit.module';
     DonnersComponent,
     SignupComponent,
     DonnerComponent,
-    DonnerHistory
+    DonnerHistory,
+    ONGProfileComponent
   ],
   imports: [
     BrowserModule,
