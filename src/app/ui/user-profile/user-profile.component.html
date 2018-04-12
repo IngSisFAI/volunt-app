@@ -4,10 +4,12 @@
   
 </div>
 <ng-template #logueado>
-  <h3>Hola, {{ user.name }}</h3>
-  <p class="text-truncate">ID: {{ user.id }}</p>
-  <button class="button" (click)="logout()">Logout</button>
+  <span>Hola, {{ user.name }} </span>
+  <!--p class="text-truncate">ID: {{ user.id }}</p-->
+  <button mat-raised-button color="accent" (click)="logout()">Logout</button>
 </ng-template>
 <ng-template #nologueado>
-  <h3>Hola Anonimo</h3>
+  <span>Hola Anonimo</span>
+  <button mat-raised-button color="accent" [routerLink]="['/signup']">Signup</button>
+  <button mat-raised-button color="accent" [routerLink]="['/login']">Login</button>
 </ng-template>

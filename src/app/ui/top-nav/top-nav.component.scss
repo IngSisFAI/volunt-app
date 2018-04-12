@@ -1,16 +1,15 @@
-nav {
-  border-bottom: 1px solid #E4E4E4;
-  box-shadow: 0 0 4px rgba(0,0,0,.1), 0 2px 4px rgba(0, 0, 0, 0.1);
-  margin-bottom: 25px;
-  padding: 0 5vw;
-  padding-right: 60px;
+.demo-toolbar {
+  padding: 6px;
 
-  .nav-item {
-    color: gray;
-    font-weight: normal;
-    transition: color 0.3s ease;
-    &:hover {
-      font-color: #1c90f3;
-    }
+  .demo-toolbar-icon {
+    padding: 0 14px;
+  }
+
+  .demo-fill-remaining {
+    flex: 1 1 auto;
+  }
+
+  button {
+    margin: 0 4px;
   }
 }
