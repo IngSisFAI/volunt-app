@@ -1,0 +1,13 @@
+.row {
+    display: flex;
+  }
+  
+  #filters.column {
+    flex: 20%;
+    text-align: left;
+    border: solid 1px;
+  }
+  #requests.column {
+    flex: 80%;
+    text-align: center;
+  }

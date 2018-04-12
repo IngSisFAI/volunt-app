@@ -1,104 +1,120 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges, Input } from '@angular/core';
 
 // Interfaces
 import { DonationRequestInterface } from '../../shared/sdk/models/DonationRequest';
-// import { PermanentRequestInterface} from '../shared/sdk/models/PermanentRequest';
-// import { OneTimeRequestInterface} from '../shared/sdk/models/OneTimeRequest';
 
 // Services
 import { DonationRequestApi } from '../../shared/sdk/services/custom/DonationRequest';
 import { Router } from '@angular/router';
-// import { PermanentRequestApi } from '../shared/sdk/services/custom/PermanentRequest';
-// import { OneTimeRequestApi } from '../shared/sdk/services/custom/OneTimeRequest';
 
 @Component({
   selector: 'app-active-donations',
   templateUrl: './active-donations.component.html',
   styleUrls: ['./active-donations.component.css']
 })
-export class ActiveDonationsComponent implements OnInit {
+export class ActiveDonationsComponent implements OnInit, OnChanges {
 
-  public permanentRequests: DonationRequestInterface[] = [];
-  public oneTimeRequests: DonationRequestInterface[] = [];
-  public requestSelected: DonationRequestInterface = null;
-  public donation: any = {
-    amount: 0
-  };
+  @Input() donationType: String = null;
+
+  _oneTimeRequests: DonationRequestInterface[];
+  oneTimeRequestsFiltered: DonationRequestInterface[];
+
+  @Input() set oneTimeRequests(requests: DonationRequestInterface[]) {
+
+    this._oneTimeRequests = this.sortRequestsByDate(requests);
+
+  }
+
+  @Input() permanentRequests: DonationRequestInterface[];
+  permanentRequestsFiltered: DonationRequestInterface[];
+
+  /*
+    @Input() set donationType(type: String) {
+
+      this._donationType = type;
+      console.log(this._donationType);
+      if ((this._oneTimeRequests && this.permanentRequests) || (this.oneTimeRequestsAux && this.permanentRequestsAux)) {
+
+        if (!(this.oneTimeRequestsAux && this.permanentRequestsAux)) {
+          this.oneTimeRequestsAux = this._oneTimeRequests;
+          this.permanentRequestsAux = this.permanentRequests;
+        }
+
+        if (type) {
+
+          this._oneTimeRequests = this.oneTimeRequestsAux.filter(req => req.product.Name === type);
+          this.permanentRequests = this.permanentRequestsAux.filter(req => req.product.Name === type);
+
+        } else {
+
+          console.log(this._donationType + "heeeee");
+          this._oneTimeRequests = this.oneTimeRequestsAux;
+          this.permanentRequests = this.permanentRequestsAux;
+
+        }
+
+      }
+      //this.sortRequestsByDate(this.oneTimeRequests);
+    }
+  */
+
+
+  //public requestSelected: DonationRequestInterface = null;
 
   constructor(
     private donationRequestApi: DonationRequestApi,
     private router: Router
-  ) {
-
-
-  }
+  ) { }
 
   ngOnInit() {
-    this.findPermanentRequests();
-    this.findOneTimeRequests();
-  }
-
-  public onPermanentRequest(permanentRequest) {
-    this.requestSelected = permanentRequest;
-    console.log('PermanentRequest selected:', this.requestSelected);
-    this.router.navigate(['/wantToDonate/' + this.requestSelected.id]);
 
   }
 
-  public onOneTimeRequest(request) {
-    this.requestSelected = request;
-    console.log('One Time request selected:', this.requestSelected);
-    this.router.navigate(['/wantToDonate/' + this.requestSelected.id]);
+  ngOnChanges() {
+
+    console.log(this.donationType);
+    if (this.permanentRequests) {
+      this.permanentRequestsFiltered = this.filterRequests(this.permanentRequests);
+    }
+    if (this._oneTimeRequests) {
+      this.oneTimeRequestsFiltered = this.filterRequests(this._oneTimeRequests);
+    }
+  }
+
+  private filterRequests(requests: DonationRequestInterface[]) {
+
+    if (this.donationType) {
+      requests = requests.filter(req => req.product.Name === this.donationType);
+    }
+    return requests;
 
   }
 
-  private findPermanentRequests() {
 
-    // TODO: include 'organization' too
+  private sortRequestsByDate(requests: DonationRequestInterface[]) {
 
-    this.donationRequestApi.find(
-      { include: ['product'], where: { status : true, isPermanent : true }}).subscribe((permanentRequests: DonationRequestInterface[])=>{
-      console.log(permanentRequests);
-      this.notUse(permanentRequests); // NOT USE this method!
-      this.permanentRequests = permanentRequests;
-    },
-    (err)=>{
-      console.log('An error has ocurred');
-      console.log(err);
-    })
-  }
-
-  /*
-    Este metodo esta para parsear los datos para las pruebas. En un futuro, limpiar la BD
-  */
-  private notUse(requests) {
-    requests.forEach(r => {
-      if(!r.amount){ r.amount = 0};
-      if(!r.covered){ r.covered = 0};
-      if(!r.promised){ r.promised = 0};
+    requests.sort((r1, r2) => {
+      let fecha1 = new Date(r1.expirationDate).getTime();
+      let fecha2 = new Date(r2.expirationDate).getTime();
+      return fecha1 - fecha2;
     });
+
+    return requests;
   }
 
-  private findOneTimeRequests() {
 
-    let now = new Date();
-    console.log(now);
-    this.donationRequestApi.find({include:'product',
-    where:
-    {
-      // creationDate: {lte: now },
-      status : true,
-      isPermanent : false,
-      expirationDate: {gte: now }
-    }})
-    .subscribe((oneTimeRequests: DonationRequestInterface[]) => {
-      console.log(oneTimeRequests);
-      this.oneTimeRequests = oneTimeRequests;
-    },
-    (err)=>{
-      console.log('An error has ocurred');
-      console.log(err);
-    })
-  }
+  /*se usa el boton donar
+    public onPermanentRequest(permanentRequest) {
+      this.requestSelected = permanentRequest;
+      console.log('PermanentRequest selected:', this.requestSelected);
+      this.router.navigate(['/wantToDonate/' + this.requestSelected.id]);
 
+    }
+
+    public onOneTimeRequest(request) {
+      this.requestSelected = request;
+      console.log('One Time request selected:', this.requestSelected);
+      this.router.navigate(['/wantToDonate/' + this.requestSelected.id]);
+    }
+  */
 }

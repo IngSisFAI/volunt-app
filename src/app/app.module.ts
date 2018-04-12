@@ -13,7 +13,6 @@ import { AppComponent } from './app.component';
 import { TestComponent } from './test/test.component';
 import { DonnersComponent } from './donners/donners.component';
 import { SignupComponent } from './signup/signup.component';
-import { LoginComponent } from './login/login.component';
 import { DonnerComponent } from './donner/donner.component'
 import { DonnerHistory } from './donner/donner-history/donner-history.component'
 
@@ -32,6 +31,7 @@ import { OrganizationModule } from './organization/organization.module';
 import { OrganizationReviewModule } from './organization-review/organization-review.module';
 import { ProductModule } from './product/product.module';
 import { UnitModule } from './unit/unit.module';
+import { ONGProfileComponent } from './ui/ong-profile/ong-profile.component';
 //import { WantToDonateComponent } from './ui/want-to-donate/want-to-donate.component';
 
 // Material 
@@ -46,10 +46,9 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     TestComponent,
     DonnersComponent,
     SignupComponent,
-    LoginComponent,
     DonnerComponent,
+    ONGProfileComponent
     DonnerHistory,
-    //WantToDonateComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,13 @@
+<h2>Catalogo</h2>
+<div class="row">
+  <div id="filters" class="column">
+    <app-filter-sidebar [oneTimeRequests]="oneTimeRequests" (donationType)="donationTypeChange($event)">
+    </app-filter-sidebar>
+  </div>
+  <div id="requests" class="column">
+
+    <app-active-donations [oneTimeRequests]="oneTimeRequests" [permanentRequests]="permanentRequests" [donationType]="donationType">
+
+    </app-active-donations>
+  </div>
+</div>

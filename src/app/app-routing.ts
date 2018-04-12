@@ -17,6 +17,8 @@ import { DonationsMainComponent } from './donations/donations-main/donations-mai
 import { ProductMainComponent } from './product/product-main/product-main.component';
 import { WantToDonateComponent } from './ui/want-to-donate/want-to-donate.component';
 import { PageNotFoundComponent } from './ui/page-not-found/not-found.component';
+import { MainCatalogComponent } from './ui/main-catalog/main-catalog.component';
+import { ONGProfileComponent } from './ui/ong-profile/ong-profile.component';
 
 
 const routes: Routes = [
@@ -25,6 +27,15 @@ const routes: Routes = [
   { path: 'signup', component: SignupComponent },
   { path: 'login', component: LoginComponent },
   { path: 'donations', component: DonationsMainComponent },
+  {
+    path: 'wantToDonate/:idRequest', component: WantToDonateComponent
+  },
+  {
+    path: 'catalog', component: MainCatalogComponent
+  },
+  {
+    path: 'ong/:idOrg', component: ONGProfileComponent
+  },
   {
     path: '', canActivate: [
       AuthGuard
@@ -42,14 +53,11 @@ const routes: Routes = [
         path: 'donner/:id', component: DonnerComponent
       },
       {
-        path: 'wantToDonate/:idRequest', component: WantToDonateComponent
-      },
-      {
         path: '', redirectTo: '/test', pathMatch: 'full'
       }
     ]
   },
-  //wildcard
+  // wildcard
   { path: '**', component: PageNotFoundComponent }
 
 ];
