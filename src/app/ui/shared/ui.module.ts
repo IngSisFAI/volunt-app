@@ -9,11 +9,13 @@ import { WantToDonateComponent } from '../want-to-donate/want-to-donate.componen
 import { TopNavComponent } from '../top-nav/top-nav.component';
 import { PageNotFoundComponent } from '../page-not-found/not-found.component';
 import { FilterSidebarComponent } from '../filter-sidebar/filter-sidebar.component';
+import { MenuComponent } from '../menu/menu.component';
 
 import { OrganizationModule } from '../../organization/organization.module';
 import { DonationsModule } from '../../donations/donations.module';
 import { MainCatalogComponent } from '../main-catalog/main-catalog.component';
 
+import { MaterialModule } from '../../shared/modules/material.module';
 @NgModule({
   imports: [
     OrganizationModule,
@@ -21,7 +23,8 @@ import { MainCatalogComponent } from '../main-catalog/main-catalog.component';
     CommonModule,
     RouterModule,
     BrowserAnimationsModule,
-    FormsModule
+    FormsModule,
+    MaterialModule
   ],
   declarations: [
     UserProfileComponent,
@@ -30,12 +33,14 @@ import { MainCatalogComponent } from '../main-catalog/main-catalog.component';
     PageNotFoundComponent,
     MainCatalogComponent,
     FilterSidebarComponent
+    MenuComponent
   ],
   exports: [
     TopNavComponent,
     UserProfileComponent,
     WantToDonateComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    MenuComponent,
   ],
 })
 export class UiModule { }

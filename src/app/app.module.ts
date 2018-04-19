@@ -34,6 +34,10 @@ import { UnitModule } from './unit/unit.module';
 import { ONGProfileComponent } from './ui/ong-profile/ong-profile.component';
 //import { WantToDonateComponent } from './ui/want-to-donate/want-to-donate.component';
 
+// Material 
+import { MaterialModule } from './shared/modules/material.module';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+
 
 
 @NgModule({
@@ -43,14 +47,15 @@ import { ONGProfileComponent } from './ui/ong-profile/ong-profile.component';
     DonnersComponent,
     SignupComponent,
     DonnerComponent,
-    DonnerHistory,
     ONGProfileComponent
+    DonnerHistory,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     SDKBrowserModule.forRoot(),
+    BrowserAnimationsModule,
     AppRoutingModule,
     UiModule,
     //  DonateModule,
@@ -59,7 +64,8 @@ import { ONGProfileComponent } from './ui/ong-profile/ong-profile.component';
     OrganizationModule,
     OrganizationReviewModule,
     ProductModule,
-    UnitModule
+    UnitModule,
+    MaterialModule
   ],
   providers: [
     AccountService
