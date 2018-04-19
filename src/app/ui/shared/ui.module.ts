@@ -32,7 +32,7 @@ import { MaterialModule } from '../../shared/modules/material.module';
     WantToDonateComponent,
     PageNotFoundComponent,
     MainCatalogComponent,
-    FilterSidebarComponent
+    FilterSidebarComponent,
     MenuComponent
   ],
   exports: [

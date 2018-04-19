@@ -47,7 +47,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     DonnersComponent,
     SignupComponent,
     DonnerComponent,
-    ONGProfileComponent
+    ONGProfileComponent,
     DonnerHistory,
   ],
   imports: [
