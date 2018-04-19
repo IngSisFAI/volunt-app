@@ -5,28 +5,18 @@
     </a>
   </div>
 
-  <!-- This "nav-toggle" hamburger menu is only visible on mobile -->
-  <!-- You need JavaScript to toggle the "is-active" class on "nav-menu" -->
-  <span class="nav-toggle" (click)="toggleCollapse()" [ngClass]="{'is-active': show}">
-    <span></span>
-    <span></span>
-    <span></span>
-  </span>
+    <span>Primary Toolbar</span>
+    <span class="demo-fill-remaining"></span>
+    <button mat-raised-button color="accent" [routerLink]="['/products']">Productos</button>
+    <button mat-raised-button color="accent" [routerLink]="['/donners']">Donadores</button>
+    <button mat-raised-button color="accent" [routerLink]="['/']">Raiz</button>
 
-  <!-- This "nav-menu" is hidden on mobile -->
-  <!-- Add the modifier "is-active" to display it on mobile -->
-  <div class="nav-right nav-menu" [ngClass]="{'is-active': show}">
-    <a class="nav-item" [routerLink]="['/products']">Productos</a>
-    <a class="nav-item" [routerLink]="['/donners']">Donadores</a>
-    <a class="nav-item" [routerLink]="['/']">Raiz</a>
-    <a class="nav-item" [routerLink]="['/signup']">Signup</a>
-    <a class="nav-item" [routerLink]="['/login']">Login</a>
-    <a class="nav-item" [routerLink]="['/donations']">Donations</a>
-    <a class="nav-item" [routerLink]="['/catalog']">Catalogo Principal</a>
-    <a class="nav-item" [routerLink]="['/ongs']">ONGs</a>
-    <!-- <a class="nav-item" [routerLink]="['/activeDonations']">Catalogo de Pedidos</a> -->
-    <aside class="column is-2 is-offset-1">
-      <user-profile></user-profile>
-    </aside>
-  </div>
-</nav>
+    <button mat-raised-button color="accent" [routerLink]="['/donations']">Donations</button>
+    <button mat-raised-button color="accent" [routerLink]="['/catalog']">Catalogo Principal</button>
+    <button mat-raised-button color="accent" [routerLink]="['/ongs']">ONGs</button>
+
+    <span class="demo-fill-remaining"></span>
+    <user-profile></user-profile>
+    
+  </mat-toolbar>
+</div>
