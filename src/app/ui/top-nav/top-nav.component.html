@@ -1,20 +1,17 @@
-<nav class="nav">
-  <div class="nav-left">
-    <a class="nav-item logo" routerLink="/">
-      Donar
-    </a>
-  </div>
+<div class="demo-toolbar">
+  <mat-toolbar color="primary">
+    <button mat-icon-button>
+      <mat-icon>menu</mat-icon>
+    </button>
 
     <span>Primary Toolbar</span>
     <span class="demo-fill-remaining"></span>
     <button mat-raised-button color="accent" [routerLink]="['/products']">Productos</button>
     <button mat-raised-button color="accent" [routerLink]="['/donners']">Donadores</button>
     <button mat-raised-button color="accent" [routerLink]="['/']">Raiz</button>
-
+   
     <button mat-raised-button color="accent" [routerLink]="['/donations']">Donations</button>
-    <button mat-raised-button color="accent" [routerLink]="['/catalog']">Catalogo Principal</button>
-    <button mat-raised-button color="accent" [routerLink]="['/ongs']">ONGs</button>
-
+    <button mat-raised-button color="accent" [routerLink]="['/activeDonations']">Catalogo de Pedidos</button>
     <span class="demo-fill-remaining"></span>
     <user-profile></user-profile>
     
