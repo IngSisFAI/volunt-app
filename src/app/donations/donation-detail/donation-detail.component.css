@@ -1,0 +1,10 @@
+mat-card img{
+    object-fit: cover; /*this makes de image in src fit to the size of specified below*/
+    width: 100px; /* Here you can use wherever you want to specify the width and also the height of the <img>*/
+}
+mat-card {
+    margin: 5px;
+}
+.example-header-image img{
+    width: 50px;
+}

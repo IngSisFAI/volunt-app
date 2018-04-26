@@ -1,37 +1,49 @@
 <div>
-  <h2>{{selectedDonationRequest.product.Name}}</h2>
-  <br/>
-  <img src="{{selectedDonationRequest.product.Icon}}" height="42" width="42" />
-  <br/>
+<mat-card *ngIf="!isPermanent()" class="example-card">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"><img mat-card-image src="{{selectedDonationRequest.product.Icon}}"   alt="Image"></div>
+      <mat-card-title>{{selectedDonationRequest.product.Name}}</mat-card-title>
+      <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image src="{{selectedDonationRequest.product.Icon}}"   alt="Image">
+    <mat-card-content>
+      <p>
+        No es permanente
+      </p>
+      <label>Creado el: </label>
+      <label>{{selectedDonationRequest.creationDate | date:'dd/MM'}}</label>
+      <br/>
+      <label>Finaliza el: </label>
+      <label>{{selectedDonationRequest.expirationDate | date:'dd/MM'}}</label>
+      <br/> {{selectedDonationRequest.covered}} de {{selectedDonationRequest.amount}} {{selectedDonationRequest.product.unit.Name}}/s
+      <br/>
+      <progress value="{{selectedDonationRequest.covered}}" max="{{selectedDonationRequest.amount}}"></progress> Faltan: {{remainingProducts}} {{selectedDonationRequest.product.unit.Name}}/s
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button [disabled]='!isPermanent() && remainingProducts == 0' (click)="donate()">Donar!</button>
+    </mat-card-actions>
+  </mat-card>
 
-  <!-- Indicador de cantidades -->
-  <div *ngIf="!isPermanent()">
-    <p>
-      No es permanente
-    </p>
-    <label>Creado el: </label>
-    <label>{{selectedDonationRequest.creationDate | date:'dd/MM'}}</label>
-    <br/>
-    <label>Finaliza el: </label>
-    <label>{{selectedDonationRequest.expirationDate | date:'dd/MM'}}</label>
-    <br/> {{selectedDonationRequest.covered}} de {{selectedDonationRequest.amount}} {{selectedDonationRequest.product.unit.Name}}/s
-    <br/>
-    <progress value="{{selectedDonationRequest.covered}}" max="{{selectedDonationRequest.amount}}"></progress> Faltan: {{remainingProducts}} {{selectedDonationRequest.product.unit.Name}}/s
-    <br/>
-  </div>
-
-
-  <div *ngIf="isPermanent()">
-    <p>
-      Lo necesitamos todos los meses!
-    </p>
-    <label>Creado el: </label>
-    <label>{{selectedDonationRequest.creationDate | date:'dd/MM'}}</label>
-    <br/>
-
-  </div>
-  <br>
-  <button *ngIf='!isPermanent() && remainingProducts > 0 || isPermanent()' (click)="donate()">Donar!</button>
+  <mat-card *ngIf="isPermanent()" class="example-card">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>{{selectedDonationRequest.product.Name}}</mat-card-title>
+      <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+    </mat-card-header>
+    <img mat-card-image src="{{selectedDonationRequest.product.Icon}}" alt="Image">
+    <mat-card-content>
+      <p>
+        Lo necesitamos todos los meses!
+      </p>
+      <label>Creado el: </label>
+      <label>{{selectedDonationRequest.creationDate | date:'dd/MM'}}</label>
+      <br/>
+      <progress value="{{selectedDonationRequest.covered}}" max="{{selectedDonationRequest.amount}}"></progress> Faltan: {{remainingProducts}} {{selectedDonationRequest.product.unit.Name}}/s
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button [disabled]='!isPermanent() && remainingProducts == 0' (click)="donate()">Donar!</button>
+    </mat-card-actions>
+  </mat-card>
 
 
 </div>
