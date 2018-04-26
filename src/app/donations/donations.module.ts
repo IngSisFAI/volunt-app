@@ -10,13 +10,14 @@ import { DonateAddComponent } from './donate-add/donate-add.component';
 import { DonationDetailComponent } from './donation-detail/donation-detail.component';
 
 import { LoginComponent } from '../login/login.component';
-
+import { MaterialModule } from '../shared/modules/material.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
-    RouterModule
+    RouterModule,
+    MaterialModule,
   ],
   declarations: [
     ActiveDonationsComponent,
