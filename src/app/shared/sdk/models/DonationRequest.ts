@@ -8,15 +8,13 @@ export interface DonationRequestInterface {
   "isPermanent": boolean;
   "covered"?: number;
   "promised"?: number;
-  "status"?: boolean;
+  "isOpen"?: boolean;
   "id"?: any;
   "organizationId"?: any;
-  "organizationReviewId"?: any;
-  "donationResponseId"?: any;
   "productId"?: any;
   organization?: any;
-  organizationReview?: any;
-  donationResponse?: any;
+  organizationReviews?: any[];
+  donationResponses?: any[];
   product?: any;
 }
 
@@ -27,15 +25,13 @@ export class DonationRequest implements DonationRequestInterface {
   "isPermanent": boolean;
   "covered": number;
   "promised": number;
-  "status": boolean;
+  "isOpen": boolean;
   "id": any;
   "organizationId": any;
-  "organizationReviewId": any;
-  "donationResponseId": any;
   "productId": any;
   organization: any;
-  organizationReview: any;
-  donationResponse: any;
+  organizationReviews: any[];
+  donationResponses: any[];
   product: any;
   constructor(data?: DonationRequestInterface) {
     Object.assign(this, data);
@@ -96,8 +92,8 @@ export class DonationRequest implements DonationRequestInterface {
           type: 'number',
           default: 0
         },
-        "status": {
-          name: 'status',
+        "isOpen": {
+          name: 'isOpen',
           type: 'boolean'
         },
         "id": {
@@ -106,14 +102,6 @@ export class DonationRequest implements DonationRequestInterface {
         },
         "organizationId": {
           name: 'organizationId',
-          type: 'any'
-        },
-        "organizationReviewId": {
-          name: 'organizationReviewId',
-          type: 'any'
-        },
-        "donationResponseId": {
-          name: 'donationResponseId',
           type: 'any'
         },
         "productId": {
@@ -130,21 +118,21 @@ export class DonationRequest implements DonationRequestInterface {
                   keyFrom: 'organizationId',
           keyTo: 'id'
         },
-        organizationReview: {
-          name: 'organizationReview',
-          type: 'any',
+        organizationReviews: {
+          name: 'organizationReviews',
+          type: 'any[]',
           model: '',
-          relationType: 'belongsTo',
-                  keyFrom: 'organizationReviewId',
-          keyTo: 'id'
+          relationType: 'hasMany',
+                  keyFrom: 'id',
+          keyTo: 'donationRequestId'
         },
-        donationResponse: {
-          name: 'donationResponse',
-          type: 'any',
+        donationResponses: {
+          name: 'donationResponses',
+          type: 'any[]',
           model: '',
-          relationType: 'belongsTo',
-                  keyFrom: 'donationResponseId',
-          keyTo: 'id'
+          relationType: 'hasMany',
+                  keyFrom: 'id',
+          keyTo: 'donationRequestId'
         },
         product: {
           name: 'product',

@@ -2,8 +2,8 @@
 
 declare var Object: any;
 export interface DonnerReviewInterface {
-  "liked"?: boolean;
-  "description"?: string;
+  "liked": boolean;
+  "description": string;
   "id"?: any;
   "organizationId"?: any;
   "createdAt": Date;

@@ -1,15 +1,15 @@
 /* tslint:disable */
 import { Injectable, Inject, Optional } from '@angular/core';
-import { Http, Response } from '@angular/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { SDKModels } from './SDKModels';
 import { BaseLoopBackApi } from '../core/base.service';
 import { LoopBackConfig } from '../../lb.config';
 import { LoopBackAuth } from '../core/auth.service';
 import { LoopBackFilter,  } from '../../models/BaseModels';
-import { JSONSearchParams } from '../core/search.params';
 import { ErrorHandler } from '../core/error.service';
 import { Subject } from 'rxjs/Subject';
-import { Observable } from 'rxjs/Rx';
+import { Observable } from 'rxjs/Observable';
+import { map } from 'rxjs/operators';
 import { DonationResponse } from '../../models/DonationResponse';
 import { SocketConnection } from '../../sockets/socket.connections';
 
@@ -21,14 +21,13 @@ import { SocketConnection } from '../../sockets/socket.connections';
 export class DonationResponseApi extends BaseLoopBackApi {
 
   constructor(
-    @Inject(Http) protected http: Http,
+    @Inject(HttpClient) protected http: HttpClient,
     @Inject(SocketConnection) protected connection: SocketConnection,
     @Inject(SDKModels) protected models: SDKModels,
     @Inject(LoopBackAuth) protected auth: LoopBackAuth,
-    @Inject(JSONSearchParams) protected searchParams: JSONSearchParams,
     @Optional() @Inject(ErrorHandler) protected errorHandler: ErrorHandler
   ) {
-    super(http,  connection,  models, auth, searchParams, errorHandler);
+    super(http,  connection,  models, auth, errorHandler);
   }
 
   /**
@@ -57,27 +56,28 @@ export class DonationResponseApi extends BaseLoopBackApi {
   }
 
   /**
-   * Patch attributes for a model instance and persist it into the data source.
-   *
-   * @param {any} id DonationResponse id
+   * <em>
+         * (The remote method definition does not provide any description.)
+         * </em>
    *
    * @param {object} data Request data.
    *
-   *  - `data` – `{object}` - An object of model property name/value pairs
+   *  - `id` – `{string}` - 
+   *
+   *  - `data` – `{object}` - 
    *
    * @returns {object} An empty reference that will be
    *   populated with the actual data once the response is returned
    *   from the server.
    *
-   * <em>
-   * (The remote method definition does not provide any description.
-   * This usually means the response is a `DonationResponse` object.)
-   * </em>
+   * Data properties:
+   *
+   *  - `` – `{}` - 
    */
-  public patchAttributes(id: any, data: any = {}, customHeaders?: Function): Observable<any> {
-    let _method: string = "PATCH";
+  public donationArrival(id: any, data: any, customHeaders?: Function): Observable<any> {
+    let _method: string = "POST";
     let _url: string = LoopBackConfig.getPath() + "/" + LoopBackConfig.getApiVersion() +
-    "/DonationResponses/:id";
+    "/DonationResponses/:id/donationArrival";
     let _routeParams: any = {
       id: id
     };

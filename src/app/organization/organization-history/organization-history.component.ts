@@ -40,7 +40,7 @@ export class OrganizationHistoryComponent implements OnInit, OnChanges {
         }
     })
     .subscribe(requests => {
-        console.log('The requests: ', requests);
+        console.log('The requests: ', requests);  
     });
 
   }

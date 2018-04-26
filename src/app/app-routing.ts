@@ -20,6 +20,7 @@ import { PageNotFoundComponent } from './ui/page-not-found/not-found.component';
 import { MainCatalogComponent } from './ui/main-catalog/main-catalog.component';
 import { ONGProfileComponent } from './ui/ong-profile/ong-profile.component';
 import { OrganizationHistoryComponent } from './organization/organization-history/organization-history.component';
+import { OrganizationActiveRequestsComponent } from './organization/organization-active-requests/organization-active-requests.component';
 
 
 const routes: Routes = [
@@ -40,6 +41,10 @@ const routes: Routes = [
   // TODO: change the path to ong/... 
   {
     path: 'history/:idOrg.', component: OrganizationHistoryComponent
+  },
+  // TODO: change the path to ong/... 
+  {
+    path: 'activeRequests/:idOrg.', component: OrganizationActiveRequestsComponent
   },
   {
     path: '', canActivate: [

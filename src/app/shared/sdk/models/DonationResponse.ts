@@ -5,6 +5,7 @@ export interface DonationResponseInterface {
   "creationDate": Date;
   "amount": number;
   "alreadyDelivered": boolean;
+  "isCanceled": boolean;
   "id"?: any;
   "donationRequestId"?: any;
   "donnerId"?: any;
@@ -18,6 +19,7 @@ export class DonationResponse implements DonationResponseInterface {
   "creationDate": Date;
   "amount": number;
   "alreadyDelivered": boolean;
+  "isCanceled": boolean;
   "id": any;
   "donationRequestId": any;
   "donnerId": any;
@@ -68,6 +70,11 @@ export class DonationResponse implements DonationResponseInterface {
         },
         "alreadyDelivered": {
           name: 'alreadyDelivered',
+          type: 'boolean',
+          default: false
+        },
+        "isCanceled": {
+          name: 'isCanceled',
           type: 'boolean',
           default: false
         },

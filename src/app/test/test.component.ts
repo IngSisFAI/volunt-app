@@ -19,7 +19,7 @@ export class TestComponent implements OnInit {
 
   ngOnInit() {
     console.log(this.productApi.getModelName());
-    console.log(this.productApi.getParentProduct(1));
+    // console.log(this.productApi.getParentProduct(1));
   }
 
 }

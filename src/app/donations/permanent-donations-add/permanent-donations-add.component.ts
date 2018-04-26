@@ -38,7 +38,7 @@ export class PermanentDonationsAddComponent implements OnInit {
             console.log(organizations);
             this.organizations = <any>organizations;
 
-            this.permanentDonation.status = true;
+            // this.permanentDonation.status = true;
             this.permanentDonation.isPermanent = true;
             // this.permanentDonation.covered = 0;
             // this.permanentDonation.promised = 0;

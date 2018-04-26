@@ -7,16 +7,20 @@ import { OrganizationAddComponent } from './organization-add/organization-add.co
 import { OrganizationEditComponent } from './organization-edit/organization-edit.component';
 import { OrganizationDetailComponent } from './organization-detail/organization-detail.component';
 import { OrganizationHistoryComponent } from './organization-history/organization-history.component';
+import { OrganizationActiveRequestsComponent } from './organization-active-requests/organization-active-requests.component';
+import { MaterialModule } from '../shared/modules/material.module';
 
 @NgModule({
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    MaterialModule
   ],
   declarations: [OrganizationMainComponent, OrganizationAddComponent, OrganizationEditComponent,
+    OrganizationActiveRequestsComponent,
     OrganizationDetailComponent, OrganizationHistoryComponent],
   exports: [OrganizationMainComponent, OrganizationDetailComponent, OrganizationEditComponent, 
-    OrganizationHistoryComponent],
+    OrganizationHistoryComponent, OrganizationActiveRequestsComponent],
   providers: [OrganizationApi]
 })
 export class OrganizationModule { }
