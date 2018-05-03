@@ -1,4 +1,3 @@
-// Esta clase es la encargada de CERRAR y ABRIR los nuevas requests
 <div class="example-container mat-elevation-z8">
     <div class="example-header">
       <!-- <mat-form-field>
@@ -6,56 +5,53 @@
       </mat-form-field> -->
     </div>
   
-    <mat-table #table [dataSource]="dataSource">
-  
-  <!-- displayedColumns = ['Producto', 'Cantidad', 'Cubiertos', 'Prometidos', 'Permanente', 'Creacion', 'Expiracion', 'Accion']; -->
-        
-      <!-- Position Column -->
+    <mat-table #table [dataSource]="dataSource"> 
+      <!-- Name Column -->
       <ng-container matColumnDef="Producto">
         <mat-header-cell *matHeaderCellDef> Producto </mat-header-cell>
         <mat-cell *matCellDef="let element"> {{element.product.Name}} </mat-cell>
       </ng-container>
   
-      <!-- Name Column -->
+      <!-- Amount Column -->
       <ng-container matColumnDef="Cantidad">
         <mat-header-cell *matHeaderCellDef> Cantidad </mat-header-cell>
         <mat-cell *matCellDef="let element"> {{element.amount}} </mat-cell>
       </ng-container>
   
-      <!-- Weight Column -->
+      <!-- Covered Column -->
       <ng-container matColumnDef="Cubiertos">
         <mat-header-cell *matHeaderCellDef> Cubiertos </mat-header-cell>
         <mat-cell *matCellDef="let element"> {{element.covered}} </mat-cell>
       </ng-container>
   
-      <!-- Symbol Column -->
+      <!-- Promised Column -->
       <ng-container matColumnDef="Prometidos">
         <mat-header-cell *matHeaderCellDef> Prometidos </mat-header-cell>
         <mat-cell *matCellDef="let element"> {{element.promised}} </mat-cell>
       </ng-container>
   
-      <!-- Symbol Column -->
+      <!-- IsPermanent Column -->
       <ng-container matColumnDef="Permanente">
         <mat-header-cell *matHeaderCellDef> Permanente </mat-header-cell>
         <mat-cell *matCellDef="let element"> {{element.isPermanent}} </mat-cell>
       </ng-container>
-  
-      <!-- Symbol Column -->
+
+      <!-- CreationDate Column -->
       <ng-container matColumnDef="Creacion">
         <mat-header-cell *matHeaderCellDef> Creacion </mat-header-cell>
         <mat-cell *matCellDef="let element"> {{element.creationDate | date: 'dd/MM/yy'}} </mat-cell>
       </ng-container>
   
-      <!-- Symbol Column -->
+      <!-- ExpirationDate Column -->
       <ng-container matColumnDef="Expiracion">
         <mat-header-cell *matHeaderCellDef> Expiracion </mat-header-cell>
         <mat-cell *matCellDef="let element"> {{element.expirationDate | date: 'dd/MM/yy'}} </mat-cell>
       </ng-container>
 
-      <!-- Symbol Column -->
+      <!-- Action Column -->
       <ng-container matColumnDef="Accion">
         <mat-header-cell *matHeaderCellDef> Accion </mat-header-cell>
-        <mat-cell *matCellDef="let element"> <button (click)='closeRequest()'> Cerrar </button> </mat-cell>
+        <mat-cell *matCellDef="let element"> <button (click)='closeRequest(element  )'> Cerrar </button> </mat-cell>
       </ng-container>
   
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

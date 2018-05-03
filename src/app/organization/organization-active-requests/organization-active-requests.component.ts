@@ -33,20 +33,22 @@ export class OrganizationActiveRequestsComponent implements OnInit, OnChanges {
       include: ['product'],
       where: {
         organizationId: organizationId,
-        // isOpen: true
+        isOpen: true
       }
     })
       .subscribe(requests => {
-        console.log('Donation requests: ', (<DonationRequestInterface[]>requests));
-        this.permanentRequests = (<DonationRequestInterface[]>requests).filter(r => r.isPermanent);
-        this.oneTimeRequests = (<DonationRequestInterface[]>requests).filter(r => !r.isPermanent);
         this.dataSource.data = <DonationRequestInterface[]>requests;
       });
 
   }
 
-  public closeRequest() {
-    console.log('Close request');
+  public closeRequest(request) {
+    this.donationRequestApi.closeRequest(request.id, request)
+    .subscribe((response) => {
+      this.dataSource.data = this.dataSource.data.filter((rq) => {
+        return rq.id !== request.id;
+      });
+    });
   }
 
   ngOnInit() {
