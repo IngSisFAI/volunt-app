@@ -1,3 +1,13 @@
+.form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 95%;
+}
+
+.form-full-width {
+  width: 95%;
+}
+
 a {
   color: black;
   text-decoration: none;
@@ -7,40 +17,87 @@ a {
   min-width: 304px;
 }
 
-a:hover {
-  border-bottom: 1px dotted #0273d4;
-  cursor: pointer;
-  background-color: lightgrey;
-}
-
-.search-result {
-  border-bottom: 1px solid gray;
-  border-left: 1px solid gray;
-  border-right: 1px solid gray;
-  width: 195px;
-  height: 16px;
-  padding: 5px;
-  background-color: white;
-  cursor: pointer;
-}
-
-.search-result:hover {
-  color: #eee;
-  background-color: #607D8B;
-}
-
-#search-box {
-  width: 200px;
-  height: 20px;
-}
-
-h2 {
-  color: #FF0000;
-  font-size: 1em;
-  margin-top: 2;
-  padding-top: 0;
-}
-
 .active {
-  background-color: grey;
+  background-color: #CFD8DC !important;
+  color: white;
+}
+
+.types {
+  margin: 0 0 2em 0;
+  list-style-type: none;
+  width: 15em;
+}
+
+.types li {
+  cursor: pointer;
+  position: relative;
+  left: 0;
+  background-color: #EEE;
+  margin: .5em;
+  padding: .3em 0;
+  height: 1.6em;
+  border-radius: 4px;
+  margin-left: 2em;
+}
+
+.types li:hover {
+  color: #607D8B;
+  background-color: #DDD;
+  left: .1em;
+}
+
+.types li.active:hover {
+  background-color: #BBD8DC !important;
+  color: white;
+}
+
+.types .text {
+  position: relative;
+  top: -3px;
+}
+
+button {
+  font-family: Arial;
+  background-color: #eee;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  cursor: hand;
+}
+
+button:hover {
+  background-color: #909090;
+}
+
+.delete {
+  float: right;
+  margin-top: 2px;
+  margin-right: .8em;
+  background-color: gray;
+  color: white;
+}
+
+.tag {
+  cursor: pointer;
+  position: relative;
+  left: 0;
+  background-color: #EEE;
+  margin: .5em;
+  padding: .3em 0;
+  height: 1.6em;
+  border-radius: 4px;
+  width: 15em;
+  margin-left: 3em;
+}
+
+.tag:hover {
+  color: #607D8B;
+  background-color: #DDD;
+  left: .1em;
+}
+
+.tag .text {
+  position: relative;
+  top: -3px;
 }

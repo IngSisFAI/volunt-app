@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { DonationRequestApi, DonationRequestInterface } from '../../shared/sdk';
 
 @Component({
@@ -14,6 +14,7 @@ export class WantToDonateComponent implements OnInit {
   public wantToDonate: Boolean = false;
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private location: Location,
     private requestApi: DonationRequestApi
   ) {
@@ -37,4 +38,9 @@ export class WantToDonateComponent implements OnInit {
   public donationClicked(wantToDonate: Boolean) {
     this.wantToDonate = wantToDonate;
   }
+
+  public goToOrg() {
+    this.router.navigate(['/catalog'], { queryParams: { orgId: this.request.organization.id } });
+  }
+
 }

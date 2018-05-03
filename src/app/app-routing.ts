@@ -24,7 +24,6 @@ import { OrganizationActiveRequestsComponent } from './organization/organization
 
 
 const routes: Routes = [
-  { path: '', component: TestComponent },
   { path: 'test', component: TestComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'login', component: LoginComponent },
@@ -38,11 +37,11 @@ const routes: Routes = [
   {
     path: 'ong/:idOrg', component: ONGProfileComponent
   },
-  // TODO: change the path to ong/... 
+  // TODO: change the path to ong/...
   {
     path: 'history/:idOrg.', component: OrganizationHistoryComponent
   },
-  // TODO: change the path to ong/... 
+  // TODO: change the path to ong/...
   {
     path: 'activeRequests/:idOrg.', component: OrganizationActiveRequestsComponent
   },
@@ -67,6 +66,7 @@ const routes: Routes = [
       }
     ]
   },
+  { path: '', redirectTo: '/test', pathMatch: 'full' },
   // wildcard
   { path: '**', component: PageNotFoundComponent }
 

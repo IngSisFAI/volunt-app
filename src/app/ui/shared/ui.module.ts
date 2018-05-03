@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { UserProfileComponent } from '../user-profile/user-profile.component';
 import { WantToDonateComponent } from '../want-to-donate/want-to-donate.component';
@@ -24,6 +24,7 @@ import { MaterialModule } from '../../shared/modules/material.module';
     RouterModule,
     BrowserAnimationsModule,
     FormsModule,
+    ReactiveFormsModule,
     MaterialModule
   ],
   declarations: [

@@ -1,7 +1,13 @@
 <h2>
   Active Donations
 </h2>
+<br>
 <h3>Permanentes</h3>
+<div *ngIf="isEmpty(permanentRequestsFiltered)">
+  <h4>
+      Sin pedidos por el momento
+    </h4>
+</div>
 <ul>
   <li style="display: inline-block" *ngFor='let permanentRequest of permanentRequestsFiltered'>
     <app-donation-detail [selectedDonationRequest]="permanentRequest">
@@ -9,7 +15,13 @@
     <!-- {{ permanentRequest.product.Name }} -->
   </li>
 </ul>
+<br>
 <h3>No Permanentes</h3>
+<div *ngIf="isEmpty(oneTimeRequestsFiltered)">
+  <h4>
+      Sin pedidos por el momento
+    </h4>
+</div>
 <ul>
   <li style="display: inline-block" *ngFor='let oneTimeRequest of oneTimeRequestsFiltered'>
     <app-donation-detail [selectedDonationRequest]="oneTimeRequest">

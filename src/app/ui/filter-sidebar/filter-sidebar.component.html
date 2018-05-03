@@ -9,15 +9,15 @@
     <hr>
     <hr>
     <br>
-
-    <div id="search-component">
+    <!--
+    <div id="searchCity-component">
       <h3>En qué localidad quieres donar?</h3>
       <br>
       <input #searchBox id="search-box" placeholder="Tu Ubicación" />
-      <!--
+
       <div>
-        <div *ngFor="let city of cities | async" (click)="cityChanged(city)" class="search-result">
-          {{city}}
+        <div *ngFor="let org of orgs | async" class="search-result">
+          {{org.city}}
         </div>
         <div *ngIf="errorMessage">
           <h2>
@@ -25,9 +25,29 @@
                </h2>
         </div>
       </div>
-    -->
 
     </div>
+  -->
+    <form class="form">
+      <h3>¿En qué localidad te gustaría donar?</h3>
+      <mat-form-field class="form-full-width">
+        <input matInput placeholder="Localidad.." aria-label="Localidad" [matAutocomplete]="autoCity" [formControl]="cityCtrl">
+        <mat-autocomplete #autoCity="matAutocomplete">
+          <mat-option *ngFor="let org of filteredOrgsByCity | async" [value]="" (onSelectionChange)="cityChanged($event, org.city)">
+            <span>{{org.city }}</span> |
+            <small> {{org.province}}</small>
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+      <br>
+      <br>
+      <div class="tag" *ngIf="cityAux" (click)="goTaggedCity()">
+        <a> {{cityAux }}</a>
+        <button class="delete" aria-label="Cancelar" (click)="resetCity(); $event.stopPropagation()">x</button>
+      </div>
+
+    </form>
+
     <br>
     <br>
     <hr>
@@ -35,9 +55,10 @@
     <br>
 
     <div>
-      <ul style="list-style-type:circle">
-        <li *ngFor=" let oneTimeRequest of oneTimeRequests " (click)="donationTypeChanged(oneTimeRequest.product.Name)" [class.active]="oneTimeRequest.product.Name==donationTypeAux">
-          <a> {{oneTimeRequest.product.Name}} </a>
+      <h3>¿Qué te gustaría donar?</h3>
+      <ul class="types">
+        <li *ngFor=" let oneTimeRequest of oneTimeRequests " (click)="donationTypeChanged(oneTimeRequest.product.name)" [class.active]="oneTimeRequest.product.name===donationTypeAux">
+          <a> {{oneTimeRequest.product.name}} </a>
         </li>
       </ul>
     </div>
@@ -47,5 +68,23 @@
     <hr>
     <br>
 
+    <form class="form">
+      <h3>¿Buscas alguna ONG en particular?</h3>
+      <mat-form-field class="form-full-width">
+        <input matInput placeholder="ONG.." aria-label="ONG" [matAutocomplete]="autoOrg" [formControl]="orgCtrl">
+        <mat-autocomplete #autoOrg="matAutocomplete">
+          <mat-option *ngFor="let org of filteredOrgsByName | async" [value]="" (onSelectionChange)="orgChanged($event, org)">
+            <span>{{org.name }}</span> |
+            <small> {{org.city}}</small>
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </form>
+
+    <br>
+    <br>
+    <hr>
+    <hr>
+    <br>
   </div>
 </div>
