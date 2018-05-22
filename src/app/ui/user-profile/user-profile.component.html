@@ -1,15 +1,7 @@
-<div class="box">
-  <div *ngIf="loggedIn(); then logueado else nologueado">
-  </div>
+<div class="container">
+
+  <app-donner-detail [donner]=donner>
+
+  </app-donner-detail>
 
 </div>
-<ng-template #logueado>
-  <span>Hola, {{ user.name }} </span>
-  <!--p class="text-truncate">ID: {{ user.id }}</p-->
-  <button mat-raised-button color="accent" (click)="logout()">Logout</button>
-</ng-template>
-<ng-template #nologueado>
-  <span>Hola Anonimo</span>
-  <button mat-raised-button color="accent" [routerLink]="['/signup']">Signup</button>
-  <button mat-raised-button color="accent" [routerLink]="['/login']">Login</button>
-</ng-template>

@@ -8,17 +8,17 @@ import { AuthGuard } from './account-service/auth.guard';
 import { AppComponent } from './app.component';
 
 import { DonnersComponent } from './donners/donners.component';
-import { ActiveDonationsComponent } from './donations/active-donations/active-donations.component';
 import { TestComponent } from './test/test.component';
 import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
-import { DonnerComponent } from './donner/donner.component';
+import { DonnerDetailComponent } from './donner/donner-detail/donner-detail.component';
 import { DonationsMainComponent } from './donations/donations-main/donations-main.component';
 import { ProductMainComponent } from './product/product-main/product-main.component';
 import { WantToDonateComponent } from './ui/want-to-donate/want-to-donate.component';
 import { PageNotFoundComponent } from './ui/page-not-found/not-found.component';
 import { MainCatalogComponent } from './ui/main-catalog/main-catalog.component';
 import { ONGProfileComponent } from './ui/ong-profile/ong-profile.component';
+import { UserProfileComponent } from './ui/user-profile/user-profile.component';
 import { OrganizationHistoryComponent } from './organization/organization-history/organization-history.component';
 import { OrganizationActiveRequestsComponent } from './organization/organization-active-requests/organization-active-requests.component';
 
@@ -50,16 +50,16 @@ const routes: Routes = [
       AuthGuard
     ], children: [
       {
-        path: 'products', component: ProductMainComponent
+        path: 'userProfile', component: UserProfileComponent
       },
       {
-        path: 'activeDonations', component: ActiveDonationsComponent
+        path: 'products', component: ProductMainComponent
       },
       {
         path: 'donners', component: DonnersComponent
       },
       {
-        path: 'donner/:id', component: DonnerComponent
+        path: 'donner', component: DonnerDetailComponent
       },
       {
         path: '', redirectTo: '/test', pathMatch: 'full'

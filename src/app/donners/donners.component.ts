@@ -17,28 +17,31 @@ export class DonnersComponent implements OnInit {
   constructor(
     private router: Router,
     private donnerApi: DonnerApi,
-  private auth: LoopBackAuth) {
+    private auth: LoopBackAuth) {
 
-    this.donnerApi.find().subscribe((donners: DonnerInterface[])=>{
-
-      this.donners = donners;
-      console.log(donners);
-    },
-    (err)=>{
-      console.log('An error has ocurred');
-      console.log(err);
+    this.donnerApi.find({
+      include: ['organizationReviews', { donationResponses: 'donationRequest' }]
     })
+      .subscribe((donners: DonnerInterface[]) => {
 
-   }
+        this.donners = donners;
+        console.log(donners);
+      },
+        (err) => {
+          console.log('An error has ocurred');
+          console.log(err);
+        })
+
+  }
 
   ngOnInit() {
     console.log(this.auth.getCurrentUserData());
     console.log(this.auth.getCurrentUserId());
   }
 
-  onClickDonner(donner){
-    this.router.navigate([`/donner/${donner.id}`])
+  onClickDonner(donner) {
+    //this.router.navigate([`/donner`])
   }
 
 
-  }
+}
