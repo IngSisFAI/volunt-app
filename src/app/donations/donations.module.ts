@@ -7,6 +7,7 @@ import { ActiveDonationsComponent } from './active-donations/active-donations.co
 import { PermanentDonationsAddComponent } from './permanent-donations-add/permanent-donations-add.component';
 import { DonationsMainComponent } from './donations-main/donations-main.component';
 import { DonateAddComponent } from './donate-add/donate-add.component';
+import { DonationRequestAddComponent, AddRequestDialog } from './donation-request-add/donation-request-add.component';
 import { DonationDetailComponent } from './donation-detail/donation-detail.component';
 
 import { LoginComponent } from '../login/login.component';
@@ -19,14 +20,17 @@ import { MaterialModule } from '../shared/modules/material.module';
     RouterModule,
     MaterialModule,
   ],
+  entryComponents: [AddRequestDialog],
   declarations: [
     ActiveDonationsComponent,
+    AddRequestDialog,
     LoginComponent,
     PermanentDonationsAddComponent,
     DonationsMainComponent,
     DonateAddComponent,
+    DonationRequestAddComponent,
     DonationDetailComponent
   ],
-  exports: [ActiveDonationsComponent, DonationsMainComponent, DonationDetailComponent, DonateAddComponent]
+  exports: [ActiveDonationsComponent, DonationsMainComponent, DonationDetailComponent, DonateAddComponent, DonationRequestAddComponent]
 })
 export class DonationsModule { }

@@ -1,0 +1,36 @@
+<h1 mat-dialog-title>Nuevo Pedido</h1>
+<div mat-dialog-content class="example-container">
+    
+    <mat-radio-group [(ngModel)]="data.request.isPermanent">
+        <mat-radio-button [value]="true">Permanente</mat-radio-button>
+        <mat-radio-button [value]="false">Particular</mat-radio-button>
+    </mat-radio-group>
+
+    <mat-form-field>
+        <input matInput [min]='data.request.creationDate' [matDatepicker]="picker" placeholder="Fecha expiracion" [(ngModel)]="data.request.expirationDate"
+            disabled>
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker disabled="false"></mat-datepicker>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-select placeholder='Categoria' [(value)]="data.request.productId">
+            <mat-option *ngFor='let product of data.products' value="{{product.id}}">{{product.name}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-select placeholder='Organizacion' [(value)]="data.request.organizationId">
+            <mat-option *ngFor='let organization of data.organizations' value="{{organization.id}}">{{organization.name}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <mat-form-field *ngIf='!data.request.isPermanent'>
+        <input matInput placeholder="Cantidad" [(ngModel)]="data.request.amount">
+    </mat-form-field>
+
+</div>
+<div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">Cerrar</button>
+    <button mat-button (click)="save()" cdkFocusInitial>Crear</button>
+</div>

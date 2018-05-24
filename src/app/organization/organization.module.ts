@@ -9,12 +9,14 @@ import { OrganizationDetailComponent } from './organization-detail/organization-
 import { OrganizationHistoryComponent } from './organization-history/organization-history.component';
 import { OrganizationActiveRequestsComponent } from './organization-active-requests/organization-active-requests.component';
 import { MaterialModule } from '../shared/modules/material.module';
+import { DonationsModule } from '../donations/donations.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
-    MaterialModule
+    MaterialModule,
+    DonationsModule
   ],
   declarations: [OrganizationMainComponent, OrganizationAddComponent, OrganizationEditComponent,
     OrganizationActiveRequestsComponent,

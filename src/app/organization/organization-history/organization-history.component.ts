@@ -6,6 +6,7 @@ import { DonationRequestInterface } from '../../shared/sdk/models/DonationReques
 // Services
 import { DonationRequestApi } from '../../shared/sdk/services/custom/DonationRequest';
 import { Router, ActivatedRoute } from '@angular/router';
+import { MatTableDataSource } from '@angular/material';
 
 @Component({
   selector: 'app-organization-history',
@@ -14,13 +15,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class OrganizationHistoryComponent implements OnInit, OnChanges {
 
-  @Input() donationType: String = null;
-
-  _oneTimeRequests: DonationRequestInterface[];
-  oneTimeRequestsFiltered: DonationRequestInterface[];
-
-  @Input() set oneTimeRequests(requests: DonationRequestInterface[]) {
-  }
+  displayedColumns = ['Producto', 'Cantidad', 'Cubiertos', 'Prometidos', 'Permanente', 'Creacion', 'Expiracion', 'Accion'];
+  dataSource = new MatTableDataSource<DonationRequestInterface>([]);
 
   @Input() permanentRequests: DonationRequestInterface[];
   permanentRequestsFiltered: DonationRequestInterface[];
@@ -33,14 +29,15 @@ export class OrganizationHistoryComponent implements OnInit, OnChanges {
        // TODO: change to id of LOGGED user
     const organizationId = route.snapshot.params['id'];
     this.donationRequestApi.find({
-        include: [],
+        include: ['product'],
         where: {
             organizationId: organizationId,
-            isOpen: false
+            isOpen: true
         }
     })
     .subscribe(requests => {
-        console.log('The requests: ', requests);  
+        console.log('The requests: ', requests);
+        this.dataSource.data = <DonationRequestInterface[]>requests;
     });
 
   }
@@ -52,6 +49,10 @@ export class OrganizationHistoryComponent implements OnInit, OnChanges {
   ngOnChanges() {
   }
 
-
+  applyFilter(filterValue: string) {
+    filterValue = filterValue.trim(); // Remove whitespace
+    filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
+    this.dataSource.filter = filterValue;
+  }
 
 }

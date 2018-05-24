@@ -4,8 +4,8 @@ import { DonnerReview, DonnerReviewInterface } from '../../shared/sdk/models/Don
 
 @Component({
   selector: 'app-donnerReview-add',
-  templateUrl: './donnerReview-add.component.html',
-  styleUrls: ['./donnerReview-add.component.css']
+  templateUrl: './donnerReview-add.html',
+  styleUrls: ['./donnerReview-add.css']
 })
 export class DonnerReviewAddComponent implements OnInit {
 
