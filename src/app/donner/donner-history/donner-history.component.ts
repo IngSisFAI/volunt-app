@@ -7,13 +7,13 @@ import { DonnerInterface } from '../../shared/sdk/models/Donner';
   templateUrl: './donner-history.component.html',
   styleUrls: ['./donner-history.component.css']
 })
-export class DonnerHistory implements OnInit{
+export class DonnerHistoryComponent implements OnInit {
   @Input() donner: DonnerInterface;
 
-  constructor(){}
+  constructor() { }
 
-  ngOnInit(){
-    
+  ngOnInit() {
+
   }
 
 }

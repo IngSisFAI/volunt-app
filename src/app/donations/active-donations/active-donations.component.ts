@@ -28,7 +28,7 @@ export class ActiveDonationsComponent implements OnInit, OnChanges {
     this._oneTimeRequests = this.sortRequestsByDate(requests);
 
     if (this.city) {
-      this.oneTimeRequestsByCity = this._oneTimeRequests.filter(req => req.organization.city === this.city);
+      this.oneTimeRequestsByCity = this._oneTimeRequests.filter(req => req.organization.city.name === this.city);
       this.oneTimeRequestsFiltered = this.oneTimeRequestsByCity;
     } else if (this.orgId) {
       this.oneTimeRequestsByOrg = this._oneTimeRequests.filter(req => req.organization.id === this.orgId);
@@ -50,7 +50,7 @@ export class ActiveDonationsComponent implements OnInit, OnChanges {
     this._permanentRequests = requests;
 
     if (this.city) {
-      this.permanentRequestsByCity = this._permanentRequests.filter(req => req.organization.city === this.city);
+      this.permanentRequestsByCity = this._permanentRequests.filter(req => req.organization.city.name === this.city);
       this.permanentRequestsFiltered = this.permanentRequestsByCity;
     } else if (this.orgId) {
       this.permanentRequestsByOrg = this._permanentRequests.filter(req => req.organization.id === this.orgId);
@@ -111,8 +111,8 @@ export class ActiveDonationsComponent implements OnInit, OnChanges {
       switch (propName) {
         case "city":
           if (this.city) {
-            this.oneTimeRequestsByCity = this._oneTimeRequests.filter(req => req.organization.city === this.city);
-            this.permanentRequestsByCity = this._permanentRequests.filter(req => req.organization.city === this.city);
+            this.oneTimeRequestsByCity = this._oneTimeRequests.filter(req => req.organization.city.name === this.city);
+            this.permanentRequestsByCity = this._permanentRequests.filter(req => req.organization.city.name === this.city);
 
             //this.oneTimeRequestsFiltered = this.oneTimeRequestsByCity;
             if (this.donationType) {

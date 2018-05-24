@@ -1,22 +1,16 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 import { Router, ActivatedRoute } from '@angular/router';
+
 // Interfaces
-import { DonationRequestInterface } from '../../shared/sdk/models/DonationRequest';
-import { OrganizationInterface } from '../../shared/sdk';
+import { ProductInterface, CityInterface, OrganizationInterface } from '../../shared/sdk';
 
 
 import { FormControl } from '@angular/forms';
-
 import { Observable } from 'rxjs/Observable';
 import { startWith } from 'rxjs/operators/startWith';
 import { map } from 'rxjs/operators/map';
 
-import { Subject } from 'rxjs/Subject';
-
-
-// Observable class extensions
-import 'rxjs/add/observable/of';
 
 @Component({
   selector: 'app-filter-sidebar',
@@ -25,18 +19,18 @@ import 'rxjs/add/observable/of';
 })
 export class FilterSidebarComponent implements OnInit {
 
-  @Input() oneTimeRequests: DonationRequestInterface[];
+  @Input() products: ProductInterface[];
+  @Input() orgs: OrganizationInterface[];
+  @Input() cities: CityInterface[];
 
   @Output() donationType = new EventEmitter();
   donationTypeAux: String = null;
 
-  @Input() orgs: OrganizationInterface[];
-
   cityCtrl: FormControl;
-  filteredOrgsByCity: Observable<any[]>;
+  filteredCitiesByName: Observable<any[]>;
 
   cityAux: String = null;
-  locationCity: boolean;
+  urlCity: boolean;
 
   orgCtrl: FormControl;
   filteredOrgsByName: Observable<any[]>;
@@ -46,18 +40,19 @@ export class FilterSidebarComponent implements OnInit {
   constructor(private route: ActivatedRoute, private router: Router) {
 
     this.cityCtrl = new FormControl();
-    this.filteredOrgsByCity = this.cityCtrl.valueChanges
+    this.filteredCitiesByName = this.cityCtrl.valueChanges
       .pipe(
         startWith(''),
-        map(city => city ? this.filterCollectionsByCity(city) : this.orgs.slice())
+        map(name => name ? this.filterCitiesByName(name) : this.cities.slice())
       );
 
     this.orgCtrl = new FormControl();
     this.filteredOrgsByName = this.orgCtrl.valueChanges
       .pipe(
         startWith(''),
-        map(name => name ? this.filterCollectionsByName(name) : this.orgs.slice())
+        map(name => name ? this.filterOrgsByName(name) : this.orgs.slice())
       );
+
 
     this.getParam();
   }
@@ -66,12 +61,12 @@ export class FilterSidebarComponent implements OnInit {
 
   }
 
-  filterCollectionsByCity(city: string) {
-    return this.orgs.filter(org =>
-      org.city.toLowerCase().indexOf(city.toLowerCase()) === 0);
+  filterCitiesByName(name: string) {
+    return this.cities.filter(city =>
+      city.name.toLowerCase().indexOf(name.toLowerCase()) === 0);
   }
 
-  filterCollectionsByName(name: string) {
+  filterOrgsByName(name: string) {
     return this.orgs.filter(org =>
       org.name.toLowerCase().indexOf(name.toLowerCase()) === 0);
   }
@@ -103,8 +98,8 @@ export class FilterSidebarComponent implements OnInit {
   }
 
   resetCity(): void {
-    console.log(this.locationCity);
-    if (this.locationCity) {
+
+    if (this.urlCity) {
       this.router.navigate(['/catalog']);
     }
     //delete tag
@@ -126,9 +121,9 @@ export class FilterSidebarComponent implements OnInit {
       .subscribe(params => {
         let city = params['city'];
         if (city) {
-          this.locationCity = true;
+          this.urlCity = true;
         } else {
-          this.locationCity = false;
+          this.urlCity = false;
         }
       });
 

@@ -20,7 +20,7 @@ export class WantToDonateComponent implements OnInit {
   ) {
     const id = this.route.snapshot.paramMap.get('idRequest');
     this.requestApi.findById(
-      id, { include: [{ product: ['unit'] }, 'organization'] })
+      id, { include: [{ organization: [{ city: 'province' }] }, 'product'] })
       .subscribe(request => {
         console.log('Request:');
         console.log(request);

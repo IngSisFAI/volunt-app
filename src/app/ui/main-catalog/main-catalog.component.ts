@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { DonationRequestInterface, DonationRequestApi } from '../../shared/sdk';
 import { OrganizationInterface, OrganizationApi } from '../../shared/sdk';
+import { ProductInterface, ProductApi } from '../../shared/sdk';
+import { CityInterface, CityApi } from '../../shared/sdk';
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -9,10 +11,14 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./main-catalog.component.css']
 })
 export class MainCatalogComponent implements OnInit {
-  public permanentRequests: DonationRequestInterface[] = [];
-  public oneTimeRequests: DonationRequestInterface[] = [];
-  public requestSelected: DonationRequestInterface = null;
+
+  permanentRequests: DonationRequestInterface[] = [];
+  oneTimeRequests: DonationRequestInterface[] = [];
+  requestSelected: DonationRequestInterface = null;
+
   orgs: OrganizationInterface[] = [];
+  products: ProductInterface[] = [];
+  cities: CityInterface[] = [];
 
   donationType: String;
   city: String;
@@ -23,7 +29,9 @@ export class MainCatalogComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private donationRequestApi: DonationRequestApi,
-    private organizationApi: OrganizationApi
+    private organizationApi: OrganizationApi,
+    private productApi: ProductApi,
+    private cityApi: CityApi
   ) {
     this.getParams();
   }
@@ -33,17 +41,16 @@ export class MainCatalogComponent implements OnInit {
     this.findOrganizations();
     this.findPermanentRequests();
     this.findOneTimeRequests();
+    this.findProducts();
+    this.findCities();
 
   }
 
-
   private findPermanentRequests() {
-
-    // TODO: include 'organization' too
 
     this.donationRequestApi.find(
       {
-        include: [{ product: ['unit'] }, 'organization'],
+        include: ['product', { organization: [{ city: 'province' }] }],
         where: { isPermanent: true }
       })
       .subscribe((permanentRequests: DonationRequestInterface[]) => {
@@ -72,7 +79,7 @@ export class MainCatalogComponent implements OnInit {
 
     let now = new Date();
     this.donationRequestApi.find({
-      include: [{ product: ['unit'] }, 'organization'],
+      include: ['product', { organization: [{ city: 'province' }] }],
       where:
         {
           // creationDate: {lte: now },
@@ -93,14 +100,50 @@ export class MainCatalogComponent implements OnInit {
 
   private findOrganizations() {
 
-    this.organizationApi.find(
-      {
-      })
+    this.organizationApi.find({
+      include: {
+        relation: 'city',
+        scope: {
+          include: {
+            relation: 'province',
+          }
+        }
+      }
+    })
       .subscribe((orgs: OrganizationInterface[]) => {
         console.log("orgs: ", orgs);
         this.orgs = orgs;
         //obtain data from param org
         this.getOrg();
+      },
+        (err) => {
+          console.log('An error has ocurred');
+          console.log(err);
+        });
+  }
+
+  private findProducts() {
+
+    this.productApi.find(
+      {
+      })
+      .subscribe((prods: ProductInterface[]) => {
+        this.products = prods;
+        console.log("prods: ", prods);
+      },
+        (err) => {
+          console.log('An error has ocurred');
+          console.log(err);
+        });
+  }
+
+  private findCities() {
+
+    this.cityApi.find({
+      include: ['province'],
+    })
+      .subscribe((cities: CityInterface[]) => {
+        this.cities = cities;
       },
         (err) => {
           console.log('An error has ocurred');

@@ -33,9 +33,9 @@
       <mat-form-field class="form-full-width">
         <input matInput placeholder="Localidad.." aria-label="Localidad" [matAutocomplete]="autoCity" [formControl]="cityCtrl">
         <mat-autocomplete #autoCity="matAutocomplete">
-          <mat-option *ngFor="let org of filteredOrgsByCity | async" [value]="" (onSelectionChange)="cityChanged($event, org.city)">
-            <span>{{org.city }}</span> |
-            <small> {{org.province}}</small>
+          <mat-option *ngFor="let city of filteredCitiesByName | async" [value]="" (onSelectionChange)="cityChanged($event, city.name)">
+            <span>{{city.name }}</span> |
+            <small> {{city.province.name}}</small>
           </mat-option>
         </mat-autocomplete>
       </mat-form-field>
@@ -57,8 +57,8 @@
     <div>
       <h3>¿Qué te gustaría donar?</h3>
       <ul class="types">
-        <li *ngFor=" let oneTimeRequest of oneTimeRequests " (click)="donationTypeChanged(oneTimeRequest.product.name)" [class.active]="oneTimeRequest.product.name===donationTypeAux">
-          <a> {{oneTimeRequest.product.name}} </a>
+        <li *ngFor=" let product of products " (click)="donationTypeChanged(product.name)" [class.active]="product.name===donationTypeAux">
+          <a> {{product.name}} </a>
         </li>
       </ul>
     </div>
@@ -75,7 +75,7 @@
         <mat-autocomplete #autoOrg="matAutocomplete">
           <mat-option *ngFor="let org of filteredOrgsByName | async" [value]="" (onSelectionChange)="orgChanged($event, org)">
             <span>{{org.name }}</span> |
-            <small> {{org.city}}</small>
+            <small> {{org.city.name}}</small>
           </mat-option>
         </mat-autocomplete>
       </mat-form-field>
