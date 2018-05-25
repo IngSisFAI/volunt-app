@@ -6,7 +6,9 @@
 <ng-template #logueado>
   <span>Hola, {{ user.name }} </span>
   <!--p class="text-truncate">ID: {{ user.id }}</p-->
-  <button mat-raised-button color="accent" [routerLink]="['/userProfile']">Tu perfil</button>
+  <button mat-raised-button color="accent" [routerLink]="['/userProfile']">Perfil</button>
+  <!-- TODO: Change this -->
+  <button mat-raised-button color="accent" [routerLink]="['/ong']">Perfil ONG</button>
   <button mat-raised-button color="accent" (click)="logout()">Logout</button>
 </ng-template>
 <ng-template #nologueado>

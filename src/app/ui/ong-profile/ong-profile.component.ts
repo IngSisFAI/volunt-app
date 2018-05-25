@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { OrganizationInterface, OrganizationApi } from '../../shared/sdk';
+import { OrganizationInterface, OrganizationApi, LoopBackAuth } from '../../shared/sdk';
 
 @Component({
     selector: 'app-ong-profile',
@@ -11,27 +11,16 @@ export class ONGProfileComponent implements OnInit {
     public organization: OrganizationInterface;
 
     constructor(
+        private auth: LoopBackAuth,
         private organizationApi: OrganizationApi,
         private router: Router,
         private route: ActivatedRoute
     ) {
-        const idOrg = route.snapshot.params['idOrg'];
-        // TODO: remove this
-        if (idOrg === '1' ) {
-            this.organizationApi.find()
-            .subscribe(organizations => {
-                console.log('Organizations: ');
-                console.log(organizations);
-            });
-        } else {
-            this.organizationApi.findById(idOrg)
-            .subscribe(organization => {
-                this.organization = <OrganizationInterface> organization;
-                console.log('Organization: ', organization);
-            });
-        }
-    
-
+        const user = this.auth.getCurrentUserData();
+        this.organizationApi.findById(user.id)
+        .subscribe(organization => {
+            this.organization = <OrganizationInterface> organization;
+        });
     }
 
     ngOnInit(): void {

@@ -27,16 +27,11 @@ export class AccountService {
 
   // Built-in LoopBack Authentication and Typings like Account and TokenInterface
   public signinUser(user: Donner): void {
-    console.log('asd');
-    console.log(user);
     this.donnerApi.login(user).subscribe((token: SDKToken) => {
       alert('Fake Redirect');
-      console.log(token);
-
-      this.auth.setToken(token);
-      this.auth.setRememberMe(true);
-      this.auth.save();
-      console.log(localStorage);
+    //   this.auth.setToken(token); ya lo hace el metodo login
+      this.auth.setRememberMe(true); // Creo que tampoco hace falta
+      this.auth.save(); // Creo que tampoco hace falta
     });
   }
   public logoutUser(): void {
@@ -46,7 +41,10 @@ export class AccountService {
     });
   }
   public signinOrganization(organization: Organization): void {
-    this.organizationApi.login(organization).subscribe((token: SDKToken) => alert('Fake Redirect'));
+    this.organizationApi.login(organization).subscribe((token: SDKToken) => { 
+        alert('Fake Redirect') 
+        // We must do something to know that is an organization ... 
+    });
   }
 
   loggedIn() {

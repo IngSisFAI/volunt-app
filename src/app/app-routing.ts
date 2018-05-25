@@ -34,9 +34,6 @@ const routes: Routes = [
   {
     path: 'catalog', component: MainCatalogComponent
   },
-  {
-    path: 'ong/:idOrg', component: ONGProfileComponent
-  },
   // TODO: change the path to ong/...
   {
     path: 'history/:idOrg.', component: OrganizationHistoryComponent
@@ -51,6 +48,9 @@ const routes: Routes = [
     ], children: [
       {
         path: 'userProfile', component: UserProfileComponent
+      },
+      {
+        path: 'ong', component: ONGProfileComponent
       },
       {
         path: 'products', component: ProductMainComponent
