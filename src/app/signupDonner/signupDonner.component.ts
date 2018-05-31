@@ -5,16 +5,13 @@ import { Organization, Donner, AccessToken }  from '../shared/sdk/models';
 import { AccountService } from '../account-service/account.service';
 @Component({
   selector: 'app-signup',
-  templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.css']
+  templateUrl: './signupDonner.component.html',
+  styleUrls: ['./signupDonner.component.css']
 })
-export class SignupComponent implements OnInit {
+export class SignupDonnerComponent implements OnInit {
   private accountDonner: Donner = new Donner();
-  private accountOrganization: Organization = new Organization();
 
   constructor(
-//      private organizationApi: OrganizationApi,
-//      private userApi: UserApi,
       private accountService: AccountService
   ) { }
 
@@ -23,9 +20,6 @@ export class SignupComponent implements OnInit {
 
   private signupUser(): void{
     this.accountService.signupUser(this.accountDonner);
-  }
-  private signupOrganization(): void{
-    this.accountService.signupOrganization(this.accountOrganization);
   }
 
 

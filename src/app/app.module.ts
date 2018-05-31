@@ -12,7 +12,8 @@ import { AppComponent } from './app.component';
 
 import { TestComponent } from './test/test.component';
 import { DonnersComponent } from './donners/donners.component';
-import { SignupComponent } from './signup/signup.component';
+import { SignupDonnerComponent } from './signupDonner/signupDonner.component';
+import { SignupOngComponent } from './signupOng/signupOng.component';
 
 // Services Propios
 import { AccountService } from './account-service/account.service';
@@ -44,7 +45,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppComponent,
     TestComponent,
     DonnersComponent,
-    SignupComponent,
+    SignupDonnerComponent,
+    SignupOngComponent,
     ONGProfileComponent
   ],
   imports: [

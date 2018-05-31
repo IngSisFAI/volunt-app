@@ -9,7 +9,8 @@ import { AppComponent } from './app.component';
 
 import { DonnersComponent } from './donners/donners.component';
 import { TestComponent } from './test/test.component';
-import { SignupComponent } from './signup/signup.component';
+import { SignupDonnerComponent } from './signupDonner/signupDonner.component';
+import { SignupOngComponent } from './signupOng/signupOng.component';
 import { LoginComponent } from './login/login.component';
 import { DonnerDetailComponent } from './donner/donner-detail/donner-detail.component';
 import { DonationsMainComponent } from './donations/donations-main/donations-main.component';
@@ -25,7 +26,8 @@ import { OrganizationActiveRequestsComponent } from './organization/organization
 
 const routes: Routes = [
   { path: 'test', component: TestComponent },
-  { path: 'signup', component: SignupComponent },
+  { path: 'signupDonner', component: SignupDonnerComponent },
+  { path: 'signupOng', component: SignupOngComponent },
   { path: 'login', component: LoginComponent },
   { path: 'donations', component: DonationsMainComponent },
   {
