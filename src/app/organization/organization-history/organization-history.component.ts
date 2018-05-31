@@ -28,7 +28,6 @@ export class OrganizationHistoryComponent implements OnInit, OnChanges {
     private router: Router,
     route: ActivatedRoute,
   ) {
-    console.log('HELLO');
     const organizationId =  this.auth.getCurrentUserId();
     this.donationRequestApi.find({
         include: ['product'],
