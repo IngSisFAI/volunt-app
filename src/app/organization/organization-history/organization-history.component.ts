@@ -7,6 +7,7 @@ import { DonationRequestInterface } from '../../shared/sdk/models/DonationReques
 import { DonationRequestApi } from '../../shared/sdk/services/custom/DonationRequest';
 import { Router, ActivatedRoute } from '@angular/router';
 import { MatTableDataSource } from '@angular/material';
+import { LoopBackAuth } from '../../shared/sdk';
 
 @Component({
   selector: 'app-organization-history',
@@ -23,16 +24,17 @@ export class OrganizationHistoryComponent implements OnInit, OnChanges {
 
   constructor(
     private donationRequestApi: DonationRequestApi,
+    private auth: LoopBackAuth,
     private router: Router,
     route: ActivatedRoute,
   ) {
-       // TODO: change to id of LOGGED user
-    const organizationId = route.snapshot.params['id'];
+    console.log('HELLO');
+    const organizationId =  this.auth.getCurrentUserId();
     this.donationRequestApi.find({
         include: ['product'],
         where: {
             organizationId: organizationId,
-            isOpen: true
+            isOpen: false
         }
     })
     .subscribe(requests => {

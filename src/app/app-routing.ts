@@ -34,14 +34,6 @@ const routes: Routes = [
   {
     path: 'catalog', component: MainCatalogComponent
   },
-  // TODO: change the path to ong/...
-  {
-    path: 'history/:idOrg.', component: OrganizationHistoryComponent
-  },
-  // TODO: change the path to ong/...
-  {
-    path: 'activeRequests/:idOrg.', component: OrganizationActiveRequestsComponent
-  },
   {
     path: '', canActivate: [
       AuthGuard
@@ -51,6 +43,12 @@ const routes: Routes = [
       },
       {
         path: 'ong', component: ONGProfileComponent
+      },
+      {
+        path: 'history', component: OrganizationHistoryComponent
+      },
+      {
+        path: 'activeRequests', component: OrganizationActiveRequestsComponent
       },
       {
         path: 'products', component: ProductMainComponent
