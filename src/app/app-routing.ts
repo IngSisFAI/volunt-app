@@ -13,6 +13,8 @@ import { SignupDonnerComponent } from './signupDonner/signupDonner.component';
 import { SignupOngComponent } from './signupOng/signupOng.component';
 import { LoginComponent } from './login/login.component';
 import { DonnerDetailComponent } from './donner/donner-detail/donner-detail.component';
+import { DonnerHistoryComponent } from './donner/donner-history/donner-history.component';
+import { DonnerActiveResponsesComponent } from './donner/donner-active-responses/donner-active-responses.component';
 import { DonationsMainComponent } from './donations/donations-main/donations-main.component';
 import { ProductMainComponent } from './product/product-main/product-main.component';
 import { WantToDonateComponent } from './ui/want-to-donate/want-to-donate.component';
@@ -42,6 +44,12 @@ const routes: Routes = [
     ], children: [
       {
         path: 'userProfile', component: UserProfileComponent
+      },
+      {
+        path: 'userHistory', component: DonnerHistoryComponent
+      },
+      {
+        path: 'userActiveResponses', component: DonnerActiveResponsesComponent
       },
       {
         path: 'ong', component: ONGProfileComponent

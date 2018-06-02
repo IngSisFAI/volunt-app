@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 // Interfaces
 import { DonationResponseInterface } from '../../shared/sdk/models/DonationResponse';
@@ -9,15 +9,15 @@ import { MatTableDataSource } from '@angular/material';
 import { LoopBackAuth } from '../../shared/sdk';
 
 @Component({
-  selector: 'donner-history',
-  templateUrl: './donner-history.component.html',
-  styleUrls: ['./donner-history.component.css']
+  selector: 'app-donner-active-responses',
+  templateUrl: './donner-active-responses.component.html',
+  styleUrls: ['./donner-active-responses.component.css']
 })
-export class DonnerHistoryComponent implements OnInit {
+export class DonnerActiveResponsesComponent implements OnInit {
 
   empty: boolean = false;
   userId: String;
-  displayedColumns = ['Categoria', 'Nombre', 'Cantidad', 'Creacion', 'Estado'];
+  displayedColumns = ['Categoria', 'Nombre', 'Cantidad', 'Creacion', 'Accion'];
   dataSource = new MatTableDataSource<DonationResponseInterface>([]);
 
   constructor(private auth: LoopBackAuth, private donationResponseApi: DonationResponseApi, ) { }
@@ -36,11 +36,8 @@ export class DonnerHistoryComponent implements OnInit {
       include: [{ donationRequest: 'product' }],
       where: {
         donnerId: this.userId,
-
-        or: [
-          { alreadyDelivered: true },
-          { isCanceled: true }
-        ]
+        alreadyDelivered: false,
+        isCanceled: false,
       }
     }).subscribe((responses: DonationResponseInterface[]) => {
 
@@ -56,10 +53,22 @@ export class DonnerHistoryComponent implements OnInit {
       })
   }
 
+  public cancelResponse(response) {
+    //TODO agregar metodo en back end
+    this.donationResponseApi.updateAttributes(response.id, { isCanceled: false })
+      .subscribe((change) => {
+        this.dataSource.data = this.dataSource.data.filter((res) => {
+          return res.id !== response.id;
+        });
+      });
+  }
+
+
   applyFilter(filterValue: string) {
     filterValue = filterValue.trim(); // Remove whitespace
     filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
     this.dataSource.filter = filterValue;
   }
+
 
 }

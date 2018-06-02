@@ -46,8 +46,5 @@ export class DonnerDetailComponent implements OnInit {
     //this.donner = this.auth.getCurrentUserData();
   }
 
-  public getHistory() {
-
-  }
 
 }
