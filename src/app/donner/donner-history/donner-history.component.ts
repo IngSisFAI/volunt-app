@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
 // Interfaces
 import { DonationResponseInterface } from '../../shared/sdk/models/DonationResponse';
@@ -17,10 +18,10 @@ export class DonnerHistoryComponent implements OnInit {
 
   empty: boolean = false;
   userId: String;
-  displayedColumns = ['Categoria', 'Nombre', 'Cantidad', 'Creacion', 'Estado'];
+  displayedColumns = ['Categoria', 'Nombre', 'Cantidad', 'Creación', 'Organización', 'Contacto', 'Estado'];
   dataSource = new MatTableDataSource<DonationResponseInterface>([]);
 
-  constructor(private auth: LoopBackAuth, private donationResponseApi: DonationResponseApi, ) { }
+  constructor(private router: Router, private auth: LoopBackAuth, private donationResponseApi: DonationResponseApi, ) { }
 
   ngOnInit() {
 
@@ -33,7 +34,7 @@ export class DonnerHistoryComponent implements OnInit {
     this.userId = this.auth.getCurrentUserId();
 
     this.donationResponseApi.find({
-      include: [{ donationRequest: 'product' }],
+      include: [{ donationRequest: ['product', 'organization'] }],
       where: {
         donnerId: this.userId,
 
@@ -60,6 +61,10 @@ export class DonnerHistoryComponent implements OnInit {
     filterValue = filterValue.trim(); // Remove whitespace
     filterValue = filterValue.toLowerCase(); // MatTableDataSource defaults to lowercase matches
     this.dataSource.filter = filterValue;
+  }
+
+  public goToOrg(id: string) {
+    this.router.navigate(['/catalog'], { queryParams: { orgId: id } });
   }
 
 }

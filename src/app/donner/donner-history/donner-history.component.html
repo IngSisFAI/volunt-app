@@ -27,9 +27,21 @@
     </ng-container>
 
     <!-- CreationDate Column -->
-    <ng-container matColumnDef="Creacion">
-      <mat-header-cell *matHeaderCellDef> Creacion </mat-header-cell>
+    <ng-container matColumnDef="Creación">
+      <mat-header-cell *matHeaderCellDef> Creación </mat-header-cell>
       <mat-cell *matCellDef="let element"> {{element.creationDate | date: 'dd/MM/yy'}} </mat-cell>
+    </ng-container>
+
+    <!-- Organización Column -->
+    <ng-container matColumnDef="Organización">
+      <mat-header-cell *matHeaderCellDef> Organización </mat-header-cell>
+      <mat-cell *matCellDef="let element"> <button mat-raised-button color="accent" (click)="goToOrg(element.donationRequest.organizationId)">{{element.donationRequest.organization.name}}</button> </mat-cell>
+    </ng-container>
+
+    <!-- Contacto Column -->
+    <ng-container matColumnDef="Contacto">
+      <mat-header-cell *matHeaderCellDef> Contacto </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.donationRequest.organization.email}} </mat-cell>
     </ng-container>
 
     <!-- Action Column -->

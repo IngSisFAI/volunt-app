@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 // Interfaces
 import { DonationResponseInterface } from '../../shared/sdk/models/DonationResponse';
@@ -17,10 +18,10 @@ export class DonnerActiveResponsesComponent implements OnInit {
 
   empty: boolean = false;
   userId: String;
-  displayedColumns = ['Categoria', 'Nombre', 'Cantidad', 'Creacion', 'Accion'];
+  displayedColumns = ['Categoria', 'Nombre', 'Cantidad', 'Creación', 'Organización', 'Contacto', 'Accion'];
   dataSource = new MatTableDataSource<DonationResponseInterface>([]);
 
-  constructor(private auth: LoopBackAuth, private donationResponseApi: DonationResponseApi, ) { }
+  constructor(private router: Router, private auth: LoopBackAuth, private donationResponseApi: DonationResponseApi, ) { }
 
   ngOnInit() {
 
@@ -33,7 +34,7 @@ export class DonnerActiveResponsesComponent implements OnInit {
     this.userId = this.auth.getCurrentUserId();
 
     this.donationResponseApi.find({
-      include: [{ donationRequest: 'product' }],
+      include: [{ donationRequest: ['product', 'organization'] }],
       where: {
         donnerId: this.userId,
         alreadyDelivered: false,
@@ -70,5 +71,8 @@ export class DonnerActiveResponsesComponent implements OnInit {
     this.dataSource.filter = filterValue;
   }
 
+  public goToOrg(id: string) {
+    this.router.navigate(['/catalog'], { queryParams: { orgId: id } });
+  }
 
 }
