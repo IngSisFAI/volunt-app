@@ -1,7 +1,10 @@
 <div class="box">
   <div *ngIf="loggedIn(); then logueado else nologueado">
   </div>
-
+  <mat-form-field>
+    <input matInput [(ngModel)]="name" placeholder="What's your name?">
+  </mat-form-field>
+  <button mat-raised-button (click)="openDialog()">Pick one</button>
 </div>
 <ng-template #logueado>
   <span>Hola, {{ user.name }} </span>
