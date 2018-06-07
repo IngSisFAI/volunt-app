@@ -1,5 +1,5 @@
-<h2>Historial de donaciones</h2>
-<button mat-raised-button color="accent" [routerLink]="['/userActiveResponses']">Ver pendientes</button>
+<h2>Donaciones pendientes</h2>
+<button mat-raised-button color="accent" [routerLink]="['/userHistory']">Ver historial</button>
 <div class="example-container mat-elevation-z8">
   <div class="example-header">
     <!-- <mat-form-field>
@@ -45,15 +45,15 @@
     </ng-container>
 
     <!-- Action Column -->
-    <ng-container matColumnDef="Estado">
-      <mat-header-cell *matHeaderCellDef> Estado </mat-header-cell>
-      <mat-cell *matCellDef="let element"> {{element.alreadyDelivered?'Entregada':'Cancelada'}} </mat-cell>
+    <ng-container matColumnDef="Accion">
+      <mat-header-cell *matHeaderCellDef> Accion </mat-header-cell>
+      <mat-cell *matCellDef="let element"> <button mat-raised-button color='accent' (click)='cancelResponse(element)'> Cancelar </button> </mat-cell>
     </ng-container>
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
   </mat-table>
   <div *ngIf="empty">
-    <h4>No se encontraron donaciones</h4>
+    <h4>No se encontraron donaciones pendientes</h4>
   </div>
 </div>

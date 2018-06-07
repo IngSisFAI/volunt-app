@@ -12,9 +12,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 export class MainCatalogComponent implements OnInit {
 
-  permanentRequests: DonationRequestInterface[] = [];
-  oneTimeRequests: DonationRequestInterface[] = [];
-  requestSelected: DonationRequestInterface = null;
+  permanentRequests: DonationRequestInterface[];
+  oneTimeRequests: DonationRequestInterface[]
 
   orgs: OrganizationInterface[] = [];
   products: ProductInterface[] = [];
@@ -193,12 +192,16 @@ export class MainCatalogComponent implements OnInit {
         if (id) {
           this.orgChange(id);
         } else {
-          this.orgChange(null);
+          if (this.orgId) {
+            this.orgChange(null);
+          }
         }
         if (city) {
           this.cityChange(city);
         } else {
-          this.cityChange(null);
+          if (this.city) {
+            this.cityChange(null);
+          }
         }
       });
 

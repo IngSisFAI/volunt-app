@@ -3,7 +3,7 @@
 </h2>
 <br>
 <h3>Permanentes</h3>
-<div *ngIf="isEmpty(permanentRequestsFiltered)">
+<div *ngIf="emptyPermanentRequests">
   <h4>
       Sin pedidos por el momento
     </h4>
@@ -17,7 +17,7 @@
 </ul>
 <br>
 <h3>No Permanentes</h3>
-<div *ngIf="isEmpty(oneTimeRequestsFiltered)">
+<div *ngIf="emptyOneTimeRequests">
   <h4>
       Sin pedidos por el momento
     </h4>

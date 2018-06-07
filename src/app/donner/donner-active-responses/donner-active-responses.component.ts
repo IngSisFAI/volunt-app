@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 // Interfaces
@@ -10,15 +10,15 @@ import { MatTableDataSource } from '@angular/material';
 import { LoopBackAuth } from '../../shared/sdk';
 
 @Component({
-  selector: 'donner-history',
-  templateUrl: './donner-history.component.html',
-  styleUrls: ['./donner-history.component.css']
+  selector: 'app-donner-active-responses',
+  templateUrl: './donner-active-responses.component.html',
+  styleUrls: ['./donner-active-responses.component.css']
 })
-export class DonnerHistoryComponent implements OnInit {
+export class DonnerActiveResponsesComponent implements OnInit {
 
   empty: boolean = false;
   userId: String;
-  displayedColumns = ['Categoria', 'Nombre', 'Cantidad', 'Creación', 'Organización', 'Contacto', 'Estado'];
+  displayedColumns = ['Categoria', 'Nombre', 'Cantidad', 'Creación', 'Organización', 'Contacto', 'Accion'];
   dataSource = new MatTableDataSource<DonationResponseInterface>([]);
 
   constructor(private router: Router, private auth: LoopBackAuth, private donationResponseApi: DonationResponseApi, ) { }
@@ -37,11 +37,8 @@ export class DonnerHistoryComponent implements OnInit {
       include: [{ donationRequest: ['product', 'organization'] }],
       where: {
         donnerId: this.userId,
-
-        or: [
-          { alreadyDelivered: true },
-          { isCanceled: true }
-        ]
+        alreadyDelivered: false,
+        isCanceled: false,
       }
     }).subscribe((responses: DonationResponseInterface[]) => {
 
@@ -56,6 +53,17 @@ export class DonnerHistoryComponent implements OnInit {
         console.log(err);
       })
   }
+
+  public cancelResponse(response) {
+    //TODO agregar metodo en back end
+    this.donationResponseApi.updateAttributes(response.id, { isCanceled: false })
+      .subscribe((change) => {
+        this.dataSource.data = this.dataSource.data.filter((res) => {
+          return res.id !== response.id;
+        });
+      });
+  }
+
 
   applyFilter(filterValue: string) {
     filterValue = filterValue.trim(); // Remove whitespace

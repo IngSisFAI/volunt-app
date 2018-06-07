@@ -10,6 +10,7 @@
   <span>Hola, {{ user.name }} </span>
   <!--p class="text-truncate">ID: {{ user.id }}</p-->
   <button mat-raised-button color="accent" [routerLink]="['/userProfile']">Perfil</button>
+  <button mat-raised-button color="accent" [routerLink]="['/userActiveResponses']">Mis donaciones</button>
   <!-- TODO: Change this -->
   <button mat-raised-button color="accent" [routerLink]="['/ong']">Perfil ONG</button>
   <button mat-raised-button color="accent" (click)="logout()">Logout</button>

@@ -11,16 +11,16 @@ import { DonnerApi } from '../../shared/sdk/services/custom/Donner';
 })
 export class UserProfileComponent implements OnInit {
 
-  user: DonnerInterface;
+  userId: String;
   donner: DonnerInterface;
 
   constructor(private auth: LoopBackAuth, private donnerApi: DonnerApi, ) { }
 
   ngOnInit() {
 
-    this.user = this.auth.getCurrentUserData();
+    this.userId = this.auth.getCurrentUserId();
 
-    this.donnerApi.findById(this.user.id, {
+    this.donnerApi.findById(this.userId, {
       include: ['organizationReviews', { donationResponses: 'donationRequest' }, { city: 'province' }]
     }).subscribe((donner: DonnerInterface) => {
 

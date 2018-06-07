@@ -18,47 +18,67 @@ export class ActiveDonationsComponent implements OnInit, OnChanges {
   @Input() orgId: String = null;
   @Input() city: String = null;
 
-  _oneTimeRequests: DonationRequestInterface[];
-  oneTimeRequestsFiltered: DonationRequestInterface[];
+  _oneTimeRequests: DonationRequestInterface[] = [];
+  oneTimeRequestsFiltered: DonationRequestInterface[] = [];
   oneTimeRequestsByCity: DonationRequestInterface[];
   oneTimeRequestsByOrg: DonationRequestInterface[];
+  emptyOneTimeRequests: boolean = false;
 
   @Input() set oneTimeRequests(requests: DonationRequestInterface[]) {
+    if (requests) {
+      if (requests.length !== 0) {
+        this._oneTimeRequests = this.sortRequestsByDate(requests);
 
-    this._oneTimeRequests = this.sortRequestsByDate(requests);
+        if (this.city) {
+          this.oneTimeRequestsByCity = this._oneTimeRequests.filter(req => req.organization.city.name === this.city);
+          this.oneTimeRequestsFiltered = this.oneTimeRequestsByCity;
+        } else if (this.orgId) {
+          this.oneTimeRequestsByOrg = this._oneTimeRequests.filter(req => req.organization.id === this.orgId);
+          this.oneTimeRequestsFiltered = this.oneTimeRequestsByOrg;
+        } else {
+          this.oneTimeRequestsFiltered = this._oneTimeRequests;
+        }
+        if (this.oneTimeRequestsFiltered.length === 0) {
+          this.emptyOneTimeRequests = true;
+        }
 
-    if (this.city) {
-      this.oneTimeRequestsByCity = this._oneTimeRequests.filter(req => req.organization.city.name === this.city);
-      this.oneTimeRequestsFiltered = this.oneTimeRequestsByCity;
-    } else if (this.orgId) {
-      this.oneTimeRequestsByOrg = this._oneTimeRequests.filter(req => req.organization.id === this.orgId);
-      this.oneTimeRequestsFiltered = this.oneTimeRequestsByOrg;
-    } else {
-      this.oneTimeRequestsFiltered = this._oneTimeRequests;
+      } else {
+        this.emptyOneTimeRequests = true;
+
+      }
     }
-
-
   }
 
-  _permanentRequests: DonationRequestInterface[];
-  permanentRequestsFiltered: DonationRequestInterface[];
+  _permanentRequests: DonationRequestInterface[] = [];
+  permanentRequestsFiltered: DonationRequestInterface[] = [];
   permanentRequestsByCity: DonationRequestInterface[];
   permanentRequestsByOrg: DonationRequestInterface[];
+  emptyPermanentRequests: boolean = false;
 
   @Input() set permanentRequests(requests: DonationRequestInterface[]) {
+    if (requests) {
+      if (requests.length !== 0) {
+        this._permanentRequests = requests;
 
-    this._permanentRequests = requests;
+        if (this.city) {
+          this.permanentRequestsByCity = this._permanentRequests.filter(req => req.organization.city.name === this.city);
+          this.permanentRequestsFiltered = this.permanentRequestsByCity;
+        } else if (this.orgId) {
+          this.permanentRequestsByOrg = this._permanentRequests.filter(req => req.organization.id === this.orgId);
+          this.permanentRequestsFiltered = this.permanentRequestsByOrg;
+        } else {
+          this.permanentRequestsFiltered = this._permanentRequests;
+        }
+        if (this.permanentRequestsFiltered.length === 0) {
+          this.emptyPermanentRequests = true;
+        }
 
-    if (this.city) {
-      this.permanentRequestsByCity = this._permanentRequests.filter(req => req.organization.city.name === this.city);
-      this.permanentRequestsFiltered = this.permanentRequestsByCity;
-    } else if (this.orgId) {
-      this.permanentRequestsByOrg = this._permanentRequests.filter(req => req.organization.id === this.orgId);
-      this.permanentRequestsFiltered = this.permanentRequestsByOrg;
-    } else {
-      this.permanentRequestsFiltered = this._permanentRequests;
+      } else {
+        this.emptyPermanentRequests = true;
+
+      }
+
     }
-
   }
 
   /*
@@ -108,96 +128,122 @@ export class ActiveDonationsComponent implements OnInit, OnChanges {
     for (let propName in changes) {
       let change = changes[propName];
       console.log("cambio", propName, change);
-      switch (propName) {
-        case "city":
-          if (this.city) {
-            this.oneTimeRequestsByCity = this._oneTimeRequests.filter(req => req.organization.city.name === this.city);
-            this.permanentRequestsByCity = this._permanentRequests.filter(req => req.organization.city.name === this.city);
+      if (this._oneTimeRequests.length !== 0 || this._permanentRequests.length !== 0) {
+        switch (propName) {
+          case "city":
+            if (this.city) {
+              this.oneTimeRequestsByCity = this._oneTimeRequests.filter(req => req.organization.city.name === this.city);
+              this.permanentRequestsByCity = this._permanentRequests.filter(req => req.organization.city.name === this.city);
 
-            //this.oneTimeRequestsFiltered = this.oneTimeRequestsByCity;
-            if (this.donationType) {
-              this.oneTimeRequestsFiltered = this.oneTimeRequestsByCity.filter(req => req.product.name === this.donationType);
-              this.permanentRequestsFiltered = this.permanentRequestsByCity.filter(req => req.product.name === this.donationType);
-            } else {
-              //this.oneTimeRequestsByCity = this._oneTimeRequests.filter(req => req.product.city === this.donationType);
-              this.oneTimeRequestsFiltered = this.oneTimeRequestsByCity;
-              this.permanentRequestsFiltered = this.permanentRequestsByCity;
-            }
-          } else {
-            //city unselected
-            if (!this.orgId) {
+              //this.oneTimeRequestsFiltered = this.oneTimeRequestsByCity;
               if (this.donationType) {
-                this.oneTimeRequestsFiltered = this._oneTimeRequests.filter(req => req.product.name === this.donationType);
-                this.permanentRequestsFiltered = this._permanentRequests.filter(req => req.product.name === this.donationType);
+                this.oneTimeRequestsFiltered = this.oneTimeRequestsByCity.filter(req => req.product.name === this.donationType);
+                this.permanentRequestsFiltered = this.permanentRequestsByCity.filter(req => req.product.name === this.donationType);
               } else {
                 //this.oneTimeRequestsByCity = this._oneTimeRequests.filter(req => req.product.city === this.donationType);
-                //this.oneTimeRequestsFiltered = this._oneTimeRequests;
-                this.restaurar();
+                this.oneTimeRequestsFiltered = this.oneTimeRequestsByCity;
+                this.permanentRequestsFiltered = this.permanentRequestsByCity;
+              }
+
+              this.isEmpty();
+            } else {
+              //city unselected
+              if (this.city === null) {
+                if (!this.orgId) {
+                  if (this.donationType) {
+                    this.oneTimeRequestsFiltered = this._oneTimeRequests.filter(req => req.product.name === this.donationType);
+                    this.permanentRequestsFiltered = this._permanentRequests.filter(req => req.product.name === this.donationType);
+                  } else {
+                    //this.oneTimeRequestsByCity = this._oneTimeRequests.filter(req => req.product.city === this.donationType);
+                    //this.oneTimeRequestsFiltered = this._oneTimeRequests;
+
+                    this.restaurar();
+                  }
+                  this.isEmpty();
+                }
+
               }
             }
-          }
-          break;
-        case "donationType":
+            break;
+          case "donationType":
 
-          if (this.donationType) {
-
-            if (this.city) {
-
-              this.oneTimeRequestsFiltered = this.oneTimeRequestsByCity.filter(req => req.product.name === this.donationType);
-              this.permanentRequestsFiltered = this.permanentRequestsByCity.filter(req => req.product.name === this.donationType);
-            } else if (this.orgId) {
-              this.oneTimeRequestsFiltered = this.oneTimeRequestsByOrg.filter(req => req.product.name === this.donationType);
-              this.permanentRequestsFiltered = this.permanentRequestsByOrg.filter(req => req.product.name === this.donationType);
-            } else {
-              this.oneTimeRequestsFiltered = this._oneTimeRequests.filter(req => req.product.name === this.donationType);
-              this.permanentRequestsFiltered = this._permanentRequests.filter(req => req.product.name === this.donationType);
-            }
-            //donationType unselected
-          } else {
-            if (this.city) {
-              this.oneTimeRequestsFiltered = this.oneTimeRequestsByCity;
-              this.permanentRequestsFiltered = this.permanentRequestsByCity;
-            } else if (this.orgId) {
-              this.oneTimeRequestsFiltered = this.oneTimeRequestsByOrg;
-              this.permanentRequestsFiltered = this.permanentRequestsByOrg;
-
-            } else {
-              this.restaurar();
-            }
-          }
-          break;
-
-        case "orgId":
-          if (this.orgId) {
-            this.oneTimeRequestsByOrg = this._oneTimeRequests.filter(req => req.organization.id === this.orgId);
-            this.permanentRequestsByOrg = this._permanentRequests.filter(req => req.organization.id === this.orgId);
-            //this.oneTimeRequestsFiltered = this.oneTimeRequestsByCity;
             if (this.donationType) {
-              this.oneTimeRequestsFiltered = this.oneTimeRequestsByOrg.filter(req => req.product.name === this.donationType);
-              this.permanentRequestsFiltered = this.permanentRequestsByOrg.filter(req => req.product.name === this.donationType);
-            } else {
-              //this.oneTimeRequestsByCity = this._oneTimeRequests.filter(req => req.product.city === this.donationType);
-              this.oneTimeRequestsFiltered = this.oneTimeRequestsByOrg;
-              this.permanentRequestsFiltered = this.permanentRequestsByOrg;
-            }
-          } else {
-            //org unselected
-            if (!this.city) {
-              if (this.donationType) {
+
+              if (this.city) {
+
+                this.oneTimeRequestsFiltered = this.oneTimeRequestsByCity.filter(req => req.product.name === this.donationType);
+                this.permanentRequestsFiltered = this.permanentRequestsByCity.filter(req => req.product.name === this.donationType);
+              } else if (this.orgId) {
+                this.oneTimeRequestsFiltered = this.oneTimeRequestsByOrg.filter(req => req.product.name === this.donationType);
+                this.permanentRequestsFiltered = this.permanentRequestsByOrg.filter(req => req.product.name === this.donationType);
+              } else {
                 this.oneTimeRequestsFiltered = this._oneTimeRequests.filter(req => req.product.name === this.donationType);
                 this.permanentRequestsFiltered = this._permanentRequests.filter(req => req.product.name === this.donationType);
-              } else {
-                //this.oneTimeRequestsByCity = this._oneTimeRequests.filter(req => req.product.city === this.donationType);
-                //this.oneTimeRequestsFiltered = this._oneTimeRequests;
-                this.restaurar();
+              }
+
+              this.isEmpty();
+
+              //donationType unselected
+            } else {
+              if (this.donationType === null) {
+                if (this.city) {
+                  this.oneTimeRequestsFiltered = this.oneTimeRequestsByCity;
+                  this.permanentRequestsFiltered = this.permanentRequestsByCity;
+                } else if (this.orgId) {
+                  this.oneTimeRequestsFiltered = this.oneTimeRequestsByOrg;
+                  this.permanentRequestsFiltered = this.permanentRequestsByOrg;
+
+                } else {
+
+                  this.restaurar();
+                }
+                this.isEmpty();
+
               }
             }
-          }
-          break;
+            break;
+
+          case "orgId":
+            if (this.orgId) {
+              this.oneTimeRequestsByOrg = this._oneTimeRequests.filter(req => req.organization.id === this.orgId);
+              this.permanentRequestsByOrg = this._permanentRequests.filter(req => req.organization.id === this.orgId);
+              //this.oneTimeRequestsFiltered = this.oneTimeRequestsByCity;
+              if (this.donationType) {
+                this.oneTimeRequestsFiltered = this.oneTimeRequestsByOrg.filter(req => req.product.name === this.donationType);
+                this.permanentRequestsFiltered = this.permanentRequestsByOrg.filter(req => req.product.name === this.donationType);
+              } else {
+                //this.oneTimeRequestsByCity = this._oneTimeRequests.filter(req => req.product.city === this.donationType);
+                this.oneTimeRequestsFiltered = this.oneTimeRequestsByOrg;
+                this.permanentRequestsFiltered = this.permanentRequestsByOrg;
+              }
+
+              this.isEmpty();
+
+            } else {
+              //org unselected
+              if (this.orgId === null) {
+                if (!this.city) {
+                  if (this.donationType) {
+                    this.oneTimeRequestsFiltered = this._oneTimeRequests.filter(req => req.product.name === this.donationType);
+                    this.permanentRequestsFiltered = this._permanentRequests.filter(req => req.product.name === this.donationType);
+                  } else {
+                    //this.oneTimeRequestsByCity = this._oneTimeRequests.filter(req => req.product.city === this.donationType);
+                    //this.oneTimeRequestsFiltered = this._oneTimeRequests;
+
+                    this.restaurar();
+                  }
+                  this.isEmpty();
+                }
+
+              }
+            }
+            break;
+        }
       }
-
-
     }
+
+
+
 
     /*
         if (this.permanentRequests) {
@@ -314,9 +360,20 @@ export class ActiveDonationsComponent implements OnInit, OnChanges {
     return requests;
   }
 
-  isEmpty(col: DonationRequestInterface[]) {
-    return col.length === 0;
+  //check if cols empty
+  isEmpty() {
 
+    if (this.permanentRequestsFiltered.length === 0) {
+      this.emptyPermanentRequests = true;
+    } else {
+      this.emptyPermanentRequests = false;
+    }
+    if (this.oneTimeRequestsFiltered.length === 0) {
+      this.emptyOneTimeRequests = true;
+    } else {
+      this.emptyOneTimeRequests = false;
+
+    }
   }
 
   /*se usa el boton donar
