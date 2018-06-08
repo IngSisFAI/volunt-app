@@ -1,0 +1,59 @@
+<div class="example-container mat-elevation-z8">
+    <h1>Detalle de TAL Request</h1>
+    <div class="example-header">
+      <!-- <mat-form-field>
+              <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+            </mat-form-field> -->
+    </div>
+
+    <mat-table #table [dataSource]="dataSource">
+      <!-- Name Column -->
+      <ng-container matColumnDef="NombreDonante">
+        <mat-header-cell *matHeaderCellDef> NombreDonante </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.donner.name}} - {{element.donner.lastName}}</mat-cell>
+      </ng-container>
+
+      <!-- Amount Column -->
+      <ng-container matColumnDef="TelefonoDonante">
+        <mat-header-cell *matHeaderCellDef> TelefonoDonante </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.amount}} </mat-cell>
+      </ng-container>
+
+      <!-- Covered Column -->
+      <ng-container matColumnDef="ContactoDonante">
+        <mat-header-cell *matHeaderCellDef> ContactoDonante </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.donner.email}} </mat-cell>
+      </ng-container>
+
+      <!-- Promised Column -->
+      <ng-container matColumnDef="Cantidad">
+        <mat-header-cell *matHeaderCellDef> Cantidad </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.amount}} </mat-cell>
+      </ng-container>
+
+      <!-- CreationDate Column -->
+      <ng-container matColumnDef="Creacion">
+        <mat-header-cell *matHeaderCellDef> Creacion </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.creationDate | date: 'dd/MM/yy'}} </mat-cell>
+      </ng-container>
+
+      <!-- Promised Column -->
+      <ng-container matColumnDef="Estado">
+        <mat-header-cell *matHeaderCellDef> Estado </mat-header-cell>
+        
+        
+        <mat-cell *matCellDef="let element"> 
+          <div *ngIf='element.alreadyDelivered' >
+              Entregado
+          </div>  
+          <div *ngIf='!element.alreadyDelivered' >
+              <button (click)='confirmDelivery(element.id)' >Confirmar</button>
+          </div>
+        </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+
+</div>

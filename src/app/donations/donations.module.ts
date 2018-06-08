@@ -9,6 +9,7 @@ import { DonationsMainComponent } from './donations-main/donations-main.componen
 import { DonateAddComponent } from './donate-add/donate-add.component';
 import { DonationRequestAddComponent, AddRequestDialog } from './donation-request-add/donation-request-add.component';
 import { DonationDetailComponent } from './donation-detail/donation-detail.component';
+import { DonationRequestDetailComponent } from './donation-request-detail/donation-request-detail.component';
 
 import { LoginComponent } from '../login/login.component';
 import { MaterialModule } from '../shared/modules/material.module';
@@ -29,8 +30,10 @@ import { MaterialModule } from '../shared/modules/material.module';
     DonationsMainComponent,
     DonateAddComponent,
     DonationRequestAddComponent,
+    DonationRequestDetailComponent,
     DonationDetailComponent
   ],
-  exports: [ActiveDonationsComponent, DonationsMainComponent, DonationDetailComponent, DonateAddComponent, DonationRequestAddComponent]
+  exports: [ActiveDonationsComponent, DonationsMainComponent,
+    DonationDetailComponent, DonationRequestDetailComponent, DonateAddComponent, DonationRequestAddComponent]
 })
 export class DonationsModule { }

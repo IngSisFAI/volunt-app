@@ -20,7 +20,7 @@ export class OrganizationActiveRequestsComponent implements OnInit, OnChanges {
 
   oneTimeRequests: DonationRequestInterface[];
   permanentRequests: DonationRequestInterface[];
-  displayedColumns = ['Producto', 'Cantidad', 'Cubiertos', 'Prometidos', 'Permanente', 'Creacion', 'Expiracion', 'Accion'];
+  displayedColumns = ['Producto', 'Cantidad', 'Cubiertos', 'Prometidos', 'Permanente', 'Creacion', 'Expiracion', 'Accion', 'Detail'];
   dataSource = new MatTableDataSource<DonationRequestInterface>([]);
 
   constructor(
@@ -50,6 +50,11 @@ export class OrganizationActiveRequestsComponent implements OnInit, OnChanges {
         return rq.id !== request.id;
       });
     });
+  }
+
+  public goToDetail(request) {
+    console.log(request);
+    this.router.navigate(['/request/:idRequest'], { queryParams: { idRequest: request.id } });
   }
 
   ngOnInit() {
