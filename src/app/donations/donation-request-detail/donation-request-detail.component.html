@@ -1,10 +1,21 @@
+<div *ngIf='request'>
+<!-- <h4>ESTO IRIA EN LA UI no en este componente!</h4> -->
+<h3>Detalle del pedido</h3>
+   <label>Cantidad esperada: {{request.amount}}</label> 
+   <br/>
+   <label>Cantidad cubierta: {{request.covered}}</label> 
+   <br/>
+   <label>Creada: {{request.creationDate | date:'dd/MM/yyyy'}}</label> 
+   <br/>
+   <label>Expira: {{request.expirationDate ? (request.expirationDate | date:'dd/MM/yyyy'): 'Sin expiracion'}}</label> 
+   <br/>
+   <label>Activa: {{request.isOpen}}</label> 
+   <br/>
+   <label>Permanente: {{request.isPermanent}}</label> 
+   <br/>
+</div>
+<br/>
 <div class="example-container mat-elevation-z8">
-    <h1>Detalle de TAL Request</h1>
-    <div class="example-header">
-      <!-- <mat-form-field>
-              <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
-            </mat-form-field> -->
-    </div>
 
     <mat-table #table [dataSource]="dataSource">
       <!-- Name Column -->
@@ -16,7 +27,7 @@
       <!-- Amount Column -->
       <ng-container matColumnDef="TelefonoDonante">
         <mat-header-cell *matHeaderCellDef> TelefonoDonante </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.amount}} </mat-cell>
+        <mat-cell *matCellDef="let element"> {{element.phone? element.phone: '-'}} </mat-cell>
       </ng-container>
 
       <!-- Covered Column -->

@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { DonationRequest, DonationRequestApi, DonationResponseApi, DonationResponse } from '../../shared/sdk';
+import { DonationRequest, DonationRequestApi, DonationResponseApi, DonationResponse, DonationRequestInterface } from '../../shared/sdk';
 import { MatTableDataSource } from '@angular/material';
 import { Router, ActivatedRoute } from '@angular/router';
 import { CustomModalService } from '../../shared/utils/custom-modal/custom-modal.service';
@@ -13,25 +13,32 @@ export class DonationRequestDetailComponent implements OnInit {
 
     displayedColumns = ['NombreDonante', 'TelefonoDonante', 'ContactoDonante', 'Cantidad', 'Creacion', 'Estado'];
     dataSource = new MatTableDataSource<DonationResponse>([]);
+    public request : DonationRequestInterface;
 
     constructor(
         private router: Router,
         private route: ActivatedRoute,
+        private donationRequestApi: DonationRequestApi,
         private donationResponseApi: DonationResponseApi,
         public customModal: CustomModalService
     ) {
         this.getParams()
             .subscribe(params => {
                 const requestId = params['idRequest'];
-                this.donationResponseApi.find({
-                    include: [ {donationRequest: ['product']}, 'donner', 'donnerReview'],
-                    where: {
-                        donationRequestId: requestId
-                    }
-                }).subscribe(responses => {
-                    console.log({ responses });
-                    this.dataSource.data = <DonationResponse[]>responses;
-                });
+                this.donationRequestApi.findById(requestId)
+                .subscribe(request => {
+                    console.log({request});
+                    this.request = <DonationRequestInterface>request;
+                    this.donationResponseApi.find({
+                        include: ['donner', 'donnerReview'],
+                        where: {
+                            donationRequestId: requestId
+                        }
+                    }).subscribe(responses => {
+                        this.dataSource.data = <DonationResponse[]>responses;
+                    });
+                })
+                
             });
     }
 
@@ -43,15 +50,19 @@ export class DonationRequestDetailComponent implements OnInit {
         let data = {
             title: 'Confirmar entrega',
             description: `¿Confirma que le ha llegado ${response.amount} 
-            unidades de ${response.donationRequest.description}?`,
+            unidades de ${this.request.description}?`,
         }
-        this.customModal.openDialog(data);
-        // this.donationResponseApi.donationArrival(response.id);
+        this.customModal.openDialog(data)
+        .then(accepted => {
+            if(accepted) {
+                // this.donationResponseApi.donationArrival(response.id);
+            } else {
+                // ...
+            }
+        }).catch(err => {console.log(err)})
     }
 
-    ngOnInit() {
-
-    }
+    ngOnInit() { }
 
     applyFilter(filterValue: string) {
         filterValue = filterValue.trim(); // Remove whitespace

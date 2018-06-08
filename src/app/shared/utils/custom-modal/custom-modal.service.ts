@@ -10,9 +10,7 @@ export class CustomModalService {
 
     public openDialog(data) {
         let dialog = new CustomModal(this.dialog, data.title, data.description, data.accept, data.cancel);
-        dialog.open().then(algo => {
-            console.log(algo);
-        })
+        return dialog.open();
     }
 
 }
