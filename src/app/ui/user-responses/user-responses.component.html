@@ -1,0 +1,19 @@
+<div *ngIf="pending">
+  <h2>Donaciones pendientes</h2>
+  <button mat-raised-button color="accent" (click)="switchPending()">Ver historial</button>
+
+  <app-donner-active-responses [donationResponses]="donationResponses">
+
+  </app-donner-active-responses>
+
+</div>
+
+<div *ngIf="!pending">
+  <h2>Historial de donaciones</h2>
+  <button mat-raised-button color="accent" (click)="switchPending()">Ver pendientes</button>
+
+  <app-donner-history [donationResponses]="donationResponses">
+
+  </app-donner-history>
+
+</div>

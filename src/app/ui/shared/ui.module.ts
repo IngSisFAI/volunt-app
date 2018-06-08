@@ -17,6 +17,7 @@ import { OrganizationModule } from '../../organization/organization.module';
 import { DonnerModule } from '../../donner/donner.module';
 import { DonationsModule } from '../../donations/donations.module';
 import { MainCatalogComponent } from '../main-catalog/main-catalog.component';
+import { UserResponsesComponent } from '../user-responses/user-responses.component';
 
 import { MaterialModule } from '../../shared/modules/material.module';
 
@@ -41,7 +42,8 @@ import { MaterialModule } from '../../shared/modules/material.module';
     PageNotFoundComponent,
     MainCatalogComponent,
     FilterSidebarComponent,
-    MenuComponent
+    MenuComponent,
+    UserResponsesComponent
   ],
   exports: [
     TopNavComponent,

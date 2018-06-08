@@ -5,57 +5,65 @@ import { Router } from '@angular/router';
 import { DonationResponseInterface } from '../../shared/sdk/models/DonationResponse';
 
 // Services
-import { DonationResponseApi } from '../../shared/sdk/services/custom/DonationResponse';
 import { MatTableDataSource } from '@angular/material';
-import { LoopBackAuth } from '../../shared/sdk';
 
 @Component({
-  selector: 'donner-history',
+  selector: 'app-donner-history',
   templateUrl: './donner-history.component.html',
   styleUrls: ['./donner-history.component.css']
 })
 export class DonnerHistoryComponent implements OnInit {
 
   empty: boolean = false;
-  userId: String;
   displayedColumns = ['Categoria', 'Nombre', 'Cantidad', 'Creación', 'Organización', 'Contacto', 'Estado'];
   dataSource = new MatTableDataSource<DonationResponseInterface>([]);
 
-  constructor(private router: Router, private auth: LoopBackAuth, private donationResponseApi: DonationResponseApi, ) { }
-
-  ngOnInit() {
-
-    this.getDonationResponses();
-  }
-
-
-  getDonationResponses() {
-
-    this.userId = this.auth.getCurrentUserId();
-
-    this.donationResponseApi.find({
-      include: [{ donationRequest: ['product', 'organization'] }],
-      where: {
-        donnerId: this.userId,
-
-        or: [
-          { alreadyDelivered: true },
-          { isCanceled: true }
-        ]
-      }
-    }).subscribe((responses: DonationResponseInterface[]) => {
-
-      console.log(responses);
-      this.dataSource.data = responses;
+  @Input() set donationResponses(responses: DonationResponseInterface[]) {
+    if (responses) {
+      this.dataSource.data = responses.filter(res => res.alreadyDelivered === true || res.isCanceled === true);
       if (this.dataSource.data.length === 0) {
         this.empty = true;
       }
-    },
-      (err) => {
-        console.log('An error has ocurred');
-        console.log(err);
-      })
+    }
+
   }
+
+  constructor(private router: Router) { }
+
+
+  ngOnInit() {
+
+
+  }
+
+  /*
+    getDonationResponses() {
+
+      this.userId = this.auth.getCurrentUserId();
+
+      this.donationResponseApi.find({
+        include: [{ donationRequest: ['product', 'organization'] }],
+        where: {
+          donnerId: this.userId,
+
+          or: [
+            { alreadyDelivered: true },
+            { isCanceled: true }
+          ]
+        }
+      }).subscribe((responses: DonationResponseInterface[]) => {
+
+        console.log(responses);
+        this.dataSource.data = responses;
+        if (this.dataSource.data.length === 0) {
+          this.empty = true;
+        }
+      },
+        (err) => {
+          console.log('An error has ocurred');
+          console.log(err);
+        })
+    }*/
 
   applyFilter(filterValue: string) {
     filterValue = filterValue.trim(); // Remove whitespace

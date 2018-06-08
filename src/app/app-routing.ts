@@ -13,8 +13,6 @@ import { SignupDonnerComponent } from './signupDonner/signupDonner.component';
 import { SignupOngComponent } from './signupOng/signupOng.component';
 import { LoginComponent } from './login/login.component';
 import { DonnerDetailComponent } from './donner/donner-detail/donner-detail.component';
-import { DonnerHistoryComponent } from './donner/donner-history/donner-history.component';
-import { DonnerActiveResponsesComponent } from './donner/donner-active-responses/donner-active-responses.component';
 import { DonationsMainComponent } from './donations/donations-main/donations-main.component';
 import { ProductMainComponent } from './product/product-main/product-main.component';
 import { WantToDonateComponent } from './ui/want-to-donate/want-to-donate.component';
@@ -22,6 +20,7 @@ import { PageNotFoundComponent } from './ui/page-not-found/not-found.component';
 import { MainCatalogComponent } from './ui/main-catalog/main-catalog.component';
 import { ONGProfileComponent } from './ui/ong-profile/ong-profile.component';
 import { UserProfileComponent } from './ui/user-profile/user-profile.component';
+import { UserResponsesComponent } from './ui/user-responses/user-responses.component';
 import { OrganizationHistoryComponent } from './organization/organization-history/organization-history.component';
 import { OrganizationActiveRequestsComponent } from './organization/organization-active-requests/organization-active-requests.component';
 
@@ -46,10 +45,7 @@ const routes: Routes = [
         path: 'userProfile', component: UserProfileComponent
       },
       {
-        path: 'userHistory', component: DonnerHistoryComponent
-      },
-      {
-        path: 'userActiveResponses', component: DonnerActiveResponsesComponent
+        path: 'userResponses', component: UserResponsesComponent
       },
       {
         path: 'ong', component: ONGProfileComponent
