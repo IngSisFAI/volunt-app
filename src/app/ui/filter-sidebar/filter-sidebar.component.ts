@@ -36,8 +36,10 @@ export class FilterSidebarComponent implements OnInit {
   filteredOrgsByName: Observable<any[]>;
 
   orgIdAux: String = null;
+  productsLimit = 5;
 
   constructor(private route: ActivatedRoute, private router: Router) {
+      console.log(this.products);
 
     this.cityCtrl = new FormControl();
     this.filteredCitiesByName = this.cityCtrl.valueChanges
@@ -59,6 +61,10 @@ export class FilterSidebarComponent implements OnInit {
 
   ngOnInit() {
 
+  }
+
+  moreProducts() {
+      this.productsLimit += 5;
   }
 
   filterCitiesByName(name: string) {
