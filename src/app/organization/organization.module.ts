@@ -10,6 +10,7 @@ import { OrganizationHistoryComponent } from './organization-history/organizatio
 import { OrganizationActiveRequestsComponent } from './organization-active-requests/organization-active-requests.component';
 import { MaterialModule } from '../shared/modules/material.module';
 import { DonationsModule } from '../donations/donations.module';
+import { OrganizationRequestsComponent } from 'app/organization/organization-requests/organization-requests.component';
 
 @NgModule({
   imports: [
@@ -20,9 +21,9 @@ import { DonationsModule } from '../donations/donations.module';
   ],
   declarations: [OrganizationMainComponent, OrganizationAddComponent, OrganizationEditComponent,
     OrganizationActiveRequestsComponent,
-    OrganizationDetailComponent, OrganizationHistoryComponent],
+    OrganizationDetailComponent, OrganizationHistoryComponent, OrganizationRequestsComponent],
   exports: [OrganizationMainComponent, OrganizationDetailComponent, OrganizationEditComponent, 
-    OrganizationHistoryComponent, OrganizationActiveRequestsComponent],
+    OrganizationHistoryComponent, OrganizationActiveRequestsComponent, OrganizationRequestsComponent],
   providers: [OrganizationApi]
 })
 export class OrganizationModule { }

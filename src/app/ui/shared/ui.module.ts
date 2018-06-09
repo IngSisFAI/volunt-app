@@ -19,6 +19,7 @@ import { DonationsModule } from '../../donations/donations.module';
 import { MainCatalogComponent } from '../main-catalog/main-catalog.component';
 
 import { MaterialModule } from '../../shared/modules/material.module';
+import { ONGRequestsComponent } from 'app/ui/ong-profile/ong-requests/ong-requests.component';
 
 @NgModule({
   imports: [
@@ -41,7 +42,8 @@ import { MaterialModule } from '../../shared/modules/material.module';
     PageNotFoundComponent,
     MainCatalogComponent,
     FilterSidebarComponent,
-    MenuComponent
+    MenuComponent,
+    ONGRequestsComponent
   ],
   exports: [
     TopNavComponent,
@@ -50,7 +52,8 @@ import { MaterialModule } from '../../shared/modules/material.module';
     WantToDonateComponent,
     PageNotFoundComponent,
     MenuComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    ONGRequestsComponent
   ],
 })
 export class UiModule { }

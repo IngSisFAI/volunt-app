@@ -25,6 +25,7 @@ import { UserProfileComponent } from './ui/user-profile/user-profile.component';
 import { OrganizationHistoryComponent } from './organization/organization-history/organization-history.component';
 import { OrganizationActiveRequestsComponent } from './organization/organization-active-requests/organization-active-requests.component';
 import { DonationRequestDetailComponent } from './donations/donation-request-detail/donation-request-detail.component';
+import { ONGRequestsComponent } from 'app/ui/ong-profile/ong-requests/ong-requests.component';
 
 
 const routes: Routes = [
@@ -54,6 +55,9 @@ const routes: Routes = [
       },
       {
         path: 'ong', component: ONGProfileComponent
+      },
+      {
+        path: 'requests', component: ONGRequestsComponent
       },
       {
         path: 'history', component: OrganizationHistoryComponent

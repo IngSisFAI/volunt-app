@@ -1,0 +1,84 @@
+<div class="example-container mat-elevation-z8">
+    <div class="example-header">
+        <app-donation-request-add>
+
+        </app-donation-request-add>
+        <mat-radio-group style='float:right' [(ngModel)]="showRequests">
+            <mat-radio-button [value]="0">
+                Todas
+            </mat-radio-button>
+            <mat-radio-button [value]="1">
+                Abiertas
+            </mat-radio-button>
+            <mat-radio-button [value]="2">
+                Cerradas
+            </mat-radio-button>
+        </mat-radio-group>
+    </div>
+
+    <mat-table #table [dataSource]="dataSource">
+        <!-- Category Column -->
+        <ng-container matColumnDef="Producto">
+            <mat-header-cell *matHeaderCellDef> Categoria </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.product.name}} </mat-cell>
+        </ng-container>
+
+        <!-- Covered/Amount Column -->
+        <ng-container matColumnDef="Recibidos">
+            <mat-header-cell *matHeaderCellDef> Recibidos </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.covered}}/{{element.amount}} </mat-cell>
+        </ng-container>
+
+        <!-- Promised Column -->
+        <ng-container matColumnDef="Prometidos">
+            <mat-header-cell *matHeaderCellDef> Prometidos </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.promised}} </mat-cell>
+        </ng-container>
+
+        <!-- IsPermanent Column -->
+        <ng-container matColumnDef="Permanente">
+            <mat-header-cell *matHeaderCellDef> Permanente </mat-header-cell>
+            <mat-cell *matCellDef="let element">
+                <mat-checkbox [disabled]='true'  [(ngModel)]="element.isPermanent"></mat-checkbox>
+            </mat-cell>
+        </ng-container>
+
+        <!-- CreationDate Column -->
+        <ng-container matColumnDef="Creacion">
+            <mat-header-cell *matHeaderCellDef> Creacion </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.creationDate | date: 'dd/MM/yy'}} </mat-cell>
+        </ng-container>
+
+        <!-- ExpirationDate Column -->
+        <ng-container matColumnDef="Expiracion">
+            <mat-header-cell *matHeaderCellDef> Expiracion </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.expirationDate | date: 'dd/MM/yy'}} </mat-cell>
+        </ng-container>
+
+        <!-- Action Column -->
+        <ng-container matColumnDef="Accion">
+            <mat-header-cell *matHeaderCellDef> Accion </mat-header-cell>
+            <mat-cell *matCellDef="let element">
+                <div *ngIf='element.isOpen'>
+                    <button mat-raised-button color="warn" (click)='closeRequest(element)'> Cerrar
+                    </button>
+                </div>
+                <div *ngIf='!element.isOpen'>
+                    <button mat-raised-button color="primary" (click)='openRequest(element)'> Re-abrir </button>
+                </div>
+            </mat-cell>
+
+        </ng-container>
+
+        <!-- Detail Column -->
+        <ng-container matColumnDef="Detail">
+            <mat-header-cell *matHeaderCellDef> Detalle </mat-header-cell>
+            <mat-cell *matCellDef="let element">
+                <button mat-raised-button color="accent" (click)='goToDetail(element)'> Detalle </button>
+            </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+</div>

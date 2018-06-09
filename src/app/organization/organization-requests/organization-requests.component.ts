@@ -10,16 +10,15 @@ import { MatTableDataSource } from '@angular/material';
 import { LoopBackAuth } from '../../shared/sdk';
 
 @Component({
-  selector: 'app-organization-active-requests',
-  templateUrl: './organization-active-requests.component.html',
-  styleUrls: ['./organization-active-requests.component.css']
+  selector: 'app-organization-requests',
+  templateUrl: './organization-requests.component.html',
+  styleUrls: ['./organization-requests.component.css']
 })
-export class OrganizationActiveRequestsComponent implements OnInit, OnChanges {
+export class OrganizationRequestsComponent implements OnInit, OnChanges {
 
-  oneTimeRequests: DonationRequestInterface[];
-  permanentRequests: DonationRequestInterface[];
-  displayedColumns = ['Producto', 'Cantidad', 'Cubiertos', 'Prometidos', 'Permanente', 'Creacion', 'Expiracion', 'Accion', 'Detail'];
+  displayedColumns = ['Producto', 'Recibidos', 'Prometidos', 'Permanente', 'Creacion', 'Expiracion', 'Accion', 'Detail'];
   dataSource = new MatTableDataSource<DonationRequestInterface>([]);
+  showRequests = 0;
 
   constructor(
     private donationRequestApi: DonationRequestApi,
@@ -31,8 +30,7 @@ export class OrganizationActiveRequestsComponent implements OnInit, OnChanges {
     this.donationRequestApi.find({
       include: ['product'],
       where: {
-        organizationId: organizationId,
-        // isOpen: true TODO: descomentar
+        organizationId: organizationId
       }
     })
       .subscribe(requests => {

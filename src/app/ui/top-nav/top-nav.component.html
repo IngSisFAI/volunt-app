@@ -6,14 +6,14 @@
     <span class='menuButton'>Menu</span>
     <div id="headerDivider-left"></div>
     <span class="demo-fill-remaining"></span>
-
+    <button mat-raised-button color="accent" [routerLink]="['/catalog']">DONAR</button>
     <mat-menu #sections="matMenu">
-        <button mat-menu-item color="accent" [routerLink]="['/products']">Productos</button>
-        <!-- <button mat-menu-item color="accent" [routerLink]="['/donners']">Donadores</button> -->
-        <button mat-menu-item color="accent" [routerLink]="['/']">Raiz</button>
+        <button mat-menu-item [routerLink]="['/products']">Productos</button>
+        <!-- <button mat-menu-item [routerLink]="['/donners']">Donadores</button> -->
+        <button mat-menu-item [routerLink]="['/']">Raiz</button>
     
-        <!-- <button mat-menu-item color="accent" [routerLink]="['/donations']">Donations</button> -->
-        <button mat-menu-item color="accent" [routerLink]="['/catalog']">Catalogo de Pedidos</button>
+        <!-- <button mat-menu-item [routerLink]="['/donations']">Donations</button> -->
+        <button mat-menu-item [routerLink]="['/catalog']">Catalogo de Pedidos</button>
         <!-- <button mat-menu-item>Help</button> -->
     </mat-menu>
     

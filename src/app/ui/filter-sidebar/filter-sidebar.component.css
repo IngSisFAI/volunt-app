@@ -37,7 +37,7 @@ a {
   padding: .3em 0;
   /* height: 1.6em; */
   border-radius: 4px;
-  margin-left: 2em;
+  /* margin-left: 2em; */
 }
 
 .types li:hover {
@@ -100,4 +100,9 @@ button:hover {
 .tag .text {
   position: relative;
   top: -3px;
+}
+
+mat-card {
+    margin-top: 10px;
+    margin-bottom: 10px;
 }

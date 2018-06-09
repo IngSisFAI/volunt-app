@@ -1,22 +1,16 @@
-
 @import '~@angular/material/theming';
 
-// always include only once per project
 @include mat-core();
-/* You can add global styles to this file, and also import other style files */
-// @import '~@angular/material/prebuilt-themes/purple-green.css';
-
 
 
 // Define an alternate dark theme.
-$dark-primary: mat-palette($mat-grey, 200);
-$dark-accent:  mat-palette($mat-red, 700);
-$dark-warn:    mat-palette($mat-deep-orange);
-$dark-theme:   mat-light-theme($dark-primary, $dark-accent, $dark-warn);
+$main-primary: mat-palette($mat-grey, 50);
+$main-accent:  mat-palette($mat-red, 700);
+$main-warn:    mat-palette($mat-deep-orange);
+$main-theme:   mat-light-theme($main-primary, $main-accent, $main-warn);
 
-// .white-theme {
-  @include angular-material-theme($dark-theme);
-// }
+@include angular-material-theme($main-theme);
+
 
 // Define the default theme (same as the example above).
 $candy-app-primary: mat-palette($mat-indigo);

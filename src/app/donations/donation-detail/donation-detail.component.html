@@ -1,49 +1,59 @@
 <div>
-  <mat-card *ngIf="!isPermanent()" class="example-card">
-    <mat-card-header>
-      <div mat-card-avatar class="example-header-image"><img mat-card-image src="{{selectedDonationRequest.product.Icon}}" alt="Image"></div>
-      <mat-card-title>{{selectedDonationRequest.product.name}}</mat-card-title>
-      <mat-card-subtitle>Dog Breed</mat-card-subtitle>
-    </mat-card-header>
-    <img mat-card-image src="{{selectedDonationRequest.product.Icon}}" alt="Image">
-    <mat-card-content>
-      <p>
-        No es permanente
-      </p>
-      <label>Creado el: </label>
-      <label>{{selectedDonationRequest.creationDate | date:'dd/MM'}}</label>
-      <br/>
-      <label>Finaliza el: </label>
-      <label>{{selectedDonationRequest.expirationDate | date:'dd/MM'}}</label>
-      <br/> {{selectedDonationRequest.covered}} de {{selectedDonationRequest.amount}}
-      <br/>
-      <progress value="{{selectedDonationRequest.covered}}" max="{{selectedDonationRequest.amount}}"></progress> Faltan: {{remainingProducts}}
-    </mat-card-content>
-    <mat-card-actions>
-      <button mat-button [disabled]='!isPermanent() && remainingProducts == 0' (click)="donate()">Donar!</button>
-    </mat-card-actions>
-  </mat-card>
+    <mat-card *ngIf="!isPermanent()" class="example-card">
+        <mat-card-header>
+            <div mat-card-avatar class="example-header-image">
+                <img mat-card-image src="{{selectedDonationRequest.product.Icon}}" alt="Image">
+            </div>
+            <mat-card-title>{{selectedDonationRequest.product.name}}</mat-card-title>
+            <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image src="{{selectedDonationRequest.product.Icon}}" alt="Image">
+        <mat-card-content>
+            <p>
+                No es permanente
+            </p>
+            <label>Creado el: </label>
+            <label>{{selectedDonationRequest.creationDate | date:'dd/MM'}}</label>
+            <br/>
+            <label>Finaliza el: </label>
+            <label>{{selectedDonationRequest.expirationDate | date:'dd/MM'}}</label>
+            <br/> {{selectedDonationRequest.covered}} de {{selectedDonationRequest.amount}}
+            <br/>
+            <progress value="{{selectedDonationRequest.covered}}" max="{{selectedDonationRequest.amount}}"></progress> Faltan: {{remainingProducts}}
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-raised-button color="accent" [disabled]='!isPermanent() && remainingProducts == 0' (click)="donate()">Donar!</button>
+        </mat-card-actions>
+    </mat-card>
 
-  <mat-card *ngIf="isPermanent()" class="example-card">
-    <mat-card-header>
-      <div mat-card-avatar class="example-header-image"></div>
-      <mat-card-title>{{selectedDonationRequest.product.name}}</mat-card-title>
-      <mat-card-subtitle>Dog Breed</mat-card-subtitle>
-    </mat-card-header>
-    <img mat-card-image src="{{selectedDonationRequest.product.Icon}}" alt="Image">
-    <mat-card-content>
-      <p>
-        Lo necesitamos todos los meses!
-      </p>
-      <label>Creado el: </label>
-      <label>{{selectedDonationRequest.creationDate | date:'dd/MM'}}</label>
-      <br/>
-      <progress value="{{selectedDonationRequest.covered}}" max="{{selectedDonationRequest.amount}}"></progress> Faltan: {{remainingProducts}}
-    </mat-card-content>
-    <mat-card-actions>
-      <button mat-button [disabled]='!isPermanent() && remainingProducts == 0' (click)="donate()">Donar!</button>
-    </mat-card-actions>
-  </mat-card>
+    <mat-card *ngIf="isPermanent()" class="example-card">
+        <mat-card-header>
+            <div mat-card-avatar class="example-header-image"></div>
+            <mat-card-title>{{selectedDonationRequest.product.name}}</mat-card-title>
+            <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image src="{{selectedDonationRequest.product.Icon}}" alt="Image">
+
+        <mat-divider [inset]="true"></mat-divider>
+
+        <mat-card-content>
+            <p style="padding:20px;">
+                Lo necesitamos todos los meses!
+            </p>
+
+            <mat-divider [inset]="true"></mat-divider>
+
+            <!-- <label>Creado el: </label> -->
+            <!-- <label>{{selectedDonationRequest.creationDate | date:'dd/MM'}}</label> -->
+            <br/>
+            <progress value="{{selectedDonationRequest.covered}}" max="{{selectedDonationRequest.amount}}"></progress> Faltan: {{remainingProducts}}
+        </mat-card-content>
+
+
+        <mat-card-actions>
+            <button mat-raised-button color="accent" [disabled]='!isPermanent() && remainingProducts == 0' (click)="donate()">DONAR</button>
+        </mat-card-actions>
+    </mat-card>
 
 
 </div>

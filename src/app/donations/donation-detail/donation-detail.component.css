@@ -3,8 +3,19 @@ mat-card img{
     width: 100px; /* Here you can use wherever you want to specify the width and also the height of the <img>*/
 }
 mat-card {
+    max-width: 15em;
     margin: 5px;
+    height: 20em;
 }
 .example-header-image img{
     width: 50px;
+}
+
+mat-card button {
+    margin: 5px;
+    border-radius: 12px;
+}
+
+mat-divider {
+    /* margin-bottom: 3em; */
 }
