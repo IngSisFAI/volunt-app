@@ -1,17 +1,22 @@
-<div class="demo-toolbar">
+<div class="demo-toolbar white-theme">
   <mat-toolbar color="primary">
-    <button mat-icon-button>
+    <button mat-icon-button [matMenuTriggerFor]="sections">
       <mat-icon>menu</mat-icon>
     </button>
-
-    <span>Primary Toolbar</span>
+    <span class='menuButton'>Menu</span>
+    <div id="headerDivider-left"></div>
     <span class="demo-fill-remaining"></span>
-    <button mat-raised-button color="accent" [routerLink]="['/products']">Productos</button>
-    <button mat-raised-button color="accent" [routerLink]="['/donners']">Donadores</button>
-    <button mat-raised-button color="accent" [routerLink]="['/']">Raiz</button>
 
-    <button mat-raised-button color="accent" [routerLink]="['/donations']">Donations</button>
-    <button mat-raised-button color="accent" [routerLink]="['/catalog']">Catalogo de Pedidos</button>
+    <mat-menu #sections="matMenu">
+        <button mat-menu-item color="accent" [routerLink]="['/products']">Productos</button>
+        <!-- <button mat-menu-item color="accent" [routerLink]="['/donners']">Donadores</button> -->
+        <button mat-menu-item color="accent" [routerLink]="['/']">Raiz</button>
+    
+        <!-- <button mat-menu-item color="accent" [routerLink]="['/donations']">Donations</button> -->
+        <button mat-menu-item color="accent" [routerLink]="['/catalog']">Catalogo de Pedidos</button>
+        <!-- <button mat-menu-item>Help</button> -->
+    </mat-menu>
+    
     <span class="demo-fill-remaining"></span>
     <user-nav></user-nav>
 

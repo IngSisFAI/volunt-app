@@ -1,5 +1,5 @@
 .demo-toolbar {
-  padding: 6px;
+//   padding: 6px;
 
   .demo-toolbar-icon {
     padding: 0 14px;
@@ -11,5 +11,13 @@
 
   button {
     margin: 0 4px;
+    border-radius: 12px;
   }
+
+  .menuButton {
+    padding-right: 1%;
+    border-right:1px solid #929faa; 
+    height:2em; 
+  }
+  
 }
