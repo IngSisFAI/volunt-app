@@ -20,6 +20,7 @@ import { MainCatalogComponent } from '../main-catalog/main-catalog.component';
 
 import { MaterialModule } from '../../shared/modules/material.module';
 import { ONGRequestsComponent } from 'app/ui/ong-profile/ong-requests/ong-requests.component';
+import { MainComponent } from 'app/ui/main/main.component';
 
 @NgModule({
   imports: [
@@ -43,7 +44,8 @@ import { ONGRequestsComponent } from 'app/ui/ong-profile/ong-requests/ong-reques
     MainCatalogComponent,
     FilterSidebarComponent,
     MenuComponent,
-    ONGRequestsComponent
+    ONGRequestsComponent,
+    MainComponent
   ],
   exports: [
     TopNavComponent,
@@ -53,7 +55,8 @@ import { ONGRequestsComponent } from 'app/ui/ong-profile/ong-requests/ong-reques
     PageNotFoundComponent,
     MenuComponent,
     UserProfileComponent,
-    ONGRequestsComponent
+    ONGRequestsComponent,
+    MainComponent
   ],
 })
 export class UiModule { }

@@ -1,4 +1,9 @@
 main {
-    padding: 5%;
+    padding: 2%;
     background-color: #e0e0e0; // Esto es opcional
+    // background-image: url(https://i2.wp.com/belgranoherald.com/wp-content/uploads/2017/11/donacionorganos.png?fit=660%2C330);
+    background-image: url("https://www.infobae.com/new-resizer/Hb-YwBS4zzwButbjOiZRDJGZcXM=/600x0/filters:quality(100)/s3.amazonaws.com/arc-wordpress-client-uploads/infobae-wp/wp-content/uploads/2017/04/17113531/transplante-de-organos.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 50em;
 }

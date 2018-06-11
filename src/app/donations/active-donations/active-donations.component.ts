@@ -81,39 +81,6 @@ export class ActiveDonationsComponent implements OnInit, OnChanges {
     }
   }
 
-  /*
-    @Input() set donationType(type: String) {
-
-      this._donationType = type;
-      console.log(this._donationType);
-      if ((this._oneTimeRequests && this.permanentRequests) || (this.oneTimeRequestsAux && this.permanentRequestsAux)) {
-
-        if (!(this.oneTimeRequestsAux && this.permanentRequestsAux)) {
-          this.oneTimeRequestsAux = this._oneTimeRequests;
-          this.permanentRequestsAux = this.permanentRequests;
-        }
-
-        if (type) {
-
-          this._oneTimeRequests = this.oneTimeRequestsAux.filter(req => req.product.Name === type);
-          this.permanentRequests = this.permanentRequestsAux.filter(req => req.product.Name === type);
-
-        } else {
-
-          console.log(this._donationType + "heeeee");
-          this._oneTimeRequests = this.oneTimeRequestsAux;
-          this.permanentRequests = this.permanentRequestsAux;
-
-        }
-
-      }
-      //this.sortRequestsByDate(this.oneTimeRequests);
-    }
-  */
-
-
-  //public requestSelected: DonationRequestInterface = null;
-
   constructor(
     private donationRequestApi: DonationRequestApi,
     private router: Router

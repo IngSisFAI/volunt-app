@@ -1,0 +1,16 @@
+#introduction{
+    height: 70%;
+    
+    background-image: url('https://radiobaragua.files.wordpress.com/2015/09/solidaridad-015.jpeg');
+    /* background-repeat: no-repeat; */
+    background-size: cover;
+    z-index: 1000;
+    /* min-height: 600px; */
+}
+
+#ongs {
+    height: 30%;
+
+    background-color: white;
+    /* min-height: 200px; */
+}

@@ -28,7 +28,7 @@ export class AccountService {
   // Built-in LoopBack Authentication and Typings like Account and TokenInterface
   public signinUser(user: Donner): void {
     this.donnerApi.login(user).subscribe((token: SDKToken) => {
-      alert('Fake Redirect');
+        this.router.navigate(['/catalog']);
     //   this.auth.setToken(token); ya lo hace el metodo login
       this.auth.setRememberMe(true); // Creo que tampoco hace falta
       this.auth.save(); // Creo que tampoco hace falta
@@ -42,7 +42,7 @@ export class AccountService {
   }
   public signinOrganization(organization: Organization): void {
     this.organizationApi.login(organization).subscribe((token: SDKToken) => { 
-        alert('Fake Redirect') 
+        this.router.navigate(['/catalog']);
         // We must do something to know that is an organization ... 
     });
   }
