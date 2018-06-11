@@ -11,6 +11,16 @@
 #ongs {
     height: 30%;
 
-    background-color: white;
+    background-color: lightgray;
     /* min-height: 200px; */
 }
+img {
+    border-radius: 50%;
+    height: 50%;
+    margin-top: 5em;
+}
+
+.flex-center {
+    display: flex;
+    justify-content: center;
+  }

@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { OrganizationApi, OrganizationInterface } from 'app/shared/sdk';
 
 @Component({
     selector: 'app-main',
@@ -7,5 +8,14 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 })
 export class MainComponent implements OnInit {
 
-    constructor() { }
+    public organizations: OrganizationInterface[] = [];
+    constructor(
+        private organizationsApi: OrganizationApi
+    ) {
+        this.organizationsApi.find({limit: 5, fields: ['name', 'logoUrl']})
+        .subscribe(orgs => {
+            console.log(orgs);
+            this.organizations = <OrganizationInterface[]>orgs;
+        })
+     }
 }
