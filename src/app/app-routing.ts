@@ -23,10 +23,13 @@ import { UserProfileComponent } from './ui/user-profile/user-profile.component';
 import { UserResponsesComponent } from './ui/user-responses/user-responses.component';
 import { OrganizationHistoryComponent } from './organization/organization-history/organization-history.component';
 import { OrganizationActiveRequestsComponent } from './organization/organization-active-requests/organization-active-requests.component';
+import { DonationRequestDetailComponent } from './donations/donation-request-detail/donation-request-detail.component';
+import { ONGRequestsComponent } from 'app/ui/ong-profile/ong-requests/ong-requests.component';
+import { MainComponent } from 'app/ui/main/main.component';
 
 
 const routes: Routes = [
-  { path: 'test', component: TestComponent },
+  { path: '', component: MainComponent },
   { path: 'signupDonner', component: SignupDonnerComponent },
   { path: 'signupOng', component: SignupOngComponent },
   { path: 'login', component: LoginComponent },
@@ -51,10 +54,16 @@ const routes: Routes = [
         path: 'ong', component: ONGProfileComponent
       },
       {
+        path: 'requests', component: ONGRequestsComponent
+      },
+      {
         path: 'history', component: OrganizationHistoryComponent
       },
       {
         path: 'activeRequests', component: OrganizationActiveRequestsComponent
+      },
+      {
+        path: 'request/:idRequest', component: DonationRequestDetailComponent
       },
       {
         path: 'products', component: ProductMainComponent
@@ -66,11 +75,11 @@ const routes: Routes = [
         path: 'donner', component: DonnerDetailComponent
       },
       {
-        path: '', redirectTo: '/test', pathMatch: 'full'
+        path: '', redirectTo: '/', pathMatch: 'full'
       }
     ]
   },
-  { path: '', redirectTo: '/test', pathMatch: 'full' },
+  { path: '', redirectTo: '/', pathMatch: 'full' },
   // wildcard
   { path: '**', component: PageNotFoundComponent }
 

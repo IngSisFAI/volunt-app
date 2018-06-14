@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { DonationRequest, DonationRequestApi, DonationResponseApi } from '../../shared/sdk';
+import { DonationRequest, DonationRequestApi, DonationResponseApi, OrganizationInterface } from '../../shared/sdk';
 
 import { Router } from '@angular/router';
 
@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 })
 export class DonationDetailComponent implements OnInit {
     @Input() selectedDonationRequest: DonationRequest;
+    @Input() organization: OrganizationInterface;
     @Output() donationOk = new EventEmitter();
     public remainingProducts = 0;
     constructor(

@@ -5,9 +5,10 @@
   #filters.column {
     flex: 20%;
     text-align: left;
-    border: solid 1px;
+    /* border: solid 1px; */
   }
   #requests.column {
-    flex: 80%;
+      /* Aca se podria alterar... */
+    flex: 80%; 
     text-align: center;
   }

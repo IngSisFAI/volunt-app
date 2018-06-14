@@ -1,27 +1,29 @@
 <div id="wrapper">
-  <top-nav></top-nav>
+    <top-nav></top-nav>
 
-  <mat-sidenav-container>
-    <app-menu #appmenu></app-menu>
+    <mat-sidenav-container>
+        <app-menu #appmenu></app-menu>
 
-    <aside class="column is-2 is-offset-1">
-        
-      </aside>
+        <aside class="column is-2 is-offset-1">
 
-      <main class="column is-8">
-        <!--notification-message></notification-message-->
-        <mat-card>
-          <router-outlet></router-outlet>
-        </mat-card>
+        </aside>
 
-      </main>
+        <main class="column is-8">
+            <!--notification-message></notification-message-->
+            <!-- TODO: Es necesario el mat-card? -->
+            <!-- <mat-card> -->
+            <!-- <mat-card style="background:rgba(0,0,0,0.1);"> -->
+            <router-outlet></router-outlet>
+            <!-- </mat-card> -->
+
+        </main>
+        <!-- <div>
+              <button mat-button (click)="appmenu.open()">right</button>
+          </div> -->
+
+    </mat-sidenav-container>
     <div>
-        <button mat-button (click)="appmenu.open()">right</button>
-
+        <bot-nav></bot-nav>
     </div>
 
-  </mat-sidenav-container>
-
-  <bot-nav></bot-nav>
-    
 </div>

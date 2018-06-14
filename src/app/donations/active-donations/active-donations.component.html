@@ -1,31 +1,17 @@
-<h2>
-  Active Donations
-</h2>
-<br>
-<h3>Permanentes</h3>
 <div *ngIf="emptyPermanentRequests">
-  <h4>
-      Sin pedidos por el momento
+    <h4>
+        Sin pedidos por el momento
     </h4>
 </div>
-<ul>
-  <li style="display: inline-block" *ngFor='let permanentRequest of permanentRequestsFiltered'>
-    <app-donation-detail [selectedDonationRequest]="permanentRequest">
+<div class='flex-list'>
+    <app-donation-detail *ngFor='let permanentRequest of permanentRequestsFiltered' [selectedDonationRequest]="permanentRequest">
     </app-donation-detail>
-    <!-- {{ permanentRequest.product.Name }} -->
-  </li>
-</ul>
-<br>
-<h3>No Permanentes</h3>
+    <app-donation-detail *ngFor='let oneTimeRequest of oneTimeRequestsFiltered' [selectedDonationRequest]="oneTimeRequest">
+    </app-donation-detail>
+</div>
+
 <div *ngIf="emptyOneTimeRequests">
-  <h4>
-      Sin pedidos por el momento
+    <h4>
+        Sin pedidos por el momento
     </h4>
 </div>
-<ul>
-  <li style="display: inline-block" *ngFor='let oneTimeRequest of oneTimeRequestsFiltered'>
-    <app-donation-detail [selectedDonationRequest]="oneTimeRequest">
-    </app-donation-detail>
-    <!-- {{ oneTimeRequest.product.Name }}: {{oneTimeRequest.covered}} de {{oneTimeRequest.amount}} -->
-  </li>
-</ul>

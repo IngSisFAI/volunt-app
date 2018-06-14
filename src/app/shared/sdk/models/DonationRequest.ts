@@ -6,7 +6,7 @@ export interface DonationRequestInterface {
   "amount"?: number;
   "expirationDate"?: Date;
   "isPermanent": boolean;
-  "description"?: string;
+  "description": string;
   "covered"?: number;
   "promised"?: number;
   "isOpen"?: boolean;

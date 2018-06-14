@@ -1,0 +1,17 @@
+<div style="height: 1000px">
+
+
+    <div id='introduction' class="crop">
+        <!-- <img src="https://eacnur.org/blog/wp-content/uploads/2018/03/ejemplos-de-solidaridad-823x400.jpg" alt=""> -->
+    </div>
+
+    <div id='ongs' class='flex-center'>
+        <h3>Conoce las ONGs...</h3>
+        <div *ngFor='let org of organizations'>
+
+            <a href="https://www.google.com">
+                <img src="{{org.logoUrl}}" alt="Image">
+            </a>
+        </div>
+    </div>
+</div>

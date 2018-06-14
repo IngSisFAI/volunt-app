@@ -1,21 +1,31 @@
-.demo-toolbar {
-    padding: 6px;
+.toolbar {
+    // padding: 6px;
     padding-bottom: 0px;
     color: "primary";
+    height: 40%;
   
-    .demo-toolbar-icon {
+    .toolbar-icon {
       padding: 0 14px;
     }
   
-    .demo-fill-remaining {
+    .fill-remaining {
       flex: 1 1 auto;
     }
 
-    .demo-fill-remaining2 {
+    .fill-remaining2 {
         flex: 0.3 0.3 auto;
       }
   
     button {
       margin: 0 4px;
     }
+    img {
+        width: 100%;
+        height: 100%;
+    }
   }
+
+#bottomNav {
+    display: flex;
+    flex-direction: column;
+}

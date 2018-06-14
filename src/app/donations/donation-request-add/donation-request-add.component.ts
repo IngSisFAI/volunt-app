@@ -57,9 +57,17 @@ export class DonationRequestAddComponent implements OnInit {
     this.donationRequest.creationDate = new Date();
     this.donationRequest.isPermanent = true;
     this.donationRequest.amount = 0;
+    this.donationRequest.covered = 0;
+    this.donationRequest.promised = 0;
   }
 
   create() {
+    if (this.donationRequest.isPermanent) {
+        // We must add a few months to expiration date 
+        let aux = new Date();
+        aux.setMonth(aux.getMonth() + 2);
+        this.donationRequest.expirationDate = aux;
+    }
     this.donationRequestApi.create(this.donationRequest).subscribe(
       (donationRequestRequest) => {
         console.log(donationRequestRequest);

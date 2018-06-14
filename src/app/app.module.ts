@@ -37,17 +37,23 @@ import { ONGProfileComponent } from './ui/ong-profile/ong-profile.component';
 // Material
 import { MaterialModule } from './shared/modules/material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { Dialog } from 'app/shared/utils/custom-modal/custom-modal';
+import { CustomModalService } from './shared/utils/custom-modal/custom-modal.service';
 
 
 
 @NgModule({
+    // entryComponents: [Dialog, CustomModalComponent],
+    entryComponents: [Dialog],
   declarations: [
     AppComponent,
     TestComponent,
     DonnersComponent,
     SignupDonnerComponent,
     SignupOngComponent,
-    ONGProfileComponent
+    ONGProfileComponent,
+    // CustomModalComponent,
+    Dialog
   ],
   imports: [
     BrowserModule,
@@ -68,7 +74,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MaterialModule
   ],
   providers: [
-    AccountService
+    AccountService,
+    CustomModalService
   ],
   bootstrap: [AppComponent]
 })

@@ -54,6 +54,12 @@
         <mat-cell *matCellDef="let element"> <button (click)='closeRequest(element  )'> Cerrar </button> </mat-cell>
       </ng-container>
   
+      <!-- Detail Column -->
+      <ng-container matColumnDef="Detail">
+        <mat-header-cell *matHeaderCellDef> Borrar </mat-header-cell>
+        <mat-cell *matCellDef="let element"> <button (click)='goToDetail(element)'> Detalle </button> </mat-cell>
+      </ng-container>
+  
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
       <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
     </mat-table>

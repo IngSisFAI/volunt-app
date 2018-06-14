@@ -20,6 +20,8 @@ import { MainCatalogComponent } from '../main-catalog/main-catalog.component';
 import { UserResponsesComponent } from '../user-responses/user-responses.component';
 
 import { MaterialModule } from '../../shared/modules/material.module';
+import { ONGRequestsComponent } from 'app/ui/ong-profile/ong-requests/ong-requests.component';
+import { MainComponent } from 'app/ui/main/main.component';
 
 @NgModule({
   imports: [
@@ -43,7 +45,9 @@ import { MaterialModule } from '../../shared/modules/material.module';
     MainCatalogComponent,
     FilterSidebarComponent,
     MenuComponent,
-    UserResponsesComponent
+    ONGRequestsComponent,
+    UserResponsesComponent,
+    MainComponent
   ],
   exports: [
     TopNavComponent,
@@ -52,7 +56,9 @@ import { MaterialModule } from '../../shared/modules/material.module';
     WantToDonateComponent,
     PageNotFoundComponent,
     MenuComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    ONGRequestsComponent,
+    MainComponent
   ],
 })
 export class UiModule { }
