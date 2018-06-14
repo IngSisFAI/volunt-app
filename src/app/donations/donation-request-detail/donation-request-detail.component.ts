@@ -54,12 +54,18 @@ export class DonationRequestDetailComponent implements OnInit {
         }
         this.customModal.openDialog(data)
         .then(accepted => {
-            if(accepted) {
-                // this.donationResponseApi.donationArrival(response.id);
+            if (accepted) {
+                this.donationResponseApi.donationArrival(response.id)
+                .subscribe(a => {
+                    // TODO: Check it
+                    console.log(a);
+                }, err => {
+                    console.log(err);
+                });
             } else {
                 // ...
             }
-        }).catch(err => {console.log(err)})
+        }).catch(err => {console.log(err)});
     }
 
     ngOnInit() { }

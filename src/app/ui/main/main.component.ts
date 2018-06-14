@@ -18,4 +18,7 @@ export class MainComponent implements OnInit {
             this.organizations = <OrganizationInterface[]>orgs;
         })
      }
+     public ngOnInit(){
+         
+     }
 }

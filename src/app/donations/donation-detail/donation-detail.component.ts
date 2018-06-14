@@ -17,13 +17,7 @@ export class DonationDetailComponent implements OnInit {
         private donationRequestApi: DonationRequestApi,
         private donationResponseApi: DonationResponseApi,
             private router: Router
-    ) { 
-        console.log(this.selectedDonationRequest);
-        console.log(this.selectedDonationRequest);
-        console.log(this.selectedDonationRequest);
-        console.log(this.selectedDonationRequest);
-        console.log(this.selectedDonationRequest);
-    }
+    ) { }
 
     ngOnInit() {
         const remaining = this.selectedDonationRequest.amount - this.selectedDonationRequest.covered;
