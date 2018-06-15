@@ -1,29 +1,29 @@
 <div class="box">
-    <div *ngIf="loggedIn(); then logueado else nologueado">
-    </div>
+  <div *ngIf="loggedIn(); then logueado else nologueado">
+  </div>
 
 </div>
 <ng-template #logueado>
-    <!-- TODO: use the user photo -->
-    <mat-icon>tag_faces</mat-icon>
-    <span>{{ user.name }} </span>
+  <!-- TODO: use the user photo -->
+  <mat-icon>tag_faces</mat-icon>
+  <span>{{ user.name }} </span>
 
-    <button mat-icon-button [matMenuTriggerFor]="sections">
+  <button mat-icon-button [matMenuTriggerFor]="sections">
         <mat-icon>arrow_drop_down</mat-icon>
     </button>
-    <mat-menu #sections="matMenu">
-        <button  mat-menu-item color="accent" [routerLink]="['/userProfile']">Perfil</button>
-        <button  mat-menu-item color="accent" [routerLink]="['/userActiveResponses']">Mis donaciones</button>
-        <!-- TODO: Change this -->
-        <button  mat-menu-item color="accent" [routerLink]="['/ong']">Perfil ONG</button>
-        <button  mat-menu-item color="accent" (click)="logout()">Logout</button>
-    </mat-menu>
+  <mat-menu #sections="matMenu">
+    <button mat-menu-item color="accent" [routerLink]="['/userProfile']">Perfil</button>
+    <button mat-menu-item color="accent" [routerLink]="['/userResponses']">Mis donaciones</button>
+    <!-- TODO: Change this -->
+    <button mat-menu-item color="accent" [routerLink]="['/ong']">Perfil ONG</button>
+    <button mat-menu-item color="accent" (click)="logout()">Logout</button>
+  </mat-menu>
 
 
 
 </ng-template>
 <ng-template #nologueado>
-    <span>Anonimo</span>
-    <button mat-raised-button color="accent" [routerLink]="['/signupDonner']">Signup</button>
-    <button mat-raised-button color="accent" [routerLink]="['/login']">Login</button>
+  <span>Anonimo</span>
+  <button mat-raised-button color="accent" [routerLink]="['/signupDonner']">Signup</button>
+  <button mat-raised-button color="accent" [routerLink]="['/login']">Login</button>
 </ng-template>
