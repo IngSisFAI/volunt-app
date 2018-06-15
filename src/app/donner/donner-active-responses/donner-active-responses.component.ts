@@ -63,14 +63,16 @@ export class DonnerActiveResponsesComponent implements OnInit {
     }*/
 
   public cancelResponse(response) {
-    //TODO agregar metodo en back end
-    /*
-    this.donationResponseApi.updateAttributes(response.id, { isCanceled: false })
+
+    this.donationResponseApi.cancel(response.id)
       .subscribe((change) => {
         this.dataSource.data = this.dataSource.data.filter((res) => {
           return res.id !== response.id;
         });
-      });*/
+      }, (error) => {
+        console.log("error");
+        console.log(error);
+      });
   }
 
 

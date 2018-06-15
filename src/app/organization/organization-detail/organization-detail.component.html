@@ -1,5 +1,5 @@
 <div class="org" *ngIf='organization'>
-  <div>
+  <mat-card>
     <div mat-card-avatar class="example-header-image"><img mat-card-image src="{{organization.logoUrl}}" alt="Image"></div>
     <h3>Organización {{organization.name}}</h3>
     <label>{{organization.reputation}}</label> <br>
@@ -8,5 +8,5 @@
     <label>{{organization.address}}</label> <br>
     <label>{{organization.city.name }} | {{organization.city.province.name}}</label> <br>
     <label>{{organization.webPage}}</label> <br>
-  </div>
+  </mat-card>
 </div>
