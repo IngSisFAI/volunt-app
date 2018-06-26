@@ -1,10 +1,10 @@
 <div class="col-md-6 col-md-offset-3">
     <h2>Register Organization</h2>
     <form name="form" (ngSubmit)="formOrg.form.valid && signupOrganization()" #formOrg="ngForm" novalidate>
-        <div class="form-group" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
+        <div class="form-group" [ngClass]="{ 'has-error': formOrg.submitted && !username.valid }">
             <label for="username">Nombre de Usuario</label>
             <input type="text" class="form-control" name="username" [(ngModel)]="accountOrganization.username" #username="ngModel" required />
-            <div *ngIf="f.submitted && !username.valid" class="help-block">El nombre de usuario es obligatorio</div>
+            <div *ngIf="formOrg.submitted && !username.valid" class="help-block">El nombre de usuario es obligatorio</div>
         </div>
         <div class="form-group" [ngClass]="{ 'has-error': formOrg.submitted && !username.valid }">
             <label for="inscriptionCode">inscriptionCode</label>
