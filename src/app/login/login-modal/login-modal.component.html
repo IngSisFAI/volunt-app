@@ -1,0 +1,15 @@
+<h2 mat-dialog-title>Ingresar</h2>
+<mat-dialog-content>
+  <div class="form-group">
+    <label for="username">Username</label>
+    <input type="text" class="form-control" name="username" [(ngModel)]="data.account.username" required/>
+  </div>
+  <div class="form-group">
+    <label for="password">Password</label>
+    <input type="password" class="form-control" name="password" [(ngModel)]="data.account.password" #password="ngModel" required/>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button mat-dialog-close (click)='cancel()'>{{data.cancel}}</button>
+  <button mat-button cdkFocusInitial (click)='login()'>{{data.accept}}</button>
+</mat-dialog-actions>

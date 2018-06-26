@@ -4,32 +4,37 @@
   <div class="form-group">
 
     <label>
-        Necesita {{request.amount}} {{request.product.Name}}(s)
-      </label><br>
+      Necesita {{request.amount}} {{request.product.Name}}(s)
+    </label>
+    <br>
     <label>
-        Permanente: {{request.isPermanent}}
-      </label><br>
+      Permanente: {{request.isPermanent}}
+    </label>
+    <br>
     <label>
-        Cantidad recaudada: {{request.covered}}
-      </label><br>
+      Cantidad recaudada: {{request.covered}}
+    </label>
+    <br>
     <label>
-        Cantidad "en espera": {{request.promised}}
-      </label><br>
+      Cantidad "en espera": {{request.promised}}
+    </label>
+    <br>
   </div>
   <br>
-  <div *ngIf="loggedIn()">
+  <!-- TODO: *ngIf="loggedIn()" ?? -->
+  <div >
     <div class="form-group">
-      <input type="number" class="form-control" name="amountToDonate" [(ngModel)]="donation.amount" #amountToDonate="ngModel" required />
+      <label> Quiero Donar: </label>
+      <input type="number" class="form-control" name="amountToDonate" [(ngModel)]="donation.amount" #amountToDonate="ngModel" required
+      />
     </div>
     <div class="form-group">
       <br>
-      <label> Quiero Donar: </label>
-      <button type="button" name="button" (click)='donate()'>Donar</button>
+      <button mat-raised-button color='accent'>Donar</button>
     </div>
   </div>
-  <div *ngIf="!loggedIn()">
-    <h3>Tenes cuenta? </h3>
-    <app-login>
-    </app-login>
-  </div>
 </form>
+<div *ngIf="!loggedIn()">
+  <h3>Tenes cuenta? </h3>
+  <button mat-raised-button color="warn" (click)='openLoginDialog()'>Login</button>
+</div>

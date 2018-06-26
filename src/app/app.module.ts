@@ -39,12 +39,13 @@ import { MaterialModule } from './shared/modules/material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Dialog } from 'app/shared/utils/custom-modal/custom-modal';
 import { CustomModalService } from './shared/utils/custom-modal/custom-modal.service';
+import { LoginDialog } from 'app/login/login-modal/login-modal.component';
+import { LoginModalService } from 'app/login/login-modal.service';
 
 
 
 @NgModule({
-    // entryComponents: [Dialog, CustomModalComponent],
-    entryComponents: [Dialog],
+  entryComponents: [Dialog, LoginDialog],
   declarations: [
     AppComponent,
     TestComponent,
@@ -52,8 +53,8 @@ import { CustomModalService } from './shared/utils/custom-modal/custom-modal.ser
     SignupDonnerComponent,
     SignupOngComponent,
     ONGProfileComponent,
-    // CustomModalComponent,
-    Dialog
+    Dialog,
+    LoginDialog
   ],
   imports: [
     BrowserModule,
@@ -75,7 +76,8 @@ import { CustomModalService } from './shared/utils/custom-modal/custom-modal.ser
   ],
   providers: [
     AccountService,
-    CustomModalService
+    CustomModalService,
+    LoginModalService
   ],
   bootstrap: [AppComponent]
 })

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { LoopBackConfig }        from '../shared/sdk';
-import { Organization, Donner, AccessToken }  from '../shared/sdk/models';
-//import { OrganizationApi, UserApi }            from '../shared/sdk/services';
+import { LoopBackConfig } from '../shared/sdk';
+import { Organization, Donner, AccessToken } from '../shared/sdk/models';
 import { AccountService } from '../account-service/account.service';
 
 @Component({
@@ -14,22 +13,15 @@ export class LoginComponent implements OnInit {
   private accountOrganization: Organization = new Organization();
 
   constructor(
-//      private organizationApi: OrganizationApi,
-//      private userApi: UserApi,
-      private accountService: AccountService
+    private accountService: AccountService
   ) { }
 
-  ngOnInit() {
-    console.log(this.accountDonner);
-    //this.accountDonner.username = '';
-  }
+  ngOnInit() { }
 
-  private loginUser(): void{
-    console.log('loginUser');
-    console.log(this.accountDonner);
+  private loginUser(): void {
     this.accountService.signinUser(this.accountDonner);
   }
-  private loginOrganization(): void{
+  private loginOrganization(): void {
     this.accountService.signinOrganization(this.accountOrganization);
   }
 

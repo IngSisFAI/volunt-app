@@ -37,6 +37,24 @@ export class AccountService {
       alert("Credenciales incorrectos!");
     });
   }
+
+  public sigin(user) {
+    return this.donnerApi.login(user).subscribe((token: SDKToken) => {
+      // this.router.navigate(['/catalog']);
+      //   this.auth.setToken(token); ya lo hace el metodo login
+      this.auth.setRememberMe(true); // Creo que tampoco hace falta
+      this.auth.save(); // Creo que tampoco hace falta
+    }, (err) => {
+      return this.organizationApi.login(user).subscribe((token: SDKToken) => {
+        this.router.navigate(['/catalog']);
+        // We must do something to know that is an organization ... 
+      }, (err) => {
+        console.error(err);
+        alert("Credenciales incorrectos!");
+      });
+    })
+  }
+
   public logoutUser(): void {
     this.donnerApi.logout().subscribe(() => {
       //this.auth.clear();

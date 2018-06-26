@@ -12,6 +12,7 @@ import { DonationResponseInterface } from '../../shared/sdk/models/DonationRespo
 
 // Classes
 import { DonationResponse } from '../../shared/sdk/models/DonationResponse';
+import { LoginModalService } from '../../login/login-modal.service';
 
 @Component({
   selector: 'app-donate-add',
@@ -24,7 +25,13 @@ export class DonateAddComponent implements OnInit {
 
   public donation: DonationResponseInterface;
 
-  constructor(private router: Router, private auth: LoopBackAuth, private donationResponseApi: DonationResponseApi, private accService: AccountService) { }
+  constructor(
+    private router: Router,
+    private auth: LoopBackAuth,
+    private donationResponseApi: DonationResponseApi,
+    private accService: AccountService,
+    private loginModalService: LoginModalService
+  ) { }
 
   ngOnInit() {
     this.donation = new DonationResponse();
@@ -35,7 +42,6 @@ export class DonateAddComponent implements OnInit {
   public donate() {
 
     const userId = this.auth.getCurrentUserId();
-    console.log(userId);
 
     if (userId) {
       this.donation.donnerId = userId;
@@ -51,8 +57,18 @@ export class DonateAddComponent implements OnInit {
       );
     } else {
       // Here, we have to ask to log in
-      this.router.navigate([`/login`]);
+      // this.router.navigate([`/login`]);
+      this.openLoginDialog();
     }
+  }
+
+  openLoginDialog() {
+    // TODO: Do the navigate.([])
+    this.loginModalService.openDialog().then((a) => {
+      
+    }).catch((err) => {
+      
+    });
   }
 
   loggedIn() {

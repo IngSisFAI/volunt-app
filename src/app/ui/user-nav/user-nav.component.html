@@ -25,5 +25,5 @@
 <ng-template #nologueado>
   <span>Anonimo</span>
   <button mat-raised-button color="accent" [routerLink]="['/signupDonner']">Signup</button>
-  <button mat-raised-button color="accent" [routerLink]="['/login']">Login</button>
+  <button mat-raised-button color="accent" (click)='openLoginDialog()'>Login</button>
 </ng-template>

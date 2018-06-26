@@ -4,9 +4,10 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { LoopBackAuth } from '../../shared/sdk/services';
 import { AccountService } from '../../account-service/account.service';
 
-import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
-import {DialogOverviewExampleDialog} from './login-pop.component';
+import { DialogOverviewExampleDialog } from './login-pop.component';
+import { LoginModalService } from 'app/login/login-modal.service';
 
 @Component({
   selector: 'user-nav',
@@ -22,6 +23,7 @@ export class UserNavComponent implements OnInit {
     private auth: LoopBackAuth,
     private accService: AccountService,
     public dialog: MatDialog,
+    private loginModalService: LoginModalService
   ) { }
 
   ngOnInit() {
@@ -57,5 +59,10 @@ export class UserNavComponent implements OnInit {
     }
     return loggedIn;
   }
+
+  openLoginDialog() {
+    this.loginModalService.openDialog();
+  }
+
 }
 
