@@ -51,6 +51,7 @@ export class MainCatalogComponent implements OnInit {
       {
         include: ['product', { organization: [{ city: 'province' }] }],
         where: { 
+          isOpen: true,
           isPermanent: true,
           expirationDate: { gte: now }
          }
@@ -86,6 +87,7 @@ export class MainCatalogComponent implements OnInit {
         {
           // creationDate: {lte: now },
           //  status: true,
+          isOpen: true,
           isPermanent: false,
           expirationDate: { gte: now }
         }
