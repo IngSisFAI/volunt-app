@@ -46,11 +46,14 @@ export class MainCatalogComponent implements OnInit {
   }
 
   private findPermanentRequests() {
-
+    let now = new Date();
     this.donationRequestApi.find(
       {
         include: ['product', { organization: [{ city: 'province' }] }],
-        where: { isPermanent: true }
+        where: { 
+          isPermanent: true,
+          expirationDate: { gte: now }
+         }
       })
       .subscribe((permanentRequests: DonationRequestInterface[]) => {
         console.log("permanentRequests", permanentRequests);
