@@ -89,6 +89,7 @@ button:hover {
   border-radius: 4px;
   width: 15em;
   margin-left: 3em;
+  text-align: center;
 }
 
 .tag:hover {
@@ -103,6 +104,6 @@ button:hover {
 }
 
 mat-card {
-    margin-top: 10px;
-    margin-bottom: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
