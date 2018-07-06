@@ -16,7 +16,6 @@ export class UserResponsesComponent implements OnInit {
 
   userId: String;
   donationResponses: DonationResponseInterface[];
-  pending: boolean = true;
 
   constructor(private auth: LoopBackAuth, private donationResponseApi: DonationResponseApi) { }
 
@@ -45,11 +44,6 @@ export class UserResponsesComponent implements OnInit {
         console.log('An error has ocurred');
         console.log(err);
       })
-  }
-
-  switchPending() {
-
-    this.pending = !this.pending;
   }
 
 

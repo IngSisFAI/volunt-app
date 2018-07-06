@@ -8,6 +8,7 @@ import { DonnerHistoryComponent } from './donner-history/donner-history.componen
 
 import { MaterialModule } from '../shared/modules/material.module';
 import { DonnerActiveResponsesComponent } from './donner-active-responses/donner-active-responses.component';
+import { DonnerResponsesComponent } from './donner-responses/donner-responses.component';
 
 @NgModule({
   imports: [
@@ -19,8 +20,10 @@ import { DonnerActiveResponsesComponent } from './donner-active-responses/donner
   declarations: [
     DonnerDetailComponent,
     DonnerHistoryComponent,
-    DonnerActiveResponsesComponent
+    DonnerActiveResponsesComponent,
+    DonnerResponsesComponent
   ],
-  exports: [DonnerDetailComponent, DonnerHistoryComponent, DonnerActiveResponsesComponent]
+  exports: [DonnerDetailComponent, DonnerHistoryComponent, DonnerActiveResponsesComponent, DonnerResponsesComponent]
 })
+
 export class DonnerModule { }

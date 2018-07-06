@@ -1,0 +1,82 @@
+<div class="example-container mat-elevation-z8">
+  <div class="example-header">
+    <mat-radio-group style='float:right' [(ngModel)]="showResponses" (ngModelChange)="filterResponses()">
+      <mat-radio-button [value]="0">
+        Activas
+      </mat-radio-button>
+      <mat-radio-button [value]="1">
+        Entregadas
+      </mat-radio-button>
+      <mat-radio-button [value]="2">
+        Canceladas
+      </mat-radio-button>
+      <mat-radio-button [value]="3">
+        Todas
+      </mat-radio-button>
+    </mat-radio-group>
+  </div>
+
+  <mat-table #table [dataSource]="dataSource">
+    <!-- Category Column -->
+    <ng-container matColumnDef="Categoria">
+      <mat-header-cell *matHeaderCellDef> Categoria </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.donationRequest.product.name}} </mat-cell>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="Nombre">
+      <mat-header-cell *matHeaderCellDef> Nombre </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.donationRequest.description}} </mat-cell>
+    </ng-container>
+
+    <!-- Amount Column -->
+    <ng-container matColumnDef="Cantidad">
+      <mat-header-cell *matHeaderCellDef> Cantidad </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.amount}} </mat-cell>
+    </ng-container>
+
+    <!-- CreationDate Column -->
+    <ng-container matColumnDef="Creación">
+      <mat-header-cell *matHeaderCellDef> Creación </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.creationDate | date: 'dd/MM/yy'}} </mat-cell>
+    </ng-container>
+
+    <!-- Organización Column -->
+    <ng-container matColumnDef="Organización">
+      <mat-header-cell *matHeaderCellDef> Organización </mat-header-cell>
+      <mat-cell *matCellDef="let element"> <button mat-raised-button color="accent" (click)="goToOrg(element.donationRequest.organizationId)">{{element.donationRequest.organization.name}}</button> </mat-cell>
+    </ng-container>
+
+    <!-- Contact Column -->
+    <ng-container matColumnDef="Contacto">
+      <mat-header-cell *matHeaderCellDef> Contacto </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.donationRequest.organization.email}} </mat-cell>
+    </ng-container>
+
+    <!-- State Column -->
+    <ng-container matColumnDef="Estado">
+      <mat-header-cell *matHeaderCellDef> Estado </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{getResponseState(element)}} </mat-cell>
+    </ng-container>
+
+    <!-- Action Column -->
+    <ng-container matColumnDef="Accion">
+      <mat-header-cell *matHeaderCellDef> Accion </mat-header-cell>
+      <mat-cell *matCellDef="let element">
+        <div *ngIf='isResponseActive(element)'>
+          <button mat-raised-button color='accent' (click)='cancelResponse(element)'> Cancelar </button>
+        </div>
+        <div *ngIf='!isResponseActive(element)'>
+          -
+        </div>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+
+  <div *ngIf="empty">
+    <h4>No se encontraron donaciones bajo esta categoria</h4>
+  </div>
+</div>
