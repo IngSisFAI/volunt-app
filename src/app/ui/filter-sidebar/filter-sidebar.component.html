@@ -1,59 +1,60 @@
 <div class="container">
-    <div >
+  <div>
+    <!--TODO add our logo so that it redirects to home page 
         <div>
             <br>
             <img src="" class="img-fluid mx-auto d-block" alt="" [routerLink]="['/test']" routerLinkActive="active">
-        </div>
+        </div> -->
 
-        <mat-card>
-            <h3>¿En qué localidad te gustaría donar?</h3>
-            <mat-form-field class="form-full-width">
-                <input matInput placeholder="Neuquen.." aria-label="Localidad" [matAutocomplete]="autoCity" [formControl]="cityCtrl">
-                <mat-autocomplete #autoCity="matAutocomplete">
-                    <mat-option *ngFor="let city of filteredCitiesByName | async" [value]="" (onSelectionChange)="cityChanged($event, city.name)">
-                        <span>{{city.name }}</span> |
-                        <small> {{city.province.name}}</small>
-                    </mat-option>
-                </mat-autocomplete>
-            </mat-form-field>
-            <br>
-            <br>
-            <div class="tag" *ngIf="cityAux" (click)="goTaggedCity()">
-                <a> {{cityAux }}</a>
-                <button class="delete" aria-label="Cancelar" (click)="resetCity(); $event.stopPropagation()">x</button>
-            </div>
-        </mat-card>
+    <mat-card>
+      <h3>¿En qué localidad te gustaría donar?</h3>
+      <mat-form-field class="form-full-width">
+        <input matInput placeholder="Neuquen.." aria-label="Localidad" [matAutocomplete]="autoCity" [formControl]="cityCtrl">
+        <mat-autocomplete #autoCity="matAutocomplete">
+          <mat-option *ngFor="let city of filteredCitiesByName | async" [value]="" (onSelectionChange)="cityChanged($event, city.name)">
+            <span>{{city.name }}</span> |
+            <small> {{city.province.name}}</small>
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+      <br>
+      <br>
+      <div class="tag" *ngIf="cityAux" (click)="goTaggedCity()">
+        <a> {{cityAux }}</a>
+        <button class="delete" aria-label="Cancelar" (click)="resetCity(); $event.stopPropagation()">x</button>
+      </div>
+    </mat-card>
 
-        <mat-card>
-            <div>
-                <h3>¿Qué te gustaría donar?</h3>
-                <ul class="types">
-                    <li *ngFor=" let product of products | slice:0:productsLimit;" (click)="donationTypeChanged(product.name)" [class.active]="product.name===donationTypeAux">
-                        <img class='' style="border-radius: 50%;" src="{{product.icon}}" height="20px">
-                        <a> {{product.name}} </a>
-                    </li>
-                    <!-- More button -->
-                    <div *ngIf='products.length > productsLimit'>
-                        <button mat-button (click)='moreProducts()' color='#c62828'>
+    <mat-card>
+      <div>
+        <h3>¿Qué te gustaría donar?</h3>
+        <ul class="types">
+          <li *ngFor=" let product of products | slice:0:productsLimit;" (click)="donationTypeChanged(product.name)" [class.active]="product.name===donationTypeAux">
+            <img class='' style="border-radius: 50%;" src="{{product.icon}}" height="20px">
+            <a> {{product.name}} </a>
+          </li>
+          <!-- More button -->
+          <div *ngIf='products.length > productsLimit'>
+            <button mat-button (click)='moreProducts()' color='#c62828'>
                             <mat-icon>more_horiz</mat-icon>
                         </button>
-                    </div>
-                </ul>
-            </div>
-        </mat-card>
+          </div>
+        </ul>
+      </div>
+    </mat-card>
 
-        <mat-card>
-            <h3>¿Buscas alguna ONG en particular?</h3>
-            <mat-form-field class="form-full-width">
-                <input matInput placeholder="ONG.." aria-label="ONG" [matAutocomplete]="autoOrg" [formControl]="orgCtrl">
-                <mat-autocomplete #autoOrg="matAutocomplete">
-                    <mat-option *ngFor="let org of filteredOrgsByName | async" [value]="" (onSelectionChange)="orgChanged($event, org)">
-                        <span>{{org.name }}</span> |
-                        <small> {{org.city.name}}</small>
-                    </mat-option>
-                </mat-autocomplete>
-            </mat-form-field>
-        </mat-card>
+    <mat-card>
+      <h3>¿Buscas alguna ONG en particular?</h3>
+      <mat-form-field class="form-full-width">
+        <input matInput placeholder="ONG.." aria-label="ONG" [matAutocomplete]="autoOrg" [formControl]="orgCtrl">
+        <mat-autocomplete #autoOrg="matAutocomplete">
+          <mat-option *ngFor="let org of filteredOrgsByName | async" [value]="" (onSelectionChange)="orgChanged($event, org)">
+            <span>{{org.name }}</span> |
+            <small> {{org.city.name}}</small>
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </mat-card>
 
-    </div>
+  </div>
 </div>

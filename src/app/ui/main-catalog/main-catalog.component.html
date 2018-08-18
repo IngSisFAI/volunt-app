@@ -4,8 +4,9 @@
     </app-filter-sidebar>
   </div>
 
-  <div id="requests" class="column">
-    <div *ngIf="organization">
+  <div id="catalog" class="column">
+
+    <div id="org" *ngIf="organization">
       <app-organization-detail [organization]="organization">
 
       </app-organization-detail>
@@ -13,8 +14,13 @@
     </div>
     <br>
     <br>
-    <app-active-donations [oneTimeRequests]="oneTimeRequests" [permanentRequests]="permanentRequests" [donationType]="donationType" [city]="city" [orgId]="orgId">
 
-    </app-active-donations>
+    <div id="requests">
+      <app-active-donations [oneTimeRequests]="oneTimeRequests" [permanentRequests]="permanentRequests" [donationType]="donationType" [city]="city" [orgId]="orgId">
+
+      </app-active-donations>
+    </div>
+
   </div>
+
 </div>
