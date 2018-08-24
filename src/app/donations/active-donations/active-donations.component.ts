@@ -94,7 +94,6 @@ export class ActiveDonationsComponent implements OnInit, OnChanges {
 
     for (let propName in changes) {
       let change = changes[propName];
-      console.log("cambio", propName, change);
       if (this._oneTimeRequests.length !== 0 || this._permanentRequests.length !== 0) {
         switch (propName) {
           case "city":
