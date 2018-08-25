@@ -1,8 +1,9 @@
 <div class="container">
-  <h1>Want to donate</h1>
   <div *ngIf="request" class="row">
-    <div class="column">
+    <div id=donationInfo class="column">
       <mat-card>
+
+        <h1>¡Gracias!</h1>
 
         <app-donate-add [request]="request" (donated)="donated($event)">
 
@@ -10,13 +11,16 @@
 
       </mat-card>
     </div>
-    <div class="column">
-      <mat-card>
-        <app-organization-detail [organization]="request.organization">
+    <div id=orgInfo class="column">
 
-        </app-organization-detail>
-        <br>
-        <button mat-raised-button color="accent" (click)="goToOrg()">Ver otras necesidades de esta ONG</button>
+
+      <app-organization-detail [organization]="request.organization">
+
+      </app-organization-detail>
+      <mat-card>
+        <div>
+          <button mat-raised-button color="accent" (click)="goToOrg()">Ver otras necesidades de esta ONG</button>
+        </div>
       </mat-card>
     </div>
   </div>

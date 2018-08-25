@@ -1,8 +1,21 @@
 .row {
   display: flex;
+  padding-top: 0.5em;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
 }
 
-.column {
-  flex: 50%;
+.row>div {
+  margin-top: 0.5em;
   text-align: center;
+}
+
+#donationInfo {
+  /* border: solid 1px; */
+}
+
+#orgInfo {
+  /* Aca se podria alterar... */
+  padding: 0 0 0 1.2em;
 }

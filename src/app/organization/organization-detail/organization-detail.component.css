@@ -1,15 +1,26 @@
 mat-card img {
   object-fit: cover;
   /*this makes de image in src fit to the size of specified below*/
-  width: 5px;
+  width: 8em;
   /* Here you can use wherever you want to specify the width and also the height of the <img>*/
 }
 
-mat-card {
-  /* margin: 0 5px 5px 5px; */
+.row {
+  display: flex;
+  flex-direction: row;
 }
 
-.example-header-image img {
-  width: 150px;
-  margin: 2em 2em 2em 1.5em;
+.row>div {}
+
+#image {
+  flex: 40;
+  padding: 2.5em 2.2em 2em 1.5em;
+  /* border: solid 1px; */
+}
+
+#orgInfo {
+  /* Aca se podria alterar... */
+  flex-wrap: wrap;
+  flex: 60%;
+  text-align: left;
 }

@@ -1,12 +1,24 @@
-<div class="org" *ngIf='organization'>
-  <mat-card>
-    <div mat-card-avatar class="example-header-image"><img mat-card-image src="{{organization.logoUrl}}" alt="Image"></div>
-    <h3>Organización {{organization.name}}</h3>
-    <label>{{organization.reputation}}</label> <br>
-    <label>{{organization.email}}</label> <br>
-    <label>{{organization.phoneNumber}}</label> <br>
-    <label>{{organization.address}}</label> <br>
-    <label>{{organization.city?.name }} | {{organization.city?.province.name}}</label> <br>
-    <label>{{organization.webPage}}</label> <br>
-  </mat-card>
-</div>
+<mat-card>
+
+  <div class="row" *ngIf='organization'>
+
+    <div id=image class="column">
+
+      <img mat-card-image src="{{organization.logoUrl}}" alt="Image">
+
+    </div>
+    <div id=orgInfo class="column">
+      <h3>Organización {{organization.name}}</h3>
+      <label>{{organization.reputation}}</label> <br>
+      <label>{{organization.email}}</label> <br>
+      <label>{{organization.phoneNumber}}</label> <br>
+      <label>{{organization.address}}</label> <br>
+      <label>{{organization.city?.name }} | {{organization.city?.province.name}}</label> <br>
+      <label>{{organization.webPage}}</label> <br>
+
+    </div>
+
+  </div>
+
+
+</mat-card>
