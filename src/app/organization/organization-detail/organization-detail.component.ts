@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
 import { Organization, OrganizationInterface } from '../../shared/sdk/models/Organization';
 import { OrganizationApi } from '../../shared/sdk/services/custom/Organization';
 
@@ -10,9 +11,11 @@ import { OrganizationApi } from '../../shared/sdk/services/custom/Organization';
 export class OrganizationDetailComponent implements OnInit {
 
   @Input() organization: Organization;
+  @Input() showMoreRequestsButton: boolean;
   //organization: Object;
 
   constructor(
+    private router: Router,
     //private organizationService: OrganizationApi
   ) { }
 
@@ -20,17 +23,9 @@ export class OrganizationDetailComponent implements OnInit {
     //  this.getOrganization();
 
   }
-  /*
-    getOrganization() {
-      this.organizationService.findById(this.organizationId)
-        .subscribe(
-          org => {
-            console.log('organization: ', org);
-            this.organization = org;
-            //organization.emit(organization);
-          }
-        )
-    }
-  */
+
+  public goToOrg() {
+    this.router.navigate(['/catalog'], { queryParams: { orgId: this.organization.id } });
+  }
 
 }

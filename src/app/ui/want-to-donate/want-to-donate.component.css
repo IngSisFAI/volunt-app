@@ -3,7 +3,6 @@
   padding-top: 0.5em;
   flex-flow: row wrap;
   justify-content: center;
-  align-items: center;
 }
 
 .row>div {

@@ -1,39 +1,17 @@
-<h3>Detalle del producto</h3>
-
-<form class="" #f="ngForm" (ngSubmit)="f.form.valid && donate()">
-  <div class="form-group">
-
-    <label>
-      Necesita {{request.amount}} {{request.product.Name}}(s)
-    </label>
-    <br>
-    <label>
-      Permanente: {{request.isPermanent}}
-    </label>
-    <br>
-    <label>
-      Cantidad recaudada: {{request.covered}}
-    </label>
-    <br>
-    <label>
-      Cantidad "en espera": {{request.promised}}
-    </label>
-    <br>
-  </div>
-  <br>
-  <!-- TODO: *ngIf="loggedIn()" ?? -->
-  <div>
+<div *ngIf="loggedIn()">
+  <form class="" #f="ngForm" (ngSubmit)="f.form.valid && donate()">
     <div class="form-group">
       <label> Quiero Donar: </label>
-      <input type="number" class="form-control" name="amountToDonate" [(ngModel)]="donation.amount" #amountToDonate="ngModel" required />
+      <input type="number" min="1" max="999" class="form-control" name="amountToDonate" [(ngModel)]="donation.amount" #amountToDonate="ngModel" required />
     </div>
     <div class="form-group">
       <br>
       <br>
       <button mat-raised-button color='accent'>Donar</button>
     </div>
-  </div>
-</form>
+
+  </form>
+</div>
 <div *ngIf="!loggedIn()">
   <h3>Tenes cuenta? </h3>
   <button mat-raised-button color="warn" (click)='openLoginDialog()'>Login</button>

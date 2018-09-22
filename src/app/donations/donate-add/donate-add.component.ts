@@ -35,7 +35,7 @@ export class DonateAddComponent implements OnInit {
 
   ngOnInit() {
     this.donation = new DonationResponse();
-    this.donation.amount = 0;
+    this.donation.amount = 1;
     this.donation.donationRequestId = this.request.id;
   }
 
@@ -65,9 +65,9 @@ export class DonateAddComponent implements OnInit {
   openLoginDialog() {
     // TODO: Do the navigate.([])
     this.loginModalService.openDialog().then((a) => {
-      
+
     }).catch((err) => {
-      
+
     });
   }
 

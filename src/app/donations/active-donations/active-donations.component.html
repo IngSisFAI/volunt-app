@@ -3,13 +3,15 @@
         Sin pedidos permanentes por el momento
     </h4>
 </div>
-<div class='flex-list'>
-  <app-donation-detail *ngFor='let permanentRequest of permanentRequestsFiltered' [selectedDonationRequest]="permanentRequest">
-  </app-donation-detail>
+<div class='requests'>
+
   <app-donation-detail *ngFor='let oneTimeRequest of oneTimeRequestsFiltered' [selectedDonationRequest]="oneTimeRequest">
   </app-donation-detail>
-</div>
 
+  <app-donation-detail *ngFor='let permanentRequest of permanentRequestsFiltered' [selectedDonationRequest]="permanentRequest">
+  </app-donation-detail>
+
+</div>
 <div *ngIf="emptyOneTimeRequests">
   <h4>
         Sin pedidos temporales por el momento

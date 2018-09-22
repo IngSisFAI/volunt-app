@@ -30,17 +30,10 @@ export class WantToDonateComponent implements OnInit {
 
   ngOnInit() { }
 
-  public donated(response) {
-    console.log('** Response');
-    console.log(response);
-  }
 
   public donationClicked(wantToDonate: Boolean) {
     this.wantToDonate = wantToDonate;
   }
 
-  public goToOrg() {
-    this.router.navigate(['/catalog'], { queryParams: { orgId: this.request.organization.id } });
-  }
 
 }

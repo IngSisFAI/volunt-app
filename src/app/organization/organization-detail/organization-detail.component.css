@@ -13,7 +13,7 @@ mat-card img {
 .row>div {}
 
 #image {
-  flex: 40;
+  flex: 40%;
   padding: 2.5em 2.2em 2em 1.5em;
   /* border: solid 1px; */
 }
@@ -23,4 +23,8 @@ mat-card img {
   flex-wrap: wrap;
   flex: 60%;
   text-align: left;
+}
+
+#orgButton {
+  margin-top: 2em;
 }

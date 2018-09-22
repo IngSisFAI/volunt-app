@@ -15,10 +15,7 @@
 
 #catalog {
   /* Aca se podria alterar... */
-  flex-direction: column;
-  flex-wrap: wrap;
   flex: 80%;
-  text-align: center;
   padding: 0 0 0 1em;
 }
 
