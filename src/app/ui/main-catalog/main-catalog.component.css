@@ -1,0 +1,30 @@
+.row {
+  display: flex;
+  padding-top: 0.5em;
+}
+
+.row>div {
+  margin-top: 0.5em;
+}
+
+#filters.column {
+  flex: 20%;
+  text-align: left;
+  /* border: solid 1px; */
+}
+
+#catalog {
+  /* Aca se podria alterar... */
+  flex: 80%;
+  padding: 0 0 0 1em;
+}
+
+#org {
+  margin: 0 10em 0 10em;
+  /* min-width: 50em; */
+}
+
+#requests {
+  margin: 0 0 0 1em;
+  background-color: rgba(0, 0, 0, 0.1);
+}

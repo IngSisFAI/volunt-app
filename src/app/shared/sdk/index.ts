@@ -34,13 +34,12 @@
 * export class AppModule { }
 *
 **/
-import { JSONSearchParams } from './services/core/search.params';
 import { ErrorHandler } from './services/core/error.service';
 import { LoopBackAuth } from './services/core/auth.service';
 import { LoggerService } from './services/custom/logger.service';
 import { SDKModels } from './services/custom/SDKModels';
 import { InternalStorage, SDKStorage } from './storage/storage.swaps';
-import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CookieBrowser } from './storage/cookie.browser';
@@ -51,15 +50,17 @@ import { SocketConnection } from './sockets/socket.connections';
 import { RealTime } from './services/core/real.time';
 import { UserApi } from './services/custom/User';
 import { OrganizationApi } from './services/custom/Organization';
+import { EmailApi } from './services/custom/Email';
 import { DonnerApi } from './services/custom/Donner';
 import { ContactApi } from './services/custom/Contact';
 import { DonnerReviewApi } from './services/custom/DonnerReview';
 import { OrganizationReviewApi } from './services/custom/OrganizationReview';
-import { OneTimeRequestApi } from './services/custom/OneTimeRequest';
-import { PermanentRequestApi } from './services/custom/PermanentRequest';
+import { DonationRequestApi } from './services/custom/DonationRequest';
 import { DonationResponseApi } from './services/custom/DonationResponse';
 import { ProductApi } from './services/custom/Product';
 import { UnitApi } from './services/custom/Unit';
+import { CityApi } from './services/custom/City';
+import { ProvinceApi } from './services/custom/Province';
 /**
 * @module SDKBrowserModule
 * @description
@@ -70,7 +71,7 @@ import { UnitApi } from './services/custom/Unit';
 *  3.- Progressive applications (Angular Mobile, Ionic, WebViews, etc)
 **/
 @NgModule({
-  imports:      [ CommonModule, HttpModule ],
+  imports:      [ CommonModule, HttpClientModule ],
   declarations: [ ],
   exports:      [ ],
   providers:    [
@@ -88,20 +89,21 @@ export class SDKBrowserModule {
       providers : [
         LoopBackAuth,
         LoggerService,
-        JSONSearchParams,
         SDKModels,
         RealTime,
         UserApi,
         OrganizationApi,
+        EmailApi,
         DonnerApi,
         ContactApi,
         DonnerReviewApi,
         OrganizationReviewApi,
-        OneTimeRequestApi,
-        PermanentRequestApi,
+        DonationRequestApi,
         DonationResponseApi,
         ProductApi,
         UnitApi,
+        CityApi,
+        ProvinceApi,
         internalStorageProvider,
         { provide: SDKStorage, useClass: StorageBrowser },
         { provide: SocketDriver, useClass: SocketBrowser }

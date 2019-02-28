@@ -1,23 +1,28 @@
 /* tslint:disable */
-import {
-  DonationResponse
-} from '../index';
 
 declare var Object: any;
 export interface DonnerReviewInterface {
-  "calification"?: string;
+  "liked": boolean;
+  "description": string;
   "id"?: any;
   "organizationId"?: any;
-  "reviewedResponseId"?: any;
-  reviewedResponse?: DonationResponse;
+  "createdAt": Date;
+  "updatedAt": Date;
+  "donationResponseId"?: any;
+  organization?: any;
+  donationResponse?: any;
 }
 
 export class DonnerReview implements DonnerReviewInterface {
-  "calification": string;
+  "liked": boolean;
+  "description": string;
   "id": any;
   "organizationId": any;
-  "reviewedResponseId": any;
-  reviewedResponse: DonationResponse;
+  "createdAt": Date;
+  "updatedAt": Date;
+  "donationResponseId": any;
+  organization: any;
+  donationResponse: any;
   constructor(data?: DonnerReviewInterface) {
     Object.assign(this, data);
   }
@@ -51,8 +56,12 @@ export class DonnerReview implements DonnerReviewInterface {
       path: 'DonnerReviews',
       idName: 'id',
       properties: {
-        "calification": {
-          name: 'calification',
+        "liked": {
+          name: 'liked',
+          type: 'boolean'
+        },
+        "description": {
+          name: 'description',
           type: 'string'
         },
         "id": {
@@ -63,18 +72,34 @@ export class DonnerReview implements DonnerReviewInterface {
           name: 'organizationId',
           type: 'any'
         },
-        "reviewedResponseId": {
-          name: 'reviewedResponseId',
+        "createdAt": {
+          name: 'createdAt',
+          type: 'Date'
+        },
+        "updatedAt": {
+          name: 'updatedAt',
+          type: 'Date'
+        },
+        "donationResponseId": {
+          name: 'donationResponseId',
           type: 'any'
         },
       },
       relations: {
-        reviewedResponse: {
-          name: 'reviewedResponse',
-          type: 'DonationResponse',
-          model: 'DonationResponse',
+        organization: {
+          name: 'organization',
+          type: 'any',
+          model: '',
           relationType: 'belongsTo',
-                  keyFrom: 'reviewedResponseId',
+                  keyFrom: 'organizationId',
+          keyTo: 'id'
+        },
+        donationResponse: {
+          name: 'donationResponse',
+          type: 'any',
+          model: '',
+          relationType: 'belongsTo',
+                  keyFrom: 'donationResponseId',
           keyTo: 'id'
         },
       }

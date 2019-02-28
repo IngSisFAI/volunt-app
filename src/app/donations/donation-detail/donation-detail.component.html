@@ -1,0 +1,50 @@
+<div>
+  <mat-card class="example-card" *ngIf="selectedDonationRequest.product">
+    <mat-card-header style="height: 25%;">
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>
+        <div class='cardTitle'>
+          {{selectedDonationRequest.product.name}}
+        </div>
+      </mat-card-title>
+      <div mat-card-avatar class="example-header-image" *ngIf='organization'>
+        <img mat-card-image src="{{organization.icon}}" alt="Image">
+      </div>
+      <mat-card-subtitle *ngIf="!isPermanent()">
+        Antes del {{selectedDonationRequest.expirationDate | date:'dd/MM'}}
+      </mat-card-subtitle>
+    </mat-card-header>
+    <!-- <img mat-card-image src="{{selectedDonationRequest.product.Icon}}" alt="Image"> -->
+
+    <mat-divider [inset]="true"></mat-divider>
+
+    <mat-card-content style="height: 50%;">
+      <div style="color:grey">
+        <p class="crop">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+          in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </p>
+      </div>
+
+      <mat-divider [inset]="true"></mat-divider>
+      <br/>
+      <progress value="{{selectedDonationRequest.covered}}" max="{{selectedDonationRequest.amount}}"></progress>
+      <br/>
+      <strong>NOS FALTAN: {{remainingProducts}} unidades</strong>
+    </mat-card-content>
+    <mat-card-actions style="height: 25%;">
+      <div *ngIf="!selectedForDonation">
+
+        <button mat-raised-button style='width:80%;' color="accent" [disabled]='!isPermanent() && remainingProducts == 0' (click)="donate()">DONAR</button>
+
+      </div>
+
+      <div *ngIf="selectedForDonation">
+        <app-donate-add [request]="selectedDonationRequest" (donated)="donated($event)">
+
+        </app-donate-add>
+      </div>
+    </mat-card-actions>
+  </mat-card>
+
+</div>

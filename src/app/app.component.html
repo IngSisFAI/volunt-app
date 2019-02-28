@@ -1,22 +1,29 @@
-<h1>Donar</h1>
-<ul>
-  <li>
-    <a [routerLink]="['/products']">Productos</a>
-  </li>
-  <li>
-    <a [routerLink]="['/donners']">Donadores</a>
-  </li>
-  <li>
-    <a [routerLink]="['/activeDonations']">ActiveDonations</a>
-  </li>
-  <li>
-    <a [routerLink]="['/']">Raiz</a>
-  </li>
-  <li>
-    <a [routerLink]="['/signup']">Signup</a>
-  </li>
-  <li>
-    <a [routerLink]="['/login']">Login</a>
-  </li>
-</ul>
-<router-outlet></router-outlet>
+<div id="wrapper">
+    <top-nav></top-nav>
+
+    <mat-sidenav-container>
+        <app-menu #appmenu></app-menu>
+
+        <aside class="column is-2 is-offset-1">
+
+        </aside>
+
+        <main class="column is-8">
+            <!--notification-message></notification-message-->
+            <!-- TODO: Es necesario el mat-card? -->
+            <!-- <mat-card> -->
+            <!-- <mat-card style="background:rgba(0,0,0,0.1);"> -->
+            <router-outlet></router-outlet>
+            <!-- </mat-card> -->
+
+        </main>
+        <!-- <div>
+              <button mat-button (click)="appmenu.open()">right</button>
+          </div> -->
+
+    </mat-sidenav-container>
+    <div>
+        <bot-nav></bot-nav>
+    </div>
+
+</div>

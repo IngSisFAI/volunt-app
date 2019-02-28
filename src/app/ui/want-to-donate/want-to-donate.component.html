@@ -1,0 +1,19 @@
+<div class="container">
+  <div *ngIf="request" class="row">
+    <div id=donationInfo class="column">
+
+      <app-donation-detail [selectedDonationRequest]="request" [selectedForDonation]="true">
+
+      </app-donation-detail>
+
+    </div>
+    <div id=orgInfo class="column">
+
+
+      <app-organization-detail [organization]="request.organization" [showMoreRequestsButton]="true">
+
+      </app-organization-detail>
+
+    </div>
+  </div>
+</div>

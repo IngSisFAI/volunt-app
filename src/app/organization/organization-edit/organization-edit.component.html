@@ -1,0 +1,41 @@
+<div>
+  <div>
+    <h3>Organización {{organization.name}}</h3>
+    
+    <label>Nombre: </label>
+    <input type="text" [(ngModel)]='organization.name' placeholder="organization">
+    <br>
+    <label>Username: </label>
+    <input type="text" [(ngModel)]='organization.username' placeholder="organization">
+    <br>
+    
+    <label>Reputacion</label>
+    <input type="text" [(ngModel)]='organization.reputation' placeholder="aaaa">
+    <br>
+    
+    <label>Email</label>
+    <input type="text" [(ngModel)]='organization.email' placeholder="ejemplo@gmail.com">
+    <br>
+    
+    <label>Numero</label>
+    <input type="text" [(ngModel)]='organization.phoneNumber' placeholder="299154040321">
+    <br>
+    
+    <label>Direccion</label>
+    <input type="text" [(ngModel)]='organization.address' placeholder="...">
+    <br>
+    
+    <label>WebPage</label>
+    <input type="text" [(ngModel)]='organization.webPage' placeholder="www.ejemplo.com">
+    <br>
+
+  </div>
+
+  <button (click)='update()'>Guardar</button>
+  <button (click)='cancelar()'>Cancelar</button>
+  <br/>
+  <br/>
+  <br/>
+  <!-- <button (click)='goHistory()'>History</button>
+  <button (click)='goActiveRequests()'>ActiveRequests</button> -->
+</div>

@@ -1,0 +1,67 @@
+<div class="col-md-6 col-md-offset-3">
+    <h2>Register Organization</h2>
+    <form name="form" (ngSubmit)="formOrg.form.valid && signupOrganization()" #formOrg="ngForm" novalidate>
+        <div class="form-group" [ngClass]="{ 'has-error': formOrg.submitted && !username.valid }">
+            <label for="username">Nombre de Usuario</label>
+            <input type="text" class="form-control" name="username" [(ngModel)]="accountOrganization.username" #username="ngModel" required />
+            <div *ngIf="formOrg.submitted && !username.valid" class="help-block">El nombre de usuario es obligatorio</div>
+        </div>
+        <div class="form-group" [ngClass]="{ 'has-error': formOrg.submitted && !username.valid }">
+            <label for="inscriptionCode">inscriptionCode</label>
+            <input type="text" class="form-control" name="inscriptionCode" [(ngModel)]="accountOrganization.inscriptionCode" #inscriptionCode="ngModel" required />
+            <div *ngIf="formOrg.submitted && !inscriptionCode.valid" class="help-block">inscriptionCode is required</div>
+        </div>
+
+        <div class="form-group" [ngClass]="{ 'has-error': formOrg.submitted && !username.valid }">
+            <label for="name">name</label>
+            <input type="text" class="form-control" name="name" [(ngModel)]="accountOrganization.name" #name="ngModel" required />
+            <div *ngIf="formOrg.submitted && !name.valid" class="help-block">name is required</div>
+        </div>
+
+        <div class="form-group" [ngClass]="{ 'has-error': formOrg.submitted && !username.valid }">
+            <label for="address">Street</label>
+            <input type="text" class="form-control" name="street" [(ngModel)]="accountOrganization.street" #street="ngModel" required />
+            <div *ngIf="formOrg.submitted && !street.valid" class="help-block">street is required</div>
+        </div>
+        <div class="form-group" [ngClass]="{ 'has-error': formOrg.submitted && !username.valid }">
+            <label for="address">Street Number</label>
+            <input type="text" class="form-control" name="streetNumber" [(ngModel)]="accountOrganization.streetNumber" #streetNumber="ngModel" required />
+            <div *ngIf="formOrg.submitted && !streetNumber.valid" class="help-block">street number is required</div>
+        </div>
+
+        <div class="form-group" [ngClass]="{ 'has-error': formOrg.submitted && !username.valid }">
+            <label for="urlInscriptionPapers">urlInscriptionPapers</label>
+            <input type="text" class="form-control" name="urlInscriptionPapers" [(ngModel)]="accountOrganization.urlInscriptionPapers" #urlInscriptionPapers="ngModel" required />
+            <div *ngIf="formOrg.submitted && !urlInscriptionPapers.valid" class="help-block">urlInscriptionPapers is required</div>
+        </div>
+
+        <div class="form-group" [ngClass]="{ 'has-error': formOrg.submitted && !username.valid }">
+            <label for="webPage">webPage</label>
+            <input type="text" class="form-control" name="webPage" [(ngModel)]="accountOrganization.webPage" #webPage="ngModel" required />
+            <div *ngIf="formOrg.submitted && !webPage.valid" class="help-block">webPage is required</div>
+        </div>
+
+        <div class="form-group" [ngClass]="{ 'has-error': formOrg.submitted && !username.valid }">
+            <label for="facebookPage">facebookPage</label>
+            <input type="text" class="form-control" name="facebookPage" [(ngModel)]="accountOrganization.facebookPage" #facebookPage="ngModel" required />
+            <div *ngIf="formOrg.submitted && !facebookPage.valid" class="help-block">facebookPage is required</div>
+        </div>
+
+        <div class="form-group" [ngClass]="{ 'has-error': formOrg.submitted && !username.valid }">
+            <label for="email">Email</label>
+            <input type="text" class="form-control" name="email" [(ngModel)]="accountOrganization.email" #email="ngModel" required />
+            <div *ngIf="formOrg.submitted && !email.valid" class="help-block">Email is required</div>
+        </div>
+
+        <div class="form-group" [ngClass]="{ 'has-error': formOrg.submitted && !password.valid }">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" name="password" [(ngModel)]="accountOrganization.password" #password="ngModel" required />
+            <div *ngIf="formOrg.submitted && !password.valid" class="help-block">Password is required</div>
+        </div>
+        <div class="form-group">
+            <button [disabled]="loading" class="btn btn-primary">Register</button>
+            <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+            <a [routerLink]="['/login']" class="btn btn-link">Cancel</a>
+        </div>
+    </form>
+</div>

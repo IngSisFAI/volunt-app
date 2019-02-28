@@ -1,0 +1,50 @@
+mat-card img {
+  object-fit: cover;
+  /*this makes de image in src fit to the size of specified below*/
+  width: 100px;
+  /* Here you can use wherever you want to specify the width and also the height of the <img>*/
+}
+
+mat-card {
+  max-width: 15em;
+  min-height: 22em;
+  text-align: center;
+}
+
+.example-header-image img {
+  width: 50px;
+}
+
+.cardTitle {
+  font-size: large;
+  font-weight: 600;
+}
+
+mat-divider {
+  /* margin-bottom: 3em; */
+}
+
+.crop {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+/*
+.show {
+    overflow: visible;
+    height: auto;
+} */
+
+progress {
+  margin-bottom: 10px;
+  margin-top: 10px;
+  background-color: #eee;
+  border-radius: 12px;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.25) inset;
+  position: relative;
+}
+
+mat-card-actions {
+  margin-top: 2em;
+}

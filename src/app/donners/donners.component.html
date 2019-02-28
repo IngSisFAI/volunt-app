@@ -5,6 +5,9 @@
 <ul>
   <li *ngFor='let donner of donners'>
     <!-- {{$index}} {{product}} -->
-    {{donner.name}} {{donner.lastName}}
+    <p (click)='onClickDonner(donner)'>
+      {{donner.name}} {{donner.lastName}}
+    </p>
+
   </li>
 </ul>

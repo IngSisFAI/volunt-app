@@ -20,11 +20,13 @@
 * }
 **/
 export class LoopBackConfig {
-  private static path: string = '//0.0.0.0:3000';
+  // private static path: string = '//0.0.0.0:3000';
+  private static path: string = 'https://voluntariado-uncoma.herokuapp.com'; 
   private static version: string | number = 'api';
   private static authPrefix: string = '';
   private static debug: boolean = true;
   private static filterOn: string = 'headers';
+  private static whereOn: string = 'headers';
   private static secure: boolean = false;
   private static withCredentials: boolean = false;
 
@@ -68,8 +70,20 @@ export class LoopBackConfig {
     LoopBackConfig.filterOn = 'headers';
   }
 
+  public static whereOnUrl(): void {
+    LoopBackConfig.whereOn = 'url';
+  }
+
+  public static whereOnHeaders(): void {
+    LoopBackConfig.whereOn = 'headers';
+  }
+
   public static isHeadersFilteringSet(): boolean {
     return (LoopBackConfig.filterOn === 'headers');
+  }
+
+  public static isHeadersWhereSet(): boolean {
+    return (LoopBackConfig.whereOn === 'headers');
   }
 
   public static setSecureWebSockets(): void {

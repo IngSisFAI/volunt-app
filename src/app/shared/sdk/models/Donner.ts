@@ -1,4 +1,7 @@
 /* tslint:disable */
+import {
+  City
+} from '../index';
 
 declare var Object: any;
 export interface DonnerInterface {
@@ -6,15 +9,18 @@ export interface DonnerInterface {
   "lastName": string;
   "phoneNumber": string;
   "dni": string;
+  "reputation"?: number;
   "realm"?: string;
   "username"?: string;
   "email": string;
   "emailVerified"?: boolean;
   "id"?: any;
+  "cityId"?: any;
   "password"?: string;
   accessTokens?: any[];
   organizationReviews?: any[];
   donationResponses?: any[];
+  city?: City;
 }
 
 export class Donner implements DonnerInterface {
@@ -22,15 +28,18 @@ export class Donner implements DonnerInterface {
   "lastName": string;
   "phoneNumber": string;
   "dni": string;
+  "reputation": number;
   "realm": string;
   "username": string;
   "email": string;
   "emailVerified": boolean;
   "id": any;
+  "cityId": any;
   "password": string;
   accessTokens: any[];
   organizationReviews: any[];
   donationResponses: any[];
+  city: City;
   constructor(data?: DonnerInterface) {
     Object.assign(this, data);
   }
@@ -80,6 +89,10 @@ export class Donner implements DonnerInterface {
           name: 'dni',
           type: 'string'
         },
+        "reputation": {
+          name: 'reputation',
+          type: 'number'
+        },
         "realm": {
           name: 'realm',
           type: 'string'
@@ -98,6 +111,10 @@ export class Donner implements DonnerInterface {
         },
         "id": {
           name: 'id',
+          type: 'any'
+        },
+        "cityId": {
+          name: 'cityId',
           type: 'any'
         },
         "password": {
@@ -129,6 +146,14 @@ export class Donner implements DonnerInterface {
           relationType: 'hasMany',
                   keyFrom: 'id',
           keyTo: 'donnerId'
+        },
+        city: {
+          name: 'city',
+          type: 'City',
+          model: 'City',
+          relationType: 'belongsTo',
+                  keyFrom: 'cityId',
+          keyTo: 'id'
         },
       }
     }
