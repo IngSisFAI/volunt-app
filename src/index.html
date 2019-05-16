@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <title>Donar</title>
@@ -10,6 +11,14 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
+  <!-- https://github.com/aws/aws-amplify/issues/678 fix: -->
+  <script>
+    if (global === undefined) {
+      var global = window;
+    }
+  </script>
+  <!-- https://github.com/aws/aws-amplify/issues/678 fix end-->
   <app-root></app-root>
 </body>
+
 </html>
