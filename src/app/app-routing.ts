@@ -3,7 +3,6 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { AuthGuard } from './account-service/auth.guard';
 
-// Componentes Propios
 import { DonnersComponent } from './donners/donners.component';
 import { SignupDonnerComponent } from './signupDonner/signupDonner.component';
 import { SignupOngComponent } from './signupOng/signupOng.component';
