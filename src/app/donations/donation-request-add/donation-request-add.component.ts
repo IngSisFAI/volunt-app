@@ -2,7 +2,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, DateAdapter, NativeDateAdapter } from '@angular/material';
 
 // Interfaces
-import { DonationRequestInterface, DonationRequest } from '../../shared/sdk/models/DonationRequest';
+import { DonationRequest } from '../../shared/sdk/models/DonationRequest';
 
 // Services
 import { DonationRequestApi } from '../../shared/sdk/services/custom/DonationRequest';
@@ -32,21 +32,21 @@ export class DonationRequestAddComponent implements OnInit {
   ngOnInit() {
     this.productApi.find()
       .subscribe(products => {
-        console.log('Products: ', products);
         this.products = <any>products;
 
         this.organizationApi.find()
           .subscribe(organizations => {
-            console.log(organizations);
             this.organizations = <any>organizations;
             this.donationRequestInit();
           },
             error => {
+              // TODO: Handle error
               console.error(error);
             }
           );
       },
         error => {
+          // TODO: Handle error
           console.error(error);
         }
       );
@@ -63,16 +63,17 @@ export class DonationRequestAddComponent implements OnInit {
 
   create() {
     if (this.donationRequest.isPermanent) {
-        // We must add a few months to expiration date 
-        let aux = new Date();
-        aux.setMonth(aux.getMonth() + 2);
-        this.donationRequest.expirationDate = aux;
+      // We must add a few months to expiration date 
+      let aux = new Date();
+      aux.setMonth(aux.getMonth() + 2);
+      this.donationRequest.expirationDate = aux;
     }
     this.donationRequestApi.create(this.donationRequest).subscribe(
       (donationRequestRequest) => {
-        console.log(donationRequestRequest);
+        // TODO: ...
       },
       error => {
+        // TODO: Handle error
         console.error(error);
       }
     );
@@ -89,7 +90,6 @@ export class DonationRequestAddComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(this.donationRequest);
       this.create();
     });
   }
@@ -106,12 +106,12 @@ export class AddRequestDialog {
     public dialogRef: MatDialogRef<AddRequestDialog>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     public dateAdapter: DateAdapter<NativeDateAdapter>
-  ) { 
+  ) {
     this.dateAdapter.setLocale('es-ES');
   }
 
   onNoClick(): void {
-    this.dialogRef.close( );
+    this.dialogRef.close();
   }
 
   save(): void {

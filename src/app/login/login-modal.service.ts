@@ -35,6 +35,7 @@ export class LoginModalService {
         }
       })
       .catch(err => {
+        // TODO: Handle error
         console.error(err);
         throw err;
       });

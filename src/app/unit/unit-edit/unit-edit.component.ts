@@ -1,6 +1,6 @@
 import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
 import { UnitApi } from '../../shared/sdk/services/custom/Unit';
-import { Unit, UnitInterface } from '../../shared/sdk/models/Unit';
+import { Unit } from '../../shared/sdk/models/Unit';
 
 @Component({
   selector: 'app-unit-edit',
@@ -22,18 +22,16 @@ export class UnitEditComponent implements OnInit {
   }
 
   ngOnChanges(changes): void {
-    console.log(this.unitOriginal)
     this.unit = Object.assign({}, this.unitOriginal);
   }
 
   public update() {
     this.unitService.patchAttributes(this.unit.id, this.unit)
-    .subscribe(
-      unitEdited => {
-        console.log('unit edited: ', unitEdited);
-        this.unitEdited.emit(unitEdited);
-      }
-    )
+      .subscribe(
+        unitEdited => {
+          this.unitEdited.emit(unitEdited);
+        }
+      )
   }
 
   public cancelar() {

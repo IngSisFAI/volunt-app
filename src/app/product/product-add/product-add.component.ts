@@ -27,8 +27,8 @@ export class ProductAddComponent implements OnInit {
         this.onCreated.emit(product);
       },
       (error) => {
-        console.log('An error occured at Product-add component');
-        console.log(error);
+        // TODO: Handle error
+        console.error(error);
       }
       );
   }

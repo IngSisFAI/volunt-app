@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
 import { OrganizationInterface, LoopBackAuth, OrganizationApi } from 'app/shared/sdk';
 
 
@@ -14,14 +13,12 @@ export class ONGRequestsComponent implements OnInit {
     constructor(
         private auth: LoopBackAuth,
         private organizationApi: OrganizationApi,
-        private router: Router,
-        private route: ActivatedRoute
     ) {
         const user = this.auth.getCurrentUserData();
         this.organizationApi.findById(user.id)
-        .subscribe(organization => {
-            this.organization = <OrganizationInterface> organization;
-        });
+            .subscribe(organization => {
+                this.organization = <OrganizationInterface>organization;
+            });
     }
 
     ngOnInit(): void {

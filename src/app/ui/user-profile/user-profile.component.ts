@@ -23,13 +23,11 @@ export class UserProfileComponent implements OnInit {
     this.donnerApi.findById(this.userId, {
       include: ['organizationReviews', { donationResponses: 'donationRequest' }, { city: 'province' }]
     }).subscribe((donner: DonnerInterface) => {
-
-      console.log(donner);
       this.donner = donner;
     },
       (err) => {
-        console.log('An error has ocurred');
-        console.log(err);
+        // TODO: Handle error
+        console.error(err);
       })
 
 

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 // Interfaces
 import { DonationResponseInterface } from '../../shared/sdk/models/DonationResponse';
@@ -7,7 +7,6 @@ import { DonationResponseInterface } from '../../shared/sdk/models/DonationRespo
 import { DonationResponseApi } from '../../shared/sdk/services/custom/DonationResponse';
 import { Router } from '@angular/router';
 import { MatTableDataSource } from '@angular/material';
-import { LoopBackAuth } from '../../shared/sdk';
 
 @Component({
   selector: 'app-donner-responses',
@@ -15,7 +14,7 @@ import { LoopBackAuth } from '../../shared/sdk';
   styleUrls: ['./donner-responses.component.css']
 })
 
-export class DonnerResponsesComponent implements OnInit {
+export class DonnerResponsesComponent {
 
   empty: boolean = false;
   displayedColumns = ['Categoria', 'Nombre', 'Cantidad', 'Creación', 'Organización', 'Contacto', 'Estado', 'Accion'];
@@ -41,12 +40,7 @@ export class DonnerResponsesComponent implements OnInit {
 
   }
 
-  ngOnInit() {
-
-  }
-
   filterResponses() {
-    console.log(this.showResponses);
     switch (this.showResponses) {
       case 0: {
         //active responses only
@@ -107,8 +101,8 @@ export class DonnerResponsesComponent implements OnInit {
         this.filterResponses();
 
       }, (error) => {
-        console.log("error");
-        console.log(error);
+        // TODO: Handle error
+        console.error(error);
       });
   }
 

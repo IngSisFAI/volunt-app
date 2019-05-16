@@ -35,14 +35,12 @@ export class UserResponsesComponent implements OnInit {
         donnerId: this.userId
       }
     }).subscribe((responses: DonationResponseInterface[]) => {
-
-      console.log(responses);
       this.donationResponses = responses;
 
     },
       (err) => {
-        console.log('An error has ocurred');
-        console.log(err);
+        // TODO: Handle error
+        console.error(err);
       })
   }
 

@@ -17,19 +17,19 @@ export class ContactAddComponent implements OnInit {
     private contactApi: ContactApi
   ) { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   create() {
 
     this.contactApi
       .create(this.contact).subscribe(
-      (contact: Contact) => {
-        this.onCreated.emit(contact);
-      },
-      (error) => {
-        console.log('An error occured at Contact-add component');
-        console.log(error);
-      }
+        (contact: Contact) => {
+          this.onCreated.emit(contact);
+        },
+        (error) => {
+          // TODO: Handle error
+          console.error(error);
+        }
       );
   }
 

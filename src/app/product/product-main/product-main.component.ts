@@ -17,24 +17,20 @@ export class ProductMainComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.log('NgOnInit');
     this.find();
   }
 
 
   find() {
-    this.ProductApi.find({include:['unit']})
+    this.ProductApi.find({ include: ['unit'] })
       .subscribe(products => {
-        console.log('Productos: ', products);
-
         this.products = <any>products.slice();
-        console.log(this.products);
       },
-      (error) => {
-        console.log('An error occured at Product-main component');
-        console.log(error);
-      }
-    );
+        (error) => {
+          // TODO: Handle error
+          console.error(error);
+        }
+      );
   }
 
   select(product: ProductInterface) {

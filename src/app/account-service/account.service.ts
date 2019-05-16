@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { LoopBackConfig } from '../shared/sdk';
 import { Organization, Donner, SDKToken } from '../shared/sdk/models';
 import { OrganizationApi, DonnerApi } from '../shared/sdk/services';
 import { LoopBackAuth } from '../shared/sdk/services';
@@ -29,10 +28,10 @@ export class AccountService {
   public signinUser(user: Donner): void {
     this.donnerApi.login(user).subscribe((token: SDKToken) => {
       this.router.navigate(['/catalog']);
-      //   this.auth.setToken(token); ya lo hace el metodo login
       this.auth.setRememberMe(true); // Creo que tampoco hace falta
       this.auth.save(); // Creo que tampoco hace falta
     }, (err) => {
+      // TODO: Handle error
       console.error(err);
       alert("Credenciales incorrectos!");
     });
@@ -40,8 +39,6 @@ export class AccountService {
 
   public sigin(user) {
     return this.donnerApi.login(user).subscribe((token: SDKToken) => {
-      // this.router.navigate(['/catalog']);
-      //   this.auth.setToken(token); ya lo hace el metodo login
       this.auth.setRememberMe(true); // Creo que tampoco hace falta
       this.auth.save(); // Creo que tampoco hace falta
     }, (err) => {
@@ -49,6 +46,7 @@ export class AccountService {
         this.router.navigate(['/catalog']);
         // We must do something to know that is an organization ... 
       }, (err) => {
+        // TODO: Handle error
         console.error(err);
         alert("Credenciales incorrectos!");
       });
@@ -66,18 +64,14 @@ export class AccountService {
       this.router.navigate(['/catalog']);
       // We must do something to know that is an organization ... 
     }, (err) => {
+      // TODO: handle error
       console.error(err);
       alert("Credenciales incorrectos!");
     });
   }
 
   loggedIn() {
-    let loggedIn: boolean = false;
-    const userId = this.auth.getCurrentUserId();
-    if (userId) {
-      loggedIn = true;
-    }
-    return loggedIn;
+    return (this.auth.getCurrentUserId() != false);
   }
 
 }

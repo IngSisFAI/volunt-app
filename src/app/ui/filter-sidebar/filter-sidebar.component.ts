@@ -39,8 +39,6 @@ export class FilterSidebarComponent implements OnInit {
   productsLimit = 5;
 
   constructor(private route: ActivatedRoute, private router: Router) {
-      console.log(this.products);
-
     this.cityCtrl = new FormControl();
     this.filteredCitiesByName = this.cityCtrl.valueChanges
       .pipe(
@@ -64,7 +62,7 @@ export class FilterSidebarComponent implements OnInit {
   }
 
   moreProducts() {
-      this.productsLimit += 5;
+    this.productsLimit += 5;
   }
 
   filterCitiesByName(name: string) {

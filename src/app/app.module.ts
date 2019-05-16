@@ -9,8 +9,6 @@ import { SDKBrowserModule } from './shared/sdk/index';
 
 // Componentes Propios
 import { AppComponent } from './app.component';
-
-import { TestComponent } from './test/test.component';
 import { DonnersComponent } from './donners/donners.component';
 import { SignupDonnerComponent } from './signupDonner/signupDonner.component';
 import { SignupOngComponent } from './signupOng/signupOng.component';
@@ -48,7 +46,6 @@ import { LoginModalService } from 'app/login/login-modal.service';
   entryComponents: [Dialog, LoginDialog],
   declarations: [
     AppComponent,
-    TestComponent,
     DonnersComponent,
     SignupDonnerComponent,
     SignupOngComponent,

@@ -35,7 +35,6 @@ export class DonationDetailComponent implements OnInit {
 
   public donate() {
     this.donationOk.next(true);
-    //console.log('PermanentRequest selected:', this.selectedDonationRequest);
     this.router.navigate(['/wantToDonate/' + this.selectedDonationRequest.id]);
   }
 
@@ -45,8 +44,7 @@ export class DonationDetailComponent implements OnInit {
 
 
   public donated(response) {
-    console.log('** Response');
-    console.log(response);
+    // TODO: Handle this
   }
 
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ContactApi } from '../../shared/sdk/services/custom/Contact';
-import { Contact, ContactInterface } from '../../shared/sdk/models/Contact';
+import { ContactInterface } from '../../shared/sdk/models/Contact';
 
 @Component({
   selector: 'app-contact-main',
@@ -26,11 +26,11 @@ export class ContactMainComponent implements OnInit {
       .subscribe(contacts => {
         this.contacts = <any>contacts.slice();
       },
-      (error) => {
-        console.log('An error occured at Contact-main component');
-        console.log(error);
-      }
-    );
+        (error) => {
+          // TODO: Handle error
+          console.error(error);
+        }
+      );
   }
 
   select(contact) {
@@ -43,10 +43,9 @@ export class ContactMainComponent implements OnInit {
 
   OnEdit(contactUpdated: ContactInterface) {
     const indice = this.contacts.findIndex((tipo) => tipo.id === contactUpdated.id);
-
     if (indice !== -1) {
       this.contacts[indice] = contactUpdated;
-    } else { }
+    }
   }
 
 }

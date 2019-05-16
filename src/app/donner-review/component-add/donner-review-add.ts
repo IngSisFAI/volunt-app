@@ -27,8 +27,8 @@ export class DonnerReviewAddComponent implements OnInit {
         this.onCreated.emit(donnerReview);
       },
       (error) => {
-        console.log('An error occured at DonnerReview-add component');
-        console.log(error);
+        // TODO: Handle error
+        console.error(error);
       }
       );
   }

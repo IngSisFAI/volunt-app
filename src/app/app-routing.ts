@@ -1,14 +1,10 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 
 import { AuthGuard } from './account-service/auth.guard';
 
 // Componentes Propios
-import { AppComponent } from './app.component';
-
 import { DonnersComponent } from './donners/donners.component';
-import { TestComponent } from './test/test.component';
 import { SignupDonnerComponent } from './signupDonner/signupDonner.component';
 import { SignupOngComponent } from './signupOng/signupOng.component';
 import { LoginComponent } from './login/login.component';

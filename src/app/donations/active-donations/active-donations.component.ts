@@ -4,7 +4,7 @@ import { Component, OnInit, OnChanges, Input, SimpleChanges } from '@angular/cor
 import { DonationRequestInterface } from '../../shared/sdk/models/DonationRequest';
 
 // Services
-import { DonationRequestApi, OrganizationInterface } from '../../shared/sdk';
+import { DonationRequestApi } from '../../shared/sdk';
 import { Router } from '@angular/router';
 
 @Component({
@@ -207,65 +207,6 @@ export class ActiveDonationsComponent implements OnInit, OnChanges {
         }
       }
     }
-
-
-
-
-    /*
-        if (this.permanentRequests) {
-          if (this.city!) {
-            this.permanentRequestsByCity = this._permanentRequests.filter(req => req.organization.city === this.city);
-          }
-          if (this.donationType) {
-
-            if (this.city) {
-              this.permanentRequestsFiltered = this.permanentRequestsByCity.filter(req => req.product.name === this.donationType);
-            } else if (this.orgId) {
-              this.permanentRequestsFiltered = this.permanentRequestsByOrg.filter(req => req.product.name === this.donationType);
-            } else {
-              //filter original
-              this.permanentRequestsFiltered = this._permanentRequests.filter(req => req.product.name === this.donationType);
-            }
-            //donationType unselected
-          } else {
-            if (this.city) {
-              this.permanentRequestsFiltered = this.permanentRequestsByCity;
-            } else if (this.orgId) {
-              this.permanentRequestsFiltered = this.permanentRequestsByOrg;
-            } else {
-              this.permanentRequestsFiltered = this._permanentRequests;
-            }
-          }
-
-        }
-        if (this._oneTimeRequests) {
-
-        }*/
-
-    /*
-
-        if (this.permanentRequests) {
-          this.permanentRequestsFiltered = this.filterRequests(this.permanentRequests);
-        }
-        if (this._oneTimeRequests) {
-          this.oneTimeRequestsFiltered = this.filterRequests(this._oneTimeRequests);
-        }
-
-        if (changes.donationType) {
-          console.log("donationType changed", changes.donationType);
-
-        } else if (changes.city) {
-
-          console.log("city changed", this.city);
-          if (this.permanentRequests) {
-            this.permanentRequestsFiltered = this.filterRequests(this.permanentRequests);
-          }
-          if (this._oneTimeRequests) {
-            this.oneTimeRequestsFiltered = this.filterRequests(this._oneTimeRequests);
-          }
-        }
-    */
-
   }
 
   private filterRequests(requests: DonationRequestInterface[], filter: String) {
@@ -283,7 +224,6 @@ export class ActiveDonationsComponent implements OnInit, OnChanges {
       //filter originals
       requestsBy = requests.filter(req => req.organization.id === org);
 
-      console.log("cambio aca2", this.oneTimeRequestsByOrg);
       //this.oneTimeRequestsFiltered = this.oneTimeRequestsByCity;
       if (this.donationType) {
         this.oneTimeRequestsFiltered = this.oneTimeRequestsByOrg.filter(req => req.product.name === this.donationType);
@@ -341,19 +281,4 @@ export class ActiveDonationsComponent implements OnInit, OnChanges {
 
     }
   }
-
-  /*se usa el boton donar
-    public onPermanentRequest(permanentRequest) {
-      this.requestSelected = permanentRequest;
-      console.log('PermanentRequest selected:', this.requestSelected);
-      this.router.navigate(['/wantToDonate/' + this.requestSelected.id]);
-
-    }
-
-    public onOneTimeRequest(request) {
-      this.requestSelected = request;
-      console.log('One Time request selected:', this.requestSelected);
-      this.router.navigate(['/wantToDonate/' + this.requestSelected.id]);
-    }
-  */
 }

@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { LoopBackConfig } from '../shared/sdk';
-import { Organization, Donner, AccessToken } from '../shared/sdk/models';
+import { Component } from '@angular/core';
+import { Organization, Donner } from '../shared/sdk/models';
 import { AccountService } from '../account-service/account.service';
 
 @Component({
@@ -8,15 +7,13 @@ import { AccountService } from '../account-service/account.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent{
   private accountDonner: Donner = new Donner();
   private accountOrganization: Organization = new Organization();
 
   constructor(
     private accountService: AccountService
   ) { }
-
-  ngOnInit() { }
 
   private loginUser(): void {
     this.accountService.signinUser(this.accountDonner);
