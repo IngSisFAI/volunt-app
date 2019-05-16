@@ -12,9 +12,7 @@ export class ProductMainComponent implements OnInit {
   public products: ProductInterface[] = [];
   public productSelected: ProductInterface = null;
 
-  constructor(
-    private ProductApi: ProductApi
-  ) { }
+  constructor( private productApi: ProductApi) { }
 
   ngOnInit() {
     this.find();
@@ -22,7 +20,7 @@ export class ProductMainComponent implements OnInit {
 
 
   find() {
-    this.ProductApi.find({ include: ['unit'] })
+    this.productApi.find({ include: ['unit'] })
       .subscribe(products => {
         this.products = <any>products.slice();
       },

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Donner }  from '../shared/sdk/models';
+import { Donner } from '../shared/sdk/models';
 import { AccountService } from '../account-service/account.service';
 @Component({
   selector: 'app-signup',
@@ -10,13 +10,13 @@ export class SignupDonnerComponent implements OnInit {
   private accountDonner: Donner = new Donner();
 
   constructor(
-      private accountService: AccountService
+    private accountService: AccountService
   ) { }
 
   ngOnInit() {
   }
 
-  private signupUser(): void{
+  private signupUser(): void {
     this.accountService.signupUser(this.accountDonner);
   }
 

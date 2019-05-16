@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Organization } from '../shared/sdk/models';
 import { AccountService } from '../account-service/account.service';
 @Component({
-  selector: 'app-signupOng',
+  selector: 'app-signup-ong',
   templateUrl: './signupOng.component.html',
   styleUrls: ['./signupOng.component.css']
 })

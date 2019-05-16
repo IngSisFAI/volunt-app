@@ -10,6 +10,29 @@ import { ProductApi } from '../../shared/sdk/services/custom/Product';
 import { ProductInterface, OrganizationApi, OrganizationInterface } from '../../shared/sdk';
 
 @Component({
+  selector: 'app-add-request-dialog',
+  templateUrl: 'add-request-dialog.component.html',
+  styleUrls: ['./add-request-dialog.component.css']
+})
+export class AddRequestDialogComponent {
+
+  constructor(
+    public dialogRef: MatDialogRef<AddRequestDialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    public dateAdapter: DateAdapter<NativeDateAdapter>
+  ) {
+    this.dateAdapter.setLocale('es-ES');
+  }
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+
+  save(): void {
+    this.dialogRef.close(this.data.request);
+  }
+}
+@Component({
   selector: 'app-donation-request-add',
   templateUrl: './donation-request-add.component.html',
   styleUrls: ['./donation-request-add.component.css']
@@ -80,7 +103,7 @@ export class DonationRequestAddComponent implements OnInit {
   }
 
   openDialog(): void {
-    const dialogRef = this.dialog.open(AddRequestDialog, {
+    const dialogRef = this.dialog.open(AddRequestDialogComponent, {
       width: '500px',
       data: {
         products: this.products,
@@ -94,27 +117,4 @@ export class DonationRequestAddComponent implements OnInit {
     });
   }
 
-}
-@Component({
-  selector: 'app-add-request-dialog',
-  templateUrl: 'add-request-dialog.component.html',
-  styleUrls: ['./add-request-dialog.component.css']
-})
-export class AddRequestDialog {
-
-  constructor(
-    public dialogRef: MatDialogRef<AddRequestDialog>,
-    @Inject(MAT_DIALOG_DATA) public data: any,
-    public dateAdapter: DateAdapter<NativeDateAdapter>
-  ) {
-    this.dateAdapter.setLocale('es-ES');
-  }
-
-  onNoClick(): void {
-    this.dialogRef.close();
-  }
-
-  save(): void {
-    this.dialogRef.close(this.data.request);
-  }
 }

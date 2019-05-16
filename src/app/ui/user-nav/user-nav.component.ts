@@ -5,11 +5,11 @@ import { AccountService } from '../../account-service/account.service';
 
 import { MatDialog } from '@angular/material';
 
-import { DialogOverviewExampleDialog } from './login-pop.component';
+import { DialogOverviewExampleDialogComponent } from './login-pop.component';
 import { LoginModalService } from 'app/login/login-modal.service';
 
 @Component({
-  selector: 'user-nav',
+  selector: 'app-user-nav',
   templateUrl: './user-nav.component.html',
   styleUrls: ['./user-nav.component.scss'],
 })
@@ -26,11 +26,10 @@ export class UserNavComponent implements OnInit {
 
   ngOnInit() {
     this.user = this.auth.getCurrentUserData();
-
   }
 
   openDialog(): void {
-    const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
+    const dialogRef = this.dialog.open(DialogOverviewExampleDialogComponent, {
       width: '250px',
       data: { name: 'asdasdasd' }
     });

@@ -14,14 +14,14 @@ export class ProductAddComponent implements OnInit {
   public product: ProductInterface = new Product();
 
   constructor(
-    private ProductApi: ProductApi
+    private productApi: ProductApi
   ) { }
 
   ngOnInit() {}
 
   create() {
 
-    this.ProductApi
+    this.productApi
       .create(this.product).subscribe(
       (product: Product) => {
         this.onCreated.emit(product);

@@ -29,7 +29,7 @@ export class DonnersComponent {
   }
 
   onClickDonner(donner) {
-    //this.router.navigate([`/donner`])
+    // this.router.navigate([`/donner`])
   }
 
 

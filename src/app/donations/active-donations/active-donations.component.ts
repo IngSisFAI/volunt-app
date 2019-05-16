@@ -93,7 +93,6 @@ export class ActiveDonationsComponent implements OnInit, OnChanges {
   ngOnChanges(changes: SimpleChanges) {
 
     for (const propName in changes) {
-      const change = changes[propName];
       if (this._oneTimeRequests.length !== 0 || this._permanentRequests.length !== 0) {
         switch (propName) {
           case 'city':
@@ -101,27 +100,27 @@ export class ActiveDonationsComponent implements OnInit, OnChanges {
               this.oneTimeRequestsByCity = this._oneTimeRequests.filter(req => req.organization.city.name === this.city);
               this.permanentRequestsByCity = this._permanentRequests.filter(req => req.organization.city.name === this.city);
 
-              //this.oneTimeRequestsFiltered = this.oneTimeRequestsByCity;
+              // this.oneTimeRequestsFiltered = this.oneTimeRequestsByCity;
               if (this.donationType) {
                 this.oneTimeRequestsFiltered = this.oneTimeRequestsByCity.filter(req => req.product.name === this.donationType);
                 this.permanentRequestsFiltered = this.permanentRequestsByCity.filter(req => req.product.name === this.donationType);
               } else {
-                //this.oneTimeRequestsByCity = this._oneTimeRequests.filter(req => req.product.city === this.donationType);
+                // this.oneTimeRequestsByCity = this._oneTimeRequests.filter(req => req.product.city === this.donationType);
                 this.oneTimeRequestsFiltered = this.oneTimeRequestsByCity;
                 this.permanentRequestsFiltered = this.permanentRequestsByCity;
               }
 
               this.isEmpty();
             } else {
-              //city unselected
+              // city unselected
               if (this.city === null) {
                 if (!this.orgId) {
                   if (this.donationType) {
                     this.oneTimeRequestsFiltered = this._oneTimeRequests.filter(req => req.product.name === this.donationType);
                     this.permanentRequestsFiltered = this._permanentRequests.filter(req => req.product.name === this.donationType);
                   } else {
-                    //this.oneTimeRequestsByCity = this._oneTimeRequests.filter(req => req.product.city === this.donationType);
-                    //this.oneTimeRequestsFiltered = this._oneTimeRequests;
+                    // this.oneTimeRequestsByCity = this._oneTimeRequests.filter(req => req.product.city === this.donationType);
+                    // this.oneTimeRequestsFiltered = this._oneTimeRequests;
 
                     this.restaurar();
                   }
@@ -149,7 +148,7 @@ export class ActiveDonationsComponent implements OnInit, OnChanges {
 
               this.isEmpty();
 
-              //donationType unselected
+              // donationType unselected
             } else {
               if (this.donationType === null) {
                 if (this.city) {
@@ -173,12 +172,12 @@ export class ActiveDonationsComponent implements OnInit, OnChanges {
             if (this.orgId) {
               this.oneTimeRequestsByOrg = this._oneTimeRequests.filter(req => req.organization.id === this.orgId);
               this.permanentRequestsByOrg = this._permanentRequests.filter(req => req.organization.id === this.orgId);
-              //this.oneTimeRequestsFiltered = this.oneTimeRequestsByCity;
+              // this.oneTimeRequestsFiltered = this.oneTimeRequestsByCity;
               if (this.donationType) {
                 this.oneTimeRequestsFiltered = this.oneTimeRequestsByOrg.filter(req => req.product.name === this.donationType);
                 this.permanentRequestsFiltered = this.permanentRequestsByOrg.filter(req => req.product.name === this.donationType);
               } else {
-                //this.oneTimeRequestsByCity = this._oneTimeRequests.filter(req => req.product.city === this.donationType);
+                // this.oneTimeRequestsByCity = this._oneTimeRequests.filter(req => req.product.city === this.donationType);
                 this.oneTimeRequestsFiltered = this.oneTimeRequestsByOrg;
                 this.permanentRequestsFiltered = this.permanentRequestsByOrg;
               }
@@ -186,15 +185,15 @@ export class ActiveDonationsComponent implements OnInit, OnChanges {
               this.isEmpty();
 
             } else {
-              //org unselected
+              // org unselected
               if (this.orgId === null) {
                 if (!this.city) {
                   if (this.donationType) {
                     this.oneTimeRequestsFiltered = this._oneTimeRequests.filter(req => req.product.name === this.donationType);
                     this.permanentRequestsFiltered = this._permanentRequests.filter(req => req.product.name === this.donationType);
                   } else {
-                    //this.oneTimeRequestsByCity = this._oneTimeRequests.filter(req => req.product.city === this.donationType);
-                    //this.oneTimeRequestsFiltered = this._oneTimeRequests;
+                    // this.oneTimeRequestsByCity = this._oneTimeRequests.filter(req => req.product.city === this.donationType);
+                    // this.oneTimeRequestsFiltered = this._oneTimeRequests;
 
                     this.restaurar();
                   }
@@ -221,28 +220,28 @@ export class ActiveDonationsComponent implements OnInit, OnChanges {
   private filterRequestsByOrg(requests: DonationRequestInterface[], requestsBy: DonationRequestInterface[], org: String) {
 
     if (org) {
-      //filter originals
+      // filter originals
       requestsBy = requests.filter(req => req.organization.id === org);
 
-      //this.oneTimeRequestsFiltered = this.oneTimeRequestsByCity;
+      // this.oneTimeRequestsFiltered = this.oneTimeRequestsByCity;
       if (this.donationType) {
         this.oneTimeRequestsFiltered = this.oneTimeRequestsByOrg.filter(req => req.product.name === this.donationType);
         this.permanentRequestsFiltered = this.permanentRequestsByOrg.filter(req => req.product.name === this.donationType);
       } else {
-        //this.oneTimeRequestsByCity = this._oneTimeRequests.filter(req => req.product.city === this.donationType);
+        // this.oneTimeRequestsByCity = this._oneTimeRequests.filter(req => req.product.city === this.donationType);
         this.oneTimeRequestsFiltered = this.oneTimeRequestsByOrg;
         this.permanentRequestsFiltered = this.permanentRequestsByOrg;
       }
     } else {
-      //org unselected
+      // org unselected
       if (!this.city) {
         if (this.donationType) {
           this.oneTimeRequestsFiltered = this._oneTimeRequests.filter(req => req.product.name === this.donationType);
           this.permanentRequestsFiltered = this._permanentRequests.filter(req => req.product.name === this.donationType);
         } else {
-          //this.oneTimeRequestsByCity = this._oneTimeRequests.filter(req => req.product.city === this.donationType);
-          //this.oneTimeRequestsFiltered = this._oneTimeRequests;
-          this.restaurar;
+          // this.oneTimeRequestsByCity = this._oneTimeRequests.filter(req => req.product.city === this.donationType);
+          // this.oneTimeRequestsFiltered = this._oneTimeRequests;
+          this.restaurar();
         }
       }
     }
@@ -266,7 +265,7 @@ export class ActiveDonationsComponent implements OnInit, OnChanges {
     return requests;
   }
 
-  //check if cols empty
+  // check if cols empty
   isEmpty() {
 
     if (this.permanentRequestsFiltered.length === 0) {

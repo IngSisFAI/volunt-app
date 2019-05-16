@@ -14,12 +14,12 @@ export class UnitAddComponent {
   public unit: UnitInterface = new Unit();
 
   constructor(
-    private UnitApi: UnitApi
+    private unitApi: UnitApi
   ) { }
 
   create() {
 
-    this.UnitApi
+    this.unitApi
       .create(this.unit).subscribe(
         (unit: Unit) => {
           this.onCreated.emit(unit);

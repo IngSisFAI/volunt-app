@@ -20,7 +20,7 @@ export class DonnerResponsesComponent {
   displayedColumns = ['Categoria', 'Nombre', 'Cantidad', 'Creación', 'Organización', 'Contacto', 'Estado', 'Accion'];
   dataSource = new MatTableDataSource<DonationResponseInterface>([]);
 
-  //default: show only active responses
+  // default: show only active responses
   showResponses = 0;
 
   _donationResponses: DonationResponseInterface[];
@@ -43,41 +43,40 @@ export class DonnerResponsesComponent {
   filterResponses() {
     switch (this.showResponses) {
       case 0: {
-        //active responses only
+        // active responses only
         this.setDataSource(this._donationResponses.filter(res => res.alreadyDelivered === false && res.isCanceled === false));
         break;
       }
 
       case 1: {
-        //delivered responses only
+        // delivered responses only
         this.setDataSource(this._donationResponses.filter(res => res.alreadyDelivered === true && res.isCanceled === false));
         break;
       }
 
       case 2: {
-        //cancelled responses only
+        // cancelled responses only
         this.setDataSource(this._donationResponses.filter(res => res.alreadyDelivered === false && res.isCanceled === true));
         break;
       }
 
       case 3: {
-        //all responses
+        // all responses
         this.setDataSource(this._donationResponses);
         break;
       }
 
       default: {
-        //all responses
+        // all responses
         this.setDataSource(this._donationResponses);
         break;
       }
     }
 
-    //check if datasource is empty
+    // check if datasource is empty
     if (this.dataSource.data.length === 0) {
       this.empty = true;
-    }
-    else {
+    } else {
       this.empty = false;
     }
 
@@ -120,8 +119,7 @@ export class DonnerResponsesComponent {
     } else {
       if (response.isCanceled) {
         state = 'Cancelada';
-      }
-      else {
+      } else {
         state = 'Activa';
       }
     }

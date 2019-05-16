@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
+import { Component, OnInit, OnChanges, EventEmitter, Input, Output } from '@angular/core';
 import { ProductApi } from '../../shared/sdk/services/custom/Product';
 import { Product } from '../../shared/sdk/models/Product';
 
@@ -7,7 +7,7 @@ import { Product } from '../../shared/sdk/models/Product';
   templateUrl: './product-edit.component.html',
   styleUrls: ['./product-edit.component.css']
 })
-export class ProductEditComponent implements OnInit {
+export class ProductEditComponent implements OnInit, OnChanges {
 
   @Input() productOriginal: Product;
   @Output() productEdited = new EventEmitter();

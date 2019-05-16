@@ -20,8 +20,6 @@ import { UiModule } from './ui/shared/ui.module';
 import { AppRoutingModule } from './app-routing';
 import { DonationsModule } from './donations/donations.module';
 
-// import { ProductsModule } from './products/products.module';
-
 // Con la convencion
 import { ContactModule } from './contact/contact.module';
 import { OrganizationModule } from './organization/organization.module';
@@ -30,28 +28,27 @@ import { OrganizationReviewModule } from './organization-review/organization-rev
 import { ProductModule } from './product/product.module';
 import { UnitModule } from './unit/unit.module';
 import { ONGProfileComponent } from './ui/ong-profile/ong-profile.component';
-//import { WantToDonateComponent } from './ui/want-to-donate/want-to-donate.component';
 
 // Material
 import { MaterialModule } from './shared/modules/material.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { Dialog } from 'app/shared/utils/custom-modal/custom-modal';
+import { DialogComponent } from 'app/shared/utils/custom-modal/custom-modal';
 import { CustomModalService } from './shared/utils/custom-modal/custom-modal.service';
-import { LoginDialog } from 'app/login/login-modal/login-modal.component';
+import { LoginDialogComponent } from 'app/login/login-modal/login-modal.component';
 import { LoginModalService } from 'app/login/login-modal.service';
 
 
 
 @NgModule({
-  entryComponents: [Dialog, LoginDialog],
+  entryComponents: [DialogComponent, LoginDialogComponent],
   declarations: [
     AppComponent,
     DonnersComponent,
     SignupDonnerComponent,
     SignupOngComponent,
     ONGProfileComponent,
-    Dialog,
-    LoginDialog
+    DialogComponent,
+    LoginDialogComponent
   ],
   imports: [
     BrowserModule,

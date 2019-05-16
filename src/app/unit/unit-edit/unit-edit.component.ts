@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
+import { Component, OnInit, OnChanges, EventEmitter, Input, Output } from '@angular/core';
 import { UnitApi } from '../../shared/sdk/services/custom/Unit';
 import { Unit } from '../../shared/sdk/models/Unit';
 
@@ -7,7 +7,7 @@ import { Unit } from '../../shared/sdk/models/Unit';
   templateUrl: './unit-edit.component.html',
   styleUrls: ['./unit-edit.component.css']
 })
-export class UnitEditComponent implements OnInit {
+export class UnitEditComponent implements OnInit, OnChanges {
 
   @Input() unitOriginal: Unit;
   @Output() unitEdited = new EventEmitter();

@@ -41,7 +41,7 @@ export class AccountService {
     return this.donnerApi.login(user).subscribe((token: SDKToken) => {
       this.auth.setRememberMe(true); // Creo que tampoco hace falta
       this.auth.save(); // Creo que tampoco hace falta
-    }, (err) => {
+    }, () => {
       return this.organizationApi.login(user).subscribe((token: SDKToken) => {
         this.router.navigate(['/catalog']);
         // We must do something to know that is an organization ...
@@ -55,7 +55,7 @@ export class AccountService {
 
   public logoutUser(): void {
     this.donnerApi.logout().subscribe(() => {
-      //this.auth.clear();
+      // this.auth.clear();
       this.router.navigate(['/']);
     });
   }
@@ -71,7 +71,7 @@ export class AccountService {
   }
 
   loggedIn() {
-    return (this.auth.getCurrentUserId() != false);
+    return this.auth.getCurrentUserId() !== null;
   }
 
 }

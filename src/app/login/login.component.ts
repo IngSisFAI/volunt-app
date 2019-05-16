@@ -7,7 +7,7 @@ import { AccountService } from '../account-service/account.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent{
+export class LoginComponent {
   private accountDonner: Donner = new Donner();
   private accountOrganization: Organization = new Organization();
 

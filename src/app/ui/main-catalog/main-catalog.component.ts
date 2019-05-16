@@ -101,7 +101,7 @@ export class MainCatalogComponent implements OnInit {
     })
       .subscribe((orgs: OrganizationInterface[]) => {
         this.orgs = orgs;
-        //obtain data from param org
+        // obtain data from param org
         this.getOrg();
       },
         (err) => {
@@ -150,14 +150,14 @@ export class MainCatalogComponent implements OnInit {
 
   public orgChange(response) {
     this.orgId = response;
-    //obtain org to show
+    // obtain org to show
     this.getOrg();
 
   }
 
   getOrg() {
     if (this.orgId && this.orgs) {
-      this.organization = this.orgs.find(org => org.id == this.orgId);
+      this.organization = this.orgs.find(org => org.id === this.orgId);
     } else {
       this.organization = null;
 

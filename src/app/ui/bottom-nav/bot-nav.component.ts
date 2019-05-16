@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'bot-nav',
+  selector: 'app-bot-nav',
   templateUrl: './bot-nav.component.html',
   styleUrls: ['./bot-nav.component.scss'],
 })

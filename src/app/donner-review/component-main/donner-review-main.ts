@@ -3,7 +3,7 @@ import { DonnerReviewApi } from '../../shared/sdk/services/custom/DonnerReview';
 import { DonnerReviewInterface } from '../../shared/sdk/models/DonnerReview';
 
 @Component({
-  selector: 'app-donnerReview-main',
+  selector: 'app-donner-review-main',
   templateUrl: './donnerReview-main.component.html',
   styleUrls: ['./donnerReview-main.component.css']
 })

@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
+import { Component, OnInit, OnChanges, EventEmitter, Input, Output } from '@angular/core';
 import { ContactApi } from '../../shared/sdk/services/custom/Contact';
 import { Contact } from '../../shared/sdk/models/Contact';
 
@@ -7,7 +7,7 @@ import { Contact } from '../../shared/sdk/models/Contact';
   templateUrl: './contact-edit.component.html',
   styleUrls: ['./contact-edit.component.css']
 })
-export class ContactEditComponent implements OnInit {
+export class ContactEditComponent implements OnInit, OnChanges {
 
   @Input() contactOriginal: Contact;
   @Output() contactEdited = new EventEmitter();

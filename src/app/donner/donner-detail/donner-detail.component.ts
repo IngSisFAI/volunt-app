@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 
@@ -12,11 +12,9 @@ import { LoopBackAuth } from '../../shared/sdk/services';
   templateUrl: './donner-detail.component.html',
   styleUrls: ['./donner-detail.component.css']
 })
-export class DonnerDetailComponent implements OnInit {
+export class DonnerDetailComponent {
 
   @Input() donner: DonnerInterface;
-  //public donnerId: String;
-  //public donner: DonnerInterface;
 
   constructor(
     private donnerApi: DonnerApi,
@@ -41,10 +39,5 @@ export class DonnerDetailComponent implements OnInit {
           })
           */
   }
-
-  ngOnInit() {
-    //this.donner = this.auth.getCurrentUserData();
-  }
-
 
 }

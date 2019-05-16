@@ -106,7 +106,7 @@ export class FilterSidebarComponent implements OnInit {
     if (this.urlCity) {
       this.router.navigate(['/catalog']);
     }
-    //delete tag
+    // delete tag
     this.cityAux = null;
 
   }
