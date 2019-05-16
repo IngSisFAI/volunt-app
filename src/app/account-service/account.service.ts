@@ -28,8 +28,9 @@ export class AccountService {
   public signinUser(user: Donner): void {
     this.donnerApi.login(user).subscribe((token: SDKToken) => {
       this.router.navigate(['/catalog']);
-      this.auth.setRememberMe(true); // Creo que tampoco hace falta
-      this.auth.save(); // Creo que tampoco hace falta
+      // TODO: check if these sentences are necessary.
+      this.auth.setRememberMe(true);
+      this.auth.save();
     }, (err) => {
       // TODO: Handle error
       console.error(err);
@@ -39,8 +40,9 @@ export class AccountService {
 
   public sigin(user) {
     return this.donnerApi.login(user).subscribe((token: SDKToken) => {
-      this.auth.setRememberMe(true); // Creo que tampoco hace falta
-      this.auth.save(); // Creo que tampoco hace falta
+      // TODO: check if these sentences are necessary.
+      this.auth.setRememberMe(true);
+      this.auth.save();
     }, () => {
       return this.organizationApi.login(user).subscribe((token: SDKToken) => {
         this.router.navigate(['/catalog']);
