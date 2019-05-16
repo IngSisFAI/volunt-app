@@ -1,8 +1,28 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
+@Component({
+  selector: 'app-login-modal',
+  templateUrl: 'login-modal.component.html',
+  styleUrls: ['./login-modal.component.css']
+})
+export class LoginDialogComponent {
+
+  constructor(
+    public dialogRef: MatDialogRef<LoginDialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any
+  ) { }
+
+  cancel(): void {
+    this.dialogRef.close(false);
+  }
+
+  login(): void {
+    this.dialogRef.close(this.data.account);
+  }
+}
 export class LoginModal {
-  private width = '500px'
+  private width = '500px';
   private accept: String;
   private cancel: String;
   private dialog: MatDialog;
@@ -17,12 +37,11 @@ export class LoginModal {
       username: '',
       password: ''
     };
-    console.log(this.account);
   }
 
   public open() {
     return new Promise((resolve, reject) => {
-      let dialogRef = this.dialog.open(LoginDialog, {
+      const dialogRef = this.dialog.open(LoginDialogComponent, {
         width: this.width,
         data: {
           account: this.account,
@@ -33,27 +52,8 @@ export class LoginModal {
       dialogRef.afterClosed().subscribe(result => {
         resolve(result);
       });
-    })
+    });
   }
 
 }
-@Component({
-  selector: 'app-login-modal',
-  templateUrl: 'login-modal.component.html',
-  styleUrls: ['./login-modal.component.css']
-})
-export class LoginDialog {
 
-  constructor(
-    public dialogRef: MatDialogRef<LoginDialog>,
-    @Inject(MAT_DIALOG_DATA) public data: any
-  ) { }
-
-  cancel(): void {
-    this.dialogRef.close(false);
-  }
-
-  login(): void {
-    this.dialogRef.close(this.data.account);
-  }
-}

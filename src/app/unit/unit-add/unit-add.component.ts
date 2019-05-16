@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { UnitApi } from '../../shared/sdk/services/custom/Unit';
 import { Unit, UnitInterface } from '../../shared/sdk/models/Unit';
 
@@ -7,29 +7,27 @@ import { Unit, UnitInterface } from '../../shared/sdk/models/Unit';
   templateUrl: './unit-add.component.html',
   styleUrls: ['./unit-add.component.css']
 })
-export class UnitAddComponent implements OnInit {
+export class UnitAddComponent {
 
   @Output() onCreated = new EventEmitter();
 
   public unit: UnitInterface = new Unit();
 
   constructor(
-    private UnitApi: UnitApi
+    private unitApi: UnitApi
   ) { }
-
-  ngOnInit() {}
 
   create() {
 
-    this.UnitApi
+    this.unitApi
       .create(this.unit).subscribe(
-      (unit: Unit) => {
-        this.onCreated.emit(unit);
-      },
-      (error) => {
-        console.log('An error occured at Unit-add component');
-        console.log(error);
-      }
+        (unit: Unit) => {
+          this.onCreated.emit(unit);
+        },
+        (error) => {
+          // TODO: Handle error
+          console.error(error);
+        }
       );
   }
 

@@ -2,13 +2,36 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, DateAdapter, NativeDateAdapter } from '@angular/material';
 
 // Interfaces
-import { DonationRequestInterface, DonationRequest } from '../../shared/sdk/models/DonationRequest';
+import { DonationRequest } from '../../shared/sdk/models/DonationRequest';
 
 // Services
 import { DonationRequestApi } from '../../shared/sdk/services/custom/DonationRequest';
 import { ProductApi } from '../../shared/sdk/services/custom/Product';
 import { ProductInterface, OrganizationApi, OrganizationInterface } from '../../shared/sdk';
 
+@Component({
+  selector: 'app-add-request-dialog',
+  templateUrl: 'add-request-dialog.component.html',
+  styleUrls: ['./add-request-dialog.component.css']
+})
+export class AddRequestDialogComponent {
+
+  constructor(
+    public dialogRef: MatDialogRef<AddRequestDialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    public dateAdapter: DateAdapter<NativeDateAdapter>
+  ) {
+    this.dateAdapter.setLocale('es-ES');
+  }
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+
+  save(): void {
+    this.dialogRef.close(this.data.request);
+  }
+}
 @Component({
   selector: 'app-donation-request-add',
   templateUrl: './donation-request-add.component.html',
@@ -32,21 +55,21 @@ export class DonationRequestAddComponent implements OnInit {
   ngOnInit() {
     this.productApi.find()
       .subscribe(products => {
-        console.log('Products: ', products);
         this.products = <any>products;
 
         this.organizationApi.find()
           .subscribe(organizations => {
-            console.log(organizations);
             this.organizations = <any>organizations;
             this.donationRequestInit();
           },
             error => {
+              // TODO: Handle error
               console.error(error);
             }
           );
       },
         error => {
+          // TODO: Handle error
           console.error(error);
         }
       );
@@ -63,23 +86,24 @@ export class DonationRequestAddComponent implements OnInit {
 
   create() {
     if (this.donationRequest.isPermanent) {
-        // We must add a few months to expiration date 
-        let aux = new Date();
-        aux.setMonth(aux.getMonth() + 2);
-        this.donationRequest.expirationDate = aux;
+      // We must add a few months to expiration date
+      const aux = new Date();
+      aux.setMonth(aux.getMonth() + 2);
+      this.donationRequest.expirationDate = aux;
     }
     this.donationRequestApi.create(this.donationRequest).subscribe(
       (donationRequestRequest) => {
-        console.log(donationRequestRequest);
+        // TODO: ...
       },
       error => {
+        // TODO: Handle error
         console.error(error);
       }
     );
   }
 
   openDialog(): void {
-    let dialogRef = this.dialog.open(AddRequestDialog, {
+    const dialogRef = this.dialog.open(AddRequestDialogComponent, {
       width: '500px',
       data: {
         products: this.products,
@@ -89,32 +113,8 @@ export class DonationRequestAddComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(this.donationRequest);
       this.create();
     });
   }
 
-}
-@Component({
-  selector: 'app-add-request-dialog',
-  templateUrl: 'add-request-dialog.component.html',
-  styleUrls: ['./add-request-dialog.component.css']
-})
-export class AddRequestDialog {
-
-  constructor(
-    public dialogRef: MatDialogRef<AddRequestDialog>,
-    @Inject(MAT_DIALOG_DATA) public data: any,
-    public dateAdapter: DateAdapter<NativeDateAdapter>
-  ) { 
-    this.dateAdapter.setLocale('es-ES');
-  }
-
-  onNoClick(): void {
-    this.dialogRef.close( );
-  }
-
-  save(): void {
-    this.dialogRef.close(this.data.request);
-  }
 }

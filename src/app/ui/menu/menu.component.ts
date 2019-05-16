@@ -13,7 +13,7 @@ export class MenuComponent implements OnInit {
   ngOnInit() {
   }
 
-  open(){
+  open() {
     this.menu.toggle();
   }
 

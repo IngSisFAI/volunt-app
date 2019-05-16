@@ -2,7 +2,6 @@
 import { Injectable } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
-//import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
 import 'rxjs/add/observable/throw';
 /**
  * Default error handler

@@ -9,7 +9,7 @@ export class CustomModalService {
     constructor(public dialog: MatDialog) { }
 
     public openDialog(data) {
-        let dialog = new CustomModal(this.dialog, data.title, data.description, data.accept, data.cancel);
+        const dialog = new CustomModal(this.dialog, data.title, data.description, data.accept, data.cancel);
         return dialog.open();
     }
 

@@ -45,19 +45,16 @@ export class DonateAddComponent implements OnInit {
 
     if (userId) {
       this.donation.donnerId = userId;
-      console.log('Are you sure??');
-      console.log(this.donation);
 
       this.donationResponseApi.create(this.donation).subscribe(
         response => {
-          console.log('Response ', response);
+          // TODO: Change alert
           this.donated.next(response);
-          alert('La donacion se ha generado con exito!!')
+          alert('La donacion se ha generado con exito!!');
         }
       );
     } else {
       // Here, we have to ask to log in
-      // this.router.navigate([`/login`]);
       this.openLoginDialog();
     }
   }

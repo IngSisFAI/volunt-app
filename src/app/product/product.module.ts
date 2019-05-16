@@ -11,7 +11,7 @@ import { ProductEditComponent } from './product-edit/product-edit.component';
     CommonModule,
     FormsModule
   ],
-  declarations: [ProductMainComponent,ProductAddComponent,ProductEditComponent],
+  declarations: [ProductMainComponent, ProductAddComponent, ProductEditComponent],
   exports: [ProductMainComponent],
   providers: [ProductApi]
 })

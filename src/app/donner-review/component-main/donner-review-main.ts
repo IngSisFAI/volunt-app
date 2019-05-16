@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { DonnerReviewApi } from  '../../shared/sdk/services/custom/DonnerReview';
-import { DonnerReview, DonnerReviewInterface } from  '../../shared/sdk/models/DonnerReview';
+import { DonnerReviewApi } from '../../shared/sdk/services/custom/DonnerReview';
+import { DonnerReviewInterface } from '../../shared/sdk/models/DonnerReview';
 
 @Component({
-  selector: 'app-donnerReview-main',
+  selector: 'app-donner-review-main',
   templateUrl: './donnerReview-main.component.html',
   styleUrls: ['./donnerReview-main.component.css']
 })
@@ -26,11 +26,11 @@ export class DonnerReviewMainComponent implements OnInit {
       .subscribe(donnerReviews => {
         this.donnerReviews = <any>donnerReviews.slice();
       },
-      (error) => {
-        console.log('An error occured at DonnerReview-main component');
-        console.log(error);
-      }
-    );
+        (error) => {
+          // TODO: Handle error
+          console.error(error);
+        }
+      );
   }
 
   select(donnerReview) {

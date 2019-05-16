@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core';
 import { OrganizationApi } from '../../shared/sdk/services/custom/Organization';
 import { Organization, OrganizationInterface } from '../../shared/sdk/models/Organization';
 
@@ -7,7 +7,7 @@ import { Organization, OrganizationInterface } from '../../shared/sdk/models/Org
   templateUrl: './organization-add.component.html',
   styleUrls: ['./organization-add.component.css']
 })
-export class OrganizationAddComponent implements OnInit {
+export class OrganizationAddComponent {
 
   @Output() onCreated = new EventEmitter();
 
@@ -17,19 +17,17 @@ export class OrganizationAddComponent implements OnInit {
     private organizationApi: OrganizationApi
   ) { }
 
-  ngOnInit() {}
-
   create() {
 
     this.organizationApi
       .create(this.organization).subscribe(
-      (organization: Organization) => {
-        this.onCreated.emit(organization);
-      },
-      (error) => {
-        console.log('An error occured at Organization-add component');
-        console.log(error);
-      }
+        (organization: Organization) => {
+          this.onCreated.emit(organization);
+        },
+        (error) => {
+          // TODO: Handle error
+          console.error(error);
+        }
       );
   }
 

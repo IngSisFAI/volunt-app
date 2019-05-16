@@ -16,7 +16,7 @@ import { MatTableDataSource } from '@angular/material';
 })
 export class DonnerActiveResponsesComponent implements OnInit {
 
-  empty: boolean = false;
+  empty = false;
   displayedColumns = ['Categoria', 'Nombre', 'Cantidad', 'Creación', 'Organización', 'Contacto', 'Accion'];
   dataSource = new MatTableDataSource<DonationResponseInterface>([]);
 
@@ -36,32 +36,6 @@ export class DonnerActiveResponsesComponent implements OnInit {
 
   }
 
-  /*
-    getDonationResponses() {
-
-      this.userId = this.auth.getCurrentUserId();
-
-      this.donationResponseApi.find({
-        include: [{ donationRequest: ['product', 'organization'] }],
-        where: {
-          donnerId: this.userId,
-          alreadyDelivered: false,
-          isCanceled: false,
-        }
-      }).subscribe((responses: DonationResponseInterface[]) => {
-
-        console.log(responses);
-        this.dataSource.data = responses;
-        if (this.dataSource.data.length === 0) {
-          this.empty = true;
-        }
-      },
-        (err) => {
-          console.log('An error has ocurred');
-          console.log(err);
-        })
-    }*/
-
   public cancelResponse(response) {
 
     this.donationResponseApi.cancel(response.id)
@@ -70,8 +44,8 @@ export class DonnerActiveResponsesComponent implements OnInit {
           return res.id !== response.id;
         });
       }, (error) => {
-        console.log("error");
-        console.log(error);
+        // TODO: Handle error
+        console.error(error);
       });
   }
 

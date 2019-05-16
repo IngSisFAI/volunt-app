@@ -1,11 +1,11 @@
-import { Component, OnInit, OnChanges, Input } from '@angular/core';
+import { Component } from '@angular/core';
 
 // Interfaces
 import { DonationRequestInterface } from '../../shared/sdk/models/DonationRequest';
 
 // Services
 import { DonationRequestApi } from '../../shared/sdk/services/custom/DonationRequest';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { MatTableDataSource } from '@angular/material';
 import { LoopBackAuth } from '../../shared/sdk';
 
@@ -14,7 +14,7 @@ import { LoopBackAuth } from '../../shared/sdk';
   templateUrl: './organization-active-requests.component.html',
   styleUrls: ['./organization-active-requests.component.css']
 })
-export class OrganizationActiveRequestsComponent implements OnInit, OnChanges {
+export class OrganizationActiveRequestsComponent {
 
   oneTimeRequests: DonationRequestInterface[];
   permanentRequests: DonationRequestInterface[];
@@ -25,9 +25,8 @@ export class OrganizationActiveRequestsComponent implements OnInit, OnChanges {
     private donationRequestApi: DonationRequestApi,
     private auth: LoopBackAuth,
     private router: Router,
-    route: ActivatedRoute,
   ) {
-    const organizationId =  this.auth.getCurrentUserId();
+    const organizationId = this.auth.getCurrentUserId();
     this.donationRequestApi.find({
       include: ['product'],
       where: {
@@ -43,23 +42,15 @@ export class OrganizationActiveRequestsComponent implements OnInit, OnChanges {
 
   public closeRequest(request) {
     this.donationRequestApi.closeRequest(request.id, request)
-    .subscribe((response) => {
-      this.dataSource.data = this.dataSource.data.filter((rq) => {
-        return rq.id !== request.id;
+      .subscribe((response) => {
+        this.dataSource.data = this.dataSource.data.filter((rq) => {
+          return rq.id !== request.id;
+        });
       });
-    });
   }
 
   public goToDetail(request) {
-    console.log(request);
     this.router.navigate(['/request/:idRequest'], { queryParams: { idRequest: request.id } });
-  }
-
-  ngOnInit() {
-
-  }
-
-  ngOnChanges() {
   }
 
   applyFilter(filterValue: string) {

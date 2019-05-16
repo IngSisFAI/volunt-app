@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UnitApi } from '../../shared/sdk/services/custom/Unit';
-import { Unit, UnitInterface } from '../../shared/sdk/models/Unit';
+import { UnitInterface } from '../../shared/sdk/models/Unit';
 
 @Component({
   selector: 'app-unit-main',
@@ -26,11 +26,11 @@ export class UnitMainComponent implements OnInit {
       .subscribe(units => {
         this.units = <any>units.slice();
       },
-      (error) => {
-        console.log('An error occured at Unit-main component');
-        console.log(error);
-      }
-    );
+        (error) => {
+          // TODO: Handle error
+          console.error(error);
+        }
+      );
   }
 
   select(unit) {

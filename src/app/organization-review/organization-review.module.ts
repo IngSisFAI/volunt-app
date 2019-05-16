@@ -11,7 +11,7 @@ import { OrganizationReviewEditComponent } from './organization-review-edit/orga
     CommonModule,
     FormsModule
   ],
-  declarations: [OrganizationReviewMainComponent,OrganizationReviewAddComponent,OrganizationReviewEditComponent],
+  declarations: [OrganizationReviewMainComponent, OrganizationReviewAddComponent, OrganizationReviewEditComponent],
   exports: [OrganizationReviewMainComponent],
   providers: [OrganizationReviewApi]
 })

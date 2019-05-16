@@ -1,10 +1,8 @@
 
 
-import {CdkTableModule} from '@angular/cdk/table';
-import {HttpClientModule} from '@angular/common/http';
-import {NgModule} from '@angular/core';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {HttpModule} from '@angular/http';
+import { CdkTableModule } from '@angular/cdk/table';
+import { NgModule } from '@angular/core';
+
 import {
   MatAutocompleteModule,
   MatButtonModule,
@@ -78,7 +76,7 @@ import {
     MatTooltipModule,
   ]
 })
-export class MaterialModule {}
+export class MaterialModule { }
 
 // platformBrowserDynamic().bootstrapModule(MaterialModule);
 

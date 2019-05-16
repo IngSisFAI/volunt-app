@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 // Interfaces
 import { DonationResponseInterface } from '../../shared/sdk/models/DonationResponse';
@@ -7,7 +7,6 @@ import { DonationResponseInterface } from '../../shared/sdk/models/DonationRespo
 import { DonationResponseApi } from '../../shared/sdk/services/custom/DonationResponse';
 import { Router } from '@angular/router';
 import { MatTableDataSource } from '@angular/material';
-import { LoopBackAuth } from '../../shared/sdk';
 
 @Component({
   selector: 'app-donner-responses',
@@ -15,13 +14,13 @@ import { LoopBackAuth } from '../../shared/sdk';
   styleUrls: ['./donner-responses.component.css']
 })
 
-export class DonnerResponsesComponent implements OnInit {
+export class DonnerResponsesComponent {
 
-  empty: boolean = false;
+  empty = false;
   displayedColumns = ['Categoria', 'Nombre', 'Cantidad', 'Creación', 'Organización', 'Contacto', 'Estado', 'Accion'];
   dataSource = new MatTableDataSource<DonationResponseInterface>([]);
 
-  //default: show only active responses
+  // default: show only active responses
   showResponses = 0;
 
   _donationResponses: DonationResponseInterface[];
@@ -41,56 +40,50 @@ export class DonnerResponsesComponent implements OnInit {
 
   }
 
-  ngOnInit() {
-
-  }
-
   filterResponses() {
-    console.log(this.showResponses);
     switch (this.showResponses) {
       case 0: {
-        //active responses only
+        // active responses only
         this.setDataSource(this._donationResponses.filter(res => res.alreadyDelivered === false && res.isCanceled === false));
         break;
       }
 
       case 1: {
-        //delivered responses only
+        // delivered responses only
         this.setDataSource(this._donationResponses.filter(res => res.alreadyDelivered === true && res.isCanceled === false));
         break;
       }
 
       case 2: {
-        //cancelled responses only
+        // cancelled responses only
         this.setDataSource(this._donationResponses.filter(res => res.alreadyDelivered === false && res.isCanceled === true));
         break;
       }
 
       case 3: {
-        //all responses
+        // all responses
         this.setDataSource(this._donationResponses);
         break;
       }
 
       default: {
-        //all responses
+        // all responses
         this.setDataSource(this._donationResponses);
         break;
       }
     }
 
-    //check if datasource is empty
+    // check if datasource is empty
     if (this.dataSource.data.length === 0) {
       this.empty = true;
-    }
-    else {
+    } else {
       this.empty = false;
     }
 
   }
 
   setDataSource(res: DonationResponseInterface[]) {
-    this.dataSource.data = res
+    this.dataSource.data = res;
 
   }
 
@@ -101,14 +94,14 @@ export class DonnerResponsesComponent implements OnInit {
       .subscribe((change) => {
 
         let updatedResponse: DonationResponseInterface;
-        updatedResponse = this._donationResponses.find(res => { return res.id === response.id });
+        updatedResponse = this._donationResponses.find(res => res.id === response.id);
         updatedResponse.isCanceled = true;
 
         this.filterResponses();
 
       }, (error) => {
-        console.log("error");
-        console.log(error);
+        // TODO: Handle error
+        console.error(error);
       });
   }
 
@@ -122,13 +115,12 @@ export class DonnerResponsesComponent implements OnInit {
     let state: string;
 
     if (response.alreadyDelivered) {
-      state = "Entregada";
+      state = 'Entregada';
     } else {
       if (response.isCanceled) {
-        state = "Cancelada";
-      }
-      else {
-        state = "Activa";
+        state = 'Cancelada';
+      } else {
+        state = 'Activa';
       }
     }
 
@@ -138,7 +130,7 @@ export class DonnerResponsesComponent implements OnInit {
 
   isResponseActive(response: DonationResponseInterface): boolean {
     let active: boolean;
-    active = (this.getResponseState(response) === "Activa");
+    active = (this.getResponseState(response) === 'Activa');
     return active;
   }
 

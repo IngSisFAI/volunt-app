@@ -12,29 +12,23 @@ export class ProductMainComponent implements OnInit {
   public products: ProductInterface[] = [];
   public productSelected: ProductInterface = null;
 
-  constructor(
-    private ProductApi: ProductApi
-  ) { }
+  constructor( private productApi: ProductApi) { }
 
   ngOnInit() {
-    console.log('NgOnInit');
     this.find();
   }
 
 
   find() {
-    this.ProductApi.find({include:['unit']})
+    this.productApi.find({ include: ['unit'] })
       .subscribe(products => {
-        console.log('Productos: ', products);
-
         this.products = <any>products.slice();
-        console.log(this.products);
       },
-      (error) => {
-        console.log('An error occured at Product-main component');
-        console.log(error);
-      }
-    );
+        (error) => {
+          // TODO: Handle error
+          console.error(error);
+        }
+      );
   }
 
   select(product: ProductInterface) {

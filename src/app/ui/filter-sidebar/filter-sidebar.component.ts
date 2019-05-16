@@ -39,8 +39,6 @@ export class FilterSidebarComponent implements OnInit {
   productsLimit = 5;
 
   constructor(private route: ActivatedRoute, private router: Router) {
-      console.log(this.products);
-
     this.cityCtrl = new FormControl();
     this.filteredCitiesByName = this.cityCtrl.valueChanges
       .pipe(
@@ -64,7 +62,7 @@ export class FilterSidebarComponent implements OnInit {
   }
 
   moreProducts() {
-      this.productsLimit += 5;
+    this.productsLimit += 5;
   }
 
   filterCitiesByName(name: string) {
@@ -108,7 +106,7 @@ export class FilterSidebarComponent implements OnInit {
     if (this.urlCity) {
       this.router.navigate(['/catalog']);
     }
-    //delete tag
+    // delete tag
     this.cityAux = null;
 
   }
@@ -125,7 +123,7 @@ export class FilterSidebarComponent implements OnInit {
     this.route
       .queryParams
       .subscribe(params => {
-        let city = params['city'];
+        const city = params['city'];
         if (city) {
           this.urlCity = true;
         } else {

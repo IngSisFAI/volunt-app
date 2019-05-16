@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 
-// Interfaces
-import { DonationRequestInterface } from '../../shared/sdk/models/DonationRequest';
-
 // Services
 import { DonationRequestApi } from '../../shared/sdk/services/custom/DonationRequest';
 

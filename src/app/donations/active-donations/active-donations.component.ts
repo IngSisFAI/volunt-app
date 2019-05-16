@@ -4,7 +4,7 @@ import { Component, OnInit, OnChanges, Input, SimpleChanges } from '@angular/cor
 import { DonationRequestInterface } from '../../shared/sdk/models/DonationRequest';
 
 // Services
-import { DonationRequestApi, OrganizationInterface } from '../../shared/sdk';
+import { DonationRequestApi } from '../../shared/sdk';
 import { Router } from '@angular/router';
 
 @Component({
@@ -22,7 +22,7 @@ export class ActiveDonationsComponent implements OnInit, OnChanges {
   oneTimeRequestsFiltered: DonationRequestInterface[] = [];
   oneTimeRequestsByCity: DonationRequestInterface[];
   oneTimeRequestsByOrg: DonationRequestInterface[];
-  emptyOneTimeRequests: boolean = false;
+  emptyOneTimeRequests = false;
 
   @Input() set oneTimeRequests(requests: DonationRequestInterface[]) {
     if (requests) {
@@ -53,7 +53,7 @@ export class ActiveDonationsComponent implements OnInit, OnChanges {
   permanentRequestsFiltered: DonationRequestInterface[] = [];
   permanentRequestsByCity: DonationRequestInterface[];
   permanentRequestsByOrg: DonationRequestInterface[];
-  emptyPermanentRequests: boolean = false;
+  emptyPermanentRequests = false;
 
   @Input() set permanentRequests(requests: DonationRequestInterface[]) {
     if (requests) {
@@ -92,36 +92,35 @@ export class ActiveDonationsComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges) {
 
-    for (let propName in changes) {
-      let change = changes[propName];
+    for (const propName in changes) {
       if (this._oneTimeRequests.length !== 0 || this._permanentRequests.length !== 0) {
         switch (propName) {
-          case "city":
+          case 'city':
             if (this.city) {
               this.oneTimeRequestsByCity = this._oneTimeRequests.filter(req => req.organization.city.name === this.city);
               this.permanentRequestsByCity = this._permanentRequests.filter(req => req.organization.city.name === this.city);
 
-              //this.oneTimeRequestsFiltered = this.oneTimeRequestsByCity;
+              // this.oneTimeRequestsFiltered = this.oneTimeRequestsByCity;
               if (this.donationType) {
                 this.oneTimeRequestsFiltered = this.oneTimeRequestsByCity.filter(req => req.product.name === this.donationType);
                 this.permanentRequestsFiltered = this.permanentRequestsByCity.filter(req => req.product.name === this.donationType);
               } else {
-                //this.oneTimeRequestsByCity = this._oneTimeRequests.filter(req => req.product.city === this.donationType);
+                // this.oneTimeRequestsByCity = this._oneTimeRequests.filter(req => req.product.city === this.donationType);
                 this.oneTimeRequestsFiltered = this.oneTimeRequestsByCity;
                 this.permanentRequestsFiltered = this.permanentRequestsByCity;
               }
 
               this.isEmpty();
             } else {
-              //city unselected
+              // city unselected
               if (this.city === null) {
                 if (!this.orgId) {
                   if (this.donationType) {
                     this.oneTimeRequestsFiltered = this._oneTimeRequests.filter(req => req.product.name === this.donationType);
                     this.permanentRequestsFiltered = this._permanentRequests.filter(req => req.product.name === this.donationType);
                   } else {
-                    //this.oneTimeRequestsByCity = this._oneTimeRequests.filter(req => req.product.city === this.donationType);
-                    //this.oneTimeRequestsFiltered = this._oneTimeRequests;
+                    // this.oneTimeRequestsByCity = this._oneTimeRequests.filter(req => req.product.city === this.donationType);
+                    // this.oneTimeRequestsFiltered = this._oneTimeRequests;
 
                     this.restaurar();
                   }
@@ -131,7 +130,7 @@ export class ActiveDonationsComponent implements OnInit, OnChanges {
               }
             }
             break;
-          case "donationType":
+          case 'donationType':
 
             if (this.donationType) {
 
@@ -149,7 +148,7 @@ export class ActiveDonationsComponent implements OnInit, OnChanges {
 
               this.isEmpty();
 
-              //donationType unselected
+              // donationType unselected
             } else {
               if (this.donationType === null) {
                 if (this.city) {
@@ -169,16 +168,16 @@ export class ActiveDonationsComponent implements OnInit, OnChanges {
             }
             break;
 
-          case "orgId":
+          case 'orgId':
             if (this.orgId) {
               this.oneTimeRequestsByOrg = this._oneTimeRequests.filter(req => req.organization.id === this.orgId);
               this.permanentRequestsByOrg = this._permanentRequests.filter(req => req.organization.id === this.orgId);
-              //this.oneTimeRequestsFiltered = this.oneTimeRequestsByCity;
+              // this.oneTimeRequestsFiltered = this.oneTimeRequestsByCity;
               if (this.donationType) {
                 this.oneTimeRequestsFiltered = this.oneTimeRequestsByOrg.filter(req => req.product.name === this.donationType);
                 this.permanentRequestsFiltered = this.permanentRequestsByOrg.filter(req => req.product.name === this.donationType);
               } else {
-                //this.oneTimeRequestsByCity = this._oneTimeRequests.filter(req => req.product.city === this.donationType);
+                // this.oneTimeRequestsByCity = this._oneTimeRequests.filter(req => req.product.city === this.donationType);
                 this.oneTimeRequestsFiltered = this.oneTimeRequestsByOrg;
                 this.permanentRequestsFiltered = this.permanentRequestsByOrg;
               }
@@ -186,15 +185,15 @@ export class ActiveDonationsComponent implements OnInit, OnChanges {
               this.isEmpty();
 
             } else {
-              //org unselected
+              // org unselected
               if (this.orgId === null) {
                 if (!this.city) {
                   if (this.donationType) {
                     this.oneTimeRequestsFiltered = this._oneTimeRequests.filter(req => req.product.name === this.donationType);
                     this.permanentRequestsFiltered = this._permanentRequests.filter(req => req.product.name === this.donationType);
                   } else {
-                    //this.oneTimeRequestsByCity = this._oneTimeRequests.filter(req => req.product.city === this.donationType);
-                    //this.oneTimeRequestsFiltered = this._oneTimeRequests;
+                    // this.oneTimeRequestsByCity = this._oneTimeRequests.filter(req => req.product.city === this.donationType);
+                    // this.oneTimeRequestsFiltered = this._oneTimeRequests;
 
                     this.restaurar();
                   }
@@ -207,65 +206,6 @@ export class ActiveDonationsComponent implements OnInit, OnChanges {
         }
       }
     }
-
-
-
-
-    /*
-        if (this.permanentRequests) {
-          if (this.city!) {
-            this.permanentRequestsByCity = this._permanentRequests.filter(req => req.organization.city === this.city);
-          }
-          if (this.donationType) {
-
-            if (this.city) {
-              this.permanentRequestsFiltered = this.permanentRequestsByCity.filter(req => req.product.name === this.donationType);
-            } else if (this.orgId) {
-              this.permanentRequestsFiltered = this.permanentRequestsByOrg.filter(req => req.product.name === this.donationType);
-            } else {
-              //filter original
-              this.permanentRequestsFiltered = this._permanentRequests.filter(req => req.product.name === this.donationType);
-            }
-            //donationType unselected
-          } else {
-            if (this.city) {
-              this.permanentRequestsFiltered = this.permanentRequestsByCity;
-            } else if (this.orgId) {
-              this.permanentRequestsFiltered = this.permanentRequestsByOrg;
-            } else {
-              this.permanentRequestsFiltered = this._permanentRequests;
-            }
-          }
-
-        }
-        if (this._oneTimeRequests) {
-
-        }*/
-
-    /*
-
-        if (this.permanentRequests) {
-          this.permanentRequestsFiltered = this.filterRequests(this.permanentRequests);
-        }
-        if (this._oneTimeRequests) {
-          this.oneTimeRequestsFiltered = this.filterRequests(this._oneTimeRequests);
-        }
-
-        if (changes.donationType) {
-          console.log("donationType changed", changes.donationType);
-
-        } else if (changes.city) {
-
-          console.log("city changed", this.city);
-          if (this.permanentRequests) {
-            this.permanentRequestsFiltered = this.filterRequests(this.permanentRequests);
-          }
-          if (this._oneTimeRequests) {
-            this.oneTimeRequestsFiltered = this.filterRequests(this._oneTimeRequests);
-          }
-        }
-    */
-
   }
 
   private filterRequests(requests: DonationRequestInterface[], filter: String) {
@@ -280,29 +220,28 @@ export class ActiveDonationsComponent implements OnInit, OnChanges {
   private filterRequestsByOrg(requests: DonationRequestInterface[], requestsBy: DonationRequestInterface[], org: String) {
 
     if (org) {
-      //filter originals
+      // filter originals
       requestsBy = requests.filter(req => req.organization.id === org);
 
-      console.log("cambio aca2", this.oneTimeRequestsByOrg);
-      //this.oneTimeRequestsFiltered = this.oneTimeRequestsByCity;
+      // this.oneTimeRequestsFiltered = this.oneTimeRequestsByCity;
       if (this.donationType) {
         this.oneTimeRequestsFiltered = this.oneTimeRequestsByOrg.filter(req => req.product.name === this.donationType);
         this.permanentRequestsFiltered = this.permanentRequestsByOrg.filter(req => req.product.name === this.donationType);
       } else {
-        //this.oneTimeRequestsByCity = this._oneTimeRequests.filter(req => req.product.city === this.donationType);
+        // this.oneTimeRequestsByCity = this._oneTimeRequests.filter(req => req.product.city === this.donationType);
         this.oneTimeRequestsFiltered = this.oneTimeRequestsByOrg;
         this.permanentRequestsFiltered = this.permanentRequestsByOrg;
       }
     } else {
-      //org unselected
+      // org unselected
       if (!this.city) {
         if (this.donationType) {
           this.oneTimeRequestsFiltered = this._oneTimeRequests.filter(req => req.product.name === this.donationType);
           this.permanentRequestsFiltered = this._permanentRequests.filter(req => req.product.name === this.donationType);
         } else {
-          //this.oneTimeRequestsByCity = this._oneTimeRequests.filter(req => req.product.city === this.donationType);
-          //this.oneTimeRequestsFiltered = this._oneTimeRequests;
-          this.restaurar;
+          // this.oneTimeRequestsByCity = this._oneTimeRequests.filter(req => req.product.city === this.donationType);
+          // this.oneTimeRequestsFiltered = this._oneTimeRequests;
+          this.restaurar();
         }
       }
     }
@@ -318,15 +257,15 @@ export class ActiveDonationsComponent implements OnInit, OnChanges {
   private sortRequestsByDate(requests: DonationRequestInterface[]) {
 
     requests.sort((r1, r2) => {
-      let fecha1 = new Date(r1.expirationDate).getTime();
-      let fecha2 = new Date(r2.expirationDate).getTime();
+      const fecha1 = new Date(r1.expirationDate).getTime();
+      const fecha2 = new Date(r2.expirationDate).getTime();
       return fecha1 - fecha2;
     });
 
     return requests;
   }
 
-  //check if cols empty
+  // check if cols empty
   isEmpty() {
 
     if (this.permanentRequestsFiltered.length === 0) {
@@ -341,19 +280,4 @@ export class ActiveDonationsComponent implements OnInit, OnChanges {
 
     }
   }
-
-  /*se usa el boton donar
-    public onPermanentRequest(permanentRequest) {
-      this.requestSelected = permanentRequest;
-      console.log('PermanentRequest selected:', this.requestSelected);
-      this.router.navigate(['/wantToDonate/' + this.requestSelected.id]);
-
-    }
-
-    public onOneTimeRequest(request) {
-      this.requestSelected = request;
-      console.log('One Time request selected:', this.requestSelected);
-      this.router.navigate(['/wantToDonate/' + this.requestSelected.id]);
-    }
-  */
 }

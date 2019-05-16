@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { OrganizationApi } from '../../shared/sdk/services/custom/Organization';
-import { Organization, OrganizationInterface } from '../../shared/sdk/models/Organization';
+import { OrganizationInterface } from '../../shared/sdk/models/Organization';
 
 @Component({
   selector: 'app-organization-main',
@@ -26,11 +26,11 @@ export class OrganizationMainComponent implements OnInit {
       .subscribe(organizations => {
         this.organizations = <any>organizations.slice();
       },
-      (error) => {
-        console.log('An error occured at Organization-main component');
-        console.log(error);
-      }
-    );
+        (error) => {
+          // TODO: Handle error
+          console.error(error);
+        }
+      );
   }
 
   select(organization) {

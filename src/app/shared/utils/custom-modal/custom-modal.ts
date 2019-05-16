@@ -1,8 +1,28 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
+@Component({
+    selector: 'app-dialog',
+    templateUrl: 'dialog.component.html',
+    styleUrls: ['./dialog.component.css']
+})
+export class DialogComponent {
+
+    constructor(
+        public dialogRef: MatDialogRef<DialogComponent>,
+        @Inject(MAT_DIALOG_DATA) public data: any
+    ) { }
+
+    cancel(): void {
+        this.dialogRef.close(false);
+    }
+
+    accept(): void {
+        this.dialogRef.close(true);
+    }
+}
 export class CustomModal {
-    private width = '500px'
+    private width = '500px';
     private title: String;
     private description: String;
     private accept: String;
@@ -19,7 +39,7 @@ export class CustomModal {
 
     public open() {
         return new Promise((resolve, reject) => {
-            let dialogRef = this.dialog.open(Dialog, {
+            const dialogRef = this.dialog.open(DialogComponent, {
                 width: this.width,
                 data: {
                     title: this.title,
@@ -31,27 +51,8 @@ export class CustomModal {
             dialogRef.afterClosed().subscribe(result => {
                 resolve(result);
             });
-        })
+        });
     }
 
 }
-@Component({
-    selector: 'app-dialog',
-    templateUrl: 'dialog.component.html',
-    styleUrls: ['./dialog.component.css']
-})
-export class Dialog {
 
-    constructor(
-        public dialogRef: MatDialogRef<Dialog>,
-        @Inject(MAT_DIALOG_DATA) public data: any
-    ) { }
-
-    cancel(): void {
-        this.dialogRef.close(false);
-    }
-
-    accept(): void {
-        this.dialogRef.close(true);
-    }
-}

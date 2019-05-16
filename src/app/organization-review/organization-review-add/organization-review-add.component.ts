@@ -27,8 +27,8 @@ export class OrganizationReviewAddComponent implements OnInit {
         this.onCreated.emit(organizationReview);
       },
       (error) => {
-        console.log('An error occured at OrganizationReview-add component');
-        console.log(error);
+        // TODO: Handle error
+        console.error(error);
       }
       );
   }

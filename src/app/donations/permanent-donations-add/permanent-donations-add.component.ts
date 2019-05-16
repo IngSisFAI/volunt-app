@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 // Interfaces
-import { DonationRequestInterface, DonationRequest } from '../../shared/sdk/models/DonationRequest';
+import { DonationRequest } from '../../shared/sdk/models/DonationRequest';
 
 // Services
 import { DonationRequestApi } from '../../shared/sdk/services/custom/DonationRequest';
@@ -35,7 +35,6 @@ export class PermanentDonationsAddComponent implements OnInit {
 
         this.organizationApi.find()
           .subscribe(organizations => {
-            console.log(organizations);
             this.organizations = <any>organizations;
 
             // this.permanentDonation.status = true;
@@ -45,6 +44,7 @@ export class PermanentDonationsAddComponent implements OnInit {
             this.permanentDonation.creationDate = new Date();
           },
             error => {
+              // TODO: Handle error
               console.error(error);
             }
           );
@@ -57,11 +57,8 @@ export class PermanentDonationsAddComponent implements OnInit {
   }
 
   create() {
-    // if (!this.permanentDonation.expirationDate) {
-    let tempDate = new Date();
-    console.log(tempDate);
+    const tempDate = new Date();
     tempDate.setMonth(tempDate.getMonth() + 2);
-    console.log(tempDate);
     this.permanentDonation.expirationDate = tempDate;
 
 
@@ -70,9 +67,10 @@ export class PermanentDonationsAddComponent implements OnInit {
 
     this.donationRequestApi.create(this.permanentDonation).subscribe(
       (permanentDonationRequest) => {
-        console.log(permanentDonationRequest);
+        // TODO: ...
       },
       error => {
+        // TODO: Handle error
         console.error(error);
       }
     );

@@ -1,11 +1,10 @@
-import { Component, OnInit, OnChanges, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 // Interfaces
 import { DonationRequestInterface } from '../../shared/sdk/models/DonationRequest';
 
 // Services
 import { DonationRequestApi } from '../../shared/sdk/services/custom/DonationRequest';
-import { Router, ActivatedRoute } from '@angular/router';
 import { MatTableDataSource } from '@angular/material';
 import { LoopBackAuth } from '../../shared/sdk';
 
@@ -14,7 +13,7 @@ import { LoopBackAuth } from '../../shared/sdk';
   templateUrl: './organization-history.component.html',
   styleUrls: ['./organization-history.component.css']
 })
-export class OrganizationHistoryComponent implements OnInit, OnChanges {
+export class OrganizationHistoryComponent {
 
   displayedColumns = ['Producto', 'Cantidad', 'Cubiertos', 'Prometidos', 'Permanente', 'Creacion', 'Expiracion', 'Accion'];
   dataSource = new MatTableDataSource<DonationRequestInterface>([]);
@@ -25,29 +24,19 @@ export class OrganizationHistoryComponent implements OnInit, OnChanges {
   constructor(
     private donationRequestApi: DonationRequestApi,
     private auth: LoopBackAuth,
-    private router: Router,
-    route: ActivatedRoute,
   ) {
-    const organizationId =  this.auth.getCurrentUserId();
+    const organizationId = this.auth.getCurrentUserId();
     this.donationRequestApi.find({
-        include: ['product'],
-        where: {
-            organizationId: organizationId,
-            isOpen: false
-        }
+      include: ['product'],
+      where: {
+        organizationId: organizationId,
+        isOpen: false
+      }
     })
-    .subscribe(requests => {
-        console.log('The requests: ', requests);
+      .subscribe(requests => {
         this.dataSource.data = <DonationRequestInterface[]>requests;
-    });
+      });
 
-  }
-
-  ngOnInit() {
-
-  }
-
-  ngOnChanges() {
   }
 
   applyFilter(filterValue: string) {

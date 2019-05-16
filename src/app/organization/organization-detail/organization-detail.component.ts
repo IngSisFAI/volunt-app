@@ -1,28 +1,19 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { Organization, OrganizationInterface } from '../../shared/sdk/models/Organization';
-import { OrganizationApi } from '../../shared/sdk/services/custom/Organization';
-
+import { Organization } from '../../shared/sdk/models/Organization';
 @Component({
   selector: 'app-organization-detail',
   templateUrl: './organization-detail.component.html',
   styleUrls: ['./organization-detail.component.css']
 })
-export class OrganizationDetailComponent implements OnInit {
+export class OrganizationDetailComponent {
 
   @Input() organization: Organization;
   @Input() showMoreRequestsButton: boolean;
-  //organization: Object;
 
   constructor(
-    private router: Router,
-    //private organizationService: OrganizationApi
+    private router: Router
   ) { }
-
-  ngOnInit() {
-    //  this.getOrganization();
-
-  }
 
   public goToOrg() {
     this.router.navigate(['/catalog'], { queryParams: { orgId: this.organization.id } });

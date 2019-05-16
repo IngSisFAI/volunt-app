@@ -27,7 +27,7 @@ export class LoginModalService {
   }
 
   openDialog() {
-    let dialog = new LoginModal(this.dialog);
+    const dialog = new LoginModal(this.dialog);
     return dialog.open()
       .then((credentials) => {
         if (credentials) {
@@ -35,6 +35,7 @@ export class LoginModalService {
         }
       })
       .catch(err => {
+        // TODO: Handle error
         console.error(err);
         throw err;
       });

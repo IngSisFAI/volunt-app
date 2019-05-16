@@ -3,7 +3,7 @@ import { DonnerReviewApi } from '../../shared/sdk/services/custom/DonnerReview';
 import { DonnerReview, DonnerReviewInterface } from '../../shared/sdk/models/DonnerReview';
 
 @Component({
-  selector: 'app-donnerReview-add',
+  selector: 'app-donner-review-add',
   templateUrl: './donnerReview-add.html',
   styleUrls: ['./donnerReview-add.css']
 })
@@ -27,8 +27,8 @@ export class DonnerReviewAddComponent implements OnInit {
         this.onCreated.emit(donnerReview);
       },
       (error) => {
-        console.log('An error occured at DonnerReview-add component');
-        console.log(error);
+        // TODO: Handle error
+        console.error(error);
       }
       );
   }

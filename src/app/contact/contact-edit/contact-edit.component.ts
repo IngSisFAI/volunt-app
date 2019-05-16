@@ -1,13 +1,13 @@
-import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
+import { Component, OnInit, OnChanges, EventEmitter, Input, Output } from '@angular/core';
 import { ContactApi } from '../../shared/sdk/services/custom/Contact';
-import { Contact, ContactInterface } from '../../shared/sdk/models/Contact';
+import { Contact } from '../../shared/sdk/models/Contact';
 
 @Component({
   selector: 'app-contact-edit',
   templateUrl: './contact-edit.component.html',
   styleUrls: ['./contact-edit.component.css']
 })
-export class ContactEditComponent implements OnInit {
+export class ContactEditComponent implements OnInit, OnChanges {
 
   @Input() contactOriginal: Contact;
   @Output() contactEdited = new EventEmitter();
@@ -22,18 +22,17 @@ export class ContactEditComponent implements OnInit {
   }
 
   ngOnChanges(changes): void {
-    console.log(this.contactOriginal)
+    // TODO: Check changes?
     this.contact = Object.assign({}, this.contactOriginal);
   }
 
   public update() {
     this.contactService.patchAttributes(this.contact.id, this.contact)
-    .subscribe(
-      contactEdited => {
-        console.log('contact edited: ', contactEdited);
-        this.contactEdited.emit(contactEdited);
-      }
-    )
+      .subscribe(
+        contactEdited => {
+          this.contactEdited.emit(contactEdited);
+        }
+      );
   }
 
   public cancelar() {
