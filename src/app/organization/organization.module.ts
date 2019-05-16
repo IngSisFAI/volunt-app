@@ -22,7 +22,7 @@ import { OrganizationRequestsComponent } from 'app/organization/organization-req
   declarations: [OrganizationMainComponent, OrganizationAddComponent, OrganizationEditComponent,
     OrganizationActiveRequestsComponent,
     OrganizationDetailComponent, OrganizationHistoryComponent, OrganizationRequestsComponent],
-  exports: [OrganizationMainComponent, OrganizationDetailComponent, OrganizationEditComponent, 
+  exports: [OrganizationMainComponent, OrganizationDetailComponent, OrganizationEditComponent,
     OrganizationHistoryComponent, OrganizationActiveRequestsComponent, OrganizationRequestsComponent],
   providers: [OrganizationApi]
 })

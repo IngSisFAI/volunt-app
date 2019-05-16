@@ -41,7 +41,7 @@ export class UserResponsesComponent implements OnInit {
       (err) => {
         // TODO: Handle error
         console.error(err);
-      })
+      });
   }
 
 

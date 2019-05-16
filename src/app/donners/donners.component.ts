@@ -24,7 +24,7 @@ export class DonnersComponent {
         (err) => {
           // TODO: Handle error
           console.error(err);
-        })
+        });
 
   }
 

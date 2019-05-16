@@ -32,7 +32,7 @@ export class ContactEditComponent implements OnInit {
         contactEdited => {
           this.contactEdited.emit(contactEdited);
         }
-      )
+      );
   }
 
   public cancelar() {

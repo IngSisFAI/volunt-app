@@ -63,8 +63,8 @@ export class DonationRequestAddComponent implements OnInit {
 
   create() {
     if (this.donationRequest.isPermanent) {
-      // We must add a few months to expiration date 
-      let aux = new Date();
+      // We must add a few months to expiration date
+      const aux = new Date();
       aux.setMonth(aux.getMonth() + 2);
       this.donationRequest.expirationDate = aux;
     }
@@ -80,7 +80,7 @@ export class DonationRequestAddComponent implements OnInit {
   }
 
   openDialog(): void {
-    let dialogRef = this.dialog.open(AddRequestDialog, {
+    const dialogRef = this.dialog.open(AddRequestDialog, {
       width: '500px',
       data: {
         products: this.products,

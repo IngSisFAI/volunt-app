@@ -57,7 +57,7 @@ export class PermanentDonationsAddComponent implements OnInit {
   }
 
   create() {
-    let tempDate = new Date();
+    const tempDate = new Date();
     tempDate.setMonth(tempDate.getMonth() + 2);
     this.permanentDonation.expirationDate = tempDate;
 

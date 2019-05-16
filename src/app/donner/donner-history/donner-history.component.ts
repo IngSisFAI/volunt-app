@@ -14,7 +14,7 @@ import { MatTableDataSource } from '@angular/material';
 })
 export class DonnerHistoryComponent {
 
-  empty: boolean = false;
+  empty = false;
   displayedColumns = ['Categoria', 'Nombre', 'Cantidad', 'Creación', 'Organización', 'Contacto', 'Estado'];
   dataSource = new MatTableDataSource<DonationResponseInterface>([]);
 

@@ -31,7 +31,7 @@ export class UnitEditComponent implements OnInit {
         unitEdited => {
           this.unitEdited.emit(unitEdited);
         }
-      )
+      );
   }
 
   public cancelar() {

@@ -16,7 +16,7 @@ import { MatTableDataSource } from '@angular/material';
 })
 export class DonnerActiveResponsesComponent implements OnInit {
 
-  empty: boolean = false;
+  empty = false;
   displayedColumns = ['Categoria', 'Nombre', 'Cantidad', 'Creación', 'Organización', 'Contacto', 'Accion'];
   dataSource = new MatTableDataSource<DonationResponseInterface>([]);
 

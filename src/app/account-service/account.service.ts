@@ -33,7 +33,7 @@ export class AccountService {
     }, (err) => {
       // TODO: Handle error
       console.error(err);
-      alert("Credenciales incorrectos!");
+      alert('Credenciales incorrectos!');
     });
   }
 
@@ -44,13 +44,13 @@ export class AccountService {
     }, (err) => {
       return this.organizationApi.login(user).subscribe((token: SDKToken) => {
         this.router.navigate(['/catalog']);
-        // We must do something to know that is an organization ... 
+        // We must do something to know that is an organization ...
       }, (err) => {
         // TODO: Handle error
         console.error(err);
-        alert("Credenciales incorrectos!");
+        alert('Credenciales incorrectos!');
       });
-    })
+    });
   }
 
   public logoutUser(): void {
@@ -62,11 +62,11 @@ export class AccountService {
   public signinOrganization(organization: Organization): void {
     this.organizationApi.login(organization).subscribe((token: SDKToken) => {
       this.router.navigate(['/catalog']);
-      // We must do something to know that is an organization ... 
+      // We must do something to know that is an organization ...
     }, (err) => {
       // TODO: handle error
       console.error(err);
-      alert("Credenciales incorrectos!");
+      alert('Credenciales incorrectos!');
     });
   }
 

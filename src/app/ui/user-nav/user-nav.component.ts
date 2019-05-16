@@ -30,7 +30,7 @@ export class UserNavComponent implements OnInit {
   }
 
   openDialog(): void {
-    let dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
+    const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
       width: '250px',
       data: { name: 'asdasdasd' }
     });
@@ -43,7 +43,7 @@ export class UserNavComponent implements OnInit {
   }
 
   loggedIn() {
-    let loggedIn: boolean = this.accService.loggedIn();
+    const loggedIn: boolean = this.accService.loggedIn();
     if (loggedIn) {
       if (!this.user) {
         this.user = this.auth.getCurrentUserData();

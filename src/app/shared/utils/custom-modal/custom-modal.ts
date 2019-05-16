@@ -2,7 +2,7 @@ import { Component, Inject } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 export class CustomModal {
-    private width = '500px'
+    private width = '500px';
     private title: String;
     private description: String;
     private accept: String;
@@ -19,7 +19,7 @@ export class CustomModal {
 
     public open() {
         return new Promise((resolve, reject) => {
-            let dialogRef = this.dialog.open(Dialog, {
+            const dialogRef = this.dialog.open(Dialog, {
                 width: this.width,
                 data: {
                     title: this.title,
@@ -31,7 +31,7 @@ export class CustomModal {
             dialogRef.afterClosed().subscribe(result => {
                 resolve(result);
             });
-        })
+        });
     }
 
 }

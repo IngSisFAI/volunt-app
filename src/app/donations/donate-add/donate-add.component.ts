@@ -50,7 +50,7 @@ export class DonateAddComponent implements OnInit {
         response => {
           // TODO: Change alert
           this.donated.next(response);
-          alert('La donacion se ha generado con exito!!')
+          alert('La donacion se ha generado con exito!!');
         }
       );
     } else {

@@ -27,7 +27,7 @@ export class LoginModalService {
   }
 
   openDialog() {
-    let dialog = new LoginModal(this.dialog);
+    const dialog = new LoginModal(this.dialog);
     return dialog.open()
       .then((credentials) => {
         if (credentials) {

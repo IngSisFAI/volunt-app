@@ -13,7 +13,7 @@ import { ActivatedRoute } from '@angular/router';
 export class MainCatalogComponent implements OnInit {
 
   permanentRequests: DonationRequestInterface[];
-  oneTimeRequests: DonationRequestInterface[]
+  oneTimeRequests: DonationRequestInterface[];
 
   orgs: OrganizationInterface[] = [];
   products: ProductInterface[] = [];
@@ -45,7 +45,7 @@ export class MainCatalogComponent implements OnInit {
   }
 
   private findPermanentRequests() {
-    let now = new Date();
+    const now = new Date();
     this.donationRequestApi.find(
       {
         include: ['product', { organization: [{ city: 'province' }] }],
@@ -66,7 +66,7 @@ export class MainCatalogComponent implements OnInit {
 
   private findOneTimeRequests() {
 
-    let now = new Date();
+    const now = new Date();
     this.donationRequestApi.find({
       include: ['product', { organization: [{ city: 'province' }] }],
       where:
@@ -169,8 +169,8 @@ export class MainCatalogComponent implements OnInit {
     this.route
       .queryParams
       .subscribe(params => {
-        let id = params['orgId'];
-        let city = params['city'];
+        const id = params['orgId'];
+        const city = params['city'];
         if (id) {
           this.orgChange(id);
         } else {

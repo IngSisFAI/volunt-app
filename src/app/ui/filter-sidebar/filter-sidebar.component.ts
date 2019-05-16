@@ -123,7 +123,7 @@ export class FilterSidebarComponent implements OnInit {
     this.route
       .queryParams
       .subscribe(params => {
-        let city = params['city'];
+        const city = params['city'];
         if (city) {
           this.urlCity = true;
         } else {

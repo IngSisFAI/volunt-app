@@ -31,7 +31,7 @@ export class OrganizationReviewEditComponent implements OnInit {
         organizationReviewEdited => {
           this.organizationReviewEdited.emit(organizationReviewEdited);
         }
-      )
+      );
   }
 
   public cancelar() {

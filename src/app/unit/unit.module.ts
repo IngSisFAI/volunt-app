@@ -11,7 +11,7 @@ import { UnitEditComponent } from './unit-edit/unit-edit.component';
     CommonModule,
     FormsModule
   ],
-  declarations: [UnitMainComponent,UnitAddComponent,UnitEditComponent],
+  declarations: [UnitMainComponent, UnitAddComponent, UnitEditComponent],
   exports: [UnitMainComponent],
   providers: [UnitApi]
 })

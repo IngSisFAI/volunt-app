@@ -22,7 +22,7 @@ export class ActiveDonationsComponent implements OnInit, OnChanges {
   oneTimeRequestsFiltered: DonationRequestInterface[] = [];
   oneTimeRequestsByCity: DonationRequestInterface[];
   oneTimeRequestsByOrg: DonationRequestInterface[];
-  emptyOneTimeRequests: boolean = false;
+  emptyOneTimeRequests = false;
 
   @Input() set oneTimeRequests(requests: DonationRequestInterface[]) {
     if (requests) {
@@ -53,7 +53,7 @@ export class ActiveDonationsComponent implements OnInit, OnChanges {
   permanentRequestsFiltered: DonationRequestInterface[] = [];
   permanentRequestsByCity: DonationRequestInterface[];
   permanentRequestsByOrg: DonationRequestInterface[];
-  emptyPermanentRequests: boolean = false;
+  emptyPermanentRequests = false;
 
   @Input() set permanentRequests(requests: DonationRequestInterface[]) {
     if (requests) {
@@ -92,11 +92,11 @@ export class ActiveDonationsComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges) {
 
-    for (let propName in changes) {
-      let change = changes[propName];
+    for (const propName in changes) {
+      const change = changes[propName];
       if (this._oneTimeRequests.length !== 0 || this._permanentRequests.length !== 0) {
         switch (propName) {
-          case "city":
+          case 'city':
             if (this.city) {
               this.oneTimeRequestsByCity = this._oneTimeRequests.filter(req => req.organization.city.name === this.city);
               this.permanentRequestsByCity = this._permanentRequests.filter(req => req.organization.city.name === this.city);
@@ -131,7 +131,7 @@ export class ActiveDonationsComponent implements OnInit, OnChanges {
               }
             }
             break;
-          case "donationType":
+          case 'donationType':
 
             if (this.donationType) {
 
@@ -169,7 +169,7 @@ export class ActiveDonationsComponent implements OnInit, OnChanges {
             }
             break;
 
-          case "orgId":
+          case 'orgId':
             if (this.orgId) {
               this.oneTimeRequestsByOrg = this._oneTimeRequests.filter(req => req.organization.id === this.orgId);
               this.permanentRequestsByOrg = this._permanentRequests.filter(req => req.organization.id === this.orgId);
@@ -258,8 +258,8 @@ export class ActiveDonationsComponent implements OnInit, OnChanges {
   private sortRequestsByDate(requests: DonationRequestInterface[]) {
 
     requests.sort((r1, r2) => {
-      let fecha1 = new Date(r1.expirationDate).getTime();
-      let fecha2 = new Date(r2.expirationDate).getTime();
+      const fecha1 = new Date(r1.expirationDate).getTime();
+      const fecha2 = new Date(r2.expirationDate).getTime();
       return fecha1 - fecha2;
     });
 

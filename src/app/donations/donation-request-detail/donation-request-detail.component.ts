@@ -36,7 +36,7 @@ export class DonationRequestDetailComponent implements OnInit {
                         }).subscribe(responses => {
                             this.dataSource.data = <DonationResponse[]>responses;
                         });
-                    })
+                    });
 
             });
     }
@@ -46,11 +46,11 @@ export class DonationRequestDetailComponent implements OnInit {
     }
 
     public confirmDelivery(response) {
-        let data = {
+        const data = {
             title: 'Confirmar entrega',
-            description: `¿Confirma que le ha llegado ${response.amount} 
+            description: `¿Confirma que le ha llegado ${response.amount}
             unidades de ${this.request.description}?`,
-        }
+        };
         this.customModal.openDialog(data)
             .then(accepted => {
                 if (accepted) {
@@ -64,7 +64,7 @@ export class DonationRequestDetailComponent implements OnInit {
                 } else {
                     // ...
                 }
-            }).catch(err => { console.error(err) });
+            }).catch(err => { console.error(err); });
     }
 
     ngOnInit() { }

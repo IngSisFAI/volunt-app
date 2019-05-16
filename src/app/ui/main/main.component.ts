@@ -15,7 +15,7 @@ export class MainComponent implements OnInit {
         this.organizationsApi.find({ limit: 5, fields: ['name', 'logoUrl'] })
             .subscribe(orgs => {
                 this.organizations = <OrganizationInterface[]>orgs;
-            })
+            });
     }
     public ngOnInit() {
 

@@ -2,7 +2,7 @@ import { Component, Inject } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 export class LoginModal {
-  private width = '500px'
+  private width = '500px';
   private accept: String;
   private cancel: String;
   private dialog: MatDialog;
@@ -21,7 +21,7 @@ export class LoginModal {
 
   public open() {
     return new Promise((resolve, reject) => {
-      let dialogRef = this.dialog.open(LoginDialog, {
+      const dialogRef = this.dialog.open(LoginDialog, {
         width: this.width,
         data: {
           account: this.account,
@@ -32,7 +32,7 @@ export class LoginModal {
       dialogRef.afterClosed().subscribe(result => {
         resolve(result);
       });
-    })
+    });
   }
 
 }

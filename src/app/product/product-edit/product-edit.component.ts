@@ -31,7 +31,7 @@ export class ProductEditComponent implements OnInit {
         productEdited => {
           this.productEdited.emit(productEdited);
         }
-      )
+      );
   }
 
   public cancelar() {

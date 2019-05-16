@@ -16,7 +16,7 @@ import { MatTableDataSource } from '@angular/material';
 
 export class DonnerResponsesComponent {
 
-  empty: boolean = false;
+  empty = false;
   displayedColumns = ['Categoria', 'Nombre', 'Cantidad', 'Creación', 'Organización', 'Contacto', 'Estado', 'Accion'];
   dataSource = new MatTableDataSource<DonationResponseInterface>([]);
 
@@ -84,7 +84,7 @@ export class DonnerResponsesComponent {
   }
 
   setDataSource(res: DonationResponseInterface[]) {
-    this.dataSource.data = res
+    this.dataSource.data = res;
 
   }
 
@@ -95,7 +95,7 @@ export class DonnerResponsesComponent {
       .subscribe((change) => {
 
         let updatedResponse: DonationResponseInterface;
-        updatedResponse = this._donationResponses.find(res => { return res.id === response.id });
+        updatedResponse = this._donationResponses.find(res => res.id === response.id);
         updatedResponse.isCanceled = true;
 
         this.filterResponses();
@@ -116,13 +116,13 @@ export class DonnerResponsesComponent {
     let state: string;
 
     if (response.alreadyDelivered) {
-      state = "Entregada";
+      state = 'Entregada';
     } else {
       if (response.isCanceled) {
-        state = "Cancelada";
+        state = 'Cancelada';
       }
       else {
-        state = "Activa";
+        state = 'Activa';
       }
     }
 
@@ -132,7 +132,7 @@ export class DonnerResponsesComponent {
 
   isResponseActive(response: DonationResponseInterface): boolean {
     let active: boolean;
-    active = (this.getResponseState(response) === "Activa");
+    active = (this.getResponseState(response) === 'Activa');
     return active;
   }
 
